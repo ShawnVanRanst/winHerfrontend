@@ -8,7 +8,15 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
-    </Grid>
+    <StackPanel x:Name="ContentPanel" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock HorizontalAlignment="Center" Text="Welcom to" VerticalAlignment="Center" FontSize="36"/>
+        <TextBlock HorizontalAlignment="Center" Text="On-board flight" VerticalAlignment="Center" FontSize="72" Margin="0,0,0,40" FontWeight="Bold"/>
+        <StackPanel x:Name="FormPanel" Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
+            <TextBlock HorizontalAlignment="Left" Text="Login"/>
+            <TextBox HorizontalAlignment="Left" x:Name="Login" Width="200" Margin="0,0,0,20"/>
+            <TextBlock HorizontalAlignment="Left" Text="Password"/>
+            <TextBox HorizontalAlignment="Left" x:Name="Password" Width="200" Margin="0,0,0,20"/>
+            <Button HorizontalAlignment="Center" Content="Login" />
+        </StackPanel>
+    </StackPanel>
 </Page>
