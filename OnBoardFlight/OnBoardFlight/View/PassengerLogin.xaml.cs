@@ -1,5 +1,4 @@
-﻿using OnBoardFlight.View;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,28 +13,33 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace OnBoardFlight
+namespace OnBoardFlight.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class PassengerLogin : Page
     {
-        public MainPage()
+        public PassengerLogin()
         {
             this.InitializeComponent();
         }
 
-        private void LoginAsCrewMember_Click(object sender, RoutedEventArgs e)
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(CabinCrewLogin));
+            On_BackRequested();
         }
 
-        private void LoginAsPassenger_Click(object sender, RoutedEventArgs e)
+        private bool On_BackRequested()
         {
-            Frame.Navigate(typeof(PassengerLogin));
+            if (this.Frame.CanGoBack)
+            {
+                this.Frame.GoBack();
+                return true;
+            }
+            return false;
         }
     }
 }
