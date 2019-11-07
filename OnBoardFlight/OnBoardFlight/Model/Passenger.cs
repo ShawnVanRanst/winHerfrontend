@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OnBoardFlight.Model
 {
-    class Passenger : INotifyPropertyChanged
+    public class Passenger : INotifyPropertyChanged
     {
         private int _seatNumber;
 

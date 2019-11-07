@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OnBoardFlight.Model
 {
-    class CabinMember : INotifyPropertyChanged
+    public class CabinMember : INotifyPropertyChanged
     {
         private string _login;
 

@@ -15,7 +15,7 @@
             <TextBlock HorizontalAlignment="Center" Text="Passenger" VerticalAlignment="Center" FontSize="72" Margin="0,0,0,40" FontWeight="Bold"/>
             <TextBlock Text="Please fill in your seat number" Margin="0,0,0,10"/>
             <TextBox x:Name="SeatNumber" Margin="0,0,0,20"/>
-            <Button HorizontalAlignment="Center" Content="Login" />
+            <Button HorizontalAlignment="Center" Content="Login" Click="Login" />
         </StackPanel>
     </Grid>
 </Page>

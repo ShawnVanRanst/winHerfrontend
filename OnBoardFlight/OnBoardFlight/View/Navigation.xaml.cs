@@ -20,31 +20,35 @@ namespace OnBoardFlight.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PassengerLogin : Page
+    public sealed partial class Navigation : Page
     {
-        public PassengerLogin()
+        public Navigation()
         {
             this.InitializeComponent();
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            On_BackRequested();
+            NavOptions(e.Parameter as string);
         }
 
-        private bool On_BackRequested()
+        private void NavigateTo(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            if (this.Frame.CanGoBack)
+            NavigationViewItem selectedItem = (NavigationViewItem)args.SelectedItem;
+
+            string tag = selectedItem.Tag.ToString();
+
+            NavOptions(tag);
+        }
+
+        private void NavOptions(string tag)
+        {
+            switch (tag)
             {
-                this.Frame.GoBack();
-                return true;
+                case "FlightInfo":
+                    mainFrame.Navigate(typeof(FlightInfo));
+                    break;
             }
-            return false;
-        }
-
-        private void Login(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Home));
         }
     }
 }

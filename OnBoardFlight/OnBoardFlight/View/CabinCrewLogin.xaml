@@ -18,7 +18,7 @@
             <TextBox HorizontalAlignment="Left" x:Name="Login" Width="200" Margin="0,0,0,20"/>
             <TextBlock HorizontalAlignment="Left" Text="Password"/>
             <TextBox HorizontalAlignment="Left" x:Name="Password" Width="200" Margin="0,0,0,20"/>
-            <Button HorizontalAlignment="Center" Content="Login" />
+            <Button HorizontalAlignment="Center" Content="Login" Click="Button_Click" />
         </StackPanel>
     </StackPanel>
     </Grid>
