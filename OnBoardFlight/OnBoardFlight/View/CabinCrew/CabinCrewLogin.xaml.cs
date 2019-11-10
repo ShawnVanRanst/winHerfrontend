@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnBoardFlight.View.CabinCrew;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,16 +21,31 @@ namespace OnBoardFlight.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Home : Page
+    public sealed partial class CabinCrewLogin : Page
     {
-        public Home()
+        public CabinCrewLogin()
         {
             this.InitializeComponent();
         }
 
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            On_BackRequested();
+        }
+
+        private bool On_BackRequested()
+        {
+            if (this.Frame.CanGoBack)
+            {
+                this.Frame.GoBack();
+                return true;
+            }
+            return false;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Navigation), "FlightInfo");
+            Frame.Navigate(typeof(HomeCabinCrew));
         }
     }
 }

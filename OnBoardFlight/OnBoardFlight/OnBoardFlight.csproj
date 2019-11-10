@@ -126,22 +126,38 @@
     <Compile Include="Model\Flight.cs" />
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\Passenger.cs" />
+    <Compile Include="Model\Weather.cs" />
+    <Compile Include="Model\WeatherApi\City.cs" />
+    <Compile Include="Model\WeatherApi\List.cs" />
+    <Compile Include="Model\WeatherApi\Main.cs" />
+    <Compile Include="Model\WeatherApi\RootObject.cs" />
+    <Compile Include="Model\WeatherApi\Weather.cs" />
+    <Compile Include="Model\WeatherApi\Wind.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\DummyDataSource.cs" />
     <Compile Include="ViewModel\FlightInfoViewModel.cs" />
-    <Compile Include="View\CabinCrewLogin.xaml.cs">
+    <Compile Include="ViewModel\WeatherProxyViewModel.cs" />
+    <Compile Include="ViewModel\WeatherViewModel.cs" />
+    <Compile Include="View\CabinCrew\CabinCrewLogin.xaml.cs">
       <DependentUpon>CabinCrewLogin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\FlightInfo.xaml.cs">
+    <Compile Include="View\CabinCrew\HomeCabinCrew.xaml.cs">
+      <DependentUpon>HomeCabinCrew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Passenger\FlightInfo.xaml.cs">
       <DependentUpon>FlightInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Home.xaml.cs">
-      <DependentUpon>Home.xaml</DependentUpon>
+    <Compile Include="View\CabinCrew\NavigationCabinCrew.xaml.cs">
+      <DependentUpon>NavigationCabinCrew.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Navigation.xaml.cs">
-      <DependentUpon>Navigation.xaml</DependentUpon>
+    <Compile Include="View\Passenger\NavigationPassenger.xaml.cs">
+      <DependentUpon>NavigationPassenger.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PassengerLogin.xaml.cs">
+    <Compile Include="View\Passenger\PassengerLogin.xaml.cs">
       <DependentUpon>PassengerLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Passenger\Weather.xaml.cs">
+      <DependentUpon>Weather.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -169,28 +185,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\CabinCrewLogin.xaml">
+    <Page Include="View\CabinCrew\CabinCrewLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\FlightInfo.xaml">
+    <Page Include="View\CabinCrew\HomeCabinCrew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Home.xaml">
+    <Page Include="View\Passenger\FlightInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Navigation.xaml">
+    <Page Include="View\CabinCrew\NavigationCabinCrew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PassengerLogin.xaml">
+    <Page Include="View\Passenger\NavigationPassenger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Passenger\PassengerLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Passenger\Weather.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Net.Http">
+      <Version>2.2.29</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
     </PackageReference>

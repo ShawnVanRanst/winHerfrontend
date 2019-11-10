@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnBoardFlight.View.Passenger;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,31 +21,18 @@ namespace OnBoardFlight.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PassengerLogin : Page
+    public sealed partial class FlightInfo : Page
     {
-        public PassengerLogin()
+        public FlightInfo()
         {
             this.InitializeComponent();
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            On_BackRequested();
-        }
-
-        private bool On_BackRequested()
-        {
-            if (this.Frame.CanGoBack)
-            {
-                this.Frame.GoBack();
-                return true;
-            }
-            return false;
-        }
-
-        private void Login(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Home));
+            base.OnNavigatedTo(e);
+            this.DataContext = new ViewModel.FlightInfoViewModel();
+            weatherFrame.Navigate(typeof(Weather));
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="OnBoardFlight.View.Navigation"
+    x:Class="OnBoardFlight.View.NavigationPassenger"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:OnBoardFlight.View"
@@ -8,9 +8,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <NavigationView SelectionChanged="NavigateTo">
+    <NavigationView x:Name="NavView" SelectionChanged="NavigateTo">
         <NavigationView.MenuItems>
             <NavigationViewItem Content="Flight" Icon="Switch" x:Name="FlightBtn" Tag="FlightInfo"/>
+            <NavigationViewItem Content="Logout" Icon="LeaveChat" x:Name="LogoutBtn" Tag="Logout"/>
         </NavigationView.MenuItems>
         <Frame x:Name="mainFrame"></Frame>
     </NavigationView>

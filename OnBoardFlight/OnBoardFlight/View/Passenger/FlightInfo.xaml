@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="OnBoardFlight.View.FlightInfo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OnBoardFlight.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical" Margin="0,0,15,0">
+                <TextBlock Text="From"/>
+                <TextBlock Text="{Binding Flight.Origin.Airport}"/>
+                <TextBlock Text="{Binding Flight.Origin.City}"/>
+                <TextBlock Text="{Binding Flight.Origin.Country}"/>
+                <TextBlock Text="{Binding Flight.Origin.Time}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="15,0,0,0">
+                <TextBlock Text="To"/>
+                <TextBlock Text="{Binding Flight.Destination.Airport}"/>
+                <TextBlock Text="{Binding Flight.Destination.City}"/>
+                <TextBlock Text="{Binding Flight.Destination.Country}"/>
+                <TextBlock Text="{Binding Flight.Destination.Time}"/>
+            </StackPanel>
+        </StackPanel>
+            <Frame x:Name="weatherFrame"></Frame>
+        </StackPanel>
+    </Grid>
+</Page>
