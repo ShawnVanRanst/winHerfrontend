@@ -19,20 +19,12 @@ namespace OnBoardFlight.Model
             set { _icon = value; RaisePropertyChanged("Icon"); }
         }
 
-        private int _maxTemp;
+        private int _temp;
 
-        public int MaxTemp
+        public int Temp
         {
-            get { return _maxTemp; }
-            set { _maxTemp = value; RaisePropertyChanged("MaxTemp"); }
-        }
-
-        private int _minTemp;
-
-        public int MinTemp
-        {
-            get { return _minTemp; }
-            set { _minTemp = value; RaisePropertyChanged("MinTemp"); }
+            get { return _temp; }
+            set { _temp = value; RaisePropertyChanged("MaxTemp"); }
         }
 
         private string _description;

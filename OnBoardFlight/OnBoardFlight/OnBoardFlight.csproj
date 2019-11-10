@@ -137,7 +137,6 @@
     <Compile Include="ViewModel\DummyDataSource.cs" />
     <Compile Include="ViewModel\FlightInfoViewModel.cs" />
     <Compile Include="ViewModel\WeatherProxyViewModel.cs" />
-    <Compile Include="ViewModel\WeatherViewModel.cs" />
     <Compile Include="View\CabinCrew\CabinCrewLogin.xaml.cs">
       <DependentUpon>CabinCrewLogin.xaml</DependentUpon>
     </Compile>

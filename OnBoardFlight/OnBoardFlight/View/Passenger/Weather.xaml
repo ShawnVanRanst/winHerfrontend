@@ -23,8 +23,13 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding When}"/>
                             <Image Width="200" Height="200" x:Name="WeatherImage" Source="{Binding Icon}"/>
                             <TextBlock Text="{Binding Description}"/>
+                            <TextBlock Text="Temp"/>
+                            <TextBlock Text="{Binding Temp}"/>
+                            <TextBlock Text="Windspeed"/>
+                            <TextBlock Text="{Binding WindSpeed}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

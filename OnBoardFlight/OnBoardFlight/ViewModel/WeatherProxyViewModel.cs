@@ -38,17 +38,36 @@ namespace OnBoardFlight.ViewModel
             var ms = new MemoryStream(Encoding.UTF8.GetBytes(result));
             RootObject weatherData = (RootObject)serializer.ReadObject(ms);
 
-            string icon = string.Format("http://openweathermap.org/img/w/{0}.png", weatherData.list[0].weather[0].icon);
+            FillWeatherList(weatherData);
+        }
+
+        private void FillWeatherList(RootObject weatherData)
+        {
             WeatherList.Add(new Model.Weather()
             {
                 When = "Now",
                 Icon = new BitmapImage(new Uri(string.Format("http://openweathermap.org/img/w/{0}.png", weatherData.list[0].weather[0].icon), UriKind.Absolute)),
                 Description = weatherData.list[0].weather[0].description,
-                MaxTemp = (int)Math.Round(weatherData.list[0].main.temp_max - 273.15),
-                MinTemp = (int)Math.Round(weatherData.list[0].main.temp_min - 273.15),
+                Temp = (int)Math.Round(weatherData.list[0].main.temp - 273.15),
                 WindSpeed = weatherData.list[0].wind.speed * 3.6,
                 WindOrientation = weatherData.list[0].wind.deg
             });
+
+            foreach (List list in weatherData.list)
+            {
+                if (list.dt_txt.Contains("12:00:00"))
+                {
+                    WeatherList.Add(new Model.Weather()
+                    {
+                        When = DateTime.Parse(list.dt_txt).DayOfWeek.ToString(),
+                        Icon = new BitmapImage(new Uri(string.Format("http://openweathermap.org/img/w/{0}.png", list.weather[0].icon), UriKind.Absolute)),
+                        Description = list.weather[0].description,
+                        Temp = (int)Math.Round(list.main.temp_max - 273.15),
+                        WindSpeed = list.wind.speed * 3.6,
+                        WindOrientation = list.wind.deg
+                    });
+                }
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
