@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnBoardFlight.View.Passenger;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -49,10 +50,39 @@ namespace OnBoardFlight.View
                     mainFrame.Navigate(typeof(FlightInfo));
                     NavView.SelectedItem = FlightBtn;
                     break;
+                case "Shop":
+                    mainFrame.Navigate(typeof(Shop));
+                    break;
+                case "Orders":
+                    mainFrame.Navigate(typeof(MyOrders));
+                    break;
+                case "Media":
+                    mainFrame.Navigate(typeof(MultiMedia));
+                    break;
+                case "Chat":
+                    mainFrame.Navigate(typeof(Chat));
+                    break;
                 case "Logout":
                     //TODO logout the user
-                    Frame.Navigate(typeof(MainPage));
+                    ConfirmLogout();
                     break;
+            }
+        }
+
+        //Small error when pressing "No", Logout button can't be pressed again unless navigated to other frame
+        private async void ConfirmLogout()
+        {
+            ContentDialog dialog = new ContentDialog()
+            {
+                Title = "Logout",
+                Content = "Are you sure you want to logout?",
+                PrimaryButtonText = "Yes",
+                CloseButtonText = "No",
+            };
+            ContentDialogResult result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                Frame.Navigate(typeof(MainPage));
             }
         }
     }

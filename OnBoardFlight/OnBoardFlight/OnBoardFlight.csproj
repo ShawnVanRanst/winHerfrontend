@@ -119,7 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="View\General\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\CabinMember.cs" />
@@ -137,11 +137,26 @@
     <Compile Include="ViewModel\DummyDataSource.cs" />
     <Compile Include="ViewModel\FlightInfoViewModel.cs" />
     <Compile Include="ViewModel\WeatherProxyViewModel.cs" />
+    <Compile Include="View\CabinCrew\Advertisement.xaml.cs">
+      <DependentUpon>Advertisement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CabinCrew\CabinCrewLogin.xaml.cs">
       <DependentUpon>CabinCrewLogin.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CabinCrew\HomeCabinCrew.xaml.cs">
       <DependentUpon>HomeCabinCrew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CabinCrew\Notification.xaml.cs">
+      <DependentUpon>Notification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CabinCrew\OverviewOrders.xaml.cs">
+      <DependentUpon>OverviewOrders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CabinCrew\Seats.xaml.cs">
+      <DependentUpon>Seats.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Passenger\Chat.xaml.cs">
+      <DependentUpon>Chat.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Passenger\FlightInfo.xaml.cs">
       <DependentUpon>FlightInfo.xaml</DependentUpon>
@@ -149,14 +164,23 @@
     <Compile Include="View\CabinCrew\NavigationCabinCrew.xaml.cs">
       <DependentUpon>NavigationCabinCrew.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Passenger\MultiMedia.xaml.cs">
+      <DependentUpon>MultiMedia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Passenger\MyOrders.xaml.cs">
+      <DependentUpon>MyOrders.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Passenger\NavigationPassenger.xaml.cs">
       <DependentUpon>NavigationPassenger.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Passenger\PassengerLogin.xaml.cs">
       <DependentUpon>PassengerLogin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Passenger\Weather.xaml.cs">
+    <Compile Include="View\General\Weather.xaml.cs">
       <DependentUpon>Weather.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Passenger\Shop.xaml.cs">
+      <DependentUpon>Shop.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -180,15 +204,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
+    <Page Include="View\General\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CabinCrew\Advertisement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CabinCrew\CabinCrewLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CabinCrew\HomeCabinCrew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CabinCrew\Notification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CabinCrew\OverviewOrders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CabinCrew\Seats.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Passenger\Chat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,6 +244,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Passenger\MultiMedia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Passenger\MyOrders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Passenger\NavigationPassenger.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -208,7 +260,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Passenger\Weather.xaml">
+    <Page Include="View\General\Weather.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Passenger\Shop.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
