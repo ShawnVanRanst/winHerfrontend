@@ -31,7 +31,7 @@ namespace OnBoardFlight.ViewModel
         {
             var http = new HttpClient();
             Flight flight = DummyDataSource.Flight; // BACKEND CALL
-            var response = await http.GetAsync("http://api.openweathermap.org/data/2.5/forecast?q=Barcelona,spa&APPID=2cdd81f58ad3cba16057c6ce550e242d");
+            var response = await http.GetAsync("http://api.openweathermap.org/data/2.5/forecast?q=" + flight.Destination.City + "," + flight.Destination.CountryIso + "&APPID=2cdd81f58ad3cba16057c6ce550e242d");
             var result = await response.Content.ReadAsStringAsync();
             var serializer = new DataContractJsonSerializer(typeof(RootObject));
 

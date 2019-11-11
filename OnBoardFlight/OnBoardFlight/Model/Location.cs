@@ -25,20 +25,12 @@ namespace OnBoardFlight.Model
             set { _city = value; }
         }
 
-        private int _zipCode;
+        private string _countryIso;
 
-        public int ZipCode
+        public string CountryIso
         {
-            get { return _zipCode; }
-            set { _zipCode = value; }
-        }
-
-        private string _countryCode;
-
-        public string CountryCode
-        {
-            get { return _countryCode; }
-            set { _countryCode = value; }
+            get { return _countryIso; }
+            set { _countryIso = value; }
         }
 
 
