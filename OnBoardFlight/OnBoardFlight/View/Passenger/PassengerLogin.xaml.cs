@@ -44,7 +44,7 @@ namespace OnBoardFlight.View
 
         private void Login(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(NavigationPassenger), "FlightInfo");
+            Frame.Navigate(typeof(NavigationPassenger));
         }
     }
 }

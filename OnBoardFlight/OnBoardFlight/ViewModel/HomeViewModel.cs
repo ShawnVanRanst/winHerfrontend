@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace OnBoardFlight.ViewModel
 {
-    public class FlightInfoViewModel
+    public class HomeViewModel
     {
         public Flight Flight { get; set; }
 
-        public FlightInfoViewModel()
+        public HomeViewModel()
         {
             //call naar api
             Flight = DummyDataSource.Flight;

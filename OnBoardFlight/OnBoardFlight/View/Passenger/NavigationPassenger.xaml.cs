@@ -1,4 +1,5 @@
-﻿using OnBoardFlight.View.Passenger;
+﻿using OnBoardFlight.View.General;
+using OnBoardFlight.View.Passenger;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,11 +27,8 @@ namespace OnBoardFlight.View
         public NavigationPassenger()
         {
             this.InitializeComponent();
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            NavOptions(e.Parameter as string);
+            NavView.SelectedItem = HometBtn;
+            mainFrame.Navigate(typeof(Home));
         }
 
         private void NavigateTo(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -46,9 +44,8 @@ namespace OnBoardFlight.View
         {
             switch (tag)
             {
-                case "FlightInfo":
-                    mainFrame.Navigate(typeof(FlightInfo));
-                    NavView.SelectedItem = FlightBtn;
+                case "Home":
+                    mainFrame.Navigate(typeof(Home));
                     break;
                 case "Shop":
                     mainFrame.Navigate(typeof(Shop));

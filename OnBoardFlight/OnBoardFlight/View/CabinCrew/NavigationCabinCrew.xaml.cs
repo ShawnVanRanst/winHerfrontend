@@ -1,4 +1,5 @@
 ﻿using OnBoardFlight.View.CabinCrew;
+using OnBoardFlight.View.General;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,19 +27,14 @@ namespace OnBoardFlight.View
         public NavigationCabinCrew()
         {
             this.InitializeComponent();
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            NavOptions(e.Parameter as string);
+            NavView.SelectedItem = HomeBtn;
+            mainFrame.Navigate(typeof(Home));
         }
 
         private void NavigateTo(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             NavigationViewItem selectedItem = (NavigationViewItem)args.SelectedItem;
-
             string tag = selectedItem.Tag.ToString();
-
             NavOptions(tag);
         }
 
@@ -46,9 +42,8 @@ namespace OnBoardFlight.View
         {
             switch (tag)
             {
-                case "FlightInfo":
-                    mainFrame.Navigate(typeof(FlightInfo));
-                    NavView.SelectedItem = FlightBtn;
+                case "Home":
+                    mainFrame.Navigate(typeof(Home));
                     break;
                 case "Seats":
                     mainFrame.Navigate(typeof(Seats));
