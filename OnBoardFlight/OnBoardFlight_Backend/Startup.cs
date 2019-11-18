@@ -6,10 +6,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using OnBoardFlight.Data;
+using OnBoardFlight.Data.Repository;
+using OnBoardFlight_Backend.Model.IRepository;
 
 namespace OnBoardFlight_Backend
 {
@@ -26,10 +30,19 @@ namespace OnBoardFlight_Backend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+               options.UseSqlServer(Configuration.GetConnectionString("OnBoardFlightConnection")));
+            //services.AddMvc().AddXmlSerializerFormatters();
+
+            services.AddScoped<DataInitializer>();
+            services.AddScoped<IFlightRepository, FlightRepository>();
+
+            services.AddCors(options => options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DataInitializer dataInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -43,6 +56,10 @@ namespace OnBoardFlight_Backend
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            app.UseCors("AllowAllOrigins");
+
+            dataInitializer.InitializeData().Wait();
         }
     }
 }
