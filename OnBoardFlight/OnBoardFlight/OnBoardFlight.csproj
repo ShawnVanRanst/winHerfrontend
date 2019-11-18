@@ -119,6 +119,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\orders\Category.cs" />
+    <Compile Include="Model\orders\Product.cs" />
+    <Compile Include="ViewModel\ProductViewModel.cs" />
     <Compile Include="View\General\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
@@ -155,11 +158,20 @@
     <Compile Include="View\CabinCrew\Seats.xaml.cs">
       <DependentUpon>Seats.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Passenger\Drinks.xaml.cs">
+      <DependentUpon>Drinks.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Passenger\Chat.xaml.cs">
       <DependentUpon>Chat.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CabinCrew\NavigationCabinCrew.xaml.cs">
       <DependentUpon>NavigationCabinCrew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Passenger\Food.xaml.cs">
+      <DependentUpon>Food.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Passenger\Gifts.xaml.cs">
+      <DependentUpon>Gifts.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Passenger\MultiMedia.xaml.cs">
       <DependentUpon>MultiMedia.xaml</DependentUpon>
@@ -187,6 +199,7 @@
     <None Include="OnBoardFlight_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\cola.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -229,11 +242,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Passenger\Drinks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Passenger\Chat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CabinCrew\NavigationCabinCrew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Passenger\Food.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Passenger\Gifts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
