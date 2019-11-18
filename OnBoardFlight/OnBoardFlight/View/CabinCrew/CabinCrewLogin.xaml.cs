@@ -45,7 +45,7 @@ namespace OnBoardFlight.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(NavigationCabinCrew), "FlightInfo");
+            Frame.Navigate(typeof(NavigationCabinCrew));
         }
     }
 }

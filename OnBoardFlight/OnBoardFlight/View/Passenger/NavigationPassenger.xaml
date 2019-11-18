@@ -10,7 +10,7 @@
 
     <NavigationView x:Name="NavView" SelectionChanged="NavigateTo">
         <NavigationView.MenuItems>
-            <NavigationViewItem Content="Home" Icon="Home" x:Name="FlightBtn" Tag="FlightInfo"/>
+            <NavigationViewItem Content="Home" Icon="Home" x:Name="HometBtn" Tag="HomeInfo"/>
             <NavigationViewItem Content="Shop" Icon="Shop" x:Name="ShopBtn" Tag="Shop"/>
             <NavigationViewItem Content="Orders" Icon="List" x:Name="OrdersBtn" Tag="Orders"/>
             <NavigationViewItem Content="Media" Icon="Video" x:Name="MediaBtn" Tag="Media"/>

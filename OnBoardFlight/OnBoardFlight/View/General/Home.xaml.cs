@@ -16,22 +16,21 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace OnBoardFlight.View
+namespace OnBoardFlight.View.General
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class FlightInfo : Page
+    public sealed partial class Home : Page
     {
-        public FlightInfo()
+        public Home()
         {
             this.InitializeComponent();
         }
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            this.DataContext = new ViewModel.FlightInfoViewModel();
+            this.DataContext = new ViewModel.HomeViewModel();
             weatherFrame.Navigate(typeof(Weather));
         }
     }
