@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using OnBoardFlight.Model;
+using OnBoardFlight_Backend.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,15 @@ namespace OnBoardFlight.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+
+        #region DbSets
+
+        public DbSet<Flight> Flights { get; set; }
+
+        public DbSet<User> Users { get; set; }
+        #endregion
+
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
@@ -22,6 +32,6 @@ namespace OnBoardFlight.Data
             base.OnModelCreating(builder);
         }
 
-        public DbSet<Flight> Flights { get; set; }
+        
     }
 }
