@@ -1,5 +1,7 @@
 ﻿using OnBoardFlight.View.CabinCrew;
 using OnBoardFlight.View.General;
+using OnBoardFlight.ViewModel;
+using OnBoardFlight.ViewModel.CabinCrew;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,11 +26,19 @@ namespace OnBoardFlight.View
     /// </summary>
     public sealed partial class NavigationCabinCrew : Page
     {
+        private NavigationCabinCrewViewModel navigationCabinCrewViewModel { get; set; }
+
         public NavigationCabinCrew()
         {
             this.InitializeComponent();
             NavView.SelectedItem = HomeBtn;
             mainFrame.Navigate(typeof(Home));
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            navigationCabinCrewViewModel = new NavigationCabinCrewViewModel((Model.CabinCrew)e.Parameter);
         }
 
         private void NavigateTo(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

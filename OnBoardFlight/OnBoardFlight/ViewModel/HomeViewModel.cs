@@ -11,8 +11,11 @@ namespace OnBoardFlight.ViewModel
     {
         public Flight Flight { get; set; }
 
-        public HomeViewModel()
+        public User User { get; set; }
+
+        public HomeViewModel(User user)
         {
+            User = user;
             //call naar api
             Flight = DummyDataSource.Flight;
         }

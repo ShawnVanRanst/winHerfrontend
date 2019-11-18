@@ -28,5 +28,16 @@ namespace OnBoardFlight.ViewModel
                 Time = new DateTime(2019, 12, 15, 12, 25, 0)
             }
         };
+
+        public static User Passenger { get; set; } = new Model.Passenger()
+        {
+            Login = "1"
+        };
+
+        public static User CabinMember { get; set; } = new Model.CabinCrew()
+        {
+            Login = "McJoel",
+            Password = "Rijbewijs"
+        };
     }
 }

@@ -1,4 +1,5 @@
-﻿using OnBoardFlight.View.Passenger;
+﻿using OnBoardFlight.Model;
+using OnBoardFlight.View.Passenger;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,8 +31,8 @@ namespace OnBoardFlight.View.General
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            this.DataContext = new ViewModel.HomeViewModel();
-            weatherFrame.Navigate(typeof(Weather));
+            this.DataContext = new ViewModel.HomeViewModel((User) e.Parameter);
+            weatherFrame.Navigate(typeof(View.Passenger.Weather));
         }
     }
 }

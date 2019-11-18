@@ -8,22 +8,8 @@ using System.Threading.Tasks;
 
 namespace OnBoardFlight.Model
 {
-    public class Passenger : INotifyPropertyChanged
+    public class Passenger : User, INotifyPropertyChanged
     {
-        private int _seatNumber;
-
-        public int SeatNumber
-        {
-            get { return _seatNumber; }
-            set { _seatNumber = value; RaisePropertyChanged("SeatNumber"); }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void RaisePropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
     }
 }

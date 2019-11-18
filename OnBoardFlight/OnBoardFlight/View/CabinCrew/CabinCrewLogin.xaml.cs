@@ -1,4 +1,6 @@
-﻿using OnBoardFlight.View.CabinCrew;
+﻿using OnBoardFlight.Model;
+using OnBoardFlight.View.CabinCrew;
+using OnBoardFlight.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -45,7 +47,16 @@ namespace OnBoardFlight.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(NavigationCabinCrew));
+            // backend call to get 
+            Model.CabinCrew CabinCrew = (Model.CabinCrew)DummyDataSource.CabinMember;
+            if (Login.Text == CabinCrew.Login && Password.Password == CabinCrew.Password)
+            {
+                Frame.Navigate(typeof(NavigationCabinCrew), CabinCrew);
+            }
+            else
+            {
+                LoginError.Text = "Login and Password incorrect!";
+            }
         }
     }
 }

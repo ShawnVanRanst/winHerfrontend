@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnBoardFlight.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -44,7 +45,16 @@ namespace OnBoardFlight.View
 
         private void Login(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(NavigationPassenger));
+            //Backend call + get user from backend
+            Model.Passenger Passenger = (Model.Passenger)DummyDataSource.Passenger;
+            if(LoginBtn.Text == Passenger.Login)
+            {
+                Frame.Navigate(typeof(NavigationPassenger), Passenger);
+            }
+            else
+            {
+                LoginError.Text = "Seat number is not correct!";
+            }
         }
     }
 }

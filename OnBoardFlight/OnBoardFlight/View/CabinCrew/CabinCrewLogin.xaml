@@ -14,10 +14,11 @@
         <TextBlock HorizontalAlignment="Center" Text="Login as" VerticalAlignment="Center" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" Text="Cabin member" VerticalAlignment="Center" FontSize="72" Margin="0,0,0,40" FontWeight="Bold"/>
         <StackPanel x:Name="FormPanel" Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
+            <TextBlock HorizontalAlignment="Left" x:Name="LoginError" FocusVisualPrimaryBrush="Black" Foreground="Red"/>
             <TextBlock HorizontalAlignment="Left" Text="Login"/>
             <TextBox HorizontalAlignment="Left" x:Name="Login" Width="200" Margin="0,0,0,20"/>
             <TextBlock HorizontalAlignment="Left" Text="Password"/>
-            <TextBox HorizontalAlignment="Left" x:Name="Password" Width="200" Margin="0,0,0,20"/>
+            <PasswordBox HorizontalAlignment="Left" x:Name="Password" Width="200" Margin="0,0,0,20"/>
             <Button HorizontalAlignment="Center" Content="Login" Click="Button_Click" />
         </StackPanel>
     </StackPanel>
