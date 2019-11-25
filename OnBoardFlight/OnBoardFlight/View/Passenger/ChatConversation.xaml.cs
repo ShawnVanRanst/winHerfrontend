@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OnBoardFlight.Model;
+using OnBoardFlight.Model.Helper;
+using OnBoardFlight.ViewModel.Passenger;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +25,23 @@ namespace OnBoardFlight.View.Passenger
     /// </summary>
     public sealed partial class ChatConversation : Page
     {
+        private ChatConversationViewModel _chatConversationViewModel { get; set; }
         public ChatConversation()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            _chatConversationViewModel = new ChatConversationViewModel((ChatConversationHelper)e.Parameter);
+            this.DataContext = _chatConversationViewModel;
+        }
+
+        private void SendMessage(object sender, TappedRoutedEventArgs e)
+        {
+            _chatConversationViewModel.SendMessage(MessageText.Text);
+            MessageText.Text = "";
         }
     }
 }

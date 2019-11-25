@@ -67,7 +67,7 @@ namespace OnBoardFlight.View
                     mainFrame.Navigate(typeof(MultiMedia));
                     break;
                 case "Chat":
-                    mainFrame.Navigate(typeof(View.Passenger.Chat), navigationPassengerViewModel.Passenger.ChatList);
+                    mainFrame.Navigate(typeof(View.Passenger.Chat), navigationPassengerViewModel.Passenger);
                     break;
                 case "Logout":
                     //TODO logout the user

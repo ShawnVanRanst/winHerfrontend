@@ -1,4 +1,5 @@
-﻿using OnBoardFlight.ViewModel.Passenger;
+﻿using OnBoardFlight.Model.Helper;
+using OnBoardFlight.ViewModel.Passenger;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,14 +34,19 @@ namespace OnBoardFlight.View.Passenger
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            _chatViewModel = new ChatViewModel((List<Model.Chat>) e.Parameter);
+            _chatViewModel = new ChatViewModel((Model.Passenger) e.Parameter);
             this.DataContext = _chatViewModel;
         }
 
         private void SelectChat(object sender, TappedRoutedEventArgs e)
         {
             Model.Chat chat = (Model.Chat)ChatListView.SelectedItem;
-            Conversation.Navigate(typeof(ChatConversation), chat);
+            ChatConversationHelper chatConversationHelper = new ChatConversationHelper()
+            {
+                Chat = chat,
+                Passenger = _chatViewModel.Passenger
+            };
+            Conversation.Navigate(typeof(ChatConversation), chatConversationHelper);
         }
     }
 }

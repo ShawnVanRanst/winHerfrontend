@@ -14,9 +14,12 @@ namespace OnBoardFlight.ViewModel.Passenger
     {
         public ObservableCollection<Chat> ChatList { get; set; }
 
-        public ChatViewModel(List<Chat> chatList)
+        public Model.Passenger Passenger { get; set; }
+
+        public ChatViewModel(Model.Passenger passenger)
         {
-            ChatList = new ObservableCollection<Chat>(chatList);
+            Passenger = passenger;
+            ChatList = new ObservableCollection<Chat>(passenger.ChatList);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -120,9 +120,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Chat.cs" />
+    <Compile Include="Model\Helper\ChatConversationHelper.cs" />
     <Compile Include="Model\Message.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="ViewModel\CabinCrew\NavigationCabinCrewViewModel.cs" />
+    <Compile Include="ViewModel\Passenger\ChatConversationViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatViewModel.cs" />
     <Compile Include="ViewModel\Passenger\NavigationPassengerViewModel.cs" />
     <Compile Include="View\General\Home.xaml.cs">

@@ -51,6 +51,7 @@ namespace OnBoardFlight.Model
         public void AddMessage(Message message)
         {
             _messages.Add(message);
+            RaisePropertyChanged("Messages");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
