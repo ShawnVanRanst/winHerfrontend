@@ -29,15 +29,63 @@ namespace OnBoardFlight.ViewModel
             }
         };
 
-        public static User Passenger { get; set; } = new Model.Passenger()
+        public static Model.Passenger Passenger2 { get; set; } = new Model.Passenger()
         {
-            Login = "1"
+            Login = "2",
+            FirstName = "Arno",
+            LastName = "Boel",
+            TravelCompany = new List<Model.Passenger>(),
+            ChatList = new List<Chat>()
         };
+
+        public static Model.Passenger Passenger3 { get; set; } = new Model.Passenger()
+        {
+            Login = "3",
+            FirstName = "Shawn",
+            LastName = "van Ranst",
+            TravelCompany = new List<Model.Passenger>(),
+            ChatList = new List<Chat>()
+        };
+
+        public static Model.Passenger Passenger4 { get; set; } = new Model.Passenger()
+        {
+            Login = "4",
+            FirstName = "pas4",
+            LastName = "last4",
+            TravelCompany = new List<Model.Passenger>(),
+            ChatList = new List<Chat>()
+        };
+
+        private static List<Model.Passenger> TravelCompany { get; set; } = new List<Model.Passenger>()
+        {
+            Passenger2,
+            Passenger3
+        };
+
+
+
+        public static Model.Passenger Passenger { get; set; } = new Model.Passenger()
+        {
+            Login = "1",
+            FirstName = "Ruben",
+            LastName = "Grillaert",
+            TravelCompany = new List<Model.Passenger>(),
+            ChatList = new List<Chat>()
+        };
+
 
         public static User CabinMember { get; set; } = new Model.CabinCrew()
         {
             Login = "McJoel",
             Password = "Rijbewijs"
         };
+
+        public static Model.Passenger getPassenger()
+        {
+            Model.Passenger passenger = Passenger;
+            passenger.AddTravelCompanionWithChat(Passenger2);
+            passenger.AddTravelCompanionWithChat(Passenger3);
+            return passenger;
+        }
     }
 }

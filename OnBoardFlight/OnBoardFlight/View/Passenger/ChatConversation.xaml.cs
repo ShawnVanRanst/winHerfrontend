@@ -1,5 +1,4 @@
-﻿using OnBoardFlight.ViewModel.Passenger;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,26 +20,11 @@ namespace OnBoardFlight.View.Passenger
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Chat : Page
+    public sealed partial class ChatConversation : Page
     {
-        private ChatViewModel _chatViewModel { get; set; }
-
-        public Chat()
+        public ChatConversation()
         {
             this.InitializeComponent();
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            _chatViewModel = new ChatViewModel((List<Model.Chat>) e.Parameter);
-            this.DataContext = _chatViewModel;
-        }
-
-        private void SelectChat(object sender, TappedRoutedEventArgs e)
-        {
-            Model.Chat chat = (Model.Chat)ChatListView.SelectedItem;
-            Conversation.Navigate(typeof(ChatConversation), chat);
         }
     }
 }
