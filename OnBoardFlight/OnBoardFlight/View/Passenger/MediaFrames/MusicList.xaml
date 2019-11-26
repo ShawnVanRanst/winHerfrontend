@@ -8,37 +8,36 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <ScrollViewer Height="auto">
-        <StackPanel>
-            <ListView ItemsSource="{Binding CategoryListMusicList}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Vertical">
+    <ScrollViewer Height="800">
+        <ListView ItemsSource="{Binding CategoryListMusicList}" x:Name="test">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
                         <TextBlock Text="{Binding Category}"/>
-                            <ListView ItemsSource="{Binding MusicList}"
+                        <ListView ItemsSource="{Binding MusicList}"
                             ScrollViewer.VerticalScrollBarVisibility="Disabled" 
                             ScrollViewer.HorizontalScrollBarVisibility="Auto"
                             ScrollViewer.HorizontalScrollMode="Enabled"                  
-                            ScrollViewer.VerticalScrollMode="Disabled">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Background="Transparent" Orientation="Horizontal" />
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Vertical">
-                                            <Image Source="{Binding Image}"/>
-                                            <TextBlock Text="{Binding Title}"/>
-                                            <TextBlock Text="{Binding Description}"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackPanel>
+                            ScrollViewer.VerticalScrollMode="Disabled"
+                                      Tapped="PlaySong">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Background="Transparent" Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <Image Source="{Binding Image}"/>
+                                        <TextBlock Text="{Binding Title}"/>
+                                        <TextBlock Text="{Binding Description}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ScrollViewer>
 </Page>

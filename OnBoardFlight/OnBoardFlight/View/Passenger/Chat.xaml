@@ -14,7 +14,7 @@
                 <ListView ItemsSource="{Binding ChatList}" x:Name="ChatListView">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Name}" Tapped="SelectChat"/>
+                            <TextBlock Text="{Binding Name}" Tapped="SelectChat" x:Name="test"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

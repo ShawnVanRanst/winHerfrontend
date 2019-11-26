@@ -1,4 +1,5 @@
-﻿using OnBoardFlight.ViewModel.Passenger;
+﻿using OnBoardFlight.Model;
+using OnBoardFlight.ViewModel.Passenger;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,6 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Media.Playback;
+using Windows.Media.Core;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,10 +26,25 @@ namespace OnBoardFlight.View.Passenger.MediaFrames
     /// </summary>
     public sealed partial class MusicList : Page
     {
+        private MediaPlayer player;
+
         public MusicList()
         {
             this.InitializeComponent();
             this.DataContext = new MusicListViewModel();
+            player = new MediaPlayer();
+        }
+
+        private async void PlaySong(object sender, TappedRoutedEventArgs e)
+        {
+            ListView lv = (ListView)sender;
+            Music song = (Music)lv.SelectedItem;
+            Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Assets");
+            Windows.Storage.StorageFile file = await folder.GetFileAsync(song.Resource);
+
+            player.AutoPlay = false;
+            player.Source = MediaSource.CreateFromStorageFile(file);
+            player.Play();
         }
     }
 }

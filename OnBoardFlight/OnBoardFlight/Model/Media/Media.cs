@@ -45,7 +45,9 @@ namespace OnBoardFlight.Model.Media
 
         public BitmapImage Image
         {
-            get { return new BitmapImage(new Uri("http://openweathermap.org/img/w/03d.png", UriKind.Absolute)); }
+            get {
+                return new BitmapImage(new Uri("ms-appx:///Assets/" + DisplayImage));
+            }
         }
 
     }

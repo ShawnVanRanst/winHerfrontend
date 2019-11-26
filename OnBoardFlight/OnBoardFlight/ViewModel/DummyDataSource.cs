@@ -30,26 +30,17 @@ namespace OnBoardFlight.ViewModel
                 Id = 0,
                 Category = MusicCategory.edm,
                 Description = "edm artist",
-                DisplayImage = @"C:\Users\Ruben\Documents\School\Projecten\Windows\App\OnBoardFlight\OnBoardFlight\MediaData\music.png",
-                Resource = "No resource yet",
+                DisplayImage = "music.png",
+                Resource = "PiewPiew.mp3",
                 Title = "edm song title"
-            },
-            new Music()
-            {
-                Id = 1,
-                Category = MusicCategory.edm,
-                Description = "edm artist 2",
-                DisplayImage = @"C:\Users\Ruben\Documents\School\Projecten\Windows\App\OnBoardFlight\OnBoardFlight\MediaData\music.png",
-                Resource = "No resource yet",
-                Title = "edm song title 2"
             },
             new Music()
             {
                 Id = 2,
                 Category = MusicCategory.house,
                 Description = "house artist",
-                DisplayImage = @"C:\Users\Ruben\Documents\School\Projecten\Windows\App\OnBoardFlight\OnBoardFlight\MediaData\music.png",
-                Resource = "No resource yet",
+                DisplayImage = "music.png",
+                Resource = "PiewPiew.mp3",
                 Title = "house song title"
             },
             new Music()
@@ -57,18 +48,18 @@ namespace OnBoardFlight.ViewModel
                 Id = 3,
                 Category = MusicCategory.pop,
                 Description = "pop artist",
-                DisplayImage = @"C:\Users\Ruben\Documents\School\Projecten\Windows\App\OnBoardFlight\OnBoardFlight\MediaData\music.png",
-                Resource = "No resource yet",
+                DisplayImage = "music.png",
+                Resource = "PiewPiew.mp3",
                 Title = "pop song title"
             },
             new Music()
             {
                 Id = 4,
                 Category = MusicCategory.rap,
-                Description = "rap artist",
-                DisplayImage = @"C:\Users\Ruben\Documents\School\Projecten\Windows\App\OnBoardFlight\OnBoardFlight\MediaData\music.png",
-                Resource = "No resource yet",
-                Title = "rap song title"
+                Description = "24KGoldn",
+                DisplayImage = "music.png",
+                Resource = "ALotToLose.mp3",
+                Title = "A Lot To Lose"
             },
         };
 
