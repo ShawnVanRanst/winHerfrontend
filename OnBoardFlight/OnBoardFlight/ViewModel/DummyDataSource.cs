@@ -1,4 +1,5 @@
 ﻿using OnBoardFlight.Model;
+using OnBoardFlight.Model.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,68 @@ namespace OnBoardFlight.ViewModel
 {
     public static class DummyDataSource
     {
+        public static List<Music> MusicList()
+        {
+            List<Music> ml = new List<Music>();
+            foreach(Media m in MediaList)
+            {
+                if(m.GetType() == typeof(Music))
+                {
+                    ml.Add((Music)m);
+                }
+            }
+            return ml;
+        }
+
+        public static List<Media> MediaList { get; set; } = new List<Media>()
+        {
+            new Music()
+            {
+                Id = 0,
+                Category = MusicCategory.edm,
+                Description = "edm artist",
+                DisplayImage = @"C:\Users\Ruben\Documents\School\Projecten\Windows\App\OnBoardFlight\OnBoardFlight\MediaData\music.png",
+                Resource = "No resource yet",
+                Title = "edm song title"
+            },
+            new Music()
+            {
+                Id = 1,
+                Category = MusicCategory.edm,
+                Description = "edm artist 2",
+                DisplayImage = @"C:\Users\Ruben\Documents\School\Projecten\Windows\App\OnBoardFlight\OnBoardFlight\MediaData\music.png",
+                Resource = "No resource yet",
+                Title = "edm song title 2"
+            },
+            new Music()
+            {
+                Id = 2,
+                Category = MusicCategory.house,
+                Description = "house artist",
+                DisplayImage = @"C:\Users\Ruben\Documents\School\Projecten\Windows\App\OnBoardFlight\OnBoardFlight\MediaData\music.png",
+                Resource = "No resource yet",
+                Title = "house song title"
+            },
+            new Music()
+            {
+                Id = 3,
+                Category = MusicCategory.pop,
+                Description = "pop artist",
+                DisplayImage = @"C:\Users\Ruben\Documents\School\Projecten\Windows\App\OnBoardFlight\OnBoardFlight\MediaData\music.png",
+                Resource = "No resource yet",
+                Title = "pop song title"
+            },
+            new Music()
+            {
+                Id = 4,
+                Category = MusicCategory.rap,
+                Description = "rap artist",
+                DisplayImage = @"C:\Users\Ruben\Documents\School\Projecten\Windows\App\OnBoardFlight\OnBoardFlight\MediaData\music.png",
+                Resource = "No resource yet",
+                Title = "rap song title"
+            },
+        };
+
         public static Flight Flight { get; set; } = new Flight()
         {
             Origin = new Location()
