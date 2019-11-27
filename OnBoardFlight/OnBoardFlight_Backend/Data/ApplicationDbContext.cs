@@ -17,7 +17,8 @@ namespace OnBoardFlight.Data
         public DbSet<Flight> Flights { get; set; }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Passenger> Passengers { get; internal set; }
+        public DbSet<Passenger> Passengers { get; set; }
+        public DbSet<Chat> Chats { get; set; }
         #endregion
 
 
