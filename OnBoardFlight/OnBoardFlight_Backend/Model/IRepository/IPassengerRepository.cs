@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OnBoardFlight_Backend.Model.IRepository
 {
-    interface IPassengerRepository
+    public interface IPassengerRepository
     {
 
         IEnumerable<Passenger> GetPassengers();
