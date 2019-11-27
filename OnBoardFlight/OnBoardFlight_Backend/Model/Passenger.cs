@@ -10,12 +10,22 @@ namespace OnBoardFlight_Backend.Model
 
         #region Properties
 
+        public int PassengerId { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string Seat { get; set; }
+
         #endregion
 
         #region Collections
         public ICollection<Passenger> TravelCompany { get; set; }
 
         public ICollection<Order> Orders { get; set; }
+
+        public ICollection<Chat> ChatList{ get; set; }
         #endregion
 
         #region Constructors
@@ -23,12 +33,21 @@ namespace OnBoardFlight_Backend.Model
         public Passenger()
         {
             TravelCompany = new List<Passenger>();
+            Orders = new List<Order>();
+            ChatList = new List<Chat>();
         }
 
-        public Passenger(string login)
+        public Passenger(string firstName, string lastName, string seat)
         {
-            Login = login;
+            FirstName = firstName;
+            LastName = lastName;
+            Seat = seat;
         }
+
+
+        #endregion
+
+        #region Methods
         #endregion
     }
 }
