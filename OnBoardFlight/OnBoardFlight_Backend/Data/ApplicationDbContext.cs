@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using OnBoardFlight.Model;
 using OnBoardFlight_Backend.Model;
+using OnBoardFlight_Backend.Model.MediaTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace OnBoardFlight.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Passenger> Passengers { get; set; }
         public DbSet<Chat> Chats { get; set; }
+        public DbSet<Media> Mediafiles { get; internal set; }
         #endregion
 
 
