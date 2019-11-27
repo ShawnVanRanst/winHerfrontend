@@ -10,6 +10,8 @@ namespace OnBoardFlight_Backend.Model.IRepository
 
         Chat GetChat(int id);
 
+        void UpdateChat(Chat chat);
+
         void SaveChanges();
     }
 }

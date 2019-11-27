@@ -25,6 +25,11 @@ namespace OnBoardFlight_Backend.Data.Repository
             return _chats.Include(c => c.Participants).Include(c => c.Messages).FirstOrDefault(c => c.ChatId == id);
         }
 
+        public void UpdateChat(Chat chat)
+        {
+            _chats.Update(chat);
+        }
+
         public void SaveChanges()
         {
             _dbContext.SaveChanges();
