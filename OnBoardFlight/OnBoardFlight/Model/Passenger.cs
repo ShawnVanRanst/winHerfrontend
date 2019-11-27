@@ -8,22 +8,82 @@ using System.Threading.Tasks;
 
 namespace OnBoardFlight.Model
 {
-    public class Passenger : INotifyPropertyChanged
+    public class Passenger : User, INotifyPropertyChanged
     {
-        private int _seatNumber;
+        private string _firstName;
 
-        public int SeatNumber
+        public string FirstName
         {
-            get { return _seatNumber; }
-            set { _seatNumber = value; RaisePropertyChanged("SeatNumber"); }
+            get { return _firstName; }
+            set { _firstName = value; RaisePropertyChanged("FirstName"); }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        private string _lastName;
 
-        protected void RaisePropertyChanged([CallerMemberName] string propertyName = "")
+        public string LastName
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            get { return _lastName; }
+            set { _lastName = value; RaisePropertyChanged("LastName"); }
         }
 
+        private List<Passenger> _travelCompany;
+
+        public List<Passenger> TravelCompany
+        {
+            get { return _travelCompany; }
+            set { _travelCompany = value; RaisePropertyChanged("TravelCompany"); }
+        }
+
+        private List<Chat> _chatList;
+
+        public List<Chat> ChatList
+        {
+            get { return _chatList; }
+            set { _chatList = value; RaisePropertyChanged("ChatList"); }
+        }
+
+        public void AddTravelCompanion(Passenger companion)
+        {
+            _travelCompany.Add(companion);
+        }
+
+        public void AddChat(Chat chat)
+        {
+            _chatList.Add(chat);
+        }
+
+        // Adds new member to list of travel company and create a chat with that member
+        public void AddTravelCompanionWithChat(Passenger companion)
+        {
+            AddTravelCompanion(companion);
+
+            Chat chat = new Chat()
+            {
+                Messages = new List<Message>(),
+                Name = companion.FirstName + " " + companion.LastName,
+                Participants = new List<Passenger>()
+            };
+            chat.AddParticipant(this);
+            chat.AddParticipant(companion);
+            AddChat(chat);
+
+            companion.AddTravelCompanion(this);
+            companion.AddChat(chat);
+        }
+
+        // Adds a self made chat to his chat list existing of travel company members
+        public void AddTravelCompanyChat(List<Passenger> chatMembers, string chatName)
+        {
+            Chat chat = new Chat()
+            {
+                Messages = new List<Message>(),
+                Name = chatName,
+                Participants = chatMembers
+            };
+
+            AddChat(chat);
+
+            chatMembers.ForEach(m => m.AddChat(chat));
+        }
     }
 }

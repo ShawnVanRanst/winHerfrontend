@@ -1,5 +1,6 @@
 ﻿using OnBoardFlight.Model;
-using OnBoardFlight.View.Passenger;
+using OnBoardFlight.Model.Helper;
+using OnBoardFlight.ViewModel.Passenger;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,22 +18,30 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace OnBoardFlight.View.General
+namespace OnBoardFlight.View.Passenger
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Home : Page
+    public sealed partial class ChatConversation : Page
     {
-        public Home()
+        private ChatConversationViewModel _chatConversationViewModel { get; set; }
+        public ChatConversation()
         {
             this.InitializeComponent();
         }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            this.DataContext = new ViewModel.HomeViewModel((User) e.Parameter);
-            weatherFrame.Navigate(typeof(View.Passenger.Weather));
+            _chatConversationViewModel = new ChatConversationViewModel((ChatConversationHelper)e.Parameter);
+            this.DataContext = _chatConversationViewModel;
+        }
+
+        private void SendMessage(object sender, TappedRoutedEventArgs e)
+        {
+            _chatConversationViewModel.SendMessage(MessageText.Text);
+            MessageText.Text = "";
         }
     }
 }

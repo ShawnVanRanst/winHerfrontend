@@ -13,8 +13,9 @@
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock HorizontalAlignment="Center" Text="Login as" VerticalAlignment="Center" FontSize="36"/>
             <TextBlock HorizontalAlignment="Center" Text="Passenger" VerticalAlignment="Center" FontSize="72" Margin="0,0,0,40" FontWeight="Bold"/>
-            <TextBlock Text="Please fill in your seat number" Margin="0,0,0,10"/>
-            <TextBox x:Name="SeatNumber" Margin="0,0,0,20"/>
+            <TextBlock HorizontalAlignment="Left" x:Name="LoginError" Foreground="Red"/>
+            <TextBlock Text="Please fill in your seat number" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+            <TextBox x:Name="LoginBtn" Margin="0,0,0,20"/>
             <Button HorizontalAlignment="Center" Content="Login" Click="Login" />
         </StackPanel>
     </Grid>

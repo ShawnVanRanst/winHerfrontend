@@ -1,5 +1,7 @@
-﻿using OnBoardFlight.View.General;
+﻿using OnBoardFlight.Model;
+using OnBoardFlight.View.General;
 using OnBoardFlight.View.Passenger;
+using OnBoardFlight.ViewModel.Passenger;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,11 +26,19 @@ namespace OnBoardFlight.View
     /// </summary>
     public sealed partial class NavigationPassenger : Page
     {
+        private NavigationPassengerViewModel navigationPassengerViewModel { get; set; }
+
         public NavigationPassenger()
         {
             this.InitializeComponent();
             NavView.SelectedItem = HometBtn;
             mainFrame.Navigate(typeof(Home));
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            navigationPassengerViewModel = new NavigationPassengerViewModel((Model.Passenger)e.Parameter);
         }
 
         private void NavigateTo(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -57,7 +67,7 @@ namespace OnBoardFlight.View
                     mainFrame.Navigate(typeof(MultiMedia));
                     break;
                 case "Chat":
-                    mainFrame.Navigate(typeof(Chat));
+                    mainFrame.Navigate(typeof(View.Passenger.Chat), navigationPassengerViewModel.Passenger);
                     break;
                 case "Logout":
                     //TODO logout the user

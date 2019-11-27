@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="OnBoardFlight.View.Passenger.Chat"
+    x:Class="OnBoardFlight.View.Passenger.ChatConversation"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:OnBoardFlight.View.Passenger"
@@ -8,18 +8,21 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Orientation="Horizontal">
-        <ScrollViewer>
+    <StackPanel Orientation="Vertical">
+        <ScrollViewer MaxHeight="1000">
             <StackPanel Orientation="Vertical">
-                <ListView ItemsSource="{Binding ChatList}" x:Name="ChatListView">
+                <ListView ItemsSource="{Binding Messages}" x:Name="MessagesListView">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Name}" Tapped="SelectChat"/>
+                            <TextBlock Text="{Binding Context}"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
         </ScrollViewer>
-        <Frame x:Name="Conversation"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <TextBox HorizontalAlignment="Left" Width="400" x:Name="MessageText"/>
+            <Button Content="Send" HorizontalAlignment="Right" Tapped="SendMessage"/>
+        </StackPanel>
     </StackPanel>
 </Page>
