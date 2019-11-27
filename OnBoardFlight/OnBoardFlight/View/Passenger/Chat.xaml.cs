@@ -40,7 +40,8 @@ namespace OnBoardFlight.View.Passenger
 
         private void SelectChat(object sender, TappedRoutedEventArgs e)
         {
-            Model.Chat chat = (Model.Chat)ChatListView.SelectedItem;
+            ListView lv = (ListView)sender;
+            Model.Chat chat = (Model.Chat)lv.SelectedItem;
             ChatConversationHelper chatConversationHelper = new ChatConversationHelper()
             {
                 Chat = chat,

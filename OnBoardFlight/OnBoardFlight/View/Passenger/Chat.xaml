@@ -11,10 +11,10 @@
     <StackPanel Orientation="Horizontal">
         <ScrollViewer>
             <StackPanel Orientation="Vertical">
-                <ListView ItemsSource="{Binding ChatList}" x:Name="ChatListView">
+                <ListView ItemsSource="{Binding ChatList}" x:Name="ChatListView" Tapped="SelectChat">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Name}" Tapped="SelectChat"/>
+                            <TextBlock Text="{Binding Name}" x:Name="test"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
