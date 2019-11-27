@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <ScrollViewer Height="800">
-        <ListView ItemsSource="{Binding CategoryListMusicList}" x:Name="test">
+        <ListView ItemsSource="{Binding CategoryListMusicList}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">

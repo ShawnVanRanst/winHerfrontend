@@ -8,8 +8,35 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel>
-        <Button Content="Button" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
-
-    </StackPanel>
+    <ScrollViewer Height="800">
+        <ListView ItemsSource="{Binding CategoryListVideoList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Category}"/>
+                        <ListView ItemsSource="{Binding VideoList}"
+                            ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                            ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                            ScrollViewer.HorizontalScrollMode="Enabled"                  
+                            ScrollViewer.VerticalScrollMode="Disabled" Tapped="VideoDetails">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Background="Transparent" Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <Image Source="{Binding Image}"/>
+                                        <TextBlock Text="{Binding Title}"/>
+                                        <TextBlock Text="{Binding Description}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ScrollViewer>
 </Page>

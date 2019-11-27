@@ -26,7 +26,7 @@ namespace OnBoardFlight.View
     /// </summary>
     public sealed partial class NavigationPassenger : Page
     {
-        private NavigationPassengerViewModel navigationPassengerViewModel { get; set; }
+        private NavigationPassengerViewModel NavigationPassengerViewModel { get; set; }
 
         public NavigationPassenger()
         {
@@ -38,7 +38,7 @@ namespace OnBoardFlight.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            navigationPassengerViewModel = new NavigationPassengerViewModel((Model.Passenger)e.Parameter);
+            NavigationPassengerViewModel = new NavigationPassengerViewModel((Model.Passenger)e.Parameter);
         }
 
         private void NavigateTo(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -67,7 +67,7 @@ namespace OnBoardFlight.View
                     mainFrame.Navigate(typeof(MultiMedia));
                     break;
                 case "Chat":
-                    mainFrame.Navigate(typeof(View.Passenger.Chat), navigationPassengerViewModel.Passenger);
+                    mainFrame.Navigate(typeof(View.Passenger.Chat), NavigationPassengerViewModel.Passenger);
                     break;
                 case "Logout":
                     //TODO logout the user

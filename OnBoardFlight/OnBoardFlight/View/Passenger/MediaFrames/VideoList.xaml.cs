@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OnBoardFlight.Model;
+using OnBoardFlight.Model.Media;
+using OnBoardFlight.ViewModel.Passenger;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +25,33 @@ namespace OnBoardFlight.View.Passenger.MediaFrames
     /// </summary>
     public sealed partial class VideoList : Page
     {
+        public VideoListViewModel VideoListViewModel { get; set; }
+
         public VideoList()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            VideoListViewModel = new VideoListViewModel((string)e.Parameter);
+            this.DataContext = VideoListViewModel;
+        }
+
+        private void VideoDetails(object sender, TappedRoutedEventArgs e)
+        {
+            ListView lv = (ListView)sender;
+            if (VideoListViewModel.Type.Equals("movies"))
+            {
+                Movie movie = (Movie)lv.SelectedItem;
+                Frame.Navigate(typeof(MovieDetail), movie);
+            }
+            if (VideoListViewModel.Type.Equals("series"))
+            {
+                Serie serie = (Serie)lv.SelectedItem;
+                Frame.Navigate(typeof(SerieDetail), serie);
+            }
         }
     }
 }

@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Model\Chat.cs" />
     <Compile Include="Model\Helper\CategoryAndListMusicHelper.cs" />
+    <Compile Include="Model\Helper\CategoryAndListVideoHelper.cs" />
     <Compile Include="Model\Helper\ChatConversationHelper.cs" />
     <Compile Include="Model\Media\Media.cs" />
     <Compile Include="Model\Media\Movie.cs" />
@@ -135,8 +136,10 @@
     <Compile Include="ViewModel\CabinCrew\NavigationCabinCrewViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatConversationViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatViewModel.cs" />
+    <Compile Include="ViewModel\Passenger\MovieDetailsViewModel.cs" />
     <Compile Include="ViewModel\Passenger\MusicListViewModel.cs" />
     <Compile Include="ViewModel\Passenger\NavigationPassengerViewModel.cs" />
+    <Compile Include="ViewModel\Passenger\SerieDetailViewModel.cs" />
     <Compile Include="ViewModel\Passenger\VideoListViewModel.cs" />
     <Compile Include="View\General\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -222,6 +225,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\ALotToLose.mp3" />
+    <Content Include="Assets\AtjeVoorDeSfeer.mp4" />
     <Content Include="Assets\BamBam.mp3" />
     <Content Include="Assets\movie.jfif" />
     <Content Include="Assets\music.png" />
@@ -322,6 +326,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FFmpegInterop.UWP">
+      <Version>1.0.4</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Net.Http">
       <Version>2.2.29</Version>
     </PackageReference>

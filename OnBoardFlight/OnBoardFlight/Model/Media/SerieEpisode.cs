@@ -33,5 +33,12 @@ namespace OnBoardFlight.Model
             set { _resource = value; }
         }
 
+        public string DisplaySE {
+            get
+            {
+                return "S" + Season + ":E" + Episode;
+            }
+        }
+
     }
 }
