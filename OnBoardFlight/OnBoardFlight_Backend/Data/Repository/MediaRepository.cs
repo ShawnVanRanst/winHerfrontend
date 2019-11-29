@@ -25,6 +25,21 @@ namespace OnBoardFlight_Backend.Data.Repository
             return _mediafiles.ToList().OrderBy(m => m.Title);
         }
 
+        public IEnumerable<Movie> GetAllMovies()
+        {
+            return (IEnumerable<Movie>) _mediafiles.Where(m => m.GetType() == typeof(Movie)).ToList();
+        }
+
+        public IEnumerable<Music> GetAllMusic()
+        {
+            return (IEnumerable<Music>)_mediafiles.Where(m => m.GetType() == typeof(Music)).ToList();
+        }
+
+        public IEnumerable<Serie> GetAllSeries()
+        {
+            return (IEnumerable<Serie>)_mediafiles.Where(m => m.GetType() == typeof(Serie)).ToList();
+        }
+
         public void SaveChanges()
         {
             _dbContext.SaveChanges();
