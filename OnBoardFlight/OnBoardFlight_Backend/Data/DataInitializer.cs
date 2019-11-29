@@ -65,6 +65,71 @@ namespace OnBoardFlight.Data
 
                 #endregion
 
+                #region Media
+
+                    #region Movie
+                    Movie movie1 = new Movie("movie.jfif", "movie1", "This is movie1", VideoCategory.action, "AtjeVoorDeSfeer.mp4");
+                    _dbContext.Mediafiles.Add(movie1);
+
+                    Movie movie2 = new Movie("movie.jfif", "movie2", "This is movie2", VideoCategory.comedy, "AtjeVoorDeSfeer.mp4");
+                    _dbContext.Mediafiles.Add(movie2);
+
+                    Movie movie3 = new Movie("movie.jfif", "movie3", "This is movie3", VideoCategory.horror, "AtjeVoorDeSfeer.mp4");
+                    _dbContext.Mediafiles.Add(movie3);
+                    #endregion
+
+                    #region Serie
+                    Serie serie1 = new Serie("movie.jfif", "serie1", "This is serie1", VideoCategory.action);
+                    _dbContext.Mediafiles.Add(serie1);
+
+                    Serie serie2 = new Serie("movie.jfif", "serie2", "This is serie2", VideoCategory.action);
+                    _dbContext.Mediafiles.Add(serie2);
+
+                    Serie serie3 = new Serie("movie.jfif", "serie3", "This is serie3", VideoCategory.action);
+                    _dbContext.Mediafiles.Add(serie3);
+                #endregion
+
+                    #region Serie Episode
+                    SerieEpisode episode1 = new SerieEpisode("movie.jfif", "episode1", "This is episode 1", 1, 1, "AtjeVoorDeSfeer.mp4");
+                    serie1.AddEpisode((SerieEpisode)episode1);
+                    _dbContext.Mediafiles.Add(episode1);
+
+                    SerieEpisode episode2 = new SerieEpisode("movie.jfif", "episode2", "This is episode 2", 2, 1, "AtjeVoorDeSfeer.mp4");
+                    serie1.AddEpisode((SerieEpisode)episode2);
+                    _dbContext.Mediafiles.Add(episode2);
+
+                    SerieEpisode episode3 = new SerieEpisode("movie.jfif", "episode1", "This is episode 1", 1, 1, "AtjeVoorDeSfeer.mp4");
+                    serie2.AddEpisode((SerieEpisode)episode3);
+                    _dbContext.Mediafiles.Add(episode3);
+
+                    SerieEpisode episode4 = new SerieEpisode("movie.jfif", "episode2", "This is episode 2", 2, 1, "AtjeVoorDeSfeer.mp4");
+                    serie2.AddEpisode((SerieEpisode)episode4);
+                    _dbContext.Mediafiles.Add(episode4);
+
+                    SerieEpisode episode5 = new SerieEpisode("movie.jfif", "episode1", "This is episode 1", 1, 1, "AtjeVoorDeSfeer.mp4");
+                    serie3.AddEpisode((SerieEpisode)episode5);
+                    _dbContext.Mediafiles.Add(episode5);
+
+                    SerieEpisode episode6 = new SerieEpisode("movie.jfif", "episode2", "This is episode 2", 2, 1, "AtjeVoorDeSfeer.mp4");
+                    serie1.AddEpisode((SerieEpisode)episode6);
+                    _dbContext.Mediafiles.Add(episode6);
+
+                    #endregion
+
+                    #region Music
+                    Music song1 = new Music("music.png", "Song1", "This is song1", MusicCategory.house, "PiewPiew.mp3");
+                    _dbContext.Mediafiles.Add(song1);
+
+                    Music song2 = new Music("music.png", "Song2", "This is song2", MusicCategory.edm, "PiewPiew.mp3");
+                    _dbContext.Mediafiles.Add(song2);
+
+                    Music song3 = new Music("music.png", "Song3", "This is song3", MusicCategory.pop, "PiewPiew.mp3");
+                    _dbContext.Mediafiles.Add(song3);
+                    #endregion  
+
+
+                #endregion
+
                 #region Save changes
                 _dbContext.SaveChanges();
                 #endregion

@@ -11,11 +11,11 @@ namespace OnBoardFlight_Backend.Data.IRepository
 
         IEnumerable<Media> GetAllMedia();
 
-        IEnumerable<Movie> GetAllMovies();
+        IEnumerable<Media> GetAllMovies();
 
-        IEnumerable<Music> GetAllMusic();
+        IEnumerable<Media> GetAllMusic();
 
-        IEnumerable<Serie> GetAllSeries();
+        IEnumerable<Media> GetAllSeries();
 
         void SaveChanges();
     }

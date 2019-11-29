@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OnBoardFlight_Backend.Model.MediaTypes
 {
-    public class Media
+    public abstract class Media
     {
         #region Properties
 

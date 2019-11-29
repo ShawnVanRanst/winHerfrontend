@@ -33,6 +33,11 @@ namespace OnBoardFlight.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Music>();
+            builder.Entity<Movie>();
+            builder.Entity<Serie>();
+            builder.Entity<SerieEpisode>();
+
             base.OnModelCreating(builder);
         }
 

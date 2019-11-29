@@ -19,5 +19,6 @@ namespace OnBoardFlight_Backend.Model.MediaTypes
         {
             Category = category;
         }
+
     }
 }

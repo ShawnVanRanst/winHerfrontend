@@ -25,19 +25,19 @@ namespace OnBoardFlight_Backend.Data.Repository
             return _mediafiles.ToList().OrderBy(m => m.Title);
         }
 
-        public IEnumerable<Movie> GetAllMovies()
+        public IEnumerable<Media> GetAllMovies()
         {
-            return (IEnumerable<Movie>) _mediafiles.Where(m => m.GetType() == typeof(Movie)).ToList();
+            return _mediafiles.Where(m => m.GetType() == typeof(Movie)).ToList();
         }
 
-        public IEnumerable<Music> GetAllMusic()
+        public IEnumerable<Media> GetAllMusic()
         {
-            return (IEnumerable<Music>)_mediafiles.Where(m => m.GetType() == typeof(Music)).ToList();
+            return _mediafiles.Where(m => m.GetType() == typeof(Music)).ToList();
         }
 
-        public IEnumerable<Serie> GetAllSeries()
+        public IEnumerable<Media> GetAllSeries()
         {
-            return (IEnumerable<Serie>)_mediafiles.Where(m => m.GetType() == typeof(Serie)).ToList();
+            return _mediafiles.Where(m => m.GetType() == typeof(Serie)).ToList();
         }
 
         public void SaveChanges()
