@@ -10,7 +10,7 @@ namespace OnBoardFlight_Backend.Model.MediaTypes
 
         public string Resource { get; set; }
 
-        public Movie(string resource): base()
+        public Movie(string displayImage, string title, string description, VideoCategory category, string resource): base(displayImage, title, description, category)
         {
             Resource = resource;
         }

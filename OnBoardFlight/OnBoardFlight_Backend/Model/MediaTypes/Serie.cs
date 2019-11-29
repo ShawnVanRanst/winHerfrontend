@@ -19,6 +19,11 @@ namespace OnBoardFlight_Backend.Model.MediaTypes
             Episodes = new List<SerieEpisode>();
         }
 
+        public Serie(string displayImage, string title, string description, VideoCategory category) : base(displayImage, title, description, category)
+        {
+
+        }
+
         #endregion
 
         #region Methods

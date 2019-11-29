@@ -21,7 +21,7 @@ namespace OnBoardFlight_Backend.Model.MediaTypes
 
         }
 
-        public Music(MusicCategory category, string resource)
+        public Music(string displayImage, string title, string description, MusicCategory category, string resource): base(displayImage, title, description)
         {
             Category = category;
             Resource = resource;

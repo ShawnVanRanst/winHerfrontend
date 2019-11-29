@@ -15,7 +15,7 @@ namespace OnBoardFlight_Backend.Model.MediaTypes
 
         }
 
-        public Video(VideoCategory category)
+        public Video(string displayImage, string title, string description, VideoCategory category): base(displayImage, title, description)
         {
             Category = category;
         }

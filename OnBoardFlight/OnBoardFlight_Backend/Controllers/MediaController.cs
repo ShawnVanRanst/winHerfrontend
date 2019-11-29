@@ -21,28 +21,27 @@ namespace OnBoardFlight_Backend.Controllers
         }
 
         [HttpGet]
-        [Route("api/media/media")]
         public IEnumerable<Media> GetAllMedia()
         {
             return _mediaRepo.GetAllMedia();
         }
 
         [HttpGet]
-        [Route("api/media/movies")]
+        [Route("movies")]
         public IEnumerable<Movie> GetAllMovies()
         {
             return _mediaRepo.GetAllMovies();
         }
 
         [HttpGet]
-        [Route("api/media/series")]
+        [Route("series")]
         public IEnumerable<Serie> GetAllSeries()
         {
             return _mediaRepo.GetAllSeries();
         }
 
         [HttpGet]
-        [Route("api/media/music")]
+        [Route("music")]
         public IEnumerable<Music> GetAllMusic()
         {
             return _mediaRepo.GetAllMusic();

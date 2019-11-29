@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using OnBoardFlight.Model;
 using OnBoardFlight_Backend.Model;
+using OnBoardFlight_Backend.Model.MediaTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

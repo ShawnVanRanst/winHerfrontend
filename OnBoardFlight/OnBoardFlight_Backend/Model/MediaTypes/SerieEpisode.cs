@@ -26,7 +26,7 @@ namespace OnBoardFlight_Backend.Model.MediaTypes
 
         }
 
-        public SerieEpisode(int episode, int season, string resource)
+        public SerieEpisode(string displayImage, string title, string description, int episode, int season, string resource): base(displayImage, title, description)
         {
             Episode = episode;
             Season = season;
