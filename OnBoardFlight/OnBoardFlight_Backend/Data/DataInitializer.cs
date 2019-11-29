@@ -31,9 +31,37 @@ namespace OnBoardFlight.Data
                 #endregion
 
                 #region Users
-                User crewMember = new CabinCrew { Login = "crewmember1" };
+                User crewMember1 = new CabinCrew { Login = "crewmember1" };
                 //await CreateUser(crewMember.Login, "P@ssword1");
-                _dbContext.Users.Add(crewMember);
+                _dbContext.Users.Add(crewMember1);
+
+                User crewMember2 = new CabinCrew { Login = "crewmember2" };
+                _dbContext.Users.Add(crewMember2);
+
+                User passenger1 = new Passenger("Arno", "Boel", "01A");
+                _dbContext.Users.Add(passenger1);
+
+                User passenger2 = new Passenger("Ruben", "Grillaert", "20D");
+                _dbContext.Users.Add(passenger2);
+
+                User passenger3 = new Passenger("Shawn", "Van Ranst", "12F");
+                _dbContext.Users.Add(passenger3);
+
+                User passenger4 = new Passenger("Melissa", "Van Belle", "01B");
+                _dbContext.Users.Add(passenger4);
+                #endregion
+
+                #region Chat
+                Chat chat1 = new Chat("chat1");
+                chat1.AddParticipants((Passenger)passenger3);
+                chat1.AddParticipants((Passenger)passenger2);
+                _dbContext.Chats.Add(chat1);
+
+                Chat chat2 = new Chat("chat2");
+                chat1.AddParticipants((Passenger)passenger1);
+                chat1.AddParticipants((Passenger)passenger4);
+                _dbContext.Chats.Add(chat2);
+
                 #endregion
 
                 #region Save changes

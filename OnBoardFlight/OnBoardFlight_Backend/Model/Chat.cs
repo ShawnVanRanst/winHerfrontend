@@ -13,16 +13,14 @@ namespace OnBoardFlight_Backend.Model
 
         public string Name { get; set; }
 
-        public ICollection<PassengerChat> Participants { get; set; }
+        public ICollection<PassengerChat> Participants { get; set; } = new List<PassengerChat>();
 
-        public ICollection<Message> Messages{ get; set; }
+        public ICollection<Message> Messages { get; set; } = new List<Message>();
 
 
         #region Constructors
         public Chat()
         {
-            Participants = new List<PassengerChat>();
-            Messages = new List<Message>();
         }
 
         public Chat(string name)
@@ -42,6 +40,6 @@ namespace OnBoardFlight_Backend.Model
         {
             Messages.Add(message);
         }
-        #endregion
-    }
+            #endregion
+        }
 }

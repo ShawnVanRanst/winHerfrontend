@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnBoardFlight_Backend.Data.DTO;
 using OnBoardFlight_Backend.Data.IRepository;
 using OnBoardFlight_Backend.Model;
 
@@ -21,14 +22,14 @@ namespace OnBoardFlight_Backend.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Chat> GetChat(int id)
+        public IActionResult GetChat(int id)
         {
             Chat chat = _chatRepository.GetChat(id);
             if(chat == null)
             {
                 return NotFound();
             }
-            return chat;
+            return Ok(new ChatDTO(chat));
         }
 
         [HttpPut("{id}")]
