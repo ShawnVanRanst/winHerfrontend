@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnBoardFlight.Data;
-using OnBoardFlight_Backend.Model.IRepository;
+using OnBoardFlight_Backend.Data.IRepository;
 using OnBoardFlight_Backend.Model.MediaTypes;
 using System;
 using System.Collections.Generic;

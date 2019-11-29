@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnBoardFlight_Backend.Data.IRepository;
 using OnBoardFlight_Backend.Model;
-using OnBoardFlight_Backend.Model.IRepository;
 
 namespace OnBoardFlight_Backend.Controllers
 {

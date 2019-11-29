@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OnBoardFlight_Backend.Model;
-using OnBoardFlight_Backend.Model.IRepository;
+using OnBoardFlight_Backend.Data.IRepository;
 
 namespace OnBoardFlight_Backend.Controllers
 {
@@ -41,7 +41,7 @@ namespace OnBoardFlight_Backend.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdatePassenger(int id, Passenger passenger)
         {
-            if( id != passenger.PassengerId)
+            if( id != passenger.UserId)
             {
                 return BadRequest();
             }

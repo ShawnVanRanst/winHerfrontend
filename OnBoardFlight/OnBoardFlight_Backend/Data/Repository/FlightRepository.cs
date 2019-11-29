@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OnBoardFlight.Data;
 using OnBoardFlight.Model;
-using OnBoardFlight_Backend.Model.IRepository;
+using OnBoardFlight_Backend.Data.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OnBoardFlight.Data.Repository
+namespace OnBoardFlight_Backend.Data.Repository
 {
     public class FlightRepository : IFlightRepository
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnBoardFlight.Data;
 using OnBoardFlight_Backend.Model;
-using OnBoardFlight_Backend.Model.IRepository;
+using OnBoardFlight_Backend.Data.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;

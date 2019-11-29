@@ -10,7 +10,7 @@ namespace OnBoardFlight_Backend.Model
 
         #region Properties
 
-        public int OderlineId { get; set; }
+        public int OrderlineId { get; set; }
 
         public int Number { get; set; }
 

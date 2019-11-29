@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnBoardFlight_Backend.Model.ManyToManies;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,8 +10,6 @@ namespace OnBoardFlight_Backend.Model
     {
 
         #region Properties
-
-        public int PassengerId { get; set; }
 
         public string FirstName { get; set; }
 
@@ -25,7 +24,7 @@ namespace OnBoardFlight_Backend.Model
 
         public ICollection<Order> Orders { get; set; }
 
-        public ICollection<Chat> ChatList{ get; set; }
+        public ICollection<PassengerChat> ChatList{ get; set; }
         #endregion
 
         #region Constructors
@@ -34,7 +33,7 @@ namespace OnBoardFlight_Backend.Model
         {
             TravelCompany = new List<Passenger>();
             Orders = new List<Order>();
-            ChatList = new List<Chat>();
+            ChatList = new List<PassengerChat>();
         }
 
         public Passenger(string firstName, string lastName, string seat)

@@ -17,8 +17,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using OnBoardFlight.Data;
-using OnBoardFlight.Data.Repository;
-using OnBoardFlight_Backend.Model.IRepository;
+using OnBoardFlight_Backend.Data.IRepository;
+using OnBoardFlight_Backend.Data.Repository;
 
 namespace OnBoardFlight_Backend
 {
@@ -43,6 +43,9 @@ namespace OnBoardFlight_Backend
             services.AddScoped<DataInitializer>();
 
             services.AddScoped<IFlightRepository, FlightRepository>();
+            services.AddScoped<IPassengerRepository, PassengerRepository>();
+            services.AddScoped<IMediaRepository, MediaRepository>();
+            services.AddScoped<IChatRepository, ChatRepository>();
 
             services.AddOpenApiDocument(c =>
             {
