@@ -21,6 +21,12 @@ namespace OnBoardFlight_Backend.Data.Repository
             _passengers = _dbContext.Passengers;
         }
 
+        public Passenger GetPassengerById(int id)
+        {
+            return _passengers.FirstOrDefault(p => p.UserId == id);
+        }
+
+
         public Passenger GetPassengerBySeat(string seat)
         {
             return _passengers.Include(p => p.TravelCompany).Include(p => p.ChatList).Include(p => p.Orders).FirstOrDefault(p => p.Seat.Equals(seat));
@@ -34,6 +40,17 @@ namespace OnBoardFlight_Backend.Data.Repository
         public void UpdatePassenger(Passenger passenger)
         {
             _passengers.Update(passenger);
+        }
+
+        public void ChangeSeats(Passenger passenger1, Passenger passenger2)
+        {
+            string seatPassenger1 = passenger1.Seat;
+            string seatPassenger2 = passenger2.Seat;
+            passenger1.Seat = seatPassenger2;
+            passenger2.Seat = seatPassenger1;
+            _passengers.Update(passenger1);
+            _passengers.Update(passenger2);
+
         }
 
         public void SaveChanges()

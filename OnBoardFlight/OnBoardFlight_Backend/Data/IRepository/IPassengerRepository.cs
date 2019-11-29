@@ -11,9 +11,13 @@ namespace OnBoardFlight_Backend.Data.IRepository
 
         IEnumerable<Passenger> GetPassengers();
 
+        Passenger GetPassengerById(int id);
+
         Passenger GetPassengerBySeat(string seat);
 
         void UpdatePassenger(Passenger passenger);
+
+        void ChangeSeats(Passenger passenger1, Passenger passenger2);
 
         void SaveChanges();
 

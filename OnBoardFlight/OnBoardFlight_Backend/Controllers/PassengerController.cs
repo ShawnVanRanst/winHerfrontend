@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OnBoardFlight_Backend.Model;
 using OnBoardFlight_Backend.Data.IRepository;
+using OnBoardFlight_Backend.Data.DTO;
 
 namespace OnBoardFlight_Backend.Controllers
 {
@@ -28,26 +29,31 @@ namespace OnBoardFlight_Backend.Controllers
         }
 
         [HttpGet("{seat}")]
-        public ActionResult<Passenger> GetPassengerBySeat(string seat)
+        public IActionResult GetPassengerBySeat(string seat)
         {
             Passenger passenger = _passengerRepository.GetPassengerBySeat(seat);
             if(passenger == null)
             {
                 return NotFound();
             }
-            return passenger;
+            return Ok(new PassengerDTO(passenger));
         }
 
-        [HttpPut("{id}")]
-        public IActionResult UpdatePassenger(int id, Passenger passenger)
+        [HttpPut]
+        public IActionResult UpdatePassenger(ChangeSeatsPassengersDTO passengerDTO)
         {
-            if( id != passenger.UserId)
+            if(passengerDTO == null)
             {
                 return BadRequest();
             }
-            _passengerRepository.UpdatePassenger(passenger);
+            Passenger passenger1 = _passengerRepository.GetPassengerById(passengerDTO.UserId1);
+            Passenger passenger2 = _passengerRepository.GetPassengerById(passengerDTO.UserId2);
+            _passengerRepository.ChangeSeats(passenger1, passenger2);
             _passengerRepository.SaveChanges();
             return NoContent();
         }
+
+
+        
     }
 }
