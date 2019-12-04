@@ -9,6 +9,18 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button Content="Notification View" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" Text="Send a notification" VerticalAlignment="Center" FontSize="36"/>
+            <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock HorizontalAlignment="Left" x:Name="NotificationError" FocusVisualPrimaryBrush="Black" Foreground="Red"/>
+                <TextBlock HorizontalAlignment="Left" Text="Title"/>
+                <TextBox HorizontalAlignment="Left" x:Name="Title" Width="200" Margin="0,0,0,20"/>
+                <TextBlock HorizontalAlignment="Left" Text="Notification"/>
+                <TextBox HorizontalAlignment="Left" x:Name="NotificationContent" Width="200" Height="100" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,20"/>
+                <CheckBox x:Name="CheckPassenger" Content="Send to specific passenger" Click="ModifyPassengerList" />
+
+                <Button HorizontalAlignment="Center" Content="Send"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

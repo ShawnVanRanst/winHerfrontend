@@ -26,5 +26,18 @@ namespace OnBoardFlight.View.CabinCrew
         {
             this.InitializeComponent();
         }
+
+        private void ModifyPassengerList(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = (CheckBox)sender;
+            if (checkBox.IsChecked == true)
+            {
+                Title.Text = "textbox checked";
+            }
+            else
+            {
+                Title.Text = "textbox unchecked";
+            }
+        }
     }
 }

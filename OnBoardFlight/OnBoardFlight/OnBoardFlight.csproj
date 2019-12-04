@@ -131,9 +131,11 @@
     <Compile Include="Model\Media\MusicCategory.cs" />
     <Compile Include="Model\Media\Serie.cs" />
     <Compile Include="Model\Media\SerieEpisode.cs" />
+    <Compile Include="Model\Notification.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Media\VideoCategory.cs" />
     <Compile Include="ViewModel\CabinCrew\NavigationCabinCrewViewModel.cs" />
+    <Compile Include="ViewModel\CabinCrew\NotificationViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatConversationViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatViewModel.cs" />
     <Compile Include="ViewModel\Passenger\MovieDetailsViewModel.cs" />
@@ -336,7 +338,6 @@
       <Version>6.2.9</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

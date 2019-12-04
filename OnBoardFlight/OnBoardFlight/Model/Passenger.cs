@@ -42,6 +42,15 @@ namespace OnBoardFlight.Model
             set { _chatList = value; RaisePropertyChanged("ChatList"); }
         }
 
+        private List<Notification> notifications;
+
+        public List<Notification> Notifications
+        {
+            get { return notifications; }
+            set { notifications = value; }
+        }
+
+
         public void AddTravelCompanion(Passenger companion)
         {
             _travelCompany.Add(companion);
