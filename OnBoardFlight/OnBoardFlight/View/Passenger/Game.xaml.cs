@@ -32,33 +32,15 @@ namespace OnBoardFlight.View.Passenger
             this.DataContext = GameViewModel;
         }
 
-        private void PlayMove(object sender, TappedRoutedEventArgs e)
+        private void Reset(object sender, TappedRoutedEventArgs e)
         {
-            Button btn = (Button)sender;
-            btn.IsEnabled = false;
-            if (GameViewModel.CheckWinner()) ClearBoard();
-        }
-
-        private void ClearBoard()
-        {
-
             ICollection<UIElement> gameFields = Board.Children;
-            foreach(var btn in gameFields)
+            foreach (var btn in gameFields)
             {
                 Button button = (Button)btn;
                 button.Content = "?";
                 button.IsEnabled = true;
             }
-        }
-
-        private void Reset(object sender, TappedRoutedEventArgs e)
-        {
-            ClearBoard();
-        }
-
-        private void NewGame(object sender, TappedRoutedEventArgs e)
-        {
-            ClearBoard();
         }
     }
 }
