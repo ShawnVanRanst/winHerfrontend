@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Chat.cs" />
+    <Compile Include="Model\Game.cs" />
     <Compile Include="Model\Helper\CategoryAndListMusicHelper.cs" />
     <Compile Include="Model\Helper\CategoryAndListVideoHelper.cs" />
     <Compile Include="Model\Helper\ChatConversationHelper.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="ViewModel\CabinCrew\NotificationViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatConversationViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatViewModel.cs" />
+    <Compile Include="ViewModel\Passenger\GameViewModel.cs" />
     <Compile Include="ViewModel\Passenger\MovieDetailsViewModel.cs" />
     <Compile Include="ViewModel\Passenger\MusicListViewModel.cs" />
     <Compile Include="ViewModel\Passenger\NavigationPassengerViewModel.cs" />
@@ -187,6 +189,9 @@
     </Compile>
     <Compile Include="View\Passenger\ChatConversation.xaml.cs">
       <DependentUpon>ChatConversation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Passenger\Game.xaml.cs">
+      <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Passenger\MediaFrames\MovieDetail.xaml.cs">
       <DependentUpon>MovieDetail.xaml</DependentUpon>
@@ -283,6 +288,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Passenger\ChatConversation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Passenger\Game.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

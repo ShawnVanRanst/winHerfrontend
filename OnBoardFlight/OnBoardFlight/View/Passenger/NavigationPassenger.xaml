@@ -15,6 +15,7 @@
             <NavigationViewItem Content="Orders" Icon="List" x:Name="OrdersBtn" Tag="Orders"/>
             <NavigationViewItem Content="Media" Icon="Video" x:Name="MediaBtn" Tag="Media"/>
             <NavigationViewItem Content="Chat" Icon="VideoChat" x:Name="ChatBtn" Tag="Chat"/>
+            <NavigationViewItem Content="Game" Icon="Memo" x:Name="GameBtn" Tag="Game"/>
             <NavigationViewItem Content="Logout" Icon="LeaveChat" x:Name="LogoutBtn" Tag="Logout"/>
         </NavigationView.MenuItems>
         <Frame x:Name="mainFrame"></Frame>

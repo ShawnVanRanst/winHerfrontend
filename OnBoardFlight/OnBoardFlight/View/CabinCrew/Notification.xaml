@@ -18,7 +18,7 @@
                 <TextBlock HorizontalAlignment="Left" Text="Notification"/>
                 <TextBox HorizontalAlignment="Left" x:Name="NotificationContent" Width="200" Height="100" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,20"/>
                 <CheckBox x:Name="CheckPassenger" Content="Send to specific passenger" Click="ModifyPassengerList" />
-
+                <!--AUTOCOMPLEET TEXTBOX WITH DROPDOWN-->
                 <Button HorizontalAlignment="Center" Content="Send"/>
             </StackPanel>
         </StackPanel>
