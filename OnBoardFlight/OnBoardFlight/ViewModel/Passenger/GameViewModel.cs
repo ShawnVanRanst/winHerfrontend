@@ -1,19 +1,44 @@
 ﻿using OnBoardFlight.Model;
+using OnBoardFlight.ViewModel.Commands.Passenger.Game;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OnBoardFlight.ViewModel.Passenger
 {
-    public class GameViewModel
+    public class GameViewModel : INotifyPropertyChanged
     {
-        public Game Game { get; set; }
+        private Game _game;
 
-        public GameViewModel()
+        public Game Game
         {
-            CreateNewGame();
+            get { return _game; }
+            set { _game = value; RaisePropertyChanged("Board"); }
+        }
+
+        public NewGameCommand NewGame { get; set; }
+
+        public ResetGameCommand ResetGame { get; set; }
+
+        public PlayMoveCommand PlayMove { get; set; }
+
+    public GameViewModel()
+        {
+            Game = new Game() { Board = new string[][] { new string[] { "", "", "" }, new string[] { "", "", "" }, new string[] { "", "", "" } } };
+            ResetGameScore();
+            NewGame = new NewGameCommand(this);
+            ResetGame = new ResetGameCommand(this);
+            PlayMove = new PlayMoveCommand(this);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void RaisePropertyChanged([CallerMemberName]string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public string Play(string text)
@@ -23,15 +48,16 @@ namespace OnBoardFlight.ViewModel.Passenger
             int col = number % 3;
 
             string symbol = Game.GetUserOnMoveSymbol();
-            Game.Board[row, col] = symbol;
+            Game.Board[row][col] = symbol;
             Game.ChangeUserOnMove();
             return symbol;
         }
 
-        private void RandomFirstMoveNewGame()
+        // Setup start new game (who begins, who has wich symbol
+        public void RandomFirstMoveNewGame()
         {
             Random random = new Random();
-            int number = random.Next(1, 2);
+            int number = random.Next(1, 3);
             if(number == 1)
             {
                 Game.UserOnMove = "You";
@@ -45,39 +71,86 @@ namespace OnBoardFlight.ViewModel.Passenger
                 Game.YouSymbol = "X";
             }
             Game.Move = 0;
-            Game.Board = new string[3,3];
+            ResetBoard();
         }
 
-        private void CreateNewGame()
+        // Create new game
+        public void ResetGameScore()
         {
-            Game = new Game { ScoreNeigbour = 0, ScoreYou = 0 };
+            Game.ScoreYou = 0;
+            Game.ScoreNeigbour = 0;
             RandomFirstMoveNewGame();
         }
 
+        // Convert button string to number
         private int NumberTextToNumber(string number)
         {
             switch (number)
             {
                 case "One": 
-                    return 1;
+                    return 0;
                 case "Two":
-                    return 2;
+                    return 1;
                 case "Three":
-                    return 3;
+                    return 2;
                 case "Four":
-                    return 4;
+                    return 3;
                 case "Five":
-                    return 5;
+                    return 4;
                 case "Six":
-                    return 6;
+                    return 5;
                 case "Seven":
-                    return 7;
+                    return 6;
                 case "Eight":
-                    return 8;
+                    return 7;
                 case "Nine":
-                    return 9;
+                    return 8;
                 default:
                     return 0;
+            }
+        }
+
+        // Check if there is a winner, if there is one, update score, reset board and return true
+        public bool CheckWinner()
+        {
+            string[][] board = Game.Board;
+            if(board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != "?" && board[1][1] != "?" && board[2][2] != "?")
+            {
+                Game.UpdateScoreWinner(board[1][1]);
+                RandomFirstMoveNewGame();
+                return true;
+            }
+            if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[1][1] != "?" && board[0][2] != "?" && board[2][0] != "?")
+            {
+                Game.UpdateScoreWinner(board[1][1]);
+                RandomFirstMoveNewGame();
+                return true;
+            }
+            for (int i = 0; i < 3; i++){
+                if(board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[1][i] != "?" && board[0][i] != "?" && board[2][i] != "?")
+                {
+                    Game.UpdateScoreWinner(board[1][i]);
+                    RandomFirstMoveNewGame();
+                    return true;
+                }
+                if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][1] != "?" && board[i][0] != "?" && board[i][2] != "?")
+                {
+                    Game.UpdateScoreWinner(board[i][1]);
+                    RandomFirstMoveNewGame();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void ResetBoard()
+        {
+            for(int i = 0; i < 3; i++)
+            {
+                for(int j = 0; j < 3; j++)
+                {
+                    Game.Board[i][j] = "?";
+                }
             }
         }
     }

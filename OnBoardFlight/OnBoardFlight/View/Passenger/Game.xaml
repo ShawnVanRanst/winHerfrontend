@@ -13,16 +13,19 @@
                 <TextBlock Text="OXO" HorizontalAlignment="Center"/>
                 <TextBlock Text="Score" HorizontalAlignment="Center" Width="300"/>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="300">
-                    <TextBlock Text="You"/>
-                    <TextBlock Text="score you"/>
+                    <TextBlock Text="You: "/>
+                    <TextBlock Text="{Binding Game.ScoreYou}"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="300">
-                    <TextBlock Text="Neighbour"/>
-                    <TextBlock Text="neigbour you"/>
+                    <TextBlock Text="Neighbour: "/>
+                    <TextBlock Text="{Binding Game.ScoreNeigbour}"/>
                 </StackPanel>
-                <TextBlock Text="Telling who's turn it is" Width="300"/>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="300">
+                    <TextBlock Text="Player on move: "/>
+                    <TextBlock Text="{Binding Game.UserOnMove}"/>
+                </StackPanel>
             </StackPanel>
-        <Grid Width="300" Height="300">
+        <Grid Width="300" Height="300" x:Name="Board" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -33,19 +36,19 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-                <Button Content="?" x:Name="One" Width="100" Height="100" Tapped="PlayMove"></Button>
-                <Button Content="?" x:Name="Two" Grid.Column="1" Width="100" Height="100" Tapped="PlayMove"></Button>
-                <Button Content="?" x:Name="Three" Grid.Column="2" Width="100" Height="100" Tapped="PlayMove"></Button>
-                <Button Content="?" x:Name="Four" Grid.Row="1" Width="100" Height="100" Tapped="PlayMove"></Button>
-                <Button Content="?" x:Name="Five" Grid.Column="1" Grid.Row="1" Width="100" Height="100" Tapped="PlayMove"></Button>
-                <Button Content="?" x:Name="Six" Grid.Column="2" Grid.Row="1" Width="100" Height="100" Tapped="PlayMove"></Button>
-                <Button Content="?" x:Name="Seven" Grid.Row="2" Width="100" Height="100" Tapped="PlayMove"></Button>
-                <Button Content="?" x:Name="Eight" Grid.Column="1" Grid.Row="2" Width="100" Height="100" Tapped="PlayMove"></Button>
-                <Button Content="?" x:Name="Nine" Grid.Column="2" Grid.Row="2" Width="100" Height="100" Tapped="PlayMove"></Button>
+                <Button Content="{Binding Game.Board[0][0]}" x:Name="One" Width="100" Height="100" Command="{Binding PlayMove}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Tapped="PlayMove"></Button>
+                <Button Content="?" x:Name="Two" Grid.Column="1" Width="100" Height="100" Command="{Binding PlayMove}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Tapped="PlayMove"></Button>
+                <Button Content="?" x:Name="Three" Grid.Column="2" Width="100" Height="100" Command="{Binding PlayMove}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Tapped="PlayMove"></Button>
+                <Button Content="?" x:Name="Four" Grid.Row="1" Width="100" Height="100" Command="{Binding PlayMove}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Tapped="PlayMove"></Button>
+                <Button Content="?" x:Name="Five" Grid.Column="1" Grid.Row="1" Width="100" Height="100" Command="{Binding PlayMove}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Tapped="PlayMove"></Button>
+                <Button Content="?" x:Name="Six" Grid.Column="2" Grid.Row="1" Width="100" Height="100" Command="{Binding PlayMove}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Tapped="PlayMove"></Button>
+                <Button Content="?" x:Name="Seven" Grid.Row="2" Width="100" Height="100" Command="{Binding PlayMove}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Tapped="PlayMove"></Button>
+                <Button Content="?" x:Name="Eight" Grid.Column="1" Grid.Row="2" Width="100" Height="100" Command="{Binding PlayMove}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Tapped="PlayMove"></Button>
+                <Button Content="?" x:Name="Nine" Grid.Column="2" Grid.Row="2" Width="100" Height="100" Command="{Binding PlayMove}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Tapped="PlayMove"></Button>
         </Grid>
         <StackPanel Orientation="Horizontal" Width="300">
-                <Button Content="New game"/>
-                <Button Content="Reset score"/>
+                <Button Content="New game" Command="{Binding NewGame}" Tapped="NewGame"/>
+                <Button Content="Reset score" Command="{Binding ResetGame}" Tapped="Reset"/>
             </StackPanel>
         </StackPanel>
     </Grid>
