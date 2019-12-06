@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnBoardFlight.ViewModel.CabinCrew;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace OnBoardFlight.View.CabinCrew
         public Notification()
         {
             this.InitializeComponent();
+            this.DataContext = new NotificationViewModel();
         }
 
         private void ModifyPassengerList(object sender, RoutedEventArgs e)
@@ -32,11 +34,13 @@ namespace OnBoardFlight.View.CabinCrew
             CheckBox checkBox = (CheckBox)sender;
             if (checkBox.IsChecked == true)
             {
-                Title.Text = "textbox checked";
+                SeatnumberLabel.Visibility = Visibility.Visible;
+                Seatnumber.Visibility = Visibility.Visible;
             }
             else
             {
-                Title.Text = "textbox unchecked";
+                SeatnumberLabel.Visibility = Visibility.Collapsed;
+                Seatnumber.Visibility = Visibility.Collapsed;
             }
         }
     }

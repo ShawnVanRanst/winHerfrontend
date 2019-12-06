@@ -14,12 +14,13 @@
             <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock HorizontalAlignment="Left" x:Name="NotificationError" FocusVisualPrimaryBrush="Black" Foreground="Red"/>
                 <TextBlock HorizontalAlignment="Left" Text="Title"/>
-                <TextBox HorizontalAlignment="Left" x:Name="Title" Width="200" Margin="0,0,0,20"/>
+                <TextBox Text="{Binding Notification.Title}" HorizontalAlignment="Left" x:Name="Title" Width="200" Margin="0,0,0,20"/>
                 <TextBlock HorizontalAlignment="Left" Text="Notification"/>
-                <TextBox HorizontalAlignment="Left" x:Name="NotificationContent" Width="200" Height="100" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,20"/>
+                <TextBox Text="{Binding Notification.Context}" HorizontalAlignment="Left" x:Name="NotificationContent" Width="200" Height="100" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,20"/>
                 <CheckBox x:Name="CheckPassenger" Content="Send to specific passenger" Click="ModifyPassengerList" />
-                <!--AUTOCOMPLEET TEXTBOX WITH DROPDOWN-->
-                <Button HorizontalAlignment="Center" Content="Send"/>
+                <TextBlock x:Name="SeatnumberLabel" Text="Seatnumber" Visibility="Collapsed"/>
+                <TextBox Text="{Binding Seatnumber}" x:Name="Seatnumber" HorizontalAlignment="Left" Width="200" Visibility="Collapsed"/>
+                <Button HorizontalAlignment="Center" Content="Send" Command="{Binding SendNotification}"/>
             </StackPanel>
         </StackPanel>
     </Grid>
