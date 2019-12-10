@@ -138,12 +138,14 @@
     <Compile Include="ViewModel\CabinCrew\NavigationCabinCrewViewModel.cs" />
     <Compile Include="ViewModel\CabinCrew\NotificationViewModel.cs" />
     <Compile Include="ViewModel\CabinCrew\SeatViewModel.cs" />
-    <Compile Include="ViewModel\Commands\CabinCrew\SearchPassengerCommand.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\SearchPassengerToChangePlaces.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\SearchPassengerToMoveCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\SendNotificationCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\NewGameCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\PlayMoveCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\ResetGameCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Chat\SelectChatCommand.cs" />
+    <Compile Include="ViewModel\Commands\SwitchPlacesCommand.cs" />
     <Compile Include="ViewModel\Passenger\ChatConversationViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatViewModel.cs" />
     <Compile Include="ViewModel\Passenger\GameViewModel.cs" />

@@ -26,6 +26,7 @@ namespace OnBoardFlight.Model
             set { _lastName = value; RaisePropertyChanged("LastName"); }
         }
 
+
         private List<Passenger> _travelCompany;
 
         public List<Passenger> TravelCompany

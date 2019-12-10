@@ -7,25 +7,39 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <StackPanel Orientation="Horizontal">
-        <StackPanel Margin="20 50 20 50">
-            <TextBlock Text="Please enter the seatnumber of the passenger to move:"/>
-            <StackPanel Orientation="Horizontal" Margin="50,20,0,20">
-                <TextBox x:Name="seatInput1" 
-                     PlaceholderText="Seatnumber"
-                     Width="100" HorizontalAlignment="Left"/>
-                <Button Content="Search passenger" Click="{Binding SearchPassenger}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" />
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="20 50 20 50">
+                <TextBlock Text="Please enter the seatnumber of the passenger to move:"/>
+                <StackPanel Orientation="Horizontal" Margin="50,20,0,20">
+                    <TextBox x:Name="seatInput1" 
+                                     Text="{Binding SeatNumber1}"
+                                     PlaceholderText="Seatnumber"
+                                     Width="100" HorizontalAlignment="Left"/>
+                    <Button Content="Search passenger" Command="{Binding SearchPassengerToMoveCommand}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Passagier 1:"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Passenger1.FirstName}"/>
+                        <TextBlock Text="{Binding Passenger1.LastName}"/>
+                    </StackPanel>
+                    <TextBlock Text="{Binding Passenger1.Login}"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="20 50 20 50">
+                <TextBlock Text="Please enter the new seatnumber:"/>
+                <StackPanel Orientation="Horizontal" Margin="50,20,0,20">
+                    <TextBox x:Name="seatNumber2" 
+                                    Text="{Binding SeatNumber2}"
+                                 PlaceholderText="Seatnumber"
+                                 Width="100" HorizontalAlignment="Left"/>
+                    <Button Content="Search Passenger" Command="{Binding SearchPassengerToChangePlacesCommand}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" />
+                </StackPanel>
             </StackPanel>
         </StackPanel>
-        <StackPanel Margin="20 50 20 50">
-            <TextBlock Text="Please enter the new seatnumber:"/>
-            <StackPanel Orientation="Horizontal" Margin="50,20,0,20">
-                <TextBox x:Name="seatInput2" 
-                     PlaceholderText="Seatnumber"
-                     Width="100" HorizontalAlignment="Left"/>
-                <Button Content="Search Passenger" Click="{Binding SearchPassenger}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" />
-            </StackPanel>
+        <StackPanel HorizontalAlignment="Center">
+            <Button Content="Assign new seat(s)" Command="{Binding SwitchPlaces}"/>
         </StackPanel>
     </StackPanel>
 </Page>
