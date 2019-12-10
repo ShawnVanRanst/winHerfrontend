@@ -8,7 +8,23 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <Button Content="MyOrders View" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-    </Grid>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal">
+            <TextBox Text="Orders van "/>
+            <TextBox Text="{Binding Order.Passenger.Firstname} "/>
+            <TextBox Text="{Binding Passenger.Firstname}"/>
+        </StackPanel>
+        
+        <ListView ItemsSource="{Binding Order.Orderlines}" x:Name="OrderlinesListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Path=Number}" x:Name="number"/>
+                        <TextBlock Text="{Binding Path=Product.Name}" x:Name="productname"/>
+                        <TextBlock Text="{Binding Path=TotalPrice}" x:Name="price"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackPanel>    
 </Page>
