@@ -5,14 +5,13 @@
     xmlns:local="using:OnBoardFlight.View.Passenger.MediaFrames"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <StackPanel Orientation="Vertical">
         <TextBlock Text="{Binding Movie.Title}"/>
         <TextBlock Text="{Binding Movie.Category}"/>
         <TextBlock Text="{Binding Movie.Description}"/>
-        <Button Tapped="PlayMovie" Content="PLAY"/>
+        <Button Content="PLAY" Command="{Binding PlayMovie}" CommandParameter="{Binding ElementName=mediaPlayer}"/>
         <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto" Stretch="Uniform"/>
     </StackPanel>
 </Page>

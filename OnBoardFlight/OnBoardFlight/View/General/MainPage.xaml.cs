@@ -1,4 +1,5 @@
 ﻿using OnBoardFlight.View;
+using OnBoardFlight.View.General;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,16 +27,7 @@ namespace OnBoardFlight
         public MainPage()
         {
             this.InitializeComponent();
-        }
-
-        private void LoginAsCrewMember_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(CabinCrewLogin));
-        }
-
-        private void LoginAsPassenger_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(PassengerLogin));
+            Frame.Navigate(typeof(Welcome));
         }
     }
 }

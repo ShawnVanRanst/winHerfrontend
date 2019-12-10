@@ -17,6 +17,14 @@ namespace OnBoardFlight_Backend.Data.IRepository
 
         IEnumerable<Media> GetAllSeries();
 
+        Movie GetMovieById(int id);
+
+        Serie GetSerieById(int id);
+
+        Music GetMusicById(int id);
+
+        SerieEpisode GetSerieEpisodeById(int id);
+
         void SaveChanges();
     }
 }
