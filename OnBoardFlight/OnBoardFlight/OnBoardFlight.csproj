@@ -186,6 +186,9 @@
     <Compile Include="View\CabinCrew\Seats.xaml.cs">
       <DependentUpon>Seats.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\General\Welcome.xaml.cs">
+      <DependentUpon>Welcome.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Passenger\Chat.xaml.cs">
       <DependentUpon>Chat.xaml</DependentUpon>
     </Compile>
@@ -242,6 +245,7 @@
     <Content Include="Assets\movie.jfif" />
     <Content Include="Assets\music.png" />
     <Content Include="Assets\PiewPiew.mp3" />
+    <Content Include="Assets\Background.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -281,6 +285,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CabinCrew\Seats.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\General\Welcome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -351,6 +359,12 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\newtonsoft.json\11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
