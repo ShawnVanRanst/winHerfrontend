@@ -152,6 +152,7 @@
     <Compile Include="ViewModel\Passenger\MovieDetailsViewModel.cs" />
     <Compile Include="ViewModel\Passenger\MusicListViewModel.cs" />
     <Compile Include="ViewModel\Passenger\NavigationPassengerViewModel.cs" />
+    <Compile Include="ViewModel\Passenger\OrderViewModel.cs" />
     <Compile Include="ViewModel\Passenger\SerieDetailViewModel.cs" />
     <Compile Include="ViewModel\Passenger\VideoListViewModel.cs" />
     <Compile Include="View\General\Home.xaml.cs">
