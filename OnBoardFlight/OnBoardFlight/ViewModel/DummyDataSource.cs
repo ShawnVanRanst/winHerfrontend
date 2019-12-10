@@ -13,9 +13,9 @@ namespace OnBoardFlight.ViewModel
         public static List<Music> MusicList()
         {
             List<Music> ml = new List<Music>();
-            foreach(Media m in MediaList)
+            foreach (Media m in MediaList)
             {
-                if(m.GetType() == typeof(Music))
+                if (m.GetType() == typeof(Music))
                 {
                     ml.Add((Music)m);
                 }
@@ -156,5 +156,83 @@ namespace OnBoardFlight.ViewModel
             passenger.AddTravelCompanionWithChat(Passenger3);
             return passenger;
         }
+
+        public static Model.Product Product1 { get; set; } = new Product()
+        {
+            Description = "Coca cola 33cl",
+            ImageLink = "link",
+            Price = 3.0,
+            Category = Model.ProductCategory.Drinks
+        };
+
+        public static Model.Product Product2 { get; set; } = new Product()
+        {
+            Description = "Fanta 33cl",
+            ImageLink = "link",
+            Price = 3.0,
+            Category = Model.ProductCategory.Drinks
+        };
+
+        public static Model.Product Product3 { get; set; } = new Product()
+        {
+            Description = "Paprika chips 50g",
+            ImageLink = "link",
+            Price = 2.5,
+            Category = Model.ProductCategory.Food
+        };
+
+        public static Model.Product Product4 { get; set; } = new Product()
+        {
+            Description = "Rolex horloge",
+            ImageLink = "link",
+            Price = 10000.0,
+            Category = Model.ProductCategory.Drinks
+        };
+
+        public static Model.Orderline Orderline1 { get; set; } = new Model.Orderline()
+        {
+            Number = 3,
+            Product = Product1
+        };
+
+        public static Model.Orderline Orderline2 { get; set; } = new Model.Orderline()
+        {
+            Number = 1,
+            Product = Product3
+        };
+
+        public static Model.Orderline Orderline3 { get; set; } = new Model.Orderline()
+        {
+            Number = 2,
+            Product = Product2
+        };
+
+        public static Model.Orderline Orderline4 { get; set; } = new Model.Orderline()
+        {
+            Number = 1,
+            Product = Product4
+        };
+
+
+        public static Model.Order Order1 { get; set; } = new Model.Order()
+        {
+            Passenger = Passenger,
+            Time = DateTime.Now,
+            Orderlines = new List<Model.Orderline>() { Orderline1, Orderline2}
+        };
+
+        public static Model.Order Order2 { get; set; } = new Model.Order()
+        {
+            Passenger = Passenger,
+            Time = DateTime.Now.AddMinutes(-15),
+            Orderlines = new List<Model.Orderline>() { Orderline3}
+        };
+
+        public static Model.Order Order3 { get; set; } = new Model.Order()
+        {
+            Passenger = Passenger,
+            Time = DateTime.Now.AddMinutes(-10),
+            Orderlines = new List<Model.Orderline>() { Orderline4 }
+        };
     }
 }

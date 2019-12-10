@@ -13,6 +13,9 @@ namespace OnBoardFlight.Model
 
         public Product Product{ get; set; }
 
-        public double TotalPrice { get; set; }
+        public double TotalPrice
+        {
+            get { return Number * Product.Price; }
+        }
     }
 }

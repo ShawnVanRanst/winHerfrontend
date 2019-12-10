@@ -13,7 +13,18 @@ namespace OnBoardFlight.Model
 
         public DateTime Time { get; set; }
 
-        public double TotalPrice { get; set; }
+        public double TotalPrice
+        {
+            get
+            {
+                double total = 0.0;
+                foreach(Orderline ol in Orderlines)
+                {
+                    total += ol.TotalPrice;
+                }
+                return total;
+            }
+        }
 
         public ICollection<Orderline> Orderlines { get; set; }
 
