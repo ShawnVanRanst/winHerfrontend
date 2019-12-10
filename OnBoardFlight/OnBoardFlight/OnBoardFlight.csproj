@@ -137,6 +137,8 @@
     <Compile Include="Model\Media\VideoCategory.cs" />
     <Compile Include="ViewModel\CabinCrew\NavigationCabinCrewViewModel.cs" />
     <Compile Include="ViewModel\CabinCrew\NotificationViewModel.cs" />
+    <Compile Include="ViewModel\CabinCrew\SeatViewModel.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\SearchPassengerCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\SendNotificationCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\NewGameCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\PlayMoveCommand.cs" />

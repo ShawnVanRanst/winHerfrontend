@@ -8,7 +8,24 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <Button Content="Seats View" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-    </Grid>
+    <StackPanel Orientation="Horizontal">
+        <StackPanel Margin="20 50 20 50">
+            <TextBlock Text="Please enter the seatnumber of the passenger to move:"/>
+            <StackPanel Orientation="Horizontal" Margin="50,20,0,20">
+                <TextBox x:Name="seatInput1" 
+                     PlaceholderText="Seatnumber"
+                     Width="100" HorizontalAlignment="Left"/>
+                <Button Content="Search passenger" Click="{Binding SearchPassenger}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="20 50 20 50">
+            <TextBlock Text="Please enter the new seatnumber:"/>
+            <StackPanel Orientation="Horizontal" Margin="50,20,0,20">
+                <TextBox x:Name="seatInput2" 
+                     PlaceholderText="Seatnumber"
+                     Width="100" HorizontalAlignment="Left"/>
+                <Button Content="Search Passenger" Click="{Binding SearchPassenger}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" />
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
 </Page>
