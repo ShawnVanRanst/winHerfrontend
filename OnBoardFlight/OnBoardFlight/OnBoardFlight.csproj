@@ -133,10 +133,17 @@
     <Compile Include="Model\Media\Serie.cs" />
     <Compile Include="Model\Media\SerieEpisode.cs" />
     <Compile Include="Model\Notification.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\Orderline.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\ProductCategory.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Media\VideoCategory.cs" />
     <Compile Include="ViewModel\CabinCrew\NavigationCabinCrewViewModel.cs" />
     <Compile Include="ViewModel\CabinCrew\NotificationViewModel.cs" />
+    <Compile Include="ViewModel\CabinCrew\SeatViewModel.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\SearchPassengerToChangePlaces.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\SearchPassengerToMoveCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\SendNotificationCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Media\PlayMovieCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Media\PlaySerieCommand.cs" />
@@ -144,6 +151,7 @@
     <Compile Include="ViewModel\Commands\Passenger\Game\PlayMoveCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\ResetGameCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Chat\SelectChatCommand.cs" />
+    <Compile Include="ViewModel\Commands\SwitchPlacesCommand.cs" />
     <Compile Include="ViewModel\Passenger\ChatConversationViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatViewModel.cs" />
     <Compile Include="ViewModel\Passenger\EpisodeDetailsViewModel.cs" />
@@ -152,6 +160,7 @@
     <Compile Include="ViewModel\Passenger\MovieListViewModel.cs" />
     <Compile Include="ViewModel\Passenger\MusicListViewModel.cs" />
     <Compile Include="ViewModel\Passenger\NavigationPassengerViewModel.cs" />
+    <Compile Include="ViewModel\Passenger\OrderViewModel.cs" />
     <Compile Include="ViewModel\Passenger\SerieDetailViewModel.cs" />
     <Compile Include="ViewModel\Passenger\SerieEpisodeDetailViewModel.cs" />
     <Compile Include="ViewModel\Passenger\SerieListViewModel.cs" />

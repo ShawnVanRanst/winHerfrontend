@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace OnBoardFlight_Backend.Model
+namespace OnBoardFlight.Model
 {
-    public enum Category
+    public enum ProductCategory
     {
         Food, Drinks, Gifts
     }

@@ -18,7 +18,7 @@ namespace OnBoardFlight_Backend.Model
 
         public double Price { get; set; }
 
-        public Category Category{ get; set; }
+        public ProductCategory Category{ get; set; }
 
         #endregion
 
@@ -29,7 +29,7 @@ namespace OnBoardFlight_Backend.Model
 
         }
 
-        public Product(string description, string imageLink, double price, Category category)
+        public Product(string description, string imageLink, double price, ProductCategory category)
         {
             Description = description;
             ImageLink = imageLink;
