@@ -9,7 +9,7 @@ namespace OnBoardFlight_Backend.Model.MediaTypes
     {
         #region Properties
 
-        public int MediaId { get; set; }
+        public int Id { get; set; }
 
         public string DisplayImage { get; set; }
 

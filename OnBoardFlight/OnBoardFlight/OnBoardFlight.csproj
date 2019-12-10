@@ -139,6 +139,7 @@
     <Compile Include="ViewModel\CabinCrew\NotificationViewModel.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\SendNotificationCommand.cs" />
     <Compile Include="ViewModel\Commands\Media\MusicListLoadDataCommand.cs" />
+    <Compile Include="ViewModel\Commands\Media\PlayMovieCommand.cs" />
     <Compile Include="ViewModel\Commands\Media\VideoListLoadDataCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\NewGameCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\PlayMoveCommand.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="ViewModel\Passenger\ChatViewModel.cs" />
     <Compile Include="ViewModel\Passenger\GameViewModel.cs" />
     <Compile Include="ViewModel\Passenger\MovieDetailsViewModel.cs" />
+    <Compile Include="ViewModel\Passenger\MovieListViewModel.cs" />
     <Compile Include="ViewModel\Passenger\MusicListViewModel.cs" />
     <Compile Include="ViewModel\Passenger\NavigationPassengerViewModel.cs" />
     <Compile Include="ViewModel\Passenger\SerieDetailViewModel.cs" />

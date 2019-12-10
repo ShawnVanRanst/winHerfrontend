@@ -42,17 +42,17 @@ namespace OnBoardFlight_Backend.Data.Repository
 
         public Movie GetMovieById(int id)
         {
-            return (Movie)_mediafiles.FirstOrDefault(m => m.MediaId == id);
+            return (Movie)_mediafiles.FirstOrDefault(m => m.Id == id);
         }
 
         public Music GetMusicById(int id)
         {
-            return (Music)_mediafiles.FirstOrDefault(m => m.MediaId == id);
+            return (Music)_mediafiles.FirstOrDefault(m => m.Id == id);
         }
 
         public Serie GetSerieById(int id)
         {
-            return (Serie)_mediafiles.Include(s => (s as Serie).Episodes).FirstOrDefault(s => s.MediaId == id);
+            return (Serie)_mediafiles.Include(s => (s as Serie).Episodes).FirstOrDefault(s => s.Id == id);
         }
 
         public void SaveChanges()

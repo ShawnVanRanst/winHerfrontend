@@ -11,7 +11,7 @@
         <TextBlock Text="{Binding Movie.Title}"/>
         <TextBlock Text="{Binding Movie.Category}"/>
         <TextBlock Text="{Binding Movie.Description}"/>
-        <Button Tapped="PlayMovie" Content="PLAY"/>
+        <Button Content="PLAY" Command="{Binding PlayMovie}" CommandParameter="{Binding ElementName=mediaPlayer}"/>
         <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto" Stretch="Uniform"/>
     </StackPanel>
 </Page>

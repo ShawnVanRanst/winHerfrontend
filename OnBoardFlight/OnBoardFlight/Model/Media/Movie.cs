@@ -13,7 +13,7 @@ namespace OnBoardFlight.Model.Media
         public string Resource
         {
             get { return _resource; }
-            set { _resource = value; }
+            set { _resource = value; RaisePropertyChanged("Resource"); }
         }
     }
 }
