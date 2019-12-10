@@ -138,6 +138,8 @@
     <Compile Include="ViewModel\CabinCrew\NavigationCabinCrewViewModel.cs" />
     <Compile Include="ViewModel\CabinCrew\NotificationViewModel.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\SendNotificationCommand.cs" />
+    <Compile Include="ViewModel\Commands\Media\MusicListLoadDataCommand.cs" />
+    <Compile Include="ViewModel\Commands\Media\VideoListLoadDataCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\NewGameCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\PlayMoveCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\ResetGameCommand.cs" />
@@ -149,6 +151,7 @@
     <Compile Include="ViewModel\Passenger\MusicListViewModel.cs" />
     <Compile Include="ViewModel\Passenger\NavigationPassengerViewModel.cs" />
     <Compile Include="ViewModel\Passenger\SerieDetailViewModel.cs" />
+    <Compile Include="ViewModel\Passenger\SerieViewModel.cs" />
     <Compile Include="ViewModel\Passenger\VideoListViewModel.cs" />
     <Compile Include="View\General\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -204,6 +207,9 @@
     <Compile Include="View\Passenger\MediaFrames\MovieDetail.xaml.cs">
       <DependentUpon>MovieDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Passenger\MediaFrames\MovieList.xaml.cs">
+      <DependentUpon>MovieList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Passenger\MediaFrames\MultiMedia.xaml.cs">
       <DependentUpon>MultiMedia.xaml</DependentUpon>
     </Compile>
@@ -213,8 +219,8 @@
     <Compile Include="View\Passenger\MediaFrames\SerieDetail.xaml.cs">
       <DependentUpon>SerieDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Passenger\MediaFrames\VideoList.xaml.cs">
-      <DependentUpon>VideoList.xaml</DependentUpon>
+    <Compile Include="View\Passenger\MediaFrames\SerieList.xaml.cs">
+      <DependentUpon>SerieList.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Passenger\MyOrders.xaml.cs">
       <DependentUpon>MyOrders.xaml</DependentUpon>
@@ -312,6 +318,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Passenger\MediaFrames\MovieList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Passenger\MediaFrames\MultiMedia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -324,7 +334,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Passenger\MediaFrames\VideoList.xaml">
+    <Page Include="View\Passenger\MediaFrames\SerieList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

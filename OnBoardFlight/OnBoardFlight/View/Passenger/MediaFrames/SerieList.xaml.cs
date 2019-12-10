@@ -23,20 +23,13 @@ namespace OnBoardFlight.View.Passenger.MediaFrames
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class VideoList : Page
+    public sealed partial class SerieList : Page
     {
         public VideoListViewModel VideoListViewModel { get; set; }
 
-        public VideoList()
+        public SerieList()
         {
             this.InitializeComponent();
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            VideoListViewModel = new VideoListViewModel((string)e.Parameter);
-            this.DataContext = VideoListViewModel;
         }
 
         private void VideoDetails(object sender, TappedRoutedEventArgs e)

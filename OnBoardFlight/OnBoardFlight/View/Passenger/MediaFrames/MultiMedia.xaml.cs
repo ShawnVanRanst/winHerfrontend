@@ -26,7 +26,7 @@ namespace OnBoardFlight.View.Passenger
         public MultiMedia()
         {
             this.InitializeComponent();
-            mediaContent.Navigate(typeof(VideoList), "movies");
+            mediaContent.Navigate(typeof(MovieList));
         }
 
 
@@ -37,10 +37,10 @@ namespace OnBoardFlight.View.Passenger
             switch (mediaToLoad)
             {
                 case "Movies":
-                    mediaContent.Navigate(typeof(VideoList), "movies");
+                    mediaContent.Navigate(typeof(MovieList));
                     break;
                 case "Series":
-                    mediaContent.Navigate(typeof(VideoList), "series");
+                    mediaContent.Navigate(typeof(SerieList));
                     break;
                 case "Music":
                     mediaContent.Navigate(typeof(MusicList));

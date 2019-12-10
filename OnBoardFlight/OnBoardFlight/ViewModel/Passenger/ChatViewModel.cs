@@ -28,8 +28,13 @@ namespace OnBoardFlight.ViewModel.Passenger
         private async void LoadDataAsync()
         {
             HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync(new Uri("https://localhost:5000/api/passenger"));
-            Passenger = JsonConvert.DeserializeObject<Model.Passenger>(json);
+            var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Passenger"));
+            var passenger = JsonConvert.DeserializeObject<IList<Model.Passenger>>(json);
+            foreach(var pas in passenger)
+            {
+                Passenger = pas;
+                var x = pas;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
