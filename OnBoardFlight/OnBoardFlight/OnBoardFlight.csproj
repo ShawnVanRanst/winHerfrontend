@@ -138,22 +138,23 @@
     <Compile Include="ViewModel\CabinCrew\NavigationCabinCrewViewModel.cs" />
     <Compile Include="ViewModel\CabinCrew\NotificationViewModel.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\SendNotificationCommand.cs" />
-    <Compile Include="ViewModel\Commands\Media\MusicListLoadDataCommand.cs" />
-    <Compile Include="ViewModel\Commands\Media\PlayMovieCommand.cs" />
-    <Compile Include="ViewModel\Commands\Media\VideoListLoadDataCommand.cs" />
+    <Compile Include="ViewModel\Commands\Passenger\Media\PlayMovieCommand.cs" />
+    <Compile Include="ViewModel\Commands\Passenger\Media\PlaySerieCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\NewGameCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\PlayMoveCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\ResetGameCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Chat\SelectChatCommand.cs" />
     <Compile Include="ViewModel\Passenger\ChatConversationViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatViewModel.cs" />
+    <Compile Include="ViewModel\Passenger\EpisodeDetailsViewModel.cs" />
     <Compile Include="ViewModel\Passenger\GameViewModel.cs" />
     <Compile Include="ViewModel\Passenger\MovieDetailsViewModel.cs" />
     <Compile Include="ViewModel\Passenger\MovieListViewModel.cs" />
     <Compile Include="ViewModel\Passenger\MusicListViewModel.cs" />
     <Compile Include="ViewModel\Passenger\NavigationPassengerViewModel.cs" />
     <Compile Include="ViewModel\Passenger\SerieDetailViewModel.cs" />
-    <Compile Include="ViewModel\Passenger\SerieViewModel.cs" />
+    <Compile Include="ViewModel\Passenger\SerieEpisodeDetailViewModel.cs" />
+    <Compile Include="ViewModel\Passenger\SerieListViewModel.cs" />
     <Compile Include="ViewModel\Passenger\VideoListViewModel.cs" />
     <Compile Include="View\General\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -220,6 +221,9 @@
     </Compile>
     <Compile Include="View\Passenger\MediaFrames\SerieDetail.xaml.cs">
       <DependentUpon>SerieDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Passenger\MediaFrames\SerieEpisodeDetail.xaml.cs">
+      <DependentUpon>SerieEpisodeDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Passenger\MediaFrames\SerieList.xaml.cs">
       <DependentUpon>SerieList.xaml</DependentUpon>
@@ -333,6 +337,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Passenger\MediaFrames\SerieDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Passenger\MediaFrames\SerieEpisodeDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

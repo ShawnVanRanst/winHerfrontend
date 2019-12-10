@@ -16,17 +16,18 @@
                     <TextBlock Text="{Binding Serie.Description}"/>
                 </StackPanel>
             </StackPanel>
-            <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" Width="auto" Height="400"/>
+            <Frame x:Name="SelectedEpisode" />
             <TextBlock Text="Episodes"/>
             <ListView ItemsSource="{Binding Serie.Episodes}"
+                      SelectedItem="{Binding Serie}"
                       ScrollViewer.VerticalScrollBarVisibility="Disabled" 
                       ScrollViewer.HorizontalScrollBarVisibility="Auto"
                         ScrollViewer.HorizontalScrollMode="Enabled"                  
-                        ScrollViewer.VerticalScrollMode="Disabled" 
-                      Tapped="PlayEpisode">
+                        ScrollViewer.VerticalScrollMode="Disabled" Tapped="SerieEpisodeDetails"
+                      x:Name="episodes">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <StackPanel Background="Transparent" Orientation="Horizontal" />
+                        <StackPanel Background="Transparent" Orientation="Horizontal"/>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>

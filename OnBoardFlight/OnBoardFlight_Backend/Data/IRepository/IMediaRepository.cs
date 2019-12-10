@@ -23,6 +23,8 @@ namespace OnBoardFlight_Backend.Data.IRepository
 
         Music GetMusicById(int id);
 
+        SerieEpisode GetSerieEpisodeById(int id);
+
         void SaveChanges();
     }
 }

@@ -25,26 +25,15 @@ namespace OnBoardFlight.View.Passenger.MediaFrames
     /// </summary>
     public sealed partial class SerieList : Page
     {
-        public VideoListViewModel VideoListViewModel { get; set; }
-
         public SerieList()
         {
             this.InitializeComponent();
+            this.DataContext = new SerieListViewModel();
         }
 
         private void VideoDetails(object sender, TappedRoutedEventArgs e)
         {
-            ListView lv = (ListView)sender;
-            if (VideoListViewModel.Type.Equals("movies"))
-            {
-                Movie movie = (Movie)lv.SelectedItem;
-                Frame.Navigate(typeof(MovieDetail), movie);
-            }
-            if (VideoListViewModel.Type.Equals("series"))
-            {
-                Serie serie = (Serie)lv.SelectedItem;
-                Frame.Navigate(typeof(SerieDetail), serie);
-            }
+            this.Frame.Navigate(typeof(SerieDetail), ((sender as ListView).SelectedItem as Movie).Id);
         }
     }
 }

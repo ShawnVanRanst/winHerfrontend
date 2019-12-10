@@ -1,6 +1,4 @@
-﻿using FFmpegInterop;
-using OnBoardFlight.Model;
-using OnBoardFlight.ViewModel.Passenger;
+﻿using OnBoardFlight.ViewModel.Passenger;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,10 +6,6 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.Media.Core;
-using Windows.Storage;
-using Windows.Storage.Streams;
-using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,11 +21,9 @@ namespace OnBoardFlight.View.Passenger.MediaFrames
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SerieDetail : Page
+    public sealed partial class SerieEpisodeDetail : Page
     {
-        public SerieDetailViewModel SerieDetailViewModel { get; set; }
-
-        public SerieDetail()
+        public SerieEpisodeDetail()
         {
             this.InitializeComponent();
         }
@@ -39,12 +31,7 @@ namespace OnBoardFlight.View.Passenger.MediaFrames
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            this.DataContext = new SerieDetailViewModel((int)e.Parameter);
-        }
-
-        private void SerieEpisodeDetails(object sender, TappedRoutedEventArgs e)
-        {
-            SelectedEpisode.Navigate(typeof(SerieEpisodeDetail), ((sender as ListView).SelectedItem as SerieEpisode).Id);
+            this.DataContext = new SerieEpisodeDetailViewModel((int)e.Parameter);
         }
     }
 }

@@ -55,6 +55,11 @@ namespace OnBoardFlight_Backend.Data.Repository
             return (Serie)_mediafiles.Include(s => (s as Serie).Episodes).FirstOrDefault(s => s.Id == id);
         }
 
+        public SerieEpisode GetSerieEpisodeById(int id)
+        {
+            return (SerieEpisode)_mediafiles.FirstOrDefault(se => se.Id == id);
+        }
+
         public void SaveChanges()
         {
             _dbContext.SaveChanges();

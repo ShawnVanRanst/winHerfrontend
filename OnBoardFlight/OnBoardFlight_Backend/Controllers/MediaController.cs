@@ -67,5 +67,12 @@ namespace OnBoardFlight_Backend.Controllers
         {
             return _mediaRepo.GetMusicById(id);
         }
+
+        [HttpGet]
+        [Route("serie/episode/{id}")]
+        public ActionResult<SerieEpisode> GetSerieEpisodeById(int id)
+        {
+            return _mediaRepo.GetSerieEpisodeById(id);
+        }
     }
 }
