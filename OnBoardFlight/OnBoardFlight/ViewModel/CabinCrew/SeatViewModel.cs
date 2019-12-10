@@ -28,10 +28,10 @@ namespace OnBoardFlight.ViewModel.CabinCrew
 
         public Model.Passenger Passenger2
         {
-            get { return _passenger1; }
+            get { return _passenger2; }
             set
             {
-                _passenger1 = value;
+                _passenger2 = value;
                 RaisePropertyChanged("Passenger2");
             }
         }
@@ -71,6 +71,7 @@ namespace OnBoardFlight.ViewModel.CabinCrew
         public SeatViewModel()
         {
             SearchPassengerToMoveCommand = new SearchPassengerToMoveCommand(this);
+            Passenger1 = DummyDataSource.Passenger;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
