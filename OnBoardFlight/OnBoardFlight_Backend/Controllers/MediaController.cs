@@ -34,10 +34,24 @@ namespace OnBoardFlight_Backend.Controllers
         }
 
         [HttpGet]
+        [Route("movie/{id}")]
+        public ActionResult<Movie> GetMovieById(int id)
+        {
+            return _mediaRepo.GetMovieById(id);
+        }
+
+        [HttpGet]
         [Route("series")]
         public IEnumerable<Media> GetAllSeries()
         {
             return _mediaRepo.GetAllSeries();
+        }
+
+        [HttpGet]
+        [Route("serie/{id}")]
+        public ActionResult<Serie> GetSerieById(int id)
+        {
+            return _mediaRepo.GetSerieById(id);
         }
 
         [HttpGet]
@@ -47,5 +61,18 @@ namespace OnBoardFlight_Backend.Controllers
             return _mediaRepo.GetAllMusic();
         }
 
+        [HttpGet]
+        [Route("music/{id}")]
+        public ActionResult<Music> GetMusicById(int id)
+        {
+            return _mediaRepo.GetMusicById(id);
+        }
+
+        [HttpGet]
+        [Route("serie/episode/{id}")]
+        public ActionResult<SerieEpisode> GetSerieEpisodeById(int id)
+        {
+            return _mediaRepo.GetSerieEpisodeById(id);
+        }
     }
 }

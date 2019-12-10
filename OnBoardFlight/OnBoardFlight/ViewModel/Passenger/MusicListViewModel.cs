@@ -1,9 +1,11 @@
-﻿using OnBoardFlight.Model;
+﻿using Newtonsoft.Json;
+using OnBoardFlight.Model;
 using OnBoardFlight.Model.Helper;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,8 +21,7 @@ namespace OnBoardFlight.ViewModel.Passenger
         {
             CategoryListMusicList = new ObservableCollection<CategoryAndListMusicHelper>();
             MusicList = new List<Music>();
-            MusicList = DummyDataSource.MusicList();
-            FillCategoryListMusicList();
+            LoadData();
         }
 
         private void FillCategoryListMusicList()
@@ -42,6 +43,18 @@ namespace OnBoardFlight.ViewModel.Passenger
                 }
                 CategoryListMusicList.Add(categoryAndListMusicHelper);
             }
+        }
+
+        private async void LoadData()
+        {
+            HttpClient client = new HttpClient();
+            var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Media/music"));
+            var musiclist = JsonConvert.DeserializeObject<IList<Music>>(json);
+            foreach (var song in musiclist)
+            {
+                MusicList.Add(song);
+            }
+            FillCategoryListMusicList();
         }
     }
 }

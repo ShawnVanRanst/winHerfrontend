@@ -40,6 +40,26 @@ namespace OnBoardFlight_Backend.Data.Repository
             return _mediafiles.Where(m => m.GetType() == typeof(Serie)).ToList();
         }
 
+        public Movie GetMovieById(int id)
+        {
+            return (Movie)_mediafiles.FirstOrDefault(m => m.Id == id);
+        }
+
+        public Music GetMusicById(int id)
+        {
+            return (Music)_mediafiles.FirstOrDefault(m => m.Id == id);
+        }
+
+        public Serie GetSerieById(int id)
+        {
+            return (Serie)_mediafiles.Include(s => (s as Serie).Episodes).FirstOrDefault(s => s.Id == id);
+        }
+
+        public SerieEpisode GetSerieEpisodeById(int id)
+        {
+            return (SerieEpisode)_mediafiles.FirstOrDefault(se => se.Id == id);
+        }
+
         public void SaveChanges()
         {
             _dbContext.SaveChanges();

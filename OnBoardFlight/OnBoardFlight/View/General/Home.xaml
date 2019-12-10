@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    x:Name="Page">
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
@@ -26,7 +26,11 @@
                     <TextBlock Text="{Binding Flight.Destination.Time}"/>
                 </StackPanel>
             </StackPanel>
-            <Frame x:Name="weatherFrame"></Frame>
+            <Frame x:Name="weatherFrame">
+                <Frame.Background>
+                    <ImageBrush ImageSource="ms-appx:///Assets/Background.jpg" Stretch="None"/>
+                </Frame.Background>
+            </Frame>
         </StackPanel>
     </Grid>
 </Page>

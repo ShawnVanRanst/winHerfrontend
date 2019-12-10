@@ -1,4 +1,5 @@
-﻿using OnBoardFlight.Model.Media;
+﻿using OnBoardFlight.Model;
+using OnBoardFlight.Model.Media;
 using OnBoardFlight.ViewModel.Passenger;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Windows.Media.Playback;
-using Windows.Media.Core;
-using Windows.Storage.Streams;
-using Windows.Storage;
-using Windows.UI.Popups;
-using FFmpegInterop;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -28,16 +23,17 @@ namespace OnBoardFlight.View.Passenger.MediaFrames
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MovieDetail : Page
+    public sealed partial class SerieList : Page
     {
-        public MovieDetail()
+        public SerieList()
         {
             this.InitializeComponent();
+            this.DataContext = new SerieListViewModel();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private void VideoDetails(object sender, TappedRoutedEventArgs e)
         {
-            this.DataContext = new MovieDetailsViewModel((int)e.Parameter);
+            this.Frame.Navigate(typeof(SerieDetail), ((sender as ListView).SelectedItem as Movie).Id);
         }
     }
 }

@@ -29,8 +29,6 @@ namespace OnBoardFlight.View.Passenger.MediaFrames
     /// </summary>
     public sealed partial class SerieDetail : Page
     {
-        private FFmpegInteropMSS FFmpegMSS;
-
         public SerieDetailViewModel SerieDetailViewModel { get; set; }
 
         public SerieDetail()
@@ -41,54 +39,12 @@ namespace OnBoardFlight.View.Passenger.MediaFrames
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            Serie serie = (Serie)e.Parameter;
-            SerieDetailViewModel = new SerieDetailViewModel(serie);
-            this.DataContext = SerieDetailViewModel;
+            this.DataContext = new SerieDetailViewModel((int)e.Parameter);
         }
 
-        private async void PlayEpisode(object sender, TappedRoutedEventArgs e)
+        private void SerieEpisodeDetails(object sender, TappedRoutedEventArgs e)
         {
-            ListView lv = (ListView)sender;
-            SerieEpisode se = (SerieEpisode)lv.SelectedItem;
-
-
-            StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Assets");
-            StorageFile file = await folder.GetFileAsync(se.Resource);
-
-            IRandomAccessStream readStream = await file.OpenAsync(FileAccessMode.Read);
-            FFmpegMSS = FFmpegInteropMSS.CreateFFmpegInteropMSSFromStream(readStream, true, true);
-            MediaStreamSource mss = FFmpegMSS.GetMediaStreamSource();
-
-            if (mss != null)
-            {
-                mediaPlayer.AreTransportControlsEnabled = true;
-
-                mediaPlayer.TransportControls.IsFastForwardButtonVisible = true;
-                mediaPlayer.TransportControls.IsFastForwardEnabled = true;
-
-                mediaPlayer.TransportControls.IsFastRewindButtonVisible = true;
-                mediaPlayer.TransportControls.IsFastRewindEnabled = true;
-
-                mediaPlayer.TransportControls.IsSkipBackwardButtonVisible = true;
-                mediaPlayer.TransportControls.IsSkipBackwardEnabled = true;
-
-                mediaPlayer.TransportControls.IsSkipForwardButtonVisible = true;
-                mediaPlayer.TransportControls.IsSkipForwardEnabled = true;
-
-                mediaPlayer.TransportControls.IsStopButtonVisible = true;
-                mediaPlayer.TransportControls.IsStopEnabled = true;
-
-                mediaPlayer.TransportControls.IsRightTapEnabled = true;
-
-                mediaPlayer.SetMediaStreamSource(mss);
-
-                mediaPlayer.Play();
-            }
-            else
-            {
-                var msg = new MessageDialog("ERROR");
-                await msg.ShowAsync();
-            }
+            SelectedEpisode.Navigate(typeof(SerieEpisodeDetail), ((sender as ListView).SelectedItem as SerieEpisode).Id);
         }
     }
 }
