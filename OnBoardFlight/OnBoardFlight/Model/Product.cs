@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnBoardFlight.ViewModel.Passenger
+namespace OnBoardFlight.Model
 {
-    public class OrderViewModel
+    public class Product
     {
     }
 }
