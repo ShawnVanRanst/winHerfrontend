@@ -189,48 +189,41 @@ namespace OnBoardFlight.ViewModel
             Category = Model.ProductCategory.Drinks
         };
 
-        public static Model.Orderline Orderline1 { get; set; } = new Model.Orderline()
+        public static Model.Orderline Orderline1 { get; set; } = new Model.Orderline(Product1)
         {
-            Number = 3,
-            Product = Product1
+            Number = 3
         };
 
-        public static Model.Orderline Orderline2 { get; set; } = new Model.Orderline()
+        public static Model.Orderline Orderline2 { get; set; } = new Model.Orderline(Product3)
         {
-            Number = 1,
-            Product = Product3
+            Number = 1
         };
 
-        public static Model.Orderline Orderline3 { get; set; } = new Model.Orderline()
+        public static Model.Orderline Orderline3 { get; set; } = new Model.Orderline(Product2)
         {
-            Number = 2,
-            Product = Product2
+            Number = 2
         };
 
-        public static Model.Orderline Orderline4 { get; set; } = new Model.Orderline()
+        public static Model.Orderline Orderline4 { get; set; } = new Model.Orderline(Product4)
         {
-            Number = 1,
-            Product = Product4
+            Number = 1
         };
 
 
-        public static Model.Order Order1 { get; set; } = new Model.Order()
+        public static Model.Order Order1 { get; set; } = new Model.Order(Passenger)
         {
-            Passenger = Passenger,
             Time = DateTime.Now,
             Orderlines = new List<Model.Orderline>() { Orderline1, Orderline2}
         };
 
-        public static Model.Order Order2 { get; set; } = new Model.Order()
+        public static Model.Order Order2 { get; set; } = new Model.Order(Passenger)
         {
-            Passenger = Passenger,
             Time = DateTime.Now.AddMinutes(-15),
             Orderlines = new List<Model.Orderline>() { Orderline3}
         };
 
-        public static Model.Order Order3 { get; set; } = new Model.Order()
+        public static Model.Order Order3 { get; set; } = new Model.Order(Passenger)
         {
-            Passenger = Passenger,
             Time = DateTime.Now.AddMinutes(-10),
             Orderlines = new List<Model.Orderline>() { Orderline4 }
         };

@@ -51,14 +51,6 @@ namespace OnBoardFlight.Model
             set { notifications = value; }
         }
 
-        private ShoppingCart _shoppingCart;
-
-        public ShoppingCart Cart
-        {
-            get { return _shoppingCart; }
-            set { _shoppingCart = value; }
-        }
-
 
 
         public void AddTravelCompanion(Passenger companion)

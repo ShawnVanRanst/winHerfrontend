@@ -17,13 +17,15 @@ namespace OnBoardFlight.ViewModel.Passenger
     {
         public Model.Passenger Passenger { get; set; }
 
+        public Model.ShoppingCart Cart { get; set; }
+
         public List<Product> ProductList { get; set; }
 
         public ObservableCollection<CategoryAndListProductHelper> CategoryListProductList { get; set; }
 
 
-        #region Commands
-        public AddToCartCommand AddToCartCommand{ get; set; }
+        #region Command
+        public AddToCartCommand AddToCartCommand { get; set; }
         #endregion
 
         public ShopViewModel(Model.Passenger passenger)
@@ -32,6 +34,10 @@ namespace OnBoardFlight.ViewModel.Passenger
             ProductList = new List<Product>();
             Passenger = passenger;
             AddToCartCommand = new AddToCartCommand(this);
+            foreach (Product p in ProductList)
+            {
+                p.AddToCartCommand = AddToCartCommand;
+            }
             LoadData();
         }
 
@@ -55,15 +61,15 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         private void AddProductToCart(Product product)
         {
-            if (Passenger.Cart == null)
+            if (Cart == null)
             {
-                Passenger.Cart = new ShoppingCart(Passenger);
+                Cart = new ShoppingCart(Passenger);
             }
-            if (Passenger.Cart.Order == null)
+            if (Cart.Order == null)
             {
-                Passenger.Cart.Order = new Order(Passenger);
+                Cart.Order = new Order(Passenger);
             }
-            Passenger.Cart.Order.AddOrderline(new Orderline(product));
+            Cart.Order.AddOrderline(new Orderline(product));
         }
 
         private void FillCategoryListProductList()

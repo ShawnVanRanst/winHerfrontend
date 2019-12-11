@@ -31,7 +31,7 @@ namespace OnBoardFlight.ViewModel.Commands.Passenger.Shop
         {
             try
             {
-                ShopViewModel.AddToCart(ProductId);
+                ShopViewModel.AddToCart(1);
             }
             catch(ArgumentException ex)
             {

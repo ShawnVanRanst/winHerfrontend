@@ -8,38 +8,41 @@
     mc:Ignorable="d">
 
     <ScrollViewer Height="800">
-        <ListView ItemsSource="{Binding CategoryListProductList}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{Binding Category}"/>
-                        <ListView ItemsSource="{Binding ProductList}"
-                            ScrollViewer.VerticalScrollBarVisibility="Disabled" 
-                            ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                            ScrollViewer.HorizontalScrollMode="Enabled"                  >
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Background="Transparent" Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Vertical" Height="100" Background="DarkGray">
-                                        <Image Source="{Binding Image}"/>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding Description}"/>
-                                            <TextBlock Text="€" Margin="30 0 0 0"/>
-                                            <TextBlock Text="{Binding Price}"/>
-                                            <Button Content="Add to cart" Command="{Binding AddToCartCommand}" CommandParameter="{Binding ProductId}"/>
+        <StackPanel>
+            <Button Content="Add to cart" Command="{Binding AddToCartCommand}"/>
+            <ListView ItemsSource="{Binding CategoryListProductList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Category}"/>
+                            <ListView x:Name="productList" ItemsSource="{Binding ProductList}"
+                                ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                                ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                ScrollViewer.HorizontalScrollMode="Enabled"                  >
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Background="Transparent" Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical" Height="100" Background="DarkGray">
+                                            <Image Source="{Binding ImageLink}"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Description}"/>
+                                                <TextBlock Text="€" Margin="30 0 0 0"/>
+                                                <TextBlock Text="{Binding Price}"/>
+                                                <Button Content="Add to cart" Command="{Binding Path= AddToCartCommand}"/>
+                                            </StackPanel>
                                         </StackPanel>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </ScrollViewer>
 </Page>
 

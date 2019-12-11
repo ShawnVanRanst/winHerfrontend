@@ -16,9 +16,8 @@ namespace OnBoardFlight.Model
         public ShoppingCart(Passenger passenger)
         {
             Passenger = passenger;
-            Order = new Order
+            Order = new Order(Passenger)
             {
-                Passenger = Passenger,
                 Orderlines = new List<Orderline>(),
                 Time = DateTime.Now
             };

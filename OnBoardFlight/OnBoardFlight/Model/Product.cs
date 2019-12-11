@@ -18,5 +18,9 @@ namespace OnBoardFlight.Model
         public double Price { get; set; }
 
         public ProductCategory Category { get; set; }
+
+         #region Commands
+        public AddToCartCommand AddToCartCommand{ get; set; }
+        #endregion
     }
 }
