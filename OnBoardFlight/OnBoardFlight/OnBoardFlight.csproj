@@ -153,6 +153,7 @@
     <Compile Include="ViewModel\Commands\Passenger\Game\PlayMoveCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\ResetGameCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Chat\SelectChatCommand.cs" />
+    <Compile Include="ViewModel\Commands\Passenger\Shop\AddToCartCommand.cs" />
     <Compile Include="ViewModel\Commands\SwitchPlacesCommand.cs" />
     <Compile Include="ViewModel\Passenger\ChatConversationViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatViewModel.cs" />
@@ -398,9 +399,7 @@
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\newtonsoft.json\11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\Commands\Passenger\Shop\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

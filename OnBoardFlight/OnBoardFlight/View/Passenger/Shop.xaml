@@ -24,9 +24,14 @@
                             </ListView.ItemsPanel>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Vertical" Height="100" Background="DarkGray">
                                         <Image Source="{Binding Image}"/>
-                                        <TextBlock Text="{Binding Description}"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Description}"/>
+                                            <TextBlock Text="€" Margin="30 0 0 0"/>
+                                            <TextBlock Text="{Binding Price}"/>
+                                            <Button Content="Add to cart" Command="{Binding AddToCart}"/>
+                                        </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

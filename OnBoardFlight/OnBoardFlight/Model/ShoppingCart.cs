@@ -24,9 +24,9 @@ namespace OnBoardFlight.Model
             };
         }
 
-        public void AddOrderline()
+        public void AddOrderline(Orderline orderline)
         {
-
+            Order.Orderlines.Add(orderline);
         }
 
 

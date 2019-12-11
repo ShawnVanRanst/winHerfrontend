@@ -28,6 +28,11 @@ namespace OnBoardFlight.ViewModel.Passenger
             LoadData();
         }
 
+        internal void AddToCart()
+        {
+            throw new NotImplementedException();
+        }
+
         private void FillCategoryListProductList()
         {
             var categories = Enum.GetValues(typeof(ProductCategory));
