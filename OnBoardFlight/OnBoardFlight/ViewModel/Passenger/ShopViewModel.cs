@@ -14,14 +14,17 @@ namespace OnBoardFlight.ViewModel.Passenger
 {
     public class ShopViewModel
     {
+        public Model.Passenger Passenger { get; set; }
+
         public List<Product> ProductList { get; set; }
 
         public ObservableCollection<CategoryAndListProductHelper> CategoryListProductList { get; set; }
 
-        public ShopViewModel()
+        public ShopViewModel(Model.Passenger passenger)
         {
             CategoryListProductList = new ObservableCollection<CategoryAndListProductHelper>();
             ProductList = new List<Product>();
+            Passenger = passenger;
             LoadData();
         }
 

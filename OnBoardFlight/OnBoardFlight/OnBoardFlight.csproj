@@ -138,6 +138,7 @@
     <Compile Include="Model\Orderline.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductCategory.cs" />
+    <Compile Include="Model\ShoppingCart.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Media\VideoCategory.cs" />
     <Compile Include="ViewModel\CabinCrew\NavigationCabinCrewViewModel.cs" />

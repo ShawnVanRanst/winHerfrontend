@@ -23,13 +23,20 @@ namespace OnBoardFlight.View.Passenger
     /// </summary>
     public sealed partial class Shop : Page
     {
-        private ShopViewModel ShopViewModel { get; set; }
 
         public Shop()
         {
             this.InitializeComponent();
-            ShopViewModel = new ShopViewModel();
-            this.DataContext = ShopViewModel;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            Model.Passenger passenger = (Model.Passenger)e.Parameter;
+            if(this.DataContext == null)
+            {
+                this.DataContext = new ShopViewModel(passenger);
+            }
         }
 
         private void Button_ContextCanceled(UIElement sender, RoutedEventArgs args)

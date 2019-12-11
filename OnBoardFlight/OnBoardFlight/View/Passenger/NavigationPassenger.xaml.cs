@@ -26,7 +26,7 @@ namespace OnBoardFlight.View
     /// </summary>
     public sealed partial class NavigationPassenger : Page
     {
-        private NavigationPassengerViewModel NavigationPassengerViewModel { get; set; }
+        private NavigationPassengerViewModel NavVM { get; set; }
 
         public NavigationPassenger()
         {
@@ -38,7 +38,7 @@ namespace OnBoardFlight.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            NavigationPassengerViewModel = new NavigationPassengerViewModel((Model.Passenger)e.Parameter);
+            NavVM = new NavigationPassengerViewModel((Model.Passenger)e.Parameter);
         }
 
         private void NavigateTo(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -58,7 +58,7 @@ namespace OnBoardFlight.View
                     mainFrame.Navigate(typeof(Home));
                     break;
                 case "Shop":
-                    mainFrame.Navigate(typeof(Shop));
+                    mainFrame.Navigate(typeof(Shop), NavVM.Passenger);
                     break;
                 case "Orders":
                     mainFrame.Navigate(typeof(MyOrders));
@@ -67,7 +67,7 @@ namespace OnBoardFlight.View
                     mainFrame.Navigate(typeof(MultiMedia));
                     break;
                 case "Chat":
-                    mainFrame.Navigate(typeof(View.Passenger.Chat), NavigationPassengerViewModel.Passenger);
+                    mainFrame.Navigate(typeof(View.Passenger.Chat), NavVM.Passenger);
                     break;
                 case "Game":
                     mainFrame.Navigate(typeof(View.Passenger.Game));
