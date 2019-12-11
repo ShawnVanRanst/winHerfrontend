@@ -6,8 +6,10 @@ using OnBoardFlight.ViewModel.Commands.Passenger.Shop;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +19,16 @@ namespace OnBoardFlight.ViewModel.Passenger
     {
         public Model.Passenger Passenger { get; set; }
 
-        public Model.ShoppingCart Cart { get; set; }
+        private Model.ShoppingCart _cart;
+        public Model.ShoppingCart Cart
+        {
+            get { return _cart; }
+            set
+            {
+                _cart = value;
+                RaisePropertyChanged("Cart");
+            }
+        }
 
         public List<Product> ProductList { get; set; }
 
@@ -34,11 +45,21 @@ namespace OnBoardFlight.ViewModel.Passenger
             ProductList = new List<Product>();
             Passenger = passenger;
             AddToCartCommand = new AddToCartCommand(this);
-            foreach (Product p in ProductList)
-            {
-                p.AddToCartCommand = AddToCartCommand;
-            }
+            //foreach(var c in CategoryListProductList)
+            //{
+            //    foreach (Product p in c.ProductList)
+            //    {
+            //        p.AddToCartCommand = AddToCartCommand;
+            //    }
+            //}
+            
             LoadData();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void RaisePropertyChanged([CallerMemberName]string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public void AddToCart(int id)
@@ -69,7 +90,16 @@ namespace OnBoardFlight.ViewModel.Passenger
             {
                 Cart.Order = new Order(Passenger);
             }
-            Cart.Order.AddOrderline(new Orderline(product));
+            Orderline orderline = GetOrderline(product);
+            if(orderline == null)
+            {
+                Cart.Order.Orderlines.Add(new Orderline(product));
+            }
+            else
+            {
+                orderline.Number ++;
+            }
+            
         }
 
         private void FillCategoryListProductList()
@@ -91,6 +121,11 @@ namespace OnBoardFlight.ViewModel.Passenger
                 }
                 CategoryListProductList.Add(categoryAndListProductHelper);
             }
+        }
+
+        private Orderline GetOrderline(Product product)
+        {
+            return Cart.Order.Orderlines.FirstOrDefault(o => o.Product.ProductId == product.ProductId);
         }
 
         private async void LoadData()

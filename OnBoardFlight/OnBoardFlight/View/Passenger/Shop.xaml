@@ -8,8 +8,9 @@
     mc:Ignorable="d">
 
     <ScrollViewer Height="800">
-        <StackPanel>
+        <StackPanel Orientation="Horizontal">
             <Button Content="Add to cart" Command="{Binding AddToCartCommand}"/>
+            <StackPanel Orientation="Horizontal">
             <ListView ItemsSource="{Binding CategoryListProductList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -42,6 +43,28 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            </StackPanel>
+            <ScrollViewer>
+                <StackPanel Orientation="Vertical">
+                    <TextBox Text="Order:"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Number"/>
+                        <TextBlock Text="Description"/>
+                        <TextBlock Text="TotalPrice"/>
+                    </StackPanel>
+                    <ListView ItemsSource="{Binding Cart.Order.Orderline}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" BorderBrush="White" BorderThickness="1">
+                                    <TextBlock Text="{Binding Number}"/>
+                                    <TextBlock Text="{Binding Description}"/>
+                                    <TextBlock Text="{Binding TotalPrice}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </ScrollViewer>
         </StackPanel>
     </ScrollViewer>
 </Page>
