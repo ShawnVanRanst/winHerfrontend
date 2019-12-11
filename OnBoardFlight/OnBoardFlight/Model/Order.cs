@@ -29,6 +29,13 @@ namespace OnBoardFlight.Model
         public ICollection<Orderline> Orderlines { get; set; }
 
 
+        public Order(Passenger passenger)
+        {
+            Passenger = passenger;
+            Time = DateTime.Now;
+            Orderlines = new List<Orderline>();
+        }
+
         public void AddOrderline(Orderline orderline)
         {
             Orderlines.Add(orderline);

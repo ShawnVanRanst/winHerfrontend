@@ -44,13 +44,26 @@ namespace OnBoardFlight.ViewModel.Passenger
             }
             else
             {
-                //Add product to cart
+                AddProductToCart(productToAdd);
             }
         }
 
         private Product GetProductById(int id)
         {
             return ProductList.FirstOrDefault(p => p.ProductId == id);
+        }
+
+        private void AddProductToCart(Product product)
+        {
+            if (Passenger.Cart == null)
+            {
+                Passenger.Cart = new ShoppingCart(Passenger);
+            }
+            if (Passenger.Cart.Order == null)
+            {
+                Passenger.Cart.Order = new Order(Passenger);
+            }
+            Passenger.Cart.Order.AddOrderline(new Orderline(product));
         }
 
         private void FillCategoryListProductList()
