@@ -12,50 +12,50 @@ using System.Threading.Tasks;
 
 namespace OnBoardFlight.ViewModel.Passenger
 {
-    public class MovieListViewModel
+    public class ShopViewModel
     {
-        public List<Video> VideoList { get; set; }
+        public List<Product> ProductList { get; set; }
 
-        public ObservableCollection<CategoryAndListVideoHelper> CategoryListMusicList { get; set; }
+        public ObservableCollection<CategoryAndListProductHelper> CategoryListProductList { get; set; }
 
-        public MovieListViewModel()
+        public ShopViewModel()
         {
-            CategoryListMusicList = new ObservableCollection<CategoryAndListVideoHelper>();
-            VideoList = new List<Video>();
+            CategoryListProductList = new ObservableCollection<CategoryAndListProductHelper>();
+            ProductList = new List<Product>();
             LoadData();
         }
 
-        private void FillCategoryListVideoList()
+        private void FillCategoryListProductList()
         {
-            var categories = Enum.GetValues(typeof(VideoCategory));
-            foreach (VideoCategory category in categories)
+            var categories = Enum.GetValues(typeof(ProductCategory));
+            foreach (ProductCategory category in categories)
             {
-                CategoryAndListVideoHelper categoryAndListVideoHelper = new CategoryAndListVideoHelper()
+                CategoryAndListProductHelper categoryAndListProductHelper = new CategoryAndListProductHelper()
                 {
                     Category = category,
-                    VideoList = new List<Video>()
+                    ProductList = new List<Product>()
                 };
-                foreach (Video v in VideoList)
+                foreach (Product p in ProductList)
                 {
-                    if (v.Category == category)
+                    if (p.Category == category)
                     {
-                        categoryAndListVideoHelper.VideoList.Add(v);
+                        categoryAndListProductHelper.ProductList.Add(p);
                     }
                 }
-                CategoryListMusicList.Add(categoryAndListVideoHelper);
+                CategoryListProductList.Add(categoryAndListProductHelper);
             }
         }
 
         private async void LoadData()
         {
             HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Media/movies"));
-            var movielist = JsonConvert.DeserializeObject<IList<Movie>>(json);
-            foreach (var movie in movielist)
+            var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Product"));
+            var Productslist = JsonConvert.DeserializeObject<IList<Product>>(json);
+            foreach (var Product in Productslist)
             {
-                VideoList.Add(movie);
+                ProductList.Add(Product);
             }
-            FillCategoryListVideoList();
+            FillCategoryListProductList();
         }
     }
 }
