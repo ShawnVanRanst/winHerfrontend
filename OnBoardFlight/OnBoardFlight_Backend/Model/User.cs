@@ -16,6 +16,8 @@ namespace OnBoardFlight_Backend.Model
 
         public string Login { get; set; }
 
+        public string Pass { get; set; }
+
         public Flight Flight{ get; set; }
 
         #endregion

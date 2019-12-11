@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace OnBoardFlight_Backend.Data.IRepository
 {
-    public interface IPassengerRepository
+    public interface IUserRepository
     {
 
-        IEnumerable<Passenger> GetPassengers();
+        IEnumerable<User> GetPassengers();
 
         Passenger GetPassengerById(int id);
 
@@ -18,6 +18,8 @@ namespace OnBoardFlight_Backend.Data.IRepository
         void UpdatePassenger(Passenger passenger);
 
         void ChangeSeats(Passenger passenger1, Passenger passenger2);
+
+        User GetCabinCrewByCredentials(string login, string password);
 
         void SaveChanges();
 

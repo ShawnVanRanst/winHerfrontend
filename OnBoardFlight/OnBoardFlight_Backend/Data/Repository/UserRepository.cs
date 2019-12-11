@@ -6,40 +6,41 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace OnBoardFlight_Backend.Data.Repository
 {
-    public class PassengerRepository : IPassengerRepository
+    public class UserRepository : IUserRepository
     {
         private readonly ApplicationDbContext _dbContext;
 
-        private readonly DbSet<Passenger> _passengers;
+        private readonly DbSet<User> _users;
 
-        public PassengerRepository(ApplicationDbContext context)
+        public UserRepository(ApplicationDbContext context)
         {
             _dbContext = context;
-            _passengers = _dbContext.Passengers;
+            _users = _dbContext.Users;
         }
 
         public Passenger GetPassengerById(int id)
         {
-            return _passengers.FirstOrDefault(p => p.UserId == id);
+            return (Passenger)_users.FirstOrDefault(p => p.UserId == id);
         }
 
 
         public Passenger GetPassengerBySeat(string seat)
         {
-            return _passengers.Include(p => p.TravelCompany).Include(p => p.ChatList).Include(p => p.Orders).FirstOrDefault(p => p.Seat.Equals(seat));
+            return (Passenger)_users.Include(p => (p as Passenger).TravelCompany).Include(p => (p as Passenger).ChatList).Include(p => (p as Passenger).Orders).FirstOrDefault(p => (p as Passenger).Seat.Equals(seat));
         }
 
-        public IEnumerable<Passenger> GetPassengers()
+        public IEnumerable<User> GetPassengers()
         {
-            return _passengers.ToList();
+            return _users.Where(u => u.GetType() == typeof(Passenger)).ToList();
         }
 
         public void UpdatePassenger(Passenger passenger)
         {
-            _passengers.Update(passenger);
+            _users.Update(passenger);
         }
 
         public void ChangeSeats(Passenger passenger1, Passenger passenger2)
@@ -48,8 +49,8 @@ namespace OnBoardFlight_Backend.Data.Repository
             string seatPassenger2 = passenger2.Seat;
             passenger1.Seat = seatPassenger2;
             passenger2.Seat = seatPassenger1;
-            _passengers.Update(passenger1);
-            _passengers.Update(passenger2);
+            _users.Update(passenger1);
+            _users.Update(passenger2);
 
         }
 
@@ -58,6 +59,10 @@ namespace OnBoardFlight_Backend.Data.Repository
             _dbContext.SaveChanges();
         }
 
-        
+        public User GetCabinCrewByCredentials(string login, string pass)
+        {
+
+            return _users.FirstOrDefault(u => u.Login == login && u.Pass == pass);
+        }
     }
 }

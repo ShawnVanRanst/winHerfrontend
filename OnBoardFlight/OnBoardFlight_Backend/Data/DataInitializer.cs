@@ -12,7 +12,6 @@ namespace OnBoardFlight.Data
     public class DataInitializer
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly UserManager<IdentityUser> _userManager;
 
         public DataInitializer(ApplicationDbContext applicationDbContext)
         {
@@ -32,11 +31,11 @@ namespace OnBoardFlight.Data
                 #endregion
 
                 #region Users
-                User crewMember1 = new CabinCrew { Login = "crewmember1" };
+                User crewMember1 = new CabinCrew { Login = "crewmember1", Pass = "123" };
                 //await CreateUser(crewMember.Login, "P@ssword1");
                 _dbContext.Users.Add(crewMember1);
 
-                User crewMember2 = new CabinCrew { Login = "crewmember2" };
+                User crewMember2 = new CabinCrew { Login = "crewmember2", Pass = "234" };
                 _dbContext.Users.Add(crewMember2);
 
                 User passenger1 = new Passenger("Arno", "Boel", "01A");
