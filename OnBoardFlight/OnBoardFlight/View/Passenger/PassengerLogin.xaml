@@ -14,8 +14,8 @@
             <TextBlock HorizontalAlignment="Center" Text="Passenger" VerticalAlignment="Center" FontSize="72" Margin="0,0,0,40" FontWeight="Bold"/>
             <TextBlock HorizontalAlignment="Left" x:Name="LoginError" Foreground="Red"/>
             <TextBlock Text="Please fill in your seat number" HorizontalAlignment="Left" Margin="0,0,0,10"/>
-            <TextBox x:Name="LoginBtn" Margin="0,0,0,20"/>
-            <Button HorizontalAlignment="Center" Content="Login" Click="Login" />
+            <TextBox x:Name="LoginBtn" Margin="0,0,0,20" Text="{Binding Number, Mode=TwoWay}"/>
+            <Button HorizontalAlignment="Center" Content="Login" Command="{Binding LoginCommand}"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
 ﻿using OnBoardFlight.ViewModel;
+using OnBoardFlight.ViewModel.Passenger;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +27,7 @@ namespace OnBoardFlight.View
         public PassengerLogin()
         {
             this.InitializeComponent();
+            this.DataContext = new PassengerLoginViewModel();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
