@@ -11,6 +11,8 @@ namespace OnBoardFlight.ViewModel.Commands.Passenger.Shop
     public class AddToCartCommand : ICommand
     {
 
+        public int ProductId { get; set; }
+
         public ShopViewModel ShopViewModel{ get; set; }
 
         public AddToCartCommand(ShopViewModel svm)
@@ -27,7 +29,14 @@ namespace OnBoardFlight.ViewModel.Commands.Passenger.Shop
 
         public void Execute(object parameter)
         {
-            ShopViewModel.AddToCart();
+            try
+            {
+                ShopViewModel.AddToCart(ProductId);
+            }
+            catch(ArgumentException ex)
+            {
+                //Give a warning
+            }
         }
     }
 }

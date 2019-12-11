@@ -30,7 +30,7 @@
                                             <TextBlock Text="{Binding Description}"/>
                                             <TextBlock Text="€" Margin="30 0 0 0"/>
                                             <TextBlock Text="{Binding Price}"/>
-                                            <Button Content="Add to cart" Command="{Binding AddToCart}"/>
+                                            <Button Content="Add to cart" Command="{Binding AddToCartCommand}" CommandParameter="{Binding ProductId}"/>
                                         </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>

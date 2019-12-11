@@ -2,6 +2,7 @@
 using OnBoardFlight.Model;
 using OnBoardFlight.Model.Helper;
 using OnBoardFlight.Model.Media;
+using OnBoardFlight.ViewModel.Commands.Passenger.Shop;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,17 +21,36 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         public ObservableCollection<CategoryAndListProductHelper> CategoryListProductList { get; set; }
 
+
+        #region Commands
+        public AddToCartCommand AddToCartCommand{ get; set; }
+        #endregion
+
         public ShopViewModel(Model.Passenger passenger)
         {
             CategoryListProductList = new ObservableCollection<CategoryAndListProductHelper>();
             ProductList = new List<Product>();
             Passenger = passenger;
+            AddToCartCommand = new AddToCartCommand(this);
             LoadData();
         }
 
-        internal void AddToCart()
+        public void AddToCart(int id)
         {
-            throw new NotImplementedException();
+            Product productToAdd = GetProductById(id);
+            if(productToAdd == null)
+            {
+                throw new ArgumentNullException();
+            }
+            else
+            {
+                //Add product to cart
+            }
+        }
+
+        private Product GetProductById(int id)
+        {
+            return ProductList.FirstOrDefault(p => p.ProductId == id);
         }
 
         private void FillCategoryListProductList()
