@@ -23,10 +23,18 @@ namespace OnBoardFlight.View.Passenger
     /// </summary>
     public sealed partial class Shop : Page
     {
+        private ShopViewModel ShopViewModel { get; set; }
+
         public Shop()
         {
             this.InitializeComponent();
-            this.DataContext = new ShopViewModel();
+            ShopViewModel = new ShopViewModel();
+            this.DataContext = ShopViewModel;
+        }
+
+        private void Button_ContextCanceled(UIElement sender, RoutedEventArgs args)
+        {
+
         }
     }
 }
