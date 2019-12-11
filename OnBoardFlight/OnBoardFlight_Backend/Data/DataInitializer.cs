@@ -125,7 +125,21 @@ namespace OnBoardFlight.Data
 
                     Music song3 = new Music("music.png", "Song3", "This is song3", MusicCategory.pop, "PiewPiew.mp3");
                     _dbContext.Mediafiles.Add(song3);
-                    #endregion  
+                #endregion
+                #endregion
+                #region Product
+                Product product1 = new Product("cola 33cl","link", 3.00,ProductCategory.Drinks);
+                _dbContext.Products.Add(product1);
+                Product product2 = new Product("fanta 33cl", "link", 3.00, ProductCategory.Drinks);
+                _dbContext.Products.Add(product2);
+                Product product3 = new Product("ice tea 33cl", "link", 3.00, ProductCategory.Drinks);
+                _dbContext.Products.Add(product3);
+
+                Product product4 = new Product("hamburger", "link", 5.00, ProductCategory.Food);
+                _dbContext.Products.Add(product4);
+
+                Product product5 = new Product("horloge", "link", 50.00, ProductCategory.Gifts);
+                _dbContext.Products.Add(product5);
 
 
                 #endregion
