@@ -18,6 +18,7 @@ namespace OnBoardFlight.Data
 
         #region DbSets
         public DbSet<Flight> Flights { get; set; }
+        public DbSet<Passenger> Passengers { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Chat> Chats { get; set; }
         public DbSet<Media> Mediafiles { get; internal set; }
