@@ -69,38 +69,41 @@ namespace OnBoardFlight.Data
 
                 Passenger passenger1 = new Passenger("Arno", "Boel", "01A") { Flight = flight };
                 passenger1.AddNotification(notification1);
-                _dbContext.Users.Add(passenger1);
+                
 
                 Passenger passenger2 = new Passenger("Ruben", "Grillaert", "20D") { Flight = flight };
                 passenger2.AddNotification(notification2);
-                _dbContext.Users.Add(passenger2);
+                
 
                 Passenger passenger3 = new Passenger("Shawn", "Van Ranst", "12F") { Flight = flight };
                 passenger3.AddNotification(notification3);
-                _dbContext.Users.Add(passenger3);
+                
 
                 Passenger passenger4 = new Passenger("Melissa", "Van Belle", "01B") { Flight = flight };
                 passenger4.AddNotification(notification4);
+
+                #region Chat
+                passenger1.AddTravelCompanion(passenger2);
+                passenger1.AddTravelCompanion(passenger3);
+                passenger1.AddTravelCompanion(passenger4);
+                passenger2.AddTravelCompanion(passenger3);
+                passenger2.AddTravelCompanion(passenger4);
+                passenger3.AddTravelCompanion(passenger4);
+                passenger1.Chats.First().AddMessage(new Message(passenger2, "Test 123 test"));
+                #endregion
+
+                _dbContext.Users.Add(passenger1);
+                _dbContext.Users.Add(passenger2);
+                _dbContext.Users.Add(passenger3);
                 _dbContext.Users.Add(passenger4);
                 #endregion
 
-                #region Chat
-                Chat chat1 = new Chat("chat1");
-                chat1.AddParticipants((Passenger)passenger3);
-                chat1.AddParticipants((Passenger)passenger2);
-                _dbContext.Chats.Add(chat1);
-
-                Chat chat2 = new Chat("chat2");
-                chat1.AddParticipants((Passenger)passenger1);
-                chat1.AddParticipants((Passenger)passenger4);
-                _dbContext.Chats.Add(chat2);
-
-                #endregion
+                
 
                 #region Media
 
-                    #region Movie
-                    Movie movie1 = new Movie("movie.jfif", "movie1", "This is movie1", VideoCategory.action, "AtjeVoorDeSfeer.mp4");
+                #region Movie
+                Movie movie1 = new Movie("movie.jfif", "movie1", "This is movie1", VideoCategory.action, "AtjeVoorDeSfeer.mp4");
                     _dbContext.Mediafiles.Add(movie1);
 
                     Movie movie2 = new Movie("movie.jfif", "movie2", "This is movie2", VideoCategory.comedy, "AtjeVoorDeSfeer.mp4");

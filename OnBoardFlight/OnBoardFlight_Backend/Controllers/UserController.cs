@@ -28,6 +28,20 @@ namespace OnBoardFlight_Backend.Controllers
             return _userRepository.GetPassengers().OrderBy(p => (p as Passenger).Seat);
         }
 
+        [HttpGet]
+        [Route("passenger/chat/{seat}")]
+        public IActionResult GetPassengerChat(string seat)
+        {
+            Passenger pas = _userRepository.GetPassengerChatBySeat(seat);
+            if(pas == null)
+            {
+                return BadRequest();
+            }
+            List<ChatDTO> chats = pas.ChatList.Select(cl => new ChatDTO(cl.Chat, cl.Name)).ToList();
+            return Ok(chats);
+        }
+
+
         [HttpPost("cabincrew/login")]
         public IActionResult GetCabinCrewMemberByCredentials(CabinCrewLogin cabinCrewLogin)
         {
@@ -65,10 +79,10 @@ namespace OnBoardFlight_Backend.Controllers
             return NoContent();
         }
 
-        [HttpGet("notifications/{id}")]
-        public IEnumerable<Notification> GetPassengerNotificationsById(int id)
+        [HttpGet("notifications/{seat}")]
+        public IEnumerable<Notification> GetPassengerNotificationsBySeat(string seat)
         {
-            return _userRepository.GetNotificationByPassengerId(id);
+            return _userRepository.GetNotificationByPassengerSeat(seat);
         }
 
         [HttpPost]

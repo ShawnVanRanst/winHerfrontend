@@ -65,9 +65,18 @@ namespace OnBoardFlight_Backend.Data.Repository
             return _users.FirstOrDefault(u => u.Login == login && u.Pass == pass);
         }
 
-        public IEnumerable<Notification> GetNotificationByPassengerId(int id)
+        public IEnumerable<Notification> GetNotificationByPassengerSeat(string seat)
         {
-            return (_users.Include(u => (u as Passenger).Notifications).FirstOrDefault(u => u.UserId == id) as Passenger).Notifications.ToList();
+            return (_users.Where(u => u.GetType() == typeof(Passenger)).Include(u => (u as Passenger).Notifications).FirstOrDefault(u => (u as Passenger).Seat == seat) as Passenger).Notifications.ToList();
+        }
+
+        public Passenger GetPassengerChatBySeat(string seat)
+        {
+            return (Passenger)
+                    _users.Where(u => u.GetType() == typeof(Passenger))
+                    .Include(u => (u as Passenger).ChatList).ThenInclude(cl => cl.Chat).ThenInclude(c => c.Participants).ThenInclude(p => p.Passenger)
+                    .Include(u => (u as Passenger).ChatList).ThenInclude(cl => cl.Chat).ThenInclude(c => c.Messages).ThenInclude(m => m.Sender)
+                    .FirstOrDefault(u => (u as Passenger).Seat == seat);
         }
     }
 }

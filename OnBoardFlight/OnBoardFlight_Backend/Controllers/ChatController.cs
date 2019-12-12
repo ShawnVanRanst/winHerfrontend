@@ -20,7 +20,7 @@ namespace OnBoardFlight_Backend.Controllers
         {
             _chatRepository = chatRepository;
         }
-
+        /*
         [HttpGet("{id}")]
         public IActionResult GetChat(int id)
         {
@@ -32,6 +32,7 @@ namespace OnBoardFlight_Backend.Controllers
             return Ok(new ChatDTO(chat));
         }
 
+    */
         [HttpPut("{id}")]
         public IActionResult UpdateChat(int id, Chat chat)
         {

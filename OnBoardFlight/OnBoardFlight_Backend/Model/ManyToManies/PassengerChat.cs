@@ -14,6 +14,8 @@ namespace OnBoardFlight_Backend.Model.ManyToManies
         public int PassengerId { get; set; }
 
         public int ChatId { get; set; }
+
+        public string Name { get; set; }
         #endregion
 
         #region Navigational properties
@@ -32,12 +34,13 @@ namespace OnBoardFlight_Backend.Model.ManyToManies
 
         }
 
-        public PassengerChat(Passenger passenger, Chat chat)
+        public PassengerChat(Passenger passenger, Chat chat, string name)
         {
             Passenger = passenger;
             PassengerId = Passenger.UserId;
             Chat = chat;
             ChatId = Chat.ChatId;
+            Name = name;
         }
         #endregion
     }

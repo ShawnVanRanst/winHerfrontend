@@ -11,29 +11,27 @@ namespace OnBoardFlight_Backend.Model
 
         public int ChatId { get; set; }
 
-        public string Name { get; set; }
+        public ICollection<PassengerChat> Participants { get; set; }
 
-        public ICollection<PassengerChat> Participants { get; set; } = new List<PassengerChat>();
+        public ICollection<Message> Messages { get; set; }
 
-        public ICollection<Message> Messages { get; set; } = new List<Message>();
+        public ICollection<Passenger> ChatMembers => Participants.Select(p => p.Passenger).ToList();
 
 
         #region Constructors
+
         public Chat()
         {
-        }
-
-        public Chat(string name)
-        {
-            Name = name;
+            Messages = new List<Message>();
+            Participants = new List<PassengerChat>();
         }
         #endregion
 
         #region Methods
 
-        public void AddParticipants(Passenger passenger)
+        public void AddParticipants(PassengerChat passengerChat)
         {
-            Participants.Add(new PassengerChat(passenger, this));
+            Participants.Add(passengerChat);
         }
 
         public void AddMessage(Message message)
