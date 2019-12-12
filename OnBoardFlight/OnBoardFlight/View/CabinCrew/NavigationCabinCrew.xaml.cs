@@ -38,7 +38,7 @@ namespace OnBoardFlight.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            navigationCabinCrewViewModel = new NavigationCabinCrewViewModel((Model.CabinCrew)e.Parameter);
+            navigationCabinCrewViewModel = new NavigationCabinCrewViewModel((Model.Helper.CabinCrewLogin)e.Parameter);
         }
 
         private void NavigateTo(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

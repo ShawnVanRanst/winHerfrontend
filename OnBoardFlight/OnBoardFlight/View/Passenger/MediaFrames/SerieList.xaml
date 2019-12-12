@@ -28,7 +28,6 @@
                                     <StackPanel Orientation="Vertical">
                                         <Image Source="{Binding Image}"/>
                                         <TextBlock Text="{Binding Title}"/>
-                                        <TextBlock Text="{Binding Description}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

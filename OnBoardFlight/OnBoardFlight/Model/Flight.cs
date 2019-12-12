@@ -8,7 +8,8 @@ namespace OnBoardFlight.Model
 {
     public class Flight
     {
-  
+        public int FlightId { get; set; }
+
         private Location _origin;
 
         public Location Origin

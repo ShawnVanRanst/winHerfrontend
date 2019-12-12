@@ -11,10 +11,6 @@ namespace OnBoardFlight_Backend.Model
 
         #region Properties
 
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
         public string Seat { get; set; }
 
         #endregion
@@ -25,6 +21,8 @@ namespace OnBoardFlight_Backend.Model
         public ICollection<Order> Orders { get; set; }
 
         public ICollection<PassengerChat> ChatList{ get; set; }
+
+        public ICollection<Notification> Notifications { get; set; }
         #endregion
 
         #region Constructors
@@ -34,10 +32,15 @@ namespace OnBoardFlight_Backend.Model
             TravelCompany = new List<Passenger>();
             Orders = new List<Order>();
             ChatList = new List<PassengerChat>();
+            Notifications = new List<Notification>();
         }
 
         public Passenger(string firstName, string lastName, string seat)
         {
+            TravelCompany = new List<Passenger>();
+            Orders = new List<Order>();
+            ChatList = new List<PassengerChat>();
+            Notifications = new List<Notification>();
             FirstName = firstName;
             LastName = lastName;
             Seat = seat;
@@ -47,6 +50,10 @@ namespace OnBoardFlight_Backend.Model
         #endregion
 
         #region Methods
+        public void AddNotification(Notification notification)
+        {
+            Notifications.Add(notification);
+        }
         #endregion
     }
 }

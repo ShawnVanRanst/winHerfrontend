@@ -12,7 +12,6 @@ namespace OnBoardFlight.Data
     public class DataInitializer
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly UserManager<IdentityUser> _userManager;
 
         public DataInitializer(ApplicationDbContext applicationDbContext)
         {
@@ -27,28 +26,61 @@ namespace OnBoardFlight.Data
             {
 
                 #region Flights
-                Flight f = new Flight() {Destination = "test", Origin = "testa" };
-                _dbContext.Flights.Add(f);
+                Flight flight = new Flight()
+                {
+                    Origin = new Location()
+                    {
+                        Airport = "Brussels Airport",
+                        City = "Zaventem",
+                        CountryIso = "bel",
+                        Country = "Belgium",
+                        Time = new DateTime(2019, 12, 15, 10, 45, 0)
+                    },
+                    Destination = new Location()
+                    {
+                        Airport = "Internationale Luchthaven Barcelona",
+                        City = "Barcelona",
+                        CountryIso = "esp",
+                        Country = "Spain",
+                        Time = new DateTime(2019, 12, 15, 12, 25, 0)
+                    }
+                };
+                _dbContext.Flights.Add(flight);
+                #endregion
+
+                #region Notification
+                Notification notification1 = new Notification { Title = "Safety First", Content = "This is a plain, not some kampin kitsch party", General = true };
+                _dbContext.Add(notification1);
+                Notification notification2 = new Notification { Title = "Safety First", Content = "This is a plain, not some kampin kitsch party", General = true };
+                _dbContext.Add(notification2);
+                Notification notification3 = new Notification { Title = "Safety First", Content = "This is a plain, not some kampin kitsch party", General = true };
+                _dbContext.Add(notification3);
+                Notification notification4 = new Notification { Title = "Safety First", Content = "This is a plain, not some kampin kitsch party", General = true };
+                _dbContext.Add(notification4);
                 #endregion
 
                 #region Users
-                User crewMember1 = new CabinCrew { Login = "crewmember1" };
+                CabinCrew crewMember1 = new CabinCrew { Login = "RR", Pass = "pornhub", FirstName = "Riley", LastName = "Reid", Flight = flight };
                 //await CreateUser(crewMember.Login, "P@ssword1");
                 _dbContext.Users.Add(crewMember1);
 
-                User crewMember2 = new CabinCrew { Login = "crewmember2" };
+                CabinCrew crewMember2 = new CabinCrew { Login = "crewmember2", Pass = "234", Flight = flight };
                 _dbContext.Users.Add(crewMember2);
 
-                User passenger1 = new Passenger("Arno", "Boel", "01A");
+                Passenger passenger1 = new Passenger("Arno", "Boel", "01A") { Flight = flight };
+                passenger1.AddNotification(notification1);
                 _dbContext.Users.Add(passenger1);
 
-                User passenger2 = new Passenger("Ruben", "Grillaert", "20D");
+                Passenger passenger2 = new Passenger("Ruben", "Grillaert", "20D") { Flight = flight };
+                passenger2.AddNotification(notification2);
                 _dbContext.Users.Add(passenger2);
 
-                User passenger3 = new Passenger("Shawn", "Van Ranst", "12F");
+                Passenger passenger3 = new Passenger("Shawn", "Van Ranst", "12F") { Flight = flight };
+                passenger3.AddNotification(notification3);
                 _dbContext.Users.Add(passenger3);
 
-                User passenger4 = new Passenger("Melissa", "Van Belle", "01B");
+                Passenger passenger4 = new Passenger("Melissa", "Van Belle", "01B") { Flight = flight };
+                passenger4.AddNotification(notification4);
                 _dbContext.Users.Add(passenger4);
                 #endregion
 
@@ -87,10 +119,46 @@ namespace OnBoardFlight.Data
 
                     Serie serie3 = new Serie("movie.jfif", "serie3", "This is serie3", VideoCategory.action);
                     _dbContext.Mediafiles.Add(serie3);
+
+                #region MindField
+                Serie MindField = new Serie("MF.jpg", "Mind Field",
+                    "In Mind Field, host Michael Stevens brings his passion for science to " +
+                    "his most ambitious subject yet: something we still know very little about, " +
+                    "human behavior." +
+                    "Using real subjects (including guest stars and Michael himself) " +
+                    "Mind Field reveals some of the most mind-blowing, " +
+                    "significant, and least-understood aspects of the human psyche." +
+                    "Through expert interviews, rare footage from historical experiments, " +
+                    "and brand-new, ground-breaking demonstrations of human nature at work, " +
+                    "Mind Field explores the surprising things we know (and don’t know) about " +
+                    "why people are the way they are.", VideoCategory.science);
+
+                _dbContext.Add(MindField);
+
+                List<SerieEpisode> serieEpisodes = new List<SerieEpisode>();
+
+                serieEpisodes.Add(new SerieEpisode("MF1.png", "Isolation", "What happens when your brain is deprived of stimulation? What effect does being cut off from interaction with the outside world have on a person?  What effect does it have on me, when I am locked in a windowless, soundproof isolation chamber for three days?", 1, 1, "AtjeVoorDeSfeer.mp4"));
+                serieEpisodes.Add(new SerieEpisode("MF2.png", "Conformity", "We are all unique individuals.  We follow the beat of our own drum.  We wouldn’t throw our own beliefs out the window just to fit in...or would we?  In this episode of Mind Field, I demonstrate the strong, human urge to conform, and just how far people will go to fall in with the crowd.", 2, 1, "AtjeVoorDeSfeer.mp4"));
+                serieEpisodes.Add(new SerieEpisode("MF3.png", "Destruction", "We humans love to build, create, and organize.  So why do we also love to destroy things?  Can violently breaking stuff really help to calm us down, or does it just make us more angry?  In this episode of Mind Field, I take a hard look at our urge to destroy.", 3, 1, "AtjeVoorDeSfeer.mp4"));
+                serieEpisodes.Add(new SerieEpisode("MF4.png", "Artificial Intelligence", "So you say you love your computer or smartphone...but can it love you back? As we become more dependent on technology, and our technology becomes more lifelike, where does the line between human and computer lie?  And what happens when our relationships become romantic?", 4, 1, "AtjeVoorDeSfeer.mp4"));
+                serieEpisodes.Add(new SerieEpisode("MF5.png", "Freedom of Choice", "We may value having Freedom of Choice, but are we actually happier when we have limited choices...or even no choice at all?  Do we truly have control over our decisions, or are they really predetermined by other forces?  My fellow YouTubers and I have our minds read by a “box” that reveals who - or what - is really calling the shots. ", 5, 1, "AtjeVoorDeSfeer.mp4"));
+                serieEpisodes.Add(new SerieEpisode("MF6.png", "Touch", "How much of the sensations we feel is determined by our physical bodies?  Maybe our minds play a bigger role than we know.  I’ll see if people can be tricked into feeling intense physical pain, even though it’s all in their heads.  I’ll also look at a machine that makes it possible for you to tickle yourself, and I’ll show you a weird physical illusion you can do at home.", 6, 1, "AtjeVoorDeSfeer.mp4"));
+                serieEpisodes.Add(new SerieEpisode("MF7.png", "In Your Face", "How much do we communicate through facial expressions?  Are our expressions affected by our moods, or is it the other way around?  And what happens to your ability to relate to others when your facial muscles are frozen by Botox?  In this episode of Mind Field, I take a look at what’s In Your Face.", 7, 1, "AtjeVoorDeSfeer.mp4"));
+                serieEpisodes.Add(new SerieEpisode("MF8.png", "Dou You Know Yourself?", "What makes you, you?  If even the most basic parts of you, like your memories or your past, can be forgotten or manipulated, how can you know ever really know who “you” are?  In this episode of Mind Field I look at how well Do You Know Yourself?", 8, 1, "AtjeVoorDeSfeer.mp4"));
+
+                foreach(SerieEpisode serie in serieEpisodes)
+                {
+                    MindField.AddEpisode(serie);
+                    _dbContext.Mediafiles.Add(serie);
+                }
+
+                
                 #endregion
 
-                    #region Serie Episode
-                    SerieEpisode episode1 = new SerieEpisode("movie.jfif", "episode1", "This is episode 1", 1, 1, "AtjeVoorDeSfeer.mp4");
+                #endregion
+
+                #region Serie Episode
+                SerieEpisode episode1 = new SerieEpisode("movie.jfif", "episode1", "This is episode 1", 1, 1, "AtjeVoorDeSfeer.mp4");
                     serie1.AddEpisode((SerieEpisode)episode1);
                     _dbContext.Mediafiles.Add(episode1);
 

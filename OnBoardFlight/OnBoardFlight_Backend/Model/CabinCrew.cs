@@ -8,6 +8,9 @@ namespace OnBoardFlight_Backend.Model
 {
     public class CabinCrew: User
     {
+        #region Properties
+        
+        #endregion
 
         #region Constructors
 
@@ -16,12 +19,11 @@ namespace OnBoardFlight_Backend.Model
 
         }
 
-        public CabinCrew(string login)
+        public CabinCrew(string login, string password)
         {
             Login = login;
+            Pass = password;
         }
         #endregion
-
-
     }
 }

@@ -9,6 +9,7 @@ namespace OnBoardFlight_Backend.Model.MediaTypes
     {
         comedy,
         action,
-        horror
+        horror,
+        science
     }
 }

@@ -22,7 +22,7 @@ namespace OnBoardFlight.ViewModel.Passenger
         {
             Passenger = passenger;
             ChatList = new ObservableCollection<Chat>(passenger.ChatList);
-            LoadDataAsync();
+            //LoadDataAsync();
         }
 
         private async void LoadDataAsync()

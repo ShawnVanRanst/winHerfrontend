@@ -38,7 +38,8 @@ namespace OnBoardFlight.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            NavigationPassengerViewModel = new NavigationPassengerViewModel((Model.Passenger)e.Parameter);
+            NavigationPassengerViewModel = new NavigationPassengerViewModel((string)e.Parameter);
+            this.DataContext = NavigationPassengerViewModel;
         }
 
         private void NavigateTo(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -67,7 +68,7 @@ namespace OnBoardFlight.View
                     mainFrame.Navigate(typeof(MultiMedia));
                     break;
                 case "Chat":
-                    mainFrame.Navigate(typeof(View.Passenger.Chat), NavigationPassengerViewModel.Passenger);
+                    mainFrame.Navigate(typeof(View.Passenger.Chat), (this.DataContext as NavigationPassengerViewModel).Passenger);
                     break;
                 case "Game":
                     mainFrame.Navigate(typeof(View.Passenger.Game));
