@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using OnBoardFlight.Model;
+using OnBoardFlight.Model.Helper;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,10 +19,10 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         public Model.Passenger Passenger { get; set; }
 
-        public ChatViewModel(Model.Passenger passenger)
+        public ChatViewModel(GeneralLogin generalLogin)
         {
-            Passenger = passenger;
-            ChatList = new ObservableCollection<Chat>(passenger.ChatList);
+            ChatList = new ObservableCollection<Chat>();
+            LoadChat(generalLogin.Login);
             //LoadDataAsync();
         }
 
@@ -41,6 +42,17 @@ namespace OnBoardFlight.ViewModel.Passenger
         protected void RaisePropertyChanged([CallerMemberName]string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private async void LoadChat(string seat)
+        {
+            HttpClient client = new HttpClient();
+            var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/User/passenger/chat/" + seat));
+            var chatlist = JsonConvert.DeserializeObject<IList<Chat>>(json);
+            foreach(var chat in chatlist)
+            {
+                ChatList.Add(chat);
+            }
         }
     }
 }

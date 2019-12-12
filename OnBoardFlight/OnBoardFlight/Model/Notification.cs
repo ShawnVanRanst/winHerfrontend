@@ -25,7 +25,7 @@ namespace OnBoardFlight.Model
         public string Context
         {
             get { return _context; }
-            set { _context = value; RaisePropertyChanged("Context"); }
+            set { _context = value; RaisePropertyChanged("Content"); }
         }
 
         private bool _general;
@@ -33,7 +33,7 @@ namespace OnBoardFlight.Model
         public bool General
         {
             get { return _general; }
-            set { _general = value; RaisePropertyChanged("Context"); }
+            set { _general = value; RaisePropertyChanged("Content"); }
         }
 
         private string _passengerSeat;
