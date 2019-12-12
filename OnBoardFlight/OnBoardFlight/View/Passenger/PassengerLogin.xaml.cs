@@ -49,7 +49,7 @@ namespace OnBoardFlight.View
         {
             try
             {
-                Frame.Navigate(typeof(NavigationPassenger), LoginBtn.Text);
+                Frame.Navigate(typeof(NavigationPassenger), (this.DataContext as PassengerLoginViewModel).GeneralLogin);
             }
             catch (Exception) { };
         }

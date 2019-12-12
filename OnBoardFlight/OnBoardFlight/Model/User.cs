@@ -49,5 +49,14 @@ namespace OnBoardFlight.Model
             get { return _lastName; }
             set { _lastName = value; RaisePropertyChanged("LastName"); }
         }
+
+        private Flight flight;
+
+        public Flight Flight
+        {
+            get { return flight; }
+            set { flight = value; }
+        }
+
     }
 }

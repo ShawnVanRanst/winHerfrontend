@@ -59,9 +59,9 @@ namespace OnBoardFlight.ViewModel.CabinCrew
 
         public LoginViewModel()
         {
+            CabinCrewLogin = new CabinCrewLogin { Login = "", Password = "" };
             LoginCommand = new LoginCommand(this);
             CancelLoginCommand = new CancelLoginCommand(this);
-            CabinCrewLogin = new CabinCrewLogin { Login = "", Password = ""};
             CancelLogin();
         }
 

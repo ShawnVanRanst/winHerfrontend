@@ -17,6 +17,15 @@ namespace OnBoardFlight.ViewModel.Passenger
     {
         #region Properties
 
+        private GeneralLogin _generalLogin;
+
+        public GeneralLogin GeneralLogin
+        {
+            get { return _generalLogin; }
+            set { _generalLogin = value; }
+        }
+
+
         private string _number;
 
         public string Number
@@ -66,6 +75,7 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         public PassengerLoginViewModel()
         {
+            GeneralLogin = new GeneralLogin() { Login = ""};
             LoginCommand = new LoginCommand(this);
             CancelLoginCommand = new CancelLoginCommand(this);
             CancelLogin();
@@ -80,11 +90,10 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         public async Task Login()
         {
-            string x = Number;
             HttpClient client = new HttpClient();
             try
             {
-                var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/User/passenger/" + Number));
+                var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/User/passenger/" + GeneralLogin.Login));
                 var passenger = JsonConvert.DeserializeObject<Model.Passenger>(json);
                 Passenger = passenger;
                 if(passenger != null)

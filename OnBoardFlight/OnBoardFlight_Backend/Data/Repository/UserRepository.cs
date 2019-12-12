@@ -30,7 +30,7 @@ namespace OnBoardFlight_Backend.Data.Repository
 
         public Passenger GetPassengerBySeat(string seat)
         {
-            return (Passenger)_users.Where(u => u.GetType() == typeof(Passenger)).Include(p => (p as Passenger).TravelCompany).Include(p => (p as Passenger).ChatList).Include(p => (p as Passenger).Orders).Include(p => (p as Passenger).Notifications).FirstOrDefault(p => (p as Passenger).Seat.Equals(seat));
+            return (Passenger)_users.Where(u => u.GetType() == typeof(Passenger)).Include(p => (p as Passenger).TravelCompany).Include(p => (p as Passenger).ChatList).Include(p => (p as Passenger).Orders).Include(p => (p as Passenger).Notifications).Include(p => p.Flight).ThenInclude(f => f.Origin).Include(p => p.Flight).ThenInclude(f => f.Destination).FirstOrDefault(p => (p as Passenger).Seat.Equals(seat));
         }
 
         public IEnumerable<User> GetPassengers()

@@ -26,19 +26,17 @@ namespace OnBoardFlight.View
     /// </summary>
     public sealed partial class NavigationCabinCrew : Page
     {
-        private NavigationCabinCrewViewModel navigationCabinCrewViewModel { get; set; }
-
         public NavigationCabinCrew()
         {
             this.InitializeComponent();
             NavView.SelectedItem = HomeBtn;
-            mainFrame.Navigate(typeof(Home));
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            navigationCabinCrewViewModel = new NavigationCabinCrewViewModel((Model.Helper.CabinCrewLogin)e.Parameter);
+            this.DataContext = new NavigationCabinCrewViewModel((Model.Helper.CabinCrewLogin)e.Parameter);
+            NavOptions("Home");
         }
 
         private void NavigateTo(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -53,7 +51,7 @@ namespace OnBoardFlight.View
             switch (tag)
             {
                 case "Home":
-                    mainFrame.Navigate(typeof(Home));
+                    mainFrame.Navigate(typeof(Home), (this.DataContext as NavigationCabinCrewViewModel).CabinCrewLogin);
                     break;
                 case "Seats":
                     mainFrame.Navigate(typeof(Seats));

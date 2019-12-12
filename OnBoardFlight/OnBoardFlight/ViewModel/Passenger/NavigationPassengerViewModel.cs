@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using OnBoardFlight.Model;
+using OnBoardFlight.Model.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,23 +14,11 @@ namespace OnBoardFlight.ViewModel.Passenger
     {
         public Model.Passenger Passenger { get; set; }
 
-        public NavigationPassengerViewModel(string login)
-        {
-            GetData(login);
-        }
+        public GeneralLogin GeneralLogin { get; set; }
 
-        private async void GetData(string number)
+        public NavigationPassengerViewModel(GeneralLogin login)
         {
-            HttpClient client = new HttpClient();
-            try
-            {
-                var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/User/passenger/" + number));
-                var passenger = JsonConvert.DeserializeObject<Model.Passenger>(json);
-                Passenger = passenger;
-            }
-            catch (Exception e)
-            {
-            };
+            GeneralLogin = login;
         }
     }
 }

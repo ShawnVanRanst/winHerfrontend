@@ -14,7 +14,7 @@
             <StackPanel Orientation="Vertical" Visibility="{Binding VisibilityCheck}">
                 <TextBlock HorizontalAlignment="Left" x:Name="LoginError" Foreground="Red"/>
                 <TextBlock Text="Please fill in your seat number" HorizontalAlignment="Left" Margin="0,0,0,10"/>
-                <TextBox x:Name="LoginBtn" Margin="0,0,0,20" Text="{Binding Number, Mode=TwoWay}"/>
+                <TextBox x:Name="LoginBtn" Margin="0,0,0,20" Text="{Binding GeneralLogin.Login, Mode=TwoWay}"/>
                 <Button HorizontalAlignment="Center" Content="CheckSeat" Command="{Binding LoginCommand}" CommandParameter="{Binding}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding VisibilityLogin}">

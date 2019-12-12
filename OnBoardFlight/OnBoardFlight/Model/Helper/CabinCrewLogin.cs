@@ -8,29 +8,14 @@ using System.Threading.Tasks;
 
 namespace OnBoardFlight.Model.Helper
 {
-    public class CabinCrewLogin : INotifyPropertyChanged
+    public class CabinCrewLogin : GeneralLogin, INotifyPropertyChanged
     {
-        private string _login;
-
-        public string Login
-        {
-            get { return _login; }
-            set { _login = value; RaisePropertyChanged("LoginCabinCrew"); }
-        }
-
         private string _password;
 
         public string Password
         {
             get { return _password; }
             set { _password = value; RaisePropertyChanged("Password"); }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void RaisePropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

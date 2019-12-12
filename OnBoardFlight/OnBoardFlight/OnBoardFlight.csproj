@@ -126,7 +126,7 @@
     <Compile Include="Model\Helper\CategoryAndListProductHelper.cs" />
     <Compile Include="Model\Helper\CategoryAndListVideoHelper.cs" />
     <Compile Include="Model\Helper\ChatConversationHelper.cs" />
-    <Compile Include="Model\Helper\PassengerLogin.cs" />
+    <Compile Include="Model\Helper\GeneralLogin.cs" />
     <Compile Include="Model\Media\Media.cs" />
     <Compile Include="Model\Media\Movie.cs" />
     <Compile Include="Model\Media\Video.cs" />
@@ -195,7 +195,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\DummyDataSource.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
-    <Compile Include="ViewModel\WeatherProxyViewModel.cs" />
     <Compile Include="View\CabinCrew\Advertisement.xaml.cs">
       <DependentUpon>Advertisement.xaml</DependentUpon>
     </Compile>
@@ -255,9 +254,6 @@
     </Compile>
     <Compile Include="View\Passenger\PassengerLogin.xaml.cs">
       <DependentUpon>PassengerLogin.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\General\Weather.xaml.cs">
-      <DependentUpon>Weather.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Passenger\Shop.xaml.cs">
       <DependentUpon>Shop.xaml</DependentUpon>
@@ -385,10 +381,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Passenger\PassengerLogin.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\General\Weather.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

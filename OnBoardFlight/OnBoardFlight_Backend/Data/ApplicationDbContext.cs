@@ -32,6 +32,8 @@ namespace OnBoardFlight.Data
             builder.Entity<Movie>();
             builder.Entity<Serie>();
             builder.Entity<SerieEpisode>();
+            builder.Entity<User>().HasOne(u => u.Flight).WithMany();
+
 
             base.OnModelCreating(builder);
         }
