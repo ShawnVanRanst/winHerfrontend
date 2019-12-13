@@ -7,8 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal">
-        <ScrollViewer>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Column="0">
             <StackPanel Orientation="Vertical">
                 <ListView ItemsSource="{Binding ChatList}" x:Name="ChatListView" Tapped="SelectChat">
                     <ListView.ItemTemplate>
@@ -19,6 +26,22 @@
                 </ListView>
             </StackPanel>
         </ScrollViewer>
-        <Frame x:Name="Conversation"/>
-    </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <ScrollViewer MaxHeight="1000">
+                <StackPanel Orientation="Vertical">
+                    <ListView ItemsSource="{Binding Messages}" x:Name="MessagesListView">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Content}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </ScrollViewer>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                <TextBox HorizontalAlignment="Left" Width="400" x:Name="MessageText"/>
+                <Button Content="Send" HorizontalAlignment="Right"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
 </Page>

@@ -7,21 +7,5 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Vertical">
-        <ScrollViewer MaxHeight="1000">
-            <StackPanel Orientation="Vertical">
-                <ListView ItemsSource="{Binding Messages}" x:Name="MessagesListView">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Context}"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
-        </ScrollViewer>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <TextBox HorizontalAlignment="Left" Width="400" x:Name="MessageText"/>
-            <Button Content="Send" HorizontalAlignment="Right" Tapped="SendMessage"/>
-        </StackPanel>
-    </StackPanel>
+    
 </Page>

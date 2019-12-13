@@ -40,8 +40,10 @@ namespace OnBoardFlight.View.Passenger
 
         private void SendMessage(object sender, TappedRoutedEventArgs e)
         {
+            /*
             _chatConversationViewModel.SendMessage(MessageText.Text);
             MessageText.Text = "";
+            */
         }
     }
 }
