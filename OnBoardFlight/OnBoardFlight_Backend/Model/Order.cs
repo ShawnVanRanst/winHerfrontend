@@ -51,7 +51,7 @@ namespace OnBoardFlight_Backend.Model
             double total = 0.0;
             foreach(Orderline line in Orderlines)
             {
-                total += line.CalculateTotalPrice();
+                total += line.TotalPrice;
             }
             TotalPrice = total;
         }

@@ -73,7 +73,7 @@ namespace OnBoardFlight_Backend.Controllers
             {
                 return StatusCode(500);
             }
-            return Ok(order);
+            return Ok(dto);
         }
     }
 }

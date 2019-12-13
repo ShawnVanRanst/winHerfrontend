@@ -13,9 +13,6 @@ namespace OnBoardFlight.DTO
 
         public int ProductId { get; set; }
 
-        public double TotalPrice { get; set; }
-
-
         public OrderlineDTO(Orderline orderline)
         {
             Number = orderline.Number;

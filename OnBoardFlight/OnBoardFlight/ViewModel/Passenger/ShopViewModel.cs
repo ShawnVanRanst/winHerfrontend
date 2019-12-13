@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OnBoardFlight.DTO;
 using OnBoardFlight.Model;
 using OnBoardFlight.Model.Helper;
 using OnBoardFlight.Model.Media;
@@ -18,7 +19,11 @@ namespace OnBoardFlight.ViewModel.Passenger
 {
     public class ShopViewModel
     {
+        #region Backend call properties
         private HttpClient client { get; }
+
+        private string ErrorMessage { get; set; } 
+        #endregion
 
         public string SeatNumber { get; set; }
 
@@ -167,16 +172,28 @@ namespace OnBoardFlight.ViewModel.Passenger
             FillCategoryListProductList();
         }
 
-        private static async void AddOrder()
+        private async void PostOrder()
         {
-            var response = string.Empty;
-            client.PostAsync()
+            OrderDTO dto = new OrderDTO(Cart.Order);
+            HttpContent content = new StringContent(DTOToJson(dto));
+            HttpResponseMessage result = await client.PostAsync(new Uri("http://localhost:5000/api/Order"), content);
+            if(result.IsSuccessStatusCode)
+            {
+                ClearCart();
+            }
         }
 
 
-        private string OrderToJson()
+        private string DTOToJson(OrderDTO dto)
         {
-            return JsonConvert.SerializeObject(Cart.Order);
+            return JsonConvert.SerializeObject(dto);
+        }
+
+
+        //Reset cart to null so that the cart is ready for a new order
+        private void ClearCart()
+        {
+            Cart = null;
         }
     }
 }

@@ -223,7 +223,7 @@ namespace OnBoardFlight.Data
                 #region Orderline
                 Orderline orderline1 = new Orderline(2, product1, order1);
                 _dbContext.Orderlines.Add(orderline1);
-                order1.AddOrderlines(orderline1);
+                order1.AddOrderline(orderline1);
                 #endregion
                 #region Save changes
                 _dbContext.SaveChanges();
