@@ -40,11 +40,12 @@ namespace OnBoardFlight.View.Passenger.MediaFrames
         {
             base.OnNavigatedTo(e);
             this.DataContext = new SerieDetailViewModel((int)e.Parameter);
+             
         }
 
         private void SerieEpisodeDetails(object sender, TappedRoutedEventArgs e)
         {
-            SelectedEpisode.Navigate(typeof(SerieEpisodeDetail), ((sender as ListView).SelectedItem as SerieEpisode).Id);
+            Frame.Navigate(typeof(SerieEpisodeDetail), ((sender as ListView).SelectedItem as SerieEpisode).Id);
         }
     }
 }

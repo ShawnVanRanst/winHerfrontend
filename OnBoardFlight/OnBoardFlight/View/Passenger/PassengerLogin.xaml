@@ -8,14 +8,19 @@
     mc:Ignorable="d">
     <Grid>
         <Button VerticalAlignment="Top" Style="{StaticResource NavigationBackButtonNormalStyle}" x:Name="Back" Click="Back_Click" HorizontalAlignment="Left"/>
-
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock HorizontalAlignment="Center" Text="Login as" VerticalAlignment="Center" FontSize="36"/>
-            <TextBlock HorizontalAlignment="Center" Text="Passenger" VerticalAlignment="Center" FontSize="72" Margin="0,0,0,40" FontWeight="Bold"/>
-            <TextBlock HorizontalAlignment="Left" x:Name="LoginError" Foreground="Red"/>
-            <TextBlock Text="Please fill in your seat number" HorizontalAlignment="Left" Margin="0,0,0,10"/>
-            <TextBox x:Name="LoginBtn" Margin="0,0,0,20"/>
-            <Button HorizontalAlignment="Center" Content="Login" Click="Login" />
+            <TextBlock HorizontalAlignment="Center" Text="{Binding Name}" VerticalAlignment="Center" FontSize="72" Margin="0,0,0,40" FontWeight="Bold"/>
+            <StackPanel Orientation="Vertical" Visibility="{Binding VisibilityCheck}">
+                <TextBlock HorizontalAlignment="Left" x:Name="LoginError" Foreground="Red"/>
+                <TextBlock Text="Please fill in your seat number" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+                <TextBox x:Name="LoginBtn" Margin="0,0,0,20" Text="{Binding GeneralLogin.Login, Mode=TwoWay}"/>
+                <Button HorizontalAlignment="Center" Content="CheckSeat" Command="{Binding LoginCommand}" CommandParameter="{Binding}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding VisibilityLogin}">
+                <Button HorizontalAlignment="Center" Content="Login" Tapped="Login"/>
+                <Button HorizontalAlignment="Center" Content="Cancel" Command="{Binding CancelLoginCommand}"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

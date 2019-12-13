@@ -26,20 +26,20 @@ namespace OnBoardFlight.Model
             set { _sendDate = value; }
         }
 
-        private Passenger _sender;
+        private string _sender;
 
-        public Passenger Sender
+        public string Sender
         {
             get { return _sender; }
             set { _sender = value; RaisePropertyChanged("Sender"); }
         }
 
-        private string _context;
+        private string _content;
 
-        public string Context
+        public string Content
         {
-            get { return _context; }
-            set { _context = value; RaisePropertyChanged("Context"); }
+            get { return _content; }
+            set { _content = value; RaisePropertyChanged("Content"); }
         }
 
 

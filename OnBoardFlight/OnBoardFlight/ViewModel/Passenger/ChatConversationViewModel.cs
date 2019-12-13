@@ -38,9 +38,9 @@ namespace OnBoardFlight.ViewModel.Passenger
             {
                 Message msg = new Message()
                 {
-                    Context = message,
+                    Content = message,
                     SendDate = new DateTime(),
-                    Sender = Passenger
+                    Sender = "temp sender name"
                 };
                 Chat.AddMessage(msg);
                 Messages.Add(msg);

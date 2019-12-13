@@ -10,8 +10,8 @@ namespace OnBoardFlight.Model
     {
         public int FlightId { get; set; }
 
-        public string Origin { get; set; }
+        public Location Origin { get; set; }
 
-        public string Destination { get; set; }
+        public Location Destination { get; set; }
     }
 }

@@ -1,7 +1,10 @@
-﻿using OnBoardFlight.Model;
+﻿using Newtonsoft.Json;
+using OnBoardFlight.Model;
+using OnBoardFlight.Model.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,9 +14,11 @@ namespace OnBoardFlight.ViewModel.Passenger
     {
         public Model.Passenger Passenger { get; set; }
 
-        public NavigationPassengerViewModel(Model.Passenger passenger)
+        public GeneralLogin GeneralLogin { get; set; }
+
+        public NavigationPassengerViewModel(GeneralLogin login)
         {
-            Passenger = passenger;
+            GeneralLogin = login;
         }
     }
 }

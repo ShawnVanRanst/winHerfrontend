@@ -6,17 +6,23 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <ScrollViewer>
-        <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="{Binding Serie.Image}"/>
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="{Binding Serie.Title}"/>
-                    <TextBlock Text="{Binding Serie.Category}"/>
-                    <TextBlock Text="{Binding Serie.Description}"/>
-                </StackPanel>
-            </StackPanel>
-            <Frame x:Name="SelectedEpisode" />
+    <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Image Source="{Binding Serie.Image}" Grid.Column="0" Grid.Row="0"/>
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
+            <TextBlock Text="{Binding Serie.Title}"/>
+            <TextBlock Text="{Binding Serie.Category}"/>
+            <TextBlock Text="{Binding Serie.Description}" TextWrapping="Wrap"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
             <TextBlock Text="Episodes"/>
             <ListView ItemsSource="{Binding Serie.Episodes}"
                       SelectedItem="{Binding Serie}"
@@ -32,15 +38,15 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Vertical" Width="200">
                             <Image Source="{Binding Image}"/>
                             <TextBlock Text="{Binding DisplaySE}"/>
                             <TextBlock Text="{Binding Title}"/>
-                            <TextBlock Text="{Binding Description}"/>
+                            <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
-    </ScrollViewer>
+    </Grid>
 </Page>

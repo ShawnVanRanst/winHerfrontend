@@ -34,7 +34,7 @@ namespace OnBoardFlight.View.Passenger
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            _chatViewModel = new ChatViewModel((Model.Passenger) e.Parameter);
+            _chatViewModel = new ChatViewModel((GeneralLogin)e.Parameter);
             this.DataContext = _chatViewModel;
         }
 

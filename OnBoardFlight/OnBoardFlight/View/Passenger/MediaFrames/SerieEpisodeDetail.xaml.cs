@@ -33,5 +33,10 @@ namespace OnBoardFlight.View.Passenger.MediaFrames
             base.OnNavigatedTo(e);
             this.DataContext = new SerieEpisodeDetailViewModel((int)e.Parameter);
         }
+
+        private void Play(object sender, TappedRoutedEventArgs e)
+        {
+            playbtn.Visibility = Visibility.Collapsed;
+        }
     }
 }

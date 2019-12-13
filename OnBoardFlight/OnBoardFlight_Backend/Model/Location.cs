@@ -22,5 +22,8 @@ namespace OnBoardFlight.Model
 
         [Required]
         public DateTime Time { get; set; }
+
+        [Required]
+        public string CountryIso { get; set; }
     }
 }

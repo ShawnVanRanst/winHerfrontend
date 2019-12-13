@@ -8,6 +8,14 @@ namespace OnBoardFlight.Model
 {
     public class Location
     {
+        private int _locationId;
+
+        public int LocationId
+        {
+            get { return _locationId; }
+            set { _locationId = value; }
+        }
+
 
         private string _airport;
 
