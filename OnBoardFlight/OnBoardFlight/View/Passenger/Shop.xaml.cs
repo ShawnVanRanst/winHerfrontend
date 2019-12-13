@@ -43,5 +43,12 @@ namespace OnBoardFlight.View.Passenger
         {
 
         }
+
+        private void SelectProduct(object sender, TappedRoutedEventArgs e)
+        {
+            ListView lv = (ListView) sender;
+            Model.Product product = (Model.Product)lv.SelectedItem;
+            (this.DataContext as ShopViewModel).Product = product;
+        }
     }
 }

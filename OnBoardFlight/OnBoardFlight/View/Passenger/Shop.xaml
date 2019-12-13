@@ -9,17 +9,16 @@
 
     <ScrollViewer Height="800">
         <StackPanel Orientation="Horizontal">
-            <Button Content="Add to cart" Command="{Binding AddToCartCommand}"/>
             <StackPanel Orientation="Horizontal">
-            <ListView ItemsSource="{Binding CategoryListProductList}">
-                <ListView.ItemTemplate>
+                <ListView ItemsSource="{Binding CategoryListProductList}" x:Name="categoryList">
+                    <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="{Binding Category}"/>
                             <ListView x:Name="productList" ItemsSource="{Binding ProductList}"
                                 ScrollViewer.VerticalScrollBarVisibility="Disabled" 
                                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                ScrollViewer.HorizontalScrollMode="Enabled"                  >
+                                ScrollViewer.HorizontalScrollMode="Enabled" Tapped="SelectProduct"                  >
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <StackPanel Background="Transparent" Orientation="Horizontal" />
@@ -29,17 +28,17 @@
                                     <DataTemplate>
                                         <StackPanel Orientation="Vertical" Height="100" Background="DarkGray">
                                             <Image Source="{Binding ImageLink}"/>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding Description}"/>
-                                                <TextBlock Text="€" Margin="30 0 0 0"/>
-                                                <TextBlock Text="{Binding Price}"/>
-                                                <Button Content="Add to cart" Command="{Binding Path= AddToCartCommand}"/>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Description}"/>
+                                                    <TextBlock Text="€" Margin="30 0 0 0"/>
+                                                    <TextBlock Text="{Binding Price}"/>
+                                                </StackPanel>
                                             </StackPanel>
-                                        </StackPanel>
-                                    </DataTemplate>
+                                            
+                                        </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
-                        </StackPanel>
+                            </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

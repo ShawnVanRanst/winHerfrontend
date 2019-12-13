@@ -12,12 +12,27 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace OnBoardFlight.ViewModel.Passenger
 {
     public class ShopViewModel
     {
         public Model.Passenger Passenger { get; set; }
+
+        private Product _product;
+
+        public Product Product
+        {
+            get { return _product; }
+            set
+            {
+                _product = value;
+                AddProductToCart();
+                RaisePropertyChanged("Product");
+            }
+        }
+
 
         private Model.ShoppingCart _cart;
         public Model.ShoppingCart Cart
@@ -36,7 +51,7 @@ namespace OnBoardFlight.ViewModel.Passenger
 
 
         #region Command
-        public AddToCartCommand AddToCartCommand { get; set; }
+        public ICommand AddToCartCommand { get; set; }
         #endregion
 
         public ShopViewModel(Model.Passenger passenger)
@@ -44,14 +59,7 @@ namespace OnBoardFlight.ViewModel.Passenger
             CategoryListProductList = new ObservableCollection<CategoryAndListProductHelper>();
             ProductList = new List<Product>();
             Passenger = passenger;
-            AddToCartCommand = new AddToCartCommand(this);
-            //foreach(var c in CategoryListProductList)
-            //{
-            //    foreach (Product p in c.ProductList)
-            //    {
-            //        p.AddToCartCommand = AddToCartCommand;
-            //    }
-            //}
+            AddToCartCommand = new AddToCartCommand<object>(this);
             
             LoadData();
         }
@@ -62,25 +70,12 @@ namespace OnBoardFlight.ViewModel.Passenger
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void AddToCart(int id)
-        {
-            Product productToAdd = GetProductById(id);
-            if(productToAdd == null)
-            {
-                throw new ArgumentNullException();
-            }
-            else
-            {
-                AddProductToCart(productToAdd);
-            }
-        }
-
         private Product GetProductById(int id)
         {
             return ProductList.FirstOrDefault(p => p.ProductId == id);
         }
 
-        private void AddProductToCart(Product product)
+        public void AddProductToCart()
         {
             if (Cart == null)
             {
@@ -90,10 +85,10 @@ namespace OnBoardFlight.ViewModel.Passenger
             {
                 Cart.Order = new Order(Passenger);
             }
-            Orderline orderline = GetOrderline(product);
+            Orderline orderline = GetOrderline(Product);
             if(orderline == null)
             {
-                Cart.Order.Orderlines.Add(new Orderline(product));
+                Cart.Order.Orderlines.Add(new Orderline(Product));
             }
             else
             {

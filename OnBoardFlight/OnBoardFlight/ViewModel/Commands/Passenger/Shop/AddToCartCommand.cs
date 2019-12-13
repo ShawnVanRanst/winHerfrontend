@@ -5,14 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Xaml.Controls;
 
 namespace OnBoardFlight.ViewModel.Commands.Passenger.Shop
 {
-    public class AddToCartCommand : ICommand
+    public class AddToCartCommand<T> : ICommand
     {
-
-        public int ProductId { get; set; }
-
         public ShopViewModel ShopViewModel{ get; set; }
 
         public AddToCartCommand(ShopViewModel svm)
@@ -31,7 +29,7 @@ namespace OnBoardFlight.ViewModel.Commands.Passenger.Shop
         {
             try
             {
-                ShopViewModel.AddToCart(1);
+                ShopViewModel.AddProductToCart();
             }
             catch(ArgumentException ex)
             {

@@ -19,8 +19,5 @@ namespace OnBoardFlight.Model
 
         public ProductCategory Category { get; set; }
 
-        #region Commands
-        public AddToCartCommand AddToCartCommand{ get; set; }
-        #endregion
-    }
+        }
 }
