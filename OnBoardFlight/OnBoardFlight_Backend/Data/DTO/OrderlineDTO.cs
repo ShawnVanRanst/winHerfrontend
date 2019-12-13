@@ -5,15 +5,13 @@ using System.Threading.Tasks;
 
 namespace OnBoardFlight_Backend.Data.DTO
 {
-    public class OrderDTO
+    public class OrderlineDTO
     {
 
-        public string SeatNumber { get; set; }
+        public int Number { get; set; }
 
-        public DateTime Time { get; set; }
+        public int ProductId { get; set; }
 
         public double TotalPrice { get; set; }
-
-        public IEnumerable<OrderlineDTO> OrderlineDTOs{ get; set; }
     }
 }

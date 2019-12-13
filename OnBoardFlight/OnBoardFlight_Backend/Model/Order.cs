@@ -46,19 +46,19 @@ namespace OnBoardFlight_Backend.Model
 
         #region Methods
 
-        public double CalculateTotalPrice()
+        public void CalculateTotalPrice()
         {
             double total = 0.0;
             foreach(Orderline line in Orderlines)
             {
                 total += line.CalculateTotalPrice();
             }
-            return total;
+            TotalPrice = total;
         }
 
         public void AddOrderline(Orderline orderline)
         {
-            Orderlines.Add(orderline);
+                Orderlines.Add(orderline);
         }
         #endregion
     }

@@ -18,6 +18,8 @@ namespace OnBoardFlight.ViewModel.Passenger
 {
     public class ShopViewModel
     {
+        private HttpClient client { get; }
+
         public string SeatNumber { get; set; }
 
         private Product _product;
@@ -60,6 +62,7 @@ namespace OnBoardFlight.ViewModel.Passenger
             CategoryListProductList = new ObservableCollection<CategoryAndListProductHelper>();
             ProductList = new List<Product>();
             Cart = new ShoppingCart(SeatNumber);
+            client = new HttpClient();
             LoadData();
         }
 
@@ -106,6 +109,11 @@ namespace OnBoardFlight.ViewModel.Passenger
             Cart = cart;
         }
 
+        public void AddOrder()
+        {
+
+        }
+
         private void FillCategoryListProductList()
         {
             var categories = Enum.GetValues(typeof(ProductCategory));
@@ -150,7 +158,6 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         private async void LoadData()
         {
-            HttpClient client = new HttpClient();
             var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Product"));
             var Productslist = JsonConvert.DeserializeObject<IList<Product>>(json);
             foreach (var Product in Productslist)
@@ -158,6 +165,18 @@ namespace OnBoardFlight.ViewModel.Passenger
                 ProductList.Add(Product);
             }
             FillCategoryListProductList();
+        }
+
+        private static async void AddOrder()
+        {
+            var response = string.Empty;
+            client.PostAsync()
+        }
+
+
+        private string OrderToJson()
+        {
+            return JsonConvert.SerializeObject(Cart.Order);
         }
     }
 }
