@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace OnBoardFlight_Backend.Data.DTO
+namespace OnBoardFlight.DTO
 {
     public class OrderDTO
     {
@@ -12,6 +13,8 @@ namespace OnBoardFlight_Backend.Data.DTO
 
         public DateTime Time { get; set; }
 
-        public IEnumerable<OrderlineDTO> OrderlineDTOs{ get; set; }
+        public double TotalPrice { get; set; }
+
+        public IEnumerable<OrderlineDTO> OrderlineDTOs { get; set; }
     }
 }

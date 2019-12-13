@@ -14,6 +14,8 @@ namespace OnBoardFlight_Backend.Model
 
         public int Number { get; set; }
 
+        public double TotalPrice { get; set; }
+
         public Product Product { get; set; }
         public Order Order { get; set; }
         #endregion
@@ -37,9 +39,9 @@ namespace OnBoardFlight_Backend.Model
 
         #region Methods
 
-        public double CalculateTotalPrice()
+        public void CalculateTotalPrice()
         {
-            return Product.Price * Number;
+            TotalPrice =  Product.Price * Number;
         }
         #endregion
     }

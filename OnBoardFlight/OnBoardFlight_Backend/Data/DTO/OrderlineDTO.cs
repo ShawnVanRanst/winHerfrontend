@@ -11,7 +11,5 @@ namespace OnBoardFlight_Backend.Data.DTO
         public int Number { get; set; }
 
         public int ProductId { get; set; }
-
-        public double TotalPrice { get; set; }
     }
 }

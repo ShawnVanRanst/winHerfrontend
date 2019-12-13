@@ -60,6 +60,7 @@ namespace OnBoardFlight_Backend.Controllers
                     return BadRequest();
                 }
                 Orderline ol = new Orderline(olDTO.Number, product, order);
+                ol.CalculateTotalPrice();
                 order.AddOrderline(ol);
             }
             order.CalculateTotalPrice();
