@@ -17,5 +17,12 @@ namespace OnBoardFlight.Model
         {
             get { return Number * Product.Price; }
         }
+
+
+        public Orderline(Product product)
+        {
+            Product = product;
+            Number = 1;
+        }
     }
 }

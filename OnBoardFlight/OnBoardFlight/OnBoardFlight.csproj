@@ -140,6 +140,7 @@
     <Compile Include="Model\Orderline.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductCategory.cs" />
+    <Compile Include="Model\ShoppingCart.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Media\VideoCategory.cs" />
     <Compile Include="ViewModel\CabinCrew\LoginViewModel.cs" />
@@ -159,6 +160,8 @@
     <Compile Include="ViewModel\Commands\Passenger\Game\PlayMoveCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\ResetGameCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Chat\SelectChatCommand.cs" />
+    <Compile Include="ViewModel\Commands\Passenger\Shop\AddToCartCommand.cs" />
+    <Compile Include="ViewModel\Commands\SwitchPlacesCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Seats\SwitchPlacesCommand.cs" />
     <Compile Include="ViewModel\Passenger\ChatConversationViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatViewModel.cs" />
@@ -406,6 +409,7 @@
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\newtonsoft.json\11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

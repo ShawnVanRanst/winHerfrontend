@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnBoardFlight.ViewModel.Commands.Passenger.Shop;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace OnBoardFlight.Model
 {
     public class Product
     {
+        public int ProductId { get; set; }
 
         public string Description { get; set; }
 
@@ -16,5 +18,6 @@ namespace OnBoardFlight.Model
         public double Price { get; set; }
 
         public ProductCategory Category { get; set; }
-    }
+
+        }
 }

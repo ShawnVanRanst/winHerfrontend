@@ -27,6 +27,7 @@ namespace OnBoardFlight.View
     /// </summary>
     public sealed partial class NavigationPassenger : Page
     {
+
         public NavigationPassenger()
         {
             this.InitializeComponent();
@@ -56,7 +57,7 @@ namespace OnBoardFlight.View
                     mainFrame.Navigate(typeof(Home), (this.DataContext as NavigationPassengerViewModel).GeneralLogin);
                     break;
                 case "Shop":
-                    mainFrame.Navigate(typeof(Shop));
+                    mainFrame.Navigate(typeof(Shop), NavVM.Passenger);
                     break;
                 case "Orders":
                     mainFrame.Navigate(typeof(MyOrders));
@@ -65,7 +66,9 @@ namespace OnBoardFlight.View
                     mainFrame.Navigate(typeof(MultiMedia));
                     break;
                 case "Chat":
+
                     mainFrame.Navigate(typeof(Passenger.Chat), (this.DataContext as NavigationPassengerViewModel).GeneralLogin);
+
                     break;
                 case "Game":
                     mainFrame.Navigate(typeof(Passenger.Game));

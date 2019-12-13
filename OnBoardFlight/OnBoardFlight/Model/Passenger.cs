@@ -35,6 +35,7 @@ namespace OnBoardFlight.Model
         }
 
 
+
         public void AddTravelCompanion(Passenger companion)
         {
             _travelCompany.Add(companion);
