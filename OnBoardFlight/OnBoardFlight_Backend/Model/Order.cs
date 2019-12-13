@@ -34,7 +34,8 @@ namespace OnBoardFlight_Backend.Model
         {
             Passenger = passenger;
             Time = time;
-            if(Orderlines.Count > 0)
+            Orderlines = new List<Orderline>();
+            if (Orderlines.Count > 0)
             {
                 CalculateTotalPrice();
             }

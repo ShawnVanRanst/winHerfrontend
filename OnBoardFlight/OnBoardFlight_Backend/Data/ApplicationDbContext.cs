@@ -21,6 +21,8 @@ namespace OnBoardFlight.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Chat> Chats { get; set; }
         public DbSet<Media> Mediafiles { get; internal set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Orderline> Orderlines { get; set; }
         #endregion
 
 

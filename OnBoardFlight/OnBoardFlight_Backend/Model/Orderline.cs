@@ -15,6 +15,7 @@ namespace OnBoardFlight_Backend.Model
         public int Number { get; set; }
 
         public Product Product { get; set; }
+        public Order Order { get; set; }
         #endregion
 
         #region Constructors
@@ -24,10 +25,11 @@ namespace OnBoardFlight_Backend.Model
 
         }
 
-        public Orderline(int number, Product product)
+        public Orderline(int number, Product product, Order order)
         {
             Number = number;
             Product = product;
+            Order = order;
         }
 
 
