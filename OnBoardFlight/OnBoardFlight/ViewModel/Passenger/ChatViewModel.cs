@@ -17,13 +17,14 @@ namespace OnBoardFlight.ViewModel.Passenger
     {
         public ObservableCollection<Chat> ChatList { get; set; }
 
+        public ObservableCollection<Message> Messages { get; set; }
+
         public Model.Passenger Passenger { get; set; }
 
         public ChatViewModel(GeneralLogin generalLogin)
         {
             ChatList = new ObservableCollection<Chat>();
             LoadChat(generalLogin.Login);
-            //LoadDataAsync();
         }
 
         private async void LoadDataAsync()
@@ -52,6 +53,15 @@ namespace OnBoardFlight.ViewModel.Passenger
             foreach(var chat in chatlist)
             {
                 ChatList.Add(chat);
+            }
+        }
+
+        public void ShowMessages(List<Message> messages)
+        {
+            Messages = new ObservableCollection<Message>();
+            foreach(var message in messages)
+            {
+                Messages.Add(message);
             }
         }
     }
