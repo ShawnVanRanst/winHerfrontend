@@ -116,7 +116,8 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         public void AddOrder()
         {
-
+            //Post the order to the backend and clear Cart if succesfull
+            PostOrder();
         }
 
         private void FillCategoryListProductList()

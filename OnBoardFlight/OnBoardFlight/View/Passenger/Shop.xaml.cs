@@ -50,5 +50,10 @@ namespace OnBoardFlight.View.Passenger
             Model.Product product = (Model.Product)lv.SelectedItem;
             (this.DataContext as ShopViewModel).Product = product;
         }
+
+        private void AddOrder(object sender, TappedRoutedEventArgs e)
+        {
+            (this.DataContext as ShopViewModel).AddOrder();
+        }
     }
 }

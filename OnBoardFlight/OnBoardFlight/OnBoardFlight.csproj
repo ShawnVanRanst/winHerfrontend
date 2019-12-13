@@ -119,6 +119,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DTO\OrderDTO.cs" />
+    <Compile Include="DTO\OrderlineDTO.cs" />
     <Compile Include="Model\Chat.cs" />
     <Compile Include="Model\Game.cs" />
     <Compile Include="Model\Helper\CabinCrewLogin.cs" />
