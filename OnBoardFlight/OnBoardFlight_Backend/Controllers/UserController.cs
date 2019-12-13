@@ -93,14 +93,14 @@ namespace OnBoardFlight_Backend.Controllers
             {
                 return BadRequest();
             }
-            if (notification.General)
+            if (!notification.SinglePerson)
             {
                 foreach(Passenger passenger in _userRepository.GetPassengers())
                 {
                     Notification not = new Notification
                     {
                         Content = notification.Content,
-                        General = notification.General,
+                        SinglePerson = notification.SinglePerson,
                         PassengerSeat = notification.PassengerSeat,
                         Title = notification.Title
                     };

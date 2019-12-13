@@ -15,7 +15,7 @@ namespace OnBoardFlight_Backend.Model
         [Required]
         public string Content { get; set; }
         [Required]
-        public bool General { get; set; }
+        public bool SinglePerson { get; set; }
         public string PassengerSeat { get; set; }
     }
 }
