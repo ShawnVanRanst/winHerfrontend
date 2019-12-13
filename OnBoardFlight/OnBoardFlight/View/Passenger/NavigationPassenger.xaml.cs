@@ -1,4 +1,5 @@
 ﻿using OnBoardFlight.Model;
+using OnBoardFlight.Model.Helper;
 using OnBoardFlight.View.General;
 using OnBoardFlight.View.Passenger;
 using OnBoardFlight.ViewModel.Passenger;
@@ -26,19 +27,17 @@ namespace OnBoardFlight.View
     /// </summary>
     public sealed partial class NavigationPassenger : Page
     {
-        private NavigationPassengerViewModel NavigationPassengerViewModel { get; set; }
 
         public NavigationPassenger()
         {
             this.InitializeComponent();
-            NavView.SelectedItem = HometBtn;
-            mainFrame.Navigate(typeof(Home));
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            NavigationPassengerViewModel = new NavigationPassengerViewModel((Model.Passenger)e.Parameter);
+            this.DataContext = new NavigationPassengerViewModel((GeneralLogin)e.Parameter);
+            NavView.SelectedItem = HometBtn;
         }
 
         private void NavigateTo(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -55,10 +54,10 @@ namespace OnBoardFlight.View
             switch (tag)
             {
                 case "Home":
-                    mainFrame.Navigate(typeof(Home));
+                    mainFrame.Navigate(typeof(Home), (this.DataContext as NavigationPassengerViewModel).GeneralLogin);
                     break;
                 case "Shop":
-                    mainFrame.Navigate(typeof(Shop));
+                    mainFrame.Navigate(typeof(Shop), (this.DataContext as NavigationPassengerViewModel).GeneralLogin);
                     break;
                 case "Orders":
                     mainFrame.Navigate(typeof(MyOrders));
@@ -67,10 +66,12 @@ namespace OnBoardFlight.View
                     mainFrame.Navigate(typeof(MultiMedia));
                     break;
                 case "Chat":
-                    mainFrame.Navigate(typeof(View.Passenger.Chat), NavigationPassengerViewModel.Passenger);
+
+                    mainFrame.Navigate(typeof(Passenger.Chat), (this.DataContext as NavigationPassengerViewModel).GeneralLogin);
+
                     break;
                 case "Game":
-                    mainFrame.Navigate(typeof(View.Passenger.Game));
+                    mainFrame.Navigate(typeof(Passenger.Game));
                     break;
                 case "Logout":
                     //TODO logout the user

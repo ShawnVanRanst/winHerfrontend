@@ -1,4 +1,5 @@
-﻿using OnBoardFlight_Backend.Model;
+﻿using OnBoardFlight.Model;
+using OnBoardFlight_Backend.Model;
 using OnBoardFlight_Backend.Model.ManyToManies;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,8 @@ namespace OnBoardFlight_Backend.Data.DTO
         public ICollection<Order> Orders { get; set; }
 
         public ICollection<int> ChatIds { get; set; }
+
+        public Flight Flight { get; set; }
         #endregion
 
         #region Constructor
@@ -35,6 +38,7 @@ namespace OnBoardFlight_Backend.Data.DTO
             TravelCompany = passenger.TravelCompany;
             Orders = passenger.Orders;
             ChatIds = GetChatIds(passenger.ChatList);
+            Flight = passenger.Flight;
         }
         #endregion
 

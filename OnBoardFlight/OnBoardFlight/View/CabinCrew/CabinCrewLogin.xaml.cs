@@ -1,6 +1,7 @@
 ﻿using OnBoardFlight.Model;
 using OnBoardFlight.View.CabinCrew;
 using OnBoardFlight.ViewModel;
+using OnBoardFlight.ViewModel.CabinCrew;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +29,7 @@ namespace OnBoardFlight.View
         public CabinCrewLogin()
         {
             this.InitializeComponent();
+            this.DataContext = new LoginViewModel();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -45,18 +47,9 @@ namespace OnBoardFlight.View
             return false;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void LoginCabinCrew(object sender, RoutedEventArgs e)
         {
-            // backend call to get 
-            Model.CabinCrew CabinCrew = (Model.CabinCrew)DummyDataSource.CabinMember;
-            if (Login.Text == CabinCrew.Login && Password.Password == CabinCrew.Password)
-            {
-                Frame.Navigate(typeof(NavigationCabinCrew), CabinCrew);
-            }
-            else
-            {
-                LoginError.Text = "Login and Password incorrect!";
-            }
+            Frame.Navigate(typeof(NavigationCabinCrew), (this.DataContext as LoginViewModel).CabinCrewLogin);
         }
     }
 }

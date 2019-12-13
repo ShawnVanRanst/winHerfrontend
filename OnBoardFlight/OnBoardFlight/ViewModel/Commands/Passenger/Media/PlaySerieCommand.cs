@@ -64,8 +64,10 @@ namespace OnBoardFlight.ViewModel.Commands.Media
 
                 mediaPlayer.TransportControls.IsRightTapEnabled = true;
 
-                mediaPlayer.SetMediaStreamSource(mss);
+                mediaPlayer.TransportControls.IsStopButtonVisible = true;
+                mediaPlayer.TransportControls.IsStopEnabled = true;
 
+                mediaPlayer.SetMediaStreamSource(mss);
                 mediaPlayer.Play();
             }
             else

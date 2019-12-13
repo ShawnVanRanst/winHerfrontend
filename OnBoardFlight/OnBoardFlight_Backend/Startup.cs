@@ -43,7 +43,7 @@ namespace OnBoardFlight_Backend
             services.AddScoped<DataInitializer>();
 
             services.AddScoped<IFlightRepository, FlightRepository>();
-            services.AddScoped<IPassengerRepository, PassengerRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMediaRepository, MediaRepository>();
             services.AddScoped<IChatRepository, ChatRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();

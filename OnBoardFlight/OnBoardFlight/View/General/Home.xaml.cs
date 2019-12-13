@@ -1,4 +1,5 @@
 ﻿using OnBoardFlight.Model;
+using OnBoardFlight.Model.Helper;
 using OnBoardFlight.View.Passenger;
 using System;
 using System.Collections.Generic;
@@ -33,9 +34,7 @@ namespace OnBoardFlight.View.General
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            Page.Background = new ImageBrush { ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/Background.jpg")), Stretch = Stretch.None };
-            this.DataContext = new ViewModel.HomeViewModel((User) e.Parameter);
-            weatherFrame.Navigate(typeof(View.Passenger.Weather));
+            this.DataContext = new ViewModel.HomeViewModel((GeneralLogin) e.Parameter);
         }
     }
 }

@@ -26,11 +26,34 @@
                     <TextBlock Text="{Binding Flight.Destination.Time}"/>
                 </StackPanel>
             </StackPanel>
-            <Frame x:Name="weatherFrame">
-                <Frame.Background>
-                    <ImageBrush ImageSource="ms-appx:///Assets/Background.jpg" Stretch="None"/>
-                </Frame.Background>
-            </Frame>
+            <ScrollViewer Height="400">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ListView ItemsSource="{Binding WeatherList}" Width="400"
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                        ScrollViewer.HorizontalScrollMode="Enabled"                  
+                        ScrollViewer.VerticalScrollMode="Disabled">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Background="Transparent" Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding When}"/>
+                                    <Image Width="200" Height="200" x:Name="WeatherImage" Source="{Binding Icon}"/>
+                                    <TextBlock Text="{Binding Description}"/>
+                                    <TextBlock Text="Temp"/>
+                                    <TextBlock Text="{Binding Temp}"/>
+                                    <TextBlock Text="Windspeed"/>
+                                    <TextBlock Text="{Binding WindSpeed}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </ScrollViewer>
         </StackPanel>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
-﻿using OnBoardFlight.ViewModel.Passenger;
+﻿using OnBoardFlight.Model.Helper;
+using OnBoardFlight.ViewModel.Passenger;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,10 +24,31 @@ namespace OnBoardFlight.View.Passenger
     /// </summary>
     public sealed partial class Shop : Page
     {
+
         public Shop()
         {
             this.InitializeComponent();
-            this.DataContext = new ShopViewModel();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if(this.DataContext.GetType() != typeof(ShopViewModel))
+            {
+                this.DataContext = new ShopViewModel((GeneralLogin)e.Parameter);
+            }
+        }
+
+        private void Button_ContextCanceled(UIElement sender, RoutedEventArgs args)
+        {
+
+        }
+
+        private void SelectProduct(object sender, TappedRoutedEventArgs e)
+        {
+            ListView lv = (ListView) sender;
+            Model.Product product = (Model.Product)lv.SelectedItem;
+            (this.DataContext as ShopViewModel).Product = product;
         }
     }
 }
