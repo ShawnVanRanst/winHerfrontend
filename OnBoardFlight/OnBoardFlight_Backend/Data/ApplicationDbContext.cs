@@ -24,6 +24,8 @@ namespace OnBoardFlight.Data
         public DbSet<Chat> Chats { get; set; }
         public DbSet<Media> Mediafiles { get; internal set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Orderline> Orderlines { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder builder)

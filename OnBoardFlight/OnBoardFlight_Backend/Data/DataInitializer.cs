@@ -214,7 +214,17 @@ namespace OnBoardFlight.Data
 
 
                 #endregion
-
+                #region Order
+                Passenger passenger1MetOrder = passenger1 as Passenger;
+                _dbContext.Passengers.Add(passenger1MetOrder);
+                Order order1 = new Order(passenger1MetOrder, DateTime.MinValue);
+                _dbContext.Orders.Add(order1);
+                #endregion
+                #region Orderline
+                Orderline orderline1 = new Orderline(2, product1, order1);
+                _dbContext.Orderlines.Add(orderline1);
+                order1.AddOrderline(orderline1);
+                #endregion
                 #region Save changes
                 _dbContext.SaveChanges();
                 #endregion
