@@ -9,26 +9,25 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <ScrollViewer Grid.Column="0">
-            <StackPanel Orientation="Vertical">
-                <ListView ItemsSource="{Binding ChatList}" x:Name="ChatListView" Tapped="SelectChat">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}" x:Name="test"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
+        <ScrollViewer Grid.Column="0" Grid.RowSpan="2">
+            <ListView ItemsSource="{Binding ChatList}" x:Name="ChatListView" Tapped="SelectChat">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" x:Name="test"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </ScrollViewer>
-        <StackPanel Orientation="Vertical" Grid.Column="1">
-            <ScrollViewer MaxHeight="1000">
-                <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Bottom">
+            <ScrollViewer MaxHeight="1000" Background="Azure" Height="400" Grid.Column="1">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
                     <ListView ItemsSource="{Binding Messages}" x:Name="MessagesListView">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -39,8 +38,8 @@
                 </StackPanel>
             </ScrollViewer>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-                <TextBox HorizontalAlignment="Left" Width="400" x:Name="MessageText"/>
-                <Button Content="Send" HorizontalAlignment="Right"/>
+                <TextBox HorizontalAlignment="Left" Text="{Binding SendMessage.Content, Mode=TwoWay}"/>
+                <Button Content="Send" HorizontalAlignment="Right" Command="{Binding SendMessageCommand}"/>
             </StackPanel>
         </StackPanel>
     </Grid>

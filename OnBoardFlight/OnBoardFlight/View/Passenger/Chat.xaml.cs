@@ -39,15 +39,7 @@ namespace OnBoardFlight.View.Passenger
         {
             ListView lv = (ListView)sender;
             Model.Chat chat = (Model.Chat)lv.SelectedItem;
-            (this.DataContext as ChatViewModel).ShowMessages(chat.Messages);
-            /*
-            ChatConversationHelper chatConversationHelper = new ChatConversationHelper()
-            {
-                Chat = chat,
-                Passenger = _chatViewModel.Passenger
-            };
-            Conversation.Navigate(typeof(ChatConversation), chatConversationHelper);
-            */
+            (this.DataContext as ChatViewModel).ShowMessages(chat);
         }
     }
 }
