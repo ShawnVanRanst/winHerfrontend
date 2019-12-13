@@ -91,14 +91,14 @@ namespace OnBoardFlight.ViewModel.Passenger
                 //Check if orderline exists
                 if (OrderlineExists())
                 {
-                    //Yes => +1 to number for the orderline with given product 
-                    cart.Order.Orderlines.SingleOrDefault(o => o.Product.ProductId == this.Product.ProductId).Number++;
-                    cart.Order.Orderlines.SingleOrDefault(o => o.Product.ProductId == this.Product.ProductId).TotalPrice++;
+                    //Yes => +1 for number, change total price of orderline and order
+                    cart = UpdateOrderLine(cart);
                 }
                 else
                 {
                     //No => Add new orderline to the order
                     cart.AddOrderline(new Orderline(Product));
+                    cart.Order.TotalPrice++;
                 }
             }
             
@@ -138,6 +138,14 @@ namespace OnBoardFlight.ViewModel.Passenger
             {
                 return true;
             }
+        }
+        
+        private ShoppingCart UpdateOrderLine(ShoppingCart cartToUpdate)
+        {
+            cartToUpdate.Order.Orderlines.SingleOrDefault(o => o.Product.ProductId == this.Product.ProductId).Number++;
+            cartToUpdate.Order.Orderlines.SingleOrDefault(o => o.Product.ProductId == this.Product.ProductId).TotalPrice++;
+            cartToUpdate.Order.TotalPrice++;
+            return cartToUpdate;
         }
 
         private async void LoadData()

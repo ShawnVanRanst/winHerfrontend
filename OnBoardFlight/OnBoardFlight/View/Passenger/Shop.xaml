@@ -43,7 +43,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
-            <StackPanel HorizontalAlignment="Right" Width="600" Margin="50 0 0 0" DataContext="{Binding Cart.Order}">
+            <StackPanel Width="600" Margin="50 0 0 0" DataContext="{Binding Cart.Order}">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                     <TextBlock Text="Order" HorizontalAlignment="Center"/>
                     <StackPanel Orientation="Horizontal" Width="400" HorizontalAlignment="Center">
@@ -63,6 +63,10 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="€"/>
+                    <TextBlock Text="{Binding TotalPrice}"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
