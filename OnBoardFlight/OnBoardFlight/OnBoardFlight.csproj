@@ -161,7 +161,6 @@
     <Compile Include="ViewModel\Commands\Passenger\Game\ResetGameCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Chat\SelectChatCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Shop\AddToCartCommand.cs" />
-    <Compile Include="ViewModel\Commands\SwitchPlacesCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Seats\SwitchPlacesCommand.cs" />
     <Compile Include="ViewModel\Passenger\ChatConversationViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatViewModel.cs" />

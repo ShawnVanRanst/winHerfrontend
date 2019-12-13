@@ -57,7 +57,7 @@ namespace OnBoardFlight.View
                     mainFrame.Navigate(typeof(Home), (this.DataContext as NavigationPassengerViewModel).GeneralLogin);
                     break;
                 case "Shop":
-                    mainFrame.Navigate(typeof(Shop), NavVM.Passenger);
+                    mainFrame.Navigate(typeof(Shop), (this.DataContext as NavigationPassengerViewModel).Passenger);
                     break;
                 case "Orders":
                     mainFrame.Navigate(typeof(MyOrders));
