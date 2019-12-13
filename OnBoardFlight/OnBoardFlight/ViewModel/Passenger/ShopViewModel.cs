@@ -54,11 +54,11 @@ namespace OnBoardFlight.ViewModel.Passenger
         public ICommand AddToCartCommand { get; set; }
         #endregion
 
-        public ShopViewModel(Model.Passenger passenger)
+        public ShopViewModel(GeneralLogin generalLogin)
         {
             CategoryListProductList = new ObservableCollection<CategoryAndListProductHelper>();
             ProductList = new List<Product>();
-            Passenger = passenger;
+            //Passenger = passenger;
             AddToCartCommand = new AddToCartCommand<object>(this);
             
             LoadData();

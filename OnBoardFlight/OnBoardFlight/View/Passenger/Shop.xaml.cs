@@ -1,4 +1,5 @@
-﻿using OnBoardFlight.ViewModel.Passenger;
+﻿using OnBoardFlight.Model.Helper;
+using OnBoardFlight.ViewModel.Passenger;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,10 +33,9 @@ namespace OnBoardFlight.View.Passenger
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            Model.Passenger passenger = (Model.Passenger)e.Parameter;
-            if(this.DataContext == null)
+            if(this.DataContext.GetType() != typeof(ShopViewModel))
             {
-                this.DataContext = new ShopViewModel(passenger);
+                this.DataContext = new ShopViewModel((GeneralLogin)e.Parameter);
             }
         }
 
