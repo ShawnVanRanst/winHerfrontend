@@ -18,7 +18,7 @@ namespace OnBoardFlight.ViewModel.Passenger
 {
     public class ShopViewModel
     {
-        public Model.Passenger Passenger { get; set; }
+        public string SeatNumber { get; set; }
 
         private Product _product;
 
@@ -37,7 +37,10 @@ namespace OnBoardFlight.ViewModel.Passenger
         private Model.ShoppingCart _cart;
         public Model.ShoppingCart Cart
         {
-            get { return _cart; }
+            get
+            {
+                return _cart;
+            }
             set
             {
                 _cart = value;
@@ -50,17 +53,13 @@ namespace OnBoardFlight.ViewModel.Passenger
         public ObservableCollection<CategoryAndListProductHelper> CategoryListProductList { get; set; }
 
 
-        #region Command
-        public ICommand AddToCartCommand { get; set; }
-        #endregion
 
         public ShopViewModel(GeneralLogin generalLogin)
         {
+            SeatNumber = generalLogin.Login;
             CategoryListProductList = new ObservableCollection<CategoryAndListProductHelper>();
             ProductList = new List<Product>();
-            //Passenger = passenger;
-            AddToCartCommand = new AddToCartCommand<object>(this);
-            
+            Cart = new ShoppingCart(SeatNumber);
             LoadData();
         }
 
@@ -82,8 +81,8 @@ namespace OnBoardFlight.ViewModel.Passenger
             if (Cart == null)
             {
                 //No cart => Add new Cart 
-                cart = new ShoppingCart(Passenger);
-                cart.Order.Orderlines.Add(new Orderline(Product));
+                cart = new ShoppingCart(SeatNumber);
+                cart.AddOrderline(new Orderline(Product));
             }
             else
             {
@@ -94,11 +93,12 @@ namespace OnBoardFlight.ViewModel.Passenger
                 {
                     //Yes => +1 to number for the orderline with given product 
                     cart.Order.Orderlines.SingleOrDefault(o => o.Product.ProductId == this.Product.ProductId).Number++;
+                    cart.Order.Orderlines.SingleOrDefault(o => o.Product.ProductId == this.Product.ProductId).TotalPrice++;
                 }
                 else
                 {
                     //No => Add new orderline to the order
-                    cart.Order.Orderlines.Add(new Orderline(Product));
+                    cart.AddOrderline(new Orderline(Product));
                 }
             }
             

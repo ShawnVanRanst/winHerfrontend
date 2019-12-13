@@ -2,6 +2,7 @@
 using OnBoardFlight.Model.Media;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -210,22 +211,22 @@ namespace OnBoardFlight.ViewModel
         };
 
 
-        public static Model.Order Order1 { get; set; } = new Model.Order(Passenger)
+        public static Model.Order Order1 { get; set; } = new Model.Order(Passenger.Login)
         {
             Time = DateTime.Now,
-            Orderlines = new List<Model.Orderline>() { Orderline1, Orderline2}
+            Orderlines = new ObservableCollection<Orderline>() { Orderline1, Orderline2}
         };
 
-        public static Model.Order Order2 { get; set; } = new Model.Order(Passenger)
+        public static Model.Order Order2 { get; set; } = new Model.Order(Passenger.Login)
         {
             Time = DateTime.Now.AddMinutes(-15),
-            Orderlines = new List<Model.Orderline>() { Orderline3}
+            Orderlines = new ObservableCollection<Orderline>() { Orderline3}
         };
 
-        public static Model.Order Order3 { get; set; } = new Model.Order(Passenger)
+        public static Model.Order Order3 { get; set; } = new Model.Order(Passenger.Login)
         {
             Time = DateTime.Now.AddMinutes(-10),
-            Orderlines = new List<Model.Orderline>() { Orderline4 }
+            Orderlines = new ObservableCollection<Orderline>() { Orderline4 }
         };
     }
 }

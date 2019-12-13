@@ -23,15 +23,15 @@ namespace OnBoardFlight.ViewModel.Passenger
             }
         }
 
-        private Model.Passenger _passenger;
+        private string _seatNumber;
 
-        public Model.Passenger Passenger
+        public string SeatNumber
         {
-            get { return _passenger; }
+            get { return _seatNumber; }
             set
             {
-                _passenger = value;
-                RaisePropertyChanged("Passenger");
+                _seatNumber = value;
+                RaisePropertyChanged("SeatNumber");
             }
         }
 
@@ -41,7 +41,7 @@ namespace OnBoardFlight.ViewModel.Passenger
             OrderList = new List<Model.Order>();
             OrderList.Add(DummyDataSource.Order1);
             OrderList.Add(DummyDataSource.Order2);
-            Passenger = OrderList.FirstOrDefault().Passenger;
+            SeatNumber = OrderList.FirstOrDefault().SeatNumber;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

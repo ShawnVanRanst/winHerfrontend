@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace OnBoardFlight.Model
     public class Order
     {
 
-        public Passenger Passenger { get; set; }
+        public string SeatNumber { get; set; }
 
         public DateTime Time { get; set; }
 
@@ -26,14 +27,14 @@ namespace OnBoardFlight.Model
             }
         }
 
-        public ICollection<Orderline> Orderlines { get; set; }
+        public ObservableCollection<Orderline> Orderlines { get; set; }
 
 
-        public Order(Passenger passenger)
+        public Order(string seatNumber)
         {
-            Passenger = passenger;
+            SeatNumber = seatNumber;
             Time = DateTime.Now;
-            Orderlines = new List<Orderline>();
+            Orderlines = new ObservableCollection<Orderline>();
         }
 
         public void AddOrderline(Orderline orderline)
