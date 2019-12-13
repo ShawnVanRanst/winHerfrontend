@@ -77,24 +77,33 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         public void AddProductToCart()
         {
+            ShoppingCart cart;
+            //Check if cart already exists for passenger
             if (Cart == null)
             {
-                Cart = new ShoppingCart(Passenger);
-            }
-            if (Cart.Order == null)
-            {
-                Cart.Order = new Order(Passenger);
-            }
-            Orderline orderline = GetOrderline(Product);
-            if(orderline == null)
-            {
-                Cart.Order.Orderlines.Add(new Orderline(Product));
+                //No cart => Add new Cart 
+                cart = new ShoppingCart(Passenger);
+                cart.Order.Orderlines.Add(new Orderline(Product));
             }
             else
             {
-                orderline.Number ++;
+                //Cart exists => assign Cart to local variable
+                cart = this.Cart;
+                //Check if orderline exists
+                if (OrderlineExists())
+                {
+                    //Yes => +1 to number for the orderline with given product 
+                    cart.Order.Orderlines.SingleOrDefault(o => o.Product.ProductId == this.Product.ProductId).Number++;
+                }
+                else
+                {
+                    //No => Add new orderline to the order
+                    cart.Order.Orderlines.Add(new Orderline(Product));
+                }
             }
             
+            //Assign local cart variable to Cart, triggering setter and PropertyChanged
+            Cart = cart;
         }
 
         private void FillCategoryListProductList()
@@ -118,9 +127,17 @@ namespace OnBoardFlight.ViewModel.Passenger
             }
         }
 
-        private Orderline GetOrderline(Product product)
+        private Boolean OrderlineExists()
         {
-            return Cart.Order.Orderlines.FirstOrDefault(o => o.Product.ProductId == product.ProductId);
+            Orderline orderline = Cart.Order.Orderlines.FirstOrDefault(o => o.Product.ProductId == this.Product.ProductId);
+            if(orderline == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private async void LoadData()
