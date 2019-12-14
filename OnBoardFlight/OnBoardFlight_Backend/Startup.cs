@@ -48,6 +48,7 @@ namespace OnBoardFlight_Backend
             services.AddScoped<IChatRepository, ChatRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<INotificationRepository, NotificationRepository>();
 
             services.AddOpenApiDocument(c =>
             {
