@@ -30,11 +30,11 @@ namespace OnBoardFlight_Backend.Controllers
             return _orderRepo.GetAllOrders();
         }
 
-        [HttpGet]
         [Route("Seat")]
+        [HttpGet]
         public IActionResult GetAllOrdersBySeat(string seat)
         {
-            IEnumerable<Order> orders = _orderRepo.GetAllOrdersBySeat(seat);
+            IEnumerable<Order> orders = _orderRepo.GetAllOrdersBySeat("20D");
             GetAllOrdersDTO dto = new GetAllOrdersDTO(orders);
             return Ok(dto);
         }

@@ -67,12 +67,21 @@ namespace OnBoardFlight.ViewModel.Passenger
         private async void GetOrdersForPassenger()
 
         {
-            var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Orderd/" + SeatNumber));
-            var orderlist = JsonConvert.DeserializeObject<IList<Order>>(json);
-            foreach(var Order in orderlist)
+            try
             {
-                OrderList.Add(Order);
+                HttpContent content = new StringContent(SeatNumber, Encoding.UTF8, "application/json");
+                var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Order/Seat/"));
+                var orderlist = JsonConvert.DeserializeObject<IList<Order>>(json);
+                foreach (var Order in orderlist)
+                {
+                    OrderList.Add(Order);
+                }
             }
+            catch(Exception)
+            {
+                //Catch errors + 404,...
+            }
+            
         }
     }
 }
