@@ -199,6 +199,8 @@ namespace OnBoardFlight.ViewModel.Passenger
         //Reset cart to null so that the cart is ready for a new order
         private void ClearCart()
         {
+
+            Cart.Order = null;
             Cart = null;
         }
     }
