@@ -36,6 +36,7 @@ namespace OnBoardFlight.Model
                 RaisePropertyChanged("TotalPrice");
             }
         }
+   
 
         public ObservableCollection<Orderline> Orderlines { get; set; }
 

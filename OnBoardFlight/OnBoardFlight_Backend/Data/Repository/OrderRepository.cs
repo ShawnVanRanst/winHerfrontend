@@ -36,6 +36,12 @@ namespace OnBoardFlight_Backend.Data.Repository
             IEnumerable<Order> orders = _orders.Where(o => o.SeatNumber == seat).Include(o => o.Orderlines).ThenInclude(o => o.Product).ToList();
             return orders;
         }
+        public IEnumerable<Order> GetAllNotCompletedOrders()
+        {
+            IEnumerable<Order> orders = _orders.Where(o => o.IsCompleted == false).Include(o => o.Orderlines).ThenInclude(o => o.Product).ToList();
+            return orders;
+        }
+
 
         public Order GetOrderById(int id)
         {

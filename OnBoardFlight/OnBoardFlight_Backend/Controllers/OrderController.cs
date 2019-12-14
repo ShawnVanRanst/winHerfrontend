@@ -29,6 +29,13 @@ namespace OnBoardFlight_Backend.Controllers
         {
             return _orderRepo.GetAllOrders();
         }
+        [HttpGet]
+        [Route("NotCompleted")]
+        public IActionResult GetAllNotCompletedOrders()
+        {
+            IEnumerable<Order> orders = _orderRepo.GetAllNotCompletedOrders();
+            return Ok(orders.Select(o => new OrderDTO(o)));
+        }
 
         [Route("Seat")]
         [HttpGet]

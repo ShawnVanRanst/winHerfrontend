@@ -17,6 +17,7 @@ namespace OnBoardFlight_Backend.Model
         public DateTime Time { get; set; }
 
         public double TotalPrice { get; set; }
+        public bool IsCompleted { get; set; }
         #endregion
 
         #region Collections
@@ -39,6 +40,7 @@ namespace OnBoardFlight_Backend.Model
             {
                 CalculateTotalPrice();
             }
+            IsCompleted = false;
         }
 
 
