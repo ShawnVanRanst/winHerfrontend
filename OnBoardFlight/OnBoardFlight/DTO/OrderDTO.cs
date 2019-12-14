@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OnBoardFlight.DTO
 {
-    public class OrderDTO
+    public class AddOrderDTO
     {
 
         public string SeatNumber { get; set; }
@@ -17,7 +17,7 @@ namespace OnBoardFlight.DTO
         public IEnumerable<OrderlineDTO> OrderlineDTOs { get; set; }
 
 
-        public OrderDTO(Order order)
+        public AddOrderDTO(Order order)
         {
             ICollection<OrderlineDTO> olDTOs = new List<OrderlineDTO>();
             SeatNumber = order.SeatNumber;

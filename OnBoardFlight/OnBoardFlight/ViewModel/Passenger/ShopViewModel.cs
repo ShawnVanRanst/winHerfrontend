@@ -175,7 +175,7 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         private async void PostOrder()
         {
-            OrderDTO dto = new OrderDTO(Cart.Order);
+            AddOrderDTO dto = new AddOrderDTO(Cart.Order);
             HttpContent content = new StringContent(DTOToJson(dto), Encoding.UTF8,
                                     "application/json");
             HttpResponseMessage result = await client.PostAsync(new Uri("http://localhost:5000/api/Order"), content);
@@ -190,7 +190,7 @@ namespace OnBoardFlight.ViewModel.Passenger
         }
 
 
-        private string DTOToJson(OrderDTO dto)
+        private string DTOToJson(AddOrderDTO dto)
         {
             return JsonConvert.SerializeObject(dto);
         }

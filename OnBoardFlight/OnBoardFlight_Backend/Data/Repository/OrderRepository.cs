@@ -33,7 +33,7 @@ namespace OnBoardFlight_Backend.Data.Repository
 
         public IEnumerable<Order> GetAllOrdersBySeat(string seat)
         {
-            return this._orders.Where(o => o.Passenger.Seat == seat).Include(o => o.Orderlines).ToList();
+            return this._orders.Include(o => o.Passenger).Where(o => o.Passenger.Seat == seat).Include(o => o.Orderlines).ThenInclude(o => o.Product).ToList();
         }
 
         public Order GetOrderById(int id)

@@ -41,7 +41,12 @@ namespace OnBoardFlight_Backend.Model
 
         public void CalculateTotalPrice()
         {
-            TotalPrice =  Product.Price * Number;
+            TotalPrice = Product.Price * Number;
+        }
+
+        public double GetTotalPrice()
+        {
+            return Product.Price * Number;
         }
         #endregion
     }

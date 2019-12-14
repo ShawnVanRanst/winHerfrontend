@@ -31,10 +31,12 @@ namespace OnBoardFlight_Backend.Controllers
         }
 
         [HttpGet]
-        [Route("Order/{seat}")]
-        public IEnumerable<Order> GetAllOrdersBySeat(string seat)
+        [Route("Seat")]
+        public IActionResult GetAllOrdersBySeat(string seat)
         {
-            return _orderRepo.GetAllOrdersBySeat(seat);
+            IEnumerable<Order> orders = _orderRepo.GetAllOrdersBySeat(seat);
+            GetAllOrdersDTO dto = new GetAllOrdersDTO(orders);
+            return Ok(dto);
         }
         //[HttpGet]
         //[Route("Order/{id}")]
@@ -44,7 +46,7 @@ namespace OnBoardFlight_Backend.Controllers
         //}
 
         [HttpPost]
-        public IActionResult AddOrder(OrderDTO dto)
+        public IActionResult AddOrder(AddOrderDTO dto)
         {
             Passenger passenger = _passengerRepo.GetPassengerBySeat(dto.SeatNumber);
             if (passenger == null)
@@ -52,7 +54,7 @@ namespace OnBoardFlight_Backend.Controllers
                 return BadRequest();
             }
             Order order = new Order(passenger, dto.Time);
-            foreach(OrderlineDTO olDTO in dto.OrderlineDTOs)
+            foreach(AddOrderlineDTO olDTO in dto.OrderlineDTOs)
             {
                 Product product = _productRepo.GetProductById(olDTO.ProductId);
                 if(product == null)

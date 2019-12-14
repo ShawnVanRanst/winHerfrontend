@@ -39,11 +39,6 @@ namespace OnBoardFlight.View.Passenger
             }
         }
 
-        private void Button_ContextCanceled(UIElement sender, RoutedEventArgs args)
-        {
-
-        }
-
         private void SelectProduct(object sender, TappedRoutedEventArgs e)
         {
             ListView lv = (ListView) sender;
