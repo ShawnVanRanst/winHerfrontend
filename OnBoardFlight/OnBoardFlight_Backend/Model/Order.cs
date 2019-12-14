@@ -12,7 +12,7 @@ namespace OnBoardFlight_Backend.Model
 
         public int OrderId { get; set; }
 
-        public Passenger Passenger { get; set; }
+        public string SeatNumber { get; set; }
 
         public DateTime Time { get; set; }
 
@@ -32,7 +32,7 @@ namespace OnBoardFlight_Backend.Model
 
         public Order(Passenger passenger, DateTime time)
         {
-            Passenger = passenger;
+            SeatNumber = passenger.Seat;
             Time = time;
             Orderlines = new List<Orderline>();
             if (Orderlines.Count > 0)

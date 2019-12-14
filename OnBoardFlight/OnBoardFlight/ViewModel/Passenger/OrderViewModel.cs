@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OnBoardFlight.DTO;
 using OnBoardFlight.Model;
 using OnBoardFlight.Model.Helper;
 using System;
@@ -72,14 +73,16 @@ namespace OnBoardFlight.ViewModel.Passenger
                 HttpContent content = new StringContent(SeatNumber, Encoding.UTF8, "application/json");
                 var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Order/Seat/"));
                 var orderlist = JsonConvert.DeserializeObject<IList<Order>>(json);
+                ObservableCollection<Order> newOrderList = new ObservableCollection<Order>();
                 foreach (var Order in orderlist)
                 {
-                    OrderList.Add(Order);
+                    newOrderList.Add(Order);
                 }
+                OrderList = newOrderList;
             }
             catch(Exception)
             {
-                //Catch errors + 404,...
+                //Geef gebruiker melding dat het niet gelukt is de orders op te halen
             }
             
         }

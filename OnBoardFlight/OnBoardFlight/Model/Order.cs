@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnBoardFlight.DTO;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -11,6 +12,8 @@ namespace OnBoardFlight.Model
 {
     public class Order: INotifyPropertyChanged
     {
+
+        public int OrderId { get; set; }
 
         public string SeatNumber { get; set; }
 

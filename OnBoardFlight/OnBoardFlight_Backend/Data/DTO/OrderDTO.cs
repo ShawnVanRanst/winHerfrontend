@@ -15,13 +15,13 @@ namespace OnBoardFlight_Backend.Data.DTO
 
         public double TotalPrice { get; set; }
 
-        public ICollection<OrderlineDTO> OrderlineDTOs { get; set; }
+        public ICollection<OrderlineDTO> Orderlines { get; set; }
 
 
         public OrderDTO(Order order)
         {
             OrderId = order.OrderId;
-            SeatNumber = order.Passenger.Login;
+            SeatNumber = order.SeatNumber;
             Time = order.Time;
             TotalPrice = order.TotalPrice;
             ICollection<OrderlineDTO> orderlineDTOs = new List<OrderlineDTO>();
@@ -30,7 +30,7 @@ namespace OnBoardFlight_Backend.Data.DTO
                 OrderlineDTO dto = new OrderlineDTO(ol);
                 orderlineDTOs.Add(dto);
             }
-            OrderlineDTOs = orderlineDTOs;
+            Orderlines = orderlineDTOs;
         }
     }
 }

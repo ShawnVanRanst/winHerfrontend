@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnBoardFlight.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace OnBoardFlight.Model
 {
     public class Orderline: INotifyPropertyChanged
     {
+
+        public int OrderlineId { get; set; }
 
         private int _number;
 

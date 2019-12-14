@@ -9,7 +9,7 @@ namespace OnBoardFlight_Backend.Data.DTO
 
         public int Number { get; set; }
 
-        public ProductDTO ProductDTO { get; set; }
+        public ProductDTO Product { get; set; }
 
         public double TotalPrice { get; set; }
 
@@ -18,7 +18,7 @@ namespace OnBoardFlight_Backend.Data.DTO
         {
             OrderlineId = orderline.OrderlineId;
             Number = orderline.Number;
-            ProductDTO = new ProductDTO(orderline.Product);
+            Product = new ProductDTO(orderline.Product);
             TotalPrice = orderline.GetTotalPrice();
         }
     }

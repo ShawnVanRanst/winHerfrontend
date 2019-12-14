@@ -28,12 +28,13 @@ namespace OnBoardFlight_Backend.Data.Repository
 
         public IEnumerable<Order> GetAllOrders()
         {
-            return this._orders.Include(o => o.Passenger).ToList();
+            return this._orders.ToList();
         }
 
         public IEnumerable<Order> GetAllOrdersBySeat(string seat)
         {
-            return this._orders.Include(o => o.Passenger).Where(o => o.Passenger.Seat == seat).Include(o => o.Orderlines).ThenInclude(o => o.Product).ToList();
+            IEnumerable<Order> orders = _orders.Where(o => o.SeatNumber == seat).Include(o => o.Orderlines).ThenInclude(o => o.Product).ToList();
+            return orders;
         }
 
         public Order GetOrderById(int id)
