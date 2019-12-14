@@ -1,4 +1,5 @@
-﻿using OnBoardFlight.ViewModel.Commands.Passenger.Shop;
+﻿using OnBoardFlight.DTO;
+using OnBoardFlight.ViewModel.Commands.Passenger.Shop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,5 +20,5 @@ namespace OnBoardFlight.Model
 
         public ProductCategory Category { get; set; }
 
-        }
+    }
 }

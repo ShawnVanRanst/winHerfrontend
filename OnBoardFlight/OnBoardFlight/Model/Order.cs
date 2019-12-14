@@ -1,44 +1,62 @@
-﻿using System;
+﻿using OnBoardFlight.DTO;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OnBoardFlight.Model
 {
-    public class Order
+    public class Order: INotifyPropertyChanged
     {
 
-        public Passenger Passenger { get; set; }
+        public int OrderId { get; set; }
+
+        public string SeatNumber { get; set; }
 
         public DateTime Time { get; set; }
 
+        private double _totalPrice;
         public double TotalPrice
         {
             get
             {
-                double total = 0.0;
+                _totalPrice = 0.0;
                 foreach(Orderline ol in Orderlines)
                 {
-                    total += ol.TotalPrice;
+                    _totalPrice += ol.TotalPrice;
                 }
-                return total;
+                return _totalPrice;
+            }
+            set
+            {
+                RaisePropertyChanged("TotalPrice");
             }
         }
 
-        public ICollection<Orderline> Orderlines { get; set; }
+        public ObservableCollection<Orderline> Orderlines { get; set; }
 
 
-        public Order(Passenger passenger)
+        public Order(string seatNumber)
         {
-            Passenger = passenger;
+            SeatNumber = seatNumber;
             Time = DateTime.Now;
-            Orderlines = new List<Orderline>();
+            Orderlines = new ObservableCollection<Orderline>();
         }
 
         public void AddOrderline(Orderline orderline)
         {
             Orderlines.Add(orderline);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged([CallerMemberName]string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

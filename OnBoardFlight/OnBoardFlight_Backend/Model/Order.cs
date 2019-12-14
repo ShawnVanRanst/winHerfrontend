@@ -12,7 +12,7 @@ namespace OnBoardFlight_Backend.Model
 
         public int OrderId { get; set; }
 
-        public Passenger Passenger { get; set; }
+        public string SeatNumber { get; set; }
 
         public DateTime Time { get; set; }
 
@@ -32,7 +32,7 @@ namespace OnBoardFlight_Backend.Model
 
         public Order(Passenger passenger, DateTime time)
         {
-            Passenger = passenger;
+            SeatNumber = passenger.Seat;
             Time = time;
             Orderlines = new List<Orderline>();
             if (Orderlines.Count > 0)
@@ -46,19 +46,19 @@ namespace OnBoardFlight_Backend.Model
 
         #region Methods
 
-        public double CalculateTotalPrice()
+        public void CalculateTotalPrice()
         {
             double total = 0.0;
             foreach(Orderline line in Orderlines)
             {
-                total += line.CalculateTotalPrice();
+                total += line.TotalPrice;
             }
-            return total;
+            TotalPrice = total;
         }
 
         public void AddOrderline(Orderline orderline)
         {
-            Orderlines.Add(orderline);
+                Orderlines.Add(orderline);
         }
         #endregion
     }

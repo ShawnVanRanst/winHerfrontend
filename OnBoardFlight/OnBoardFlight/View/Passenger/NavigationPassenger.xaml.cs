@@ -60,7 +60,7 @@ namespace OnBoardFlight.View
                     mainFrame.Navigate(typeof(Shop), (this.DataContext as NavigationPassengerViewModel).GeneralLogin);
                     break;
                 case "Orders":
-                    mainFrame.Navigate(typeof(MyOrders));
+                    mainFrame.Navigate(typeof(MyOrders), (this.DataContext as NavigationPassengerViewModel).GeneralLogin);
                     break;
                 case "Media":
                     mainFrame.Navigate(typeof(MultiMedia));
