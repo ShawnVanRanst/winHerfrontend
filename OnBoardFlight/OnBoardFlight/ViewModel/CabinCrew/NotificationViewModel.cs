@@ -43,11 +43,6 @@ namespace OnBoardFlight.ViewModel.CabinCrew
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private async void GetPassenger(string seatnumber)
-        {
-
-        }
-
         public async Task AddNotificationAsync()
         {
                 var NotificationJson = JsonConvert.SerializeObject(Notification);

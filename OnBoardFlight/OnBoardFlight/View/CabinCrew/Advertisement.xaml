@@ -7,7 +7,28 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
-        <Button Content="Advertisement View" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Edit promotions"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Text="{Binding Filter, Mode=TwoWay}"/>
+                <Button Content="Search" Command="{Binding FilterProductsCommand, Mode=TwoWay}"/>
+            </StackPanel>
+            <ScrollViewer>
+                <ListView ItemsSource="{Binding Products, Mode=TwoWay}" SelectedItem="{Binding Product, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Description}"/>
+                                <TextBlock Text="{Binding Price}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
+            <CheckBox Content="Promotion" Visibility="{Binding Visibility}" IsChecked="{Binding Product.Discount, Mode=TwoWay}"/>
+            <TextBox Text="{Binding DiscountPrice, Mode=TwoWay}"/>
+            <Button Content="Edit" HorizontalAlignment="Center" Command="{Binding AddPromotionCommand, Mode=TwoWay}"/>
+        </StackPanel>
     </Grid>
 </Page>

@@ -14,9 +14,11 @@ namespace OnBoardFlight.ViewModel.Passenger
     public class NavigationPassengerViewModel
     {
         public GeneralLogin GeneralLogin { get; set; }
+        public bool CheckForNotifications { get; set; }
 
-        public NavigationPassengerViewModel(GeneralLogin login)
+        public NavigationPassengerViewModel(GeneralLogin login, bool checkForNotifications)
         {
+            CheckForNotifications = checkForNotifications;
             GeneralLogin = login;
             LoadNotifications();
         }
@@ -24,7 +26,7 @@ namespace OnBoardFlight.ViewModel.Passenger
         private async void LoadNotifications()
         {
             HttpClient client = new HttpClient();
-            while (true)
+            while (CheckForNotifications)
             {
                 var notificationsList = await client.GetStringAsync(new Uri("http://localhost:5000/api/User/notifications/" + GeneralLogin.Login));
                 IList<Notification> notifications = JsonConvert.DeserializeObject<IList<Notification>>(notificationsList);

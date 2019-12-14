@@ -34,5 +34,10 @@ namespace OnBoardFlight_Backend.Data.Repository
         {
             _dbContext.SaveChanges();
         }
+
+        public void UpdateProduct(Product product)
+        {
+            _products.Update(product);
+        }
     }
 }

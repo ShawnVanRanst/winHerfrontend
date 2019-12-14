@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnBoardFlight.ViewModel.Passenger;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace OnBoardFlight.View.CabinCrew
         public Advertisement()
         {
             this.InitializeComponent();
+            this.DataContext = new AdvertismentViewModel();
         }
     }
 }

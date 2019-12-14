@@ -199,17 +199,17 @@ namespace OnBoardFlight.Data
                 #endregion
                 #endregion
                 #region Product
-                Product product1 = new Product("cola 33cl","link", 3.00,ProductCategory.Drinks);
+                Product product1 = new Product("cola 33cl","link", 3.00,ProductCategory.Drinks, false);
                 _dbContext.Products.Add(product1);
-                Product product2 = new Product("fanta 33cl", "link", 3.00, ProductCategory.Drinks);
+                Product product2 = new Product("fanta 33cl", "link", 3.00, ProductCategory.Drinks, false);
                 _dbContext.Products.Add(product2);
-                Product product3 = new Product("ice tea 33cl", "link", 3.00, ProductCategory.Drinks);
+                Product product3 = new Product("ice tea 33cl", "link", 3.00, ProductCategory.Drinks, false);
                 _dbContext.Products.Add(product3);
 
-                Product product4 = new Product("hamburger", "link", 5.00, ProductCategory.Food);
+                Product product4 = new Product("hamburger", "link", 5.00, ProductCategory.Food, false);
                 _dbContext.Products.Add(product4);
 
-                Product product5 = new Product("horloge", "link", 50.00, ProductCategory.Gifts);
+                Product product5 = new Product("horloge", "link", 50.00, ProductCategory.Gifts, false);
                 _dbContext.Products.Add(product5);
 
 

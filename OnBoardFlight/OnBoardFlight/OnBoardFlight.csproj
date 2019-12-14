@@ -151,6 +151,8 @@
     <Compile Include="ViewModel\CabinCrew\SeatViewModel.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Login\CancelLoginCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Login\LoginCommand.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\Promotion\AddPromotionCommand.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\Promotion\FilterProductsCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Seats\SearchPassengerToMoveCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Notification\SendNotificationCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Chat\SendMessageCommand.cs" />
@@ -163,6 +165,7 @@
     <Compile Include="ViewModel\Commands\Passenger\Game\ResetGameCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Shop\AddToCartCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Seats\SwitchPlacesCommand.cs" />
+    <Compile Include="ViewModel\CabinCrew\AdvertismentViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatViewModel.cs" />
     <Compile Include="ViewModel\Passenger\EpisodeDetailsViewModel.cs" />
     <Compile Include="ViewModel\Passenger\GameViewModel.cs" />

@@ -24,11 +24,28 @@ namespace OnBoardFlight_Backend.Controllers
         {
             return _productRepo.GetAllProducts();
         }
+
         [HttpGet]
         [Route("Product/{id}")]
         public ActionResult<Product> GetProductById(int id)
         {
             return _productRepo.GetProductById(id);
+        }
+
+        [HttpPost]
+        [Route("product/update")]
+        public ActionResult UpdateProduct(Product product)
+        {
+            try
+            {
+                _productRepo.UpdateProduct(product);
+                _productRepo.SaveChanges();
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+            return Ok();
         }
     }
 }

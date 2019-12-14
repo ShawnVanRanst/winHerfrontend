@@ -36,7 +36,7 @@ namespace OnBoardFlight.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            this.DataContext = new NavigationPassengerViewModel((GeneralLogin)e.Parameter);
+            this.DataContext = new NavigationPassengerViewModel((GeneralLogin)e.Parameter, true);
             NavView.SelectedItem = HometBtn;
         }
 
@@ -66,9 +66,7 @@ namespace OnBoardFlight.View
                     mainFrame.Navigate(typeof(MultiMedia));
                     break;
                 case "Chat":
-
                     mainFrame.Navigate(typeof(Passenger.Chat), (this.DataContext as NavigationPassengerViewModel).GeneralLogin);
-
                     break;
                 case "Game":
                     mainFrame.Navigate(typeof(Passenger.Game));
@@ -93,6 +91,7 @@ namespace OnBoardFlight.View
             ContentDialogResult result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
+                (DataContext as NavigationPassengerViewModel).CheckForNotifications = false;
                 Frame.Navigate(typeof(MainPage));
             }
         }

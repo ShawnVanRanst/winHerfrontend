@@ -10,6 +10,7 @@ namespace OnBoardFlight_Backend.Data.IRepository
     {
         IEnumerable<Product> GetAllProducts();
         Product GetProductById(int id);
+        void UpdateProduct(Product product);
         void SaveChanges();
     }
 }
