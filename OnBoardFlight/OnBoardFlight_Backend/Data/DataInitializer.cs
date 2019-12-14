@@ -214,17 +214,34 @@ namespace OnBoardFlight.Data
 
 
                 #endregion
+
+
                 #region Order
+
+                
+
                 Passenger passenger1MetOrder = passenger1 as Passenger;
                 _dbContext.Passengers.Add(passenger1MetOrder);
+                Passenger passenger2MetOrder = passenger2 as Passenger;
+                _dbContext.Passengers.Add(passenger2MetOrder);
                 Order order1 = new Order(passenger1MetOrder, DateTime.MinValue);
-                _dbContext.Orders.Add(order1);
-                #endregion
+                Order order2 = new Order(passenger1MetOrder, DateTime.MinValue);
+                Order order3 = new Order(passenger2MetOrder, DateTime.MinValue);
+
                 #region Orderline
                 Orderline orderline1 = new Orderline(2, product1, order1);
-                _dbContext.Orderlines.Add(orderline1);
-                order1.AddOrderline(orderline1);
+                Orderline orderline2 = new Orderline(1, product2, order2);
+                Orderline orderline3 = new Orderline(3, product3, order3);
                 #endregion
+
+                order1.AddOrderline(orderline1);
+                order2.AddOrderline(orderline2);
+                order3.AddOrderline(orderline3);
+                _dbContext.Orders.Add(order1);
+                _dbContext.Orders.Add(order2);
+                _dbContext.Orders.Add(order3);
+                #endregion
+
                 #region Save changes
                 _dbContext.SaveChanges();
                 #endregion

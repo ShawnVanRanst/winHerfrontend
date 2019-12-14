@@ -1,26 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OnBoardFlight.Model
 {
-    public class ShoppingCart
+    public class ShoppingCart: INotifyPropertyChanged
     {
 
-        public Passenger Passenger { get; set; }
+        public string SeatNumber { get; set; }
 
-        public Order Order { get; set; }
+        private Order _order;
 
-        public ShoppingCart(Passenger passenger)
+        public Order Order
         {
-            Passenger = passenger;
-            Order = new Order(Passenger)
+            get { return _order; }
+            set
             {
-                Orderlines = new List<Orderline>(),
+                _order = value;
+                RaisePropertyChanged("Order");
+            }
+        }
+
+
+        public ShoppingCart(string seatNumber)
+        {
+            SeatNumber = seatNumber;
+            Order = new Order(SeatNumber)
+            {
+                Orderlines = new ObservableCollection<Orderline>(),
                 Time = DateTime.Now
             };
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged([CallerMemberName]string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public void AddOrderline(Orderline orderline)

@@ -1,7 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using OnBoardFlight.DTO;
+using OnBoardFlight.Model;
+using OnBoardFlight.Model.Helper;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +17,14 @@ namespace OnBoardFlight.ViewModel.Passenger
     public class OrderViewModel: INotifyPropertyChanged
     {
 
-        private ICollection<Model.Order> _orderlist;
+        #region Backend properties
 
-        public ICollection<Model.Order> OrderList
+        HttpClient client = new HttpClient();
+        #endregion
+
+        private ObservableCollection<Model.Order> _orderlist;
+
+        public ObservableCollection<Model.Order> OrderList
         {
             get { return _orderlist; }
             set
@@ -23,31 +34,56 @@ namespace OnBoardFlight.ViewModel.Passenger
             }
         }
 
-        private Model.Passenger _passenger;
+        private string _seatNumber;
 
-        public Model.Passenger Passenger
+        public string SeatNumber
         {
-            get { return _passenger; }
+            get { return _seatNumber; }
             set
             {
-                _passenger = value;
-                RaisePropertyChanged("Passenger");
+                _seatNumber = value;
+                RaisePropertyChanged("SeatNumber");
             }
         }
 
 
-        public OrderViewModel()
+        public OrderViewModel(GeneralLogin generalLogin)
         {
-            OrderList = new List<Model.Order>();
-            OrderList.Add(DummyDataSource.Order1);
-            OrderList.Add(DummyDataSource.Order2);
-            Passenger = OrderList.FirstOrDefault().Passenger;
+            OrderList = new ObservableCollection<Model.Order>();
+            SeatNumber = generalLogin.Login;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void RaisePropertyChanged([CallerMemberName]string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void GetOrders()
+        {
+            GetOrdersForPassenger();
+        }
+
+
+        private async void GetOrdersForPassenger()
+
+        {
+            try
+            {
+                var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Order/Seat?seat=" + SeatNumber));
+                var orderlist = JsonConvert.DeserializeObject<IList<Order>>(json);
+                ObservableCollection<Order> newOrderList = new ObservableCollection<Order>();
+                foreach (var Order in orderlist)
+                {
+                    newOrderList.Add(Order);
+                }
+                OrderList = newOrderList;
+            }
+            catch(Exception)
+            {
+                //Geef gebruiker melding dat het niet gelukt is de orders op te halen
+            }
+            
         }
     }
 }

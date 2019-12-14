@@ -1,4 +1,5 @@
-﻿using OnBoardFlight.ViewModel.Passenger;
+﻿using OnBoardFlight.Model.Helper;
+using OnBoardFlight.ViewModel.Passenger;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,8 +28,16 @@ namespace OnBoardFlight.View.Passenger
         public MyOrders()
         {
             this.InitializeComponent();
-            OrderViewModel = new OrderViewModel();
-            this.DataContext = OrderViewModel;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if(this.DataContext.GetType() != typeof(OrderViewModel))
+            {
+                this.DataContext = new OrderViewModel((GeneralLogin)e.Parameter);
+            }
+            (this.DataContext as OrderViewModel).GetOrders();
         }
     }
 }
