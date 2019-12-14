@@ -20,20 +20,20 @@ namespace OnBoardFlight.Model
             set { _title = value; RaisePropertyChanged("Title"); }
         }
 
-        private string _context;
+        private string _content;
 
-        public string Context
+        public string Content
         {
-            get { return _context; }
-            set { _context = value; RaisePropertyChanged("Content"); }
+            get { return _content; }
+            set { _content = value; RaisePropertyChanged("Content"); }
         }
 
-        private bool _general;
+        private bool _singlePerson;
 
-        public bool General
+        public bool SinglePerson
         {
-            get { return _general; }
-            set { _general = value; RaisePropertyChanged("Content"); }
+            get { return _singlePerson; }
+            set { _singlePerson = value; RaisePropertyChanged("SinglePerson"); }
         }
 
         private string _passengerSeat;

@@ -127,8 +127,10 @@
     <Compile Include="Model\Helper\CategoryAndListMusicHelper.cs" />
     <Compile Include="Model\Helper\CategoryAndListProductHelper.cs" />
     <Compile Include="Model\Helper\CategoryAndListVideoHelper.cs" />
+    <Compile Include="Model\Helper\ChangeSeats.cs" />
     <Compile Include="Model\Helper\ChatConversationHelper.cs" />
     <Compile Include="Model\Helper\GeneralLogin.cs" />
+    <Compile Include="Model\Helper\SendMessage.cs" />
     <Compile Include="Model\Media\Media.cs" />
     <Compile Include="Model\Media\Movie.cs" />
     <Compile Include="Model\Media\Video.cs" />
@@ -151,9 +153,9 @@
     <Compile Include="ViewModel\CabinCrew\SeatViewModel.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Login\CancelLoginCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Login\LoginCommand.cs" />
-    <Compile Include="ViewModel\Commands\CabinCrew\SearchPassengerToChangePlaces.cs" />
-    <Compile Include="ViewModel\Commands\CabinCrew\SearchPassengerToMoveCommand.cs" />
-    <Compile Include="ViewModel\Commands\CabinCrew\SendNotificationCommand.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\Seats\SearchPassengerToMoveCommand.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\Notification\SendNotificationCommand.cs" />
+    <Compile Include="ViewModel\Commands\Passenger\Chat\SendMessageCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Login\CancelLoginCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Login\LoginCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Media\PlayMovieCommand.cs" />
@@ -161,10 +163,8 @@
     <Compile Include="ViewModel\Commands\Passenger\Game\NewGameCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\PlayMoveCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\ResetGameCommand.cs" />
-    <Compile Include="ViewModel\Commands\Passenger\Chat\SelectChatCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Shop\AddToCartCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Seats\SwitchPlacesCommand.cs" />
-    <Compile Include="ViewModel\Passenger\ChatConversationViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatViewModel.cs" />
     <Compile Include="ViewModel\Passenger\EpisodeDetailsViewModel.cs" />
     <Compile Include="ViewModel\Passenger\GameViewModel.cs" />
@@ -222,9 +222,6 @@
     </Compile>
     <Compile Include="View\CabinCrew\NavigationCabinCrew.xaml.cs">
       <DependentUpon>NavigationCabinCrew.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Passenger\ChatConversation.xaml.cs">
-      <DependentUpon>ChatConversation.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Passenger\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
@@ -337,10 +334,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CabinCrew\NavigationCabinCrew.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Passenger\ChatConversation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

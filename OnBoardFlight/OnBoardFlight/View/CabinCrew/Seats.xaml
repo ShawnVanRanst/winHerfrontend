@@ -12,10 +12,10 @@
                 <TextBlock Text="Please enter the seatnumber of the passenger to move:"/>
                 <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                     <TextBox x:Name="seatInput1" 
-                                     Text="{Binding SeatNumber1}"
+                                     Text="{Binding Passenger1.Seat, Mode=TwoWay}"
                                      PlaceholderText="Seatnumber"
                                      Width="100" HorizontalAlignment="Left"/>
-                    <Button Content="Search passenger" Command="{Binding SearchPassengerToMoveCommand}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" />
+                    <Button Content="Search passenger" Command="{Binding SearchPassengerToMoveCommand1, Mode=TwoWay}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Margin="0 50 0 20">
@@ -29,10 +29,10 @@
                 <TextBlock Text="Please enter the new seatnumber:"/>
                 <StackPanel Orientation="Horizontal" Margin="50,20,0,20">
                     <TextBox x:Name="seatNumber2" 
-                                    Text="{Binding SeatNumber2}"
+                                    Text="{Binding Passenger2.Seat, Mode=TwoWay}"
                                  PlaceholderText="Seatnumber"
                                  Width="100" HorizontalAlignment="Left"/>
-                    <Button Content="Search Passenger" Command="{Binding SearchPassengerToChangePlacesCommand}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" />
+                    <Button Content="Search Passenger" Command="{Binding SearchPassengerToMoveCommand2, Mode=TwoWay}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Margin="0 50 0 20">
@@ -44,7 +44,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center">
-            <Button Content="Assign new seat(s)" Command="{Binding SwitchPlaces}"/>
+            <Button Content="Assign new seat(s)" Command="{Binding SwitchPlacesCommand, Mode=TwoWay}"/>
         </StackPanel>
     </StackPanel>
 </Page>

@@ -49,13 +49,13 @@ namespace OnBoardFlight.Data
                 #endregion
 
                 #region Notification
-                Notification notification1 = new Notification { Title = "Safety First", Content = "This is a plain, not some kampin kitsch party", General = true };
+                Notification notification1 = new Notification { Title = "Safety First", Content = "This is a plain, not some kampin kitsch party", SinglePerson = true };
                 _dbContext.Add(notification1);
-                Notification notification2 = new Notification { Title = "Safety First", Content = "This is a plain, not some kampin kitsch party", General = true };
+                Notification notification2 = new Notification { Title = "Safety First", Content = "This is a plain, not some kampin kitsch party", SinglePerson = true };
                 _dbContext.Add(notification2);
-                Notification notification3 = new Notification { Title = "Safety First", Content = "This is a plain, not some kampin kitsch party", General = true };
+                Notification notification3 = new Notification { Title = "Safety First", Content = "This is a plain, not some kampin kitsch party", SinglePerson = true };
                 _dbContext.Add(notification3);
-                Notification notification4 = new Notification { Title = "Safety First", Content = "This is a plain, not some kampin kitsch party", General = true };
+                Notification notification4 = new Notification { Title = "Safety First", Content = "This is a plain, not some kampin kitsch party", SinglePerson = true };
                 _dbContext.Add(notification4);
                 #endregion
 

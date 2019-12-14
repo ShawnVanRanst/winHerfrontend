@@ -29,14 +29,13 @@ namespace OnBoardFlight.View
         public NavigationCabinCrew()
         {
             this.InitializeComponent();
-            NavView.SelectedItem = HomeBtn;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             this.DataContext = new NavigationCabinCrewViewModel((Model.Helper.CabinCrewLogin)e.Parameter);
-            NavOptions("Home");
+            NavView.SelectedItem = HomeBtn;
         }
 
         private void NavigateTo(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

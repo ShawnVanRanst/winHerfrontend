@@ -50,6 +50,7 @@ namespace OnBoardFlight_Backend
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderlineRepository, OrderlineRepository>();
             services.AddScoped<IPassengerRepository, PassengerRepository>();
+            services.AddScoped<INotificationRepository, NotificationRepository>();
 
             services.AddOpenApiDocument(c =>
             {
