@@ -176,11 +176,16 @@ namespace OnBoardFlight.ViewModel.Passenger
         private async void PostOrder()
         {
             OrderDTO dto = new OrderDTO(Cart.Order);
-            HttpContent content = new StringContent(DTOToJson(dto));
+            HttpContent content = new StringContent(DTOToJson(dto), Encoding.UTF8,
+                                    "application/json");
             HttpResponseMessage result = await client.PostAsync(new Uri("http://localhost:5000/api/Order"), content);
             if(result.IsSuccessStatusCode)
             {
                 ClearCart();
+            }
+            else
+            {
+                string status = result.StatusCode.ToString();
             }
         }
 
