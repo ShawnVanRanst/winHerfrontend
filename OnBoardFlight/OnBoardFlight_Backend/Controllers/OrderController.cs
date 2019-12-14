@@ -34,7 +34,7 @@ namespace OnBoardFlight_Backend.Controllers
         [HttpGet]
         public IActionResult GetAllOrdersBySeat(string seat)
         {
-            IEnumerable<Order> orders = _orderRepo.GetAllOrdersBySeat("20D");
+            IEnumerable<Order> orders = _orderRepo.GetAllOrdersBySeat(seat);
 
             return Ok(orders.Select(o => new OrderDTO(o)));
         }

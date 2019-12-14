@@ -70,8 +70,7 @@ namespace OnBoardFlight.ViewModel.Passenger
         {
             try
             {
-                HttpContent content = new StringContent(SeatNumber, Encoding.UTF8, "application/json");
-                var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Order/Seat/"));
+                var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Order/Seat?seat=" + SeatNumber));
                 var orderlist = JsonConvert.DeserializeObject<IList<Order>>(json);
                 ObservableCollection<Order> newOrderList = new ObservableCollection<Order>();
                 foreach (var Order in orderlist)
