@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="DTO\AddOrderDTO.cs" />
     <Compile Include="DTO\AddOrderlineDTO.cs" />
+    <Compile Include="DTO\CompleteOrderDTO.cs" />
     <Compile Include="Model\Chat.cs" />
     <Compile Include="Model\Game.cs" />
     <Compile Include="Model\Helper\CabinCrewLogin.cs" />
@@ -150,6 +151,7 @@
     <Compile Include="ViewModel\CabinCrew\LoginViewModel.cs" />
     <Compile Include="ViewModel\CabinCrew\NavigationCabinCrewViewModel.cs" />
     <Compile Include="ViewModel\CabinCrew\NotificationViewModel.cs" />
+    <Compile Include="ViewModel\CabinCrew\OrdersNotCompletedViewModel.cs" />
     <Compile Include="ViewModel\CabinCrew\SeatViewModel.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Login\CancelLoginCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Login\LoginCommand.cs" />

@@ -13,6 +13,7 @@ namespace OnBoardFlight_Backend.Data.IRepository
         IEnumerable<Order> GetAllOrdersBySeat(string seat);
         Order GetOrderById(int id);
         void AddOrder(Order order);
+        void CompleteOrder(Order order);
         void SaveChanges();
     }
 }

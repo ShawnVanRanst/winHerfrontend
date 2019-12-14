@@ -41,6 +41,10 @@ namespace OnBoardFlight_Backend.Data.Repository
             IEnumerable<Order> orders = _orders.Where(o => o.IsCompleted == false).Include(o => o.Orderlines).ThenInclude(o => o.Product).ToList();
             return orders;
         }
+        public void CompleteOrder(Order order)
+        {
+            _orders.Update(order);
+        }
 
 
         public Order GetOrderById(int id)

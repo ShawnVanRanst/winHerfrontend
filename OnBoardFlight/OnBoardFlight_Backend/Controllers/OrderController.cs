@@ -36,6 +36,17 @@ namespace OnBoardFlight_Backend.Controllers
             IEnumerable<Order> orders = _orderRepo.GetAllNotCompletedOrders();
             return Ok(orders.Select(o => new OrderDTO(o)));
         }
+        [HttpPost]
+        [Route("Complete")]
+        public IActionResult CompleteOrder(CompleteOrderDTO orderdto)
+        {
+            Order order = _orderRepo.GetOrderById(orderdto.OrderId);
+            order.IsCompleted = true;
+            _orderRepo.CompleteOrder(order);
+            _orderRepo.SaveChanges();
+            OrderDTO orderDTO = new OrderDTO(order);
+            return Ok(orderDTO);
+        }
 
         [Route("Seat")]
         [HttpGet]
@@ -45,13 +56,6 @@ namespace OnBoardFlight_Backend.Controllers
 
             return Ok(orders.Select(o => new OrderDTO(o)));
         }
-        //[HttpGet]
-        //[Route("Order/{id}")]
-        //public ActionResult<Order> GetOrderById(int id)
-        //{
-        //    return _orderRepo.GetOrderById(id);
-        //}
-
         [HttpPost]
         public IActionResult AddOrder(AddOrderDTO dto)
         {
@@ -61,10 +65,10 @@ namespace OnBoardFlight_Backend.Controllers
                 return BadRequest();
             }
             Order order = new Order(passenger, dto.Time);
-            foreach(AddOrderlineDTO olDTO in dto.OrderlineDTOs)
+            foreach (AddOrderlineDTO olDTO in dto.OrderlineDTOs)
             {
                 Product product = _productRepo.GetProductById(olDTO.ProductId);
-                if(product == null)
+                if (product == null)
                 {
                     return BadRequest();
                 }
@@ -78,7 +82,7 @@ namespace OnBoardFlight_Backend.Controllers
                 _orderRepo.AddOrder(order);
                 _orderRepo.SaveChanges();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return StatusCode(500);
             }
