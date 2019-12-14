@@ -125,6 +125,7 @@
     <Compile Include="Model\Helper\CategoryAndListMusicHelper.cs" />
     <Compile Include="Model\Helper\CategoryAndListProductHelper.cs" />
     <Compile Include="Model\Helper\CategoryAndListVideoHelper.cs" />
+    <Compile Include="Model\Helper\ChangeSeats.cs" />
     <Compile Include="Model\Helper\ChatConversationHelper.cs" />
     <Compile Include="Model\Helper\GeneralLogin.cs" />
     <Compile Include="Model\Helper\SendMessage.cs" />
@@ -150,9 +151,8 @@
     <Compile Include="ViewModel\CabinCrew\SeatViewModel.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Login\CancelLoginCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Login\LoginCommand.cs" />
-    <Compile Include="ViewModel\Commands\CabinCrew\SearchPassengerToChangePlaces.cs" />
-    <Compile Include="ViewModel\Commands\CabinCrew\SearchPassengerToMoveCommand.cs" />
-    <Compile Include="ViewModel\Commands\CabinCrew\SendNotificationCommand.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\Seats\SearchPassengerToMoveCommand.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\Notification\SendNotificationCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Chat\SendMessageCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Login\CancelLoginCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Login\LoginCommand.cs" />

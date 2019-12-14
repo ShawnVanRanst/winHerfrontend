@@ -8,14 +8,15 @@ using System.Windows.Input;
 
 namespace OnBoardFlight.ViewModel.Commands.CabinCrew
 {
-    public class SearchPassengerToChangePlaces : ICommand
+    public class SearchPassengerToMoveCommand : ICommand
     {
-
         public SeatViewModel SeatViewModel { get; set; }
+        private int Passenger { get; set; }
 
-        public SearchPassengerToChangePlaces(SeatViewModel svm)
+        public SearchPassengerToMoveCommand(SeatViewModel svm, int p)
         {
             SeatViewModel = svm;
+            Passenger = p;
         }
 
 
@@ -28,7 +29,7 @@ namespace OnBoardFlight.ViewModel.Commands.CabinCrew
 
         public void Execute(object parameter)
         {
-            SeatViewModel.SearchPassengerToChangePlaces();
+            SeatViewModel.SearchPassengerToMove(Passenger);
         }
     }
 }

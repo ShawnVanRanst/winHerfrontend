@@ -18,6 +18,15 @@ namespace OnBoardFlight.Model
             set { _travelCompany = value; RaisePropertyChanged("TravelCompany"); }
         }
 
+        private string _seat;
+
+        public string Seat
+        {
+            get { return _seat; }
+            set { _seat = value; RaisePropertyChanged("Seat"); }
+        }
+
+
         private List<Chat> _chatList;
 
         public List<Chat> ChatList

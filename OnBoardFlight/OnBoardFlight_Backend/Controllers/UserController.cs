@@ -86,6 +86,36 @@ namespace OnBoardFlight_Backend.Controllers
         }
 
         [HttpPost]
+        [Route("seats")]
+        public IActionResult ChangeSeats(ChangeSeatsDTO Seats)
+        {
+            try
+            {
+                if (Seats.TwoPassengers)
+                {
+                    Passenger passenger1 = _userRepository.GetPassengerBySeat(Seats.Seat1);
+                    Passenger passenger2 = _userRepository.GetPassengerBySeat(Seats.Seat2);
+                    passenger2.Seat = Seats.Seat1;
+                    passenger1.Seat = Seats.Seat2;
+                    _userRepository.UpdatePassenger(passenger1);
+                    _userRepository.UpdatePassenger(passenger2);
+                    _userRepository.SaveChanges();
+                }
+                else{
+                    Passenger passenger1 = _userRepository.GetPassengerBySeat(Seats.Seat1);
+                    passenger1.Seat = Seats.Seat2;
+                    _userRepository.UpdatePassenger(passenger1);
+                    _userRepository.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+            return Ok();
+        }
+
+        [HttpPost]
         [Route("notification/add")]
         public IActionResult AddNotification(Notification notification)
         {
