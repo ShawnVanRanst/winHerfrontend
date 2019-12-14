@@ -35,10 +35,22 @@ namespace OnBoardFlight.ViewModel.Passenger
             set
             {
                 _product = value;
-                AddProductToCart();
                 RaisePropertyChanged("Product");
             }
         }
+
+        private Orderline _orderline;
+
+        public Orderline Orderline
+        {
+            get { return _orderline; }
+            set
+            {
+                _orderline = value;
+                RaisePropertyChanged("Orderline");
+            }
+        }
+
 
 
         private Model.ShoppingCart _cart;
@@ -118,6 +130,16 @@ namespace OnBoardFlight.ViewModel.Passenger
         {
             //Post the order to the backend and clear Cart if succesfull
             PostOrder();
+        }
+
+        public void DeleteOrderline()
+        {
+            Order order = Cart.Order;
+            ObservableCollection<Orderline> orderlines = order.Orderlines;
+            orderlines.Remove(Orderline);
+            Cart.Order.Orderlines = orderlines;
+            Cart.Order = order;
+            Cart.Order.TotalPrice--;
         }
 
         private void FillCategoryListProductList()

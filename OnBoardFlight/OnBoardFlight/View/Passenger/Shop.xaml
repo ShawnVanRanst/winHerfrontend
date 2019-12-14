@@ -53,14 +53,15 @@
                         <TextBlock Text="Description" Width="200" Margin="20 0 0 0"/>
                         <TextBlock Text="Price" Width="100"/>
                     </StackPanel>
-                    <ListView ItemsSource="{Binding Orderlines}">
+                    <ListView ItemsSource="{Binding Orderlines}" Tapped="SelectOrderline">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal" BorderBrush="White" BorderThickness="1" Width="400" HorizontalAlignment="Center">
+                                <StackPanel Orientation="Horizontal" BorderBrush="White" BorderThickness="1" Width="450" HorizontalAlignment="Center">
                                     <TextBlock Text="{Binding Number}" Width="50"/>
                                     <TextBlock Text="{Binding Product.Description}" Width="200" Margin="20 0 20 0"/>
                                     <TextBlock Text="€"/>
                                     <TextBlock Text="{Binding TotalPrice}" Width="100"/>
+                                    <Button Content="Delete item" Tapped="DeleteOrderline"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>

@@ -44,11 +44,24 @@ namespace OnBoardFlight.View.Passenger
             ListView lv = (ListView) sender;
             Model.Product product = (Model.Product)lv.SelectedItem;
             (this.DataContext as ShopViewModel).Product = product;
+            (this.DataContext as ShopViewModel).AddProductToCart();
         }
 
         private void AddOrder(object sender, TappedRoutedEventArgs e)
         {
             (this.DataContext as ShopViewModel).AddOrder();
+        }
+
+        private void SelectOrderline(object sender, TappedRoutedEventArgs e)
+        {
+            ListView lv = (ListView)sender;
+            Model.Orderline ol = (Model.Orderline)lv.SelectedItem;
+            (this.DataContext as ShopViewModel).Orderline = ol;
+        }
+
+        private void DeleteOrderline(object sender, TappedRoutedEventArgs e)
+        {
+            (this.DataContext as ShopViewModel).DeleteOrderline();
         }
     }
 }
