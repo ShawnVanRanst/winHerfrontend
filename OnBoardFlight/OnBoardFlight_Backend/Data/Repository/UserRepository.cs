@@ -62,7 +62,7 @@ namespace OnBoardFlight_Backend.Data.Repository
         public User GetCabinCrewByCredentials(string login, string pass)
         {
 
-            return _users.FirstOrDefault(u => u.Login == login && u.Pass == pass);
+            return _users.Include(u => u.Flight).ThenInclude(f => f.Origin).Include(u => u.Flight).ThenInclude(f => f.Destination).FirstOrDefault(u => u.Login == login && u.Pass == pass);
         }
 
         public IEnumerable<Notification> GetNotificationByPassengerSeat(string seat)

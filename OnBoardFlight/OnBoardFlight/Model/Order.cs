@@ -24,15 +24,18 @@ namespace OnBoardFlight.Model
         {
             get
             {
+                /*
                 _totalPrice = 0.0;
                 foreach(Orderline ol in Orderlines)
                 {
                     _totalPrice += ol.TotalPrice;
                 }
+                */
                 return _totalPrice;
             }
             set
             {
+                _totalPrice = value;
                 RaisePropertyChanged("TotalPrice");
             }
         }

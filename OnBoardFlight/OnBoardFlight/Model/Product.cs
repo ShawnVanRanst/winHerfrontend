@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 
 namespace OnBoardFlight.Model
 {
@@ -41,13 +42,43 @@ namespace OnBoardFlight.Model
             set { _discount = value; RaisePropertyChanged("Discount"); }
         }
 
-        private double? _discountPrice;
+        private double? _oldPrice;
 
-        public double? DiscountPrice
+        public double? OldPrice
         {
-            get { return _discountPrice; }
-            set { _discountPrice = value; RaisePropertyChanged("DiscountPrice"); }
+            get { return _oldPrice; }
+            set { _oldPrice = value; RaisePropertyChanged("OldPrice"); }
         }
+
+        public Visibility PromotedDisplay
+        {
+            get{
+                if (Discount)
+                {
+                    return Visibility.Visible;
+                }
+                else
+                {
+                    return Visibility.Collapsed;
+                }
+            }
+        }
+
+        public Visibility NotPromotedDisplay
+        {
+            get
+            {
+                if (Discount)
+                {
+                    return Visibility.Collapsed;
+                }
+                else
+                {
+                    return Visibility.Visible;
+                }
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

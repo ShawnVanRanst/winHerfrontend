@@ -29,12 +29,12 @@
                                             <StackPanel Orientation="Vertical" Height="100" Background="DarkGray">
                                                 <Image Source="{Binding ImageLink}"/>
                                                 <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Discount" Visibility="{Binding PromotedDisplay}"/>
                                                     <TextBlock Text="{Binding Description}"/>
                                                     <TextBlock Text="€" Margin="30 0 0 0"/>
                                                     <TextBlock Text="{Binding Price}"/>
                                                 </StackPanel>
                                             </StackPanel>
-
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>

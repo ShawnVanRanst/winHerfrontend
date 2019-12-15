@@ -27,7 +27,7 @@
                 </ListView>
             </ScrollViewer>
             <CheckBox Content="Promotion" Visibility="{Binding Visibility}" IsChecked="{Binding Product.Discount, Mode=TwoWay}"/>
-            <TextBox Text="{Binding DiscountPrice, Mode=TwoWay}"/>
+            <TextBox Text="{Binding OldPrice, Mode=TwoWay}"/>
             <Button Content="Edit" HorizontalAlignment="Center" Command="{Binding AddPromotionCommand, Mode=TwoWay}"/>
         </StackPanel>
     </Grid>

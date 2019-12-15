@@ -22,7 +22,7 @@ namespace OnBoardFlight_Backend.Model
 
         public bool Discount { get; set; }
 
-        public double? DiscountPrice { get; set; }
+        public double? OldPrice { get; set; }
 
         #endregion
 
