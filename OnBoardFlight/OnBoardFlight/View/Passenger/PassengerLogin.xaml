@@ -6,6 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///view/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
         <Button VerticalAlignment="Top" Style="{StaticResource NavigationBackButtonNormalStyle}" x:Name="Back" Click="Back_Click" HorizontalAlignment="Left"/>
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -15,11 +22,11 @@
                 <TextBlock HorizontalAlignment="Left" x:Name="LoginError" Foreground="Red"/>
                 <TextBlock Text="Please fill in your seat number" HorizontalAlignment="Left" Margin="0,0,0,10"/>
                 <TextBox x:Name="LoginBtn" Margin="0,0,0,20" Text="{Binding GeneralLogin.Login, Mode=TwoWay}"/>
-                <Button HorizontalAlignment="Center" Content="CheckSeat" Command="{Binding LoginCommand}" CommandParameter="{Binding}"/>
+                <Button Style="{StaticResource WelcomeScreenButton}" HorizontalAlignment="Center" Content="CheckSeat" Command="{Binding LoginCommand}" CommandParameter="{Binding}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding VisibilityLogin}">
-                <Button HorizontalAlignment="Center" Content="Login" Tapped="Login"/>
-                <Button HorizontalAlignment="Center" Content="Cancel" Command="{Binding CancelLoginCommand}"/>
+                <Button Style="{StaticResource WelcomeScreenButton}" HorizontalAlignment="Center" Content="Login" Tapped="Login"/>
+                <Button Style="{StaticResource WelcomeScreenButton}" HorizontalAlignment="Center" Content="Cancel" Command="{Binding CancelLoginCommand}"/>
             </StackPanel>
         </StackPanel>
     </Grid>

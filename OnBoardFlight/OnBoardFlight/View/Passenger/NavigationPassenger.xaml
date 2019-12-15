@@ -7,6 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///view/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <NavigationView x:Name="NavView" SelectionChanged="NavigateTo">
         <NavigationView.MenuItems>
             <NavigationViewItem Content="Home" Icon="Home" x:Name="HometBtn" Tag="Home"/>
