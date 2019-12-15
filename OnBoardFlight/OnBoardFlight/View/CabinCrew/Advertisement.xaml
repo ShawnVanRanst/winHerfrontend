@@ -8,6 +8,7 @@
     mc:Ignorable="d">
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <ScrollViewer>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Edit promotions"/>
             <StackPanel Orientation="Horizontal">
@@ -30,5 +31,6 @@
             <TextBox Text="{Binding OldPrice, Mode=TwoWay}"/>
             <Button Content="Edit" HorizontalAlignment="Center" Command="{Binding AddPromotionCommand, Mode=TwoWay}"/>
         </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

@@ -8,6 +8,7 @@
     mc:Ignorable="d">
 
     <Grid>
+        <ScrollViewer>
         <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock HorizontalAlignment="Center" Text="Send a notification" VerticalAlignment="Center" FontSize="36"/>
             <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
@@ -22,5 +23,6 @@
                 <Button HorizontalAlignment="Center" Content="Send" Command="{Binding SendNotification, Mode=TwoWay}"/>
             </StackPanel>
         </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

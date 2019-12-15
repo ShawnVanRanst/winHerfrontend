@@ -32,17 +32,13 @@
                                                 <TextBlock Text="{Binding TotalPrice}" TextAlignment="Center" Width="100"/>
                                             </StackPanel>
                                         </DataTemplate>
-
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </StackPanel>
-                            
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-
             </ListView>
-
             <Button Content="Complete Order" Tapped="Complete"/>
         </StackPanel>
     </ScrollViewer>
