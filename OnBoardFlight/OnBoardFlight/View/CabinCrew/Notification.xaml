@@ -16,20 +16,20 @@
 
     <Grid>
         <ScrollViewer>
-        <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock HorizontalAlignment="Center" Text="Send a notification" VerticalAlignment="Center" FontSize="36"/>
-            <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
-                <TextBlock HorizontalAlignment="Left" x:Name="NotificationError" FocusVisualPrimaryBrush="Black" Foreground="Red"/>
-                <TextBlock HorizontalAlignment="Left" Text="Title"/>
-                <TextBox Text="{Binding Notification.Title, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="Title" Width="200" Margin="0,0,0,20"/>
-                <TextBlock HorizontalAlignment="Left" Text="Notification"/>
-                <TextBox Text="{Binding Notification.Content, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="NotificationContent" Width="200" Height="100" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,20"/>
-                <CheckBox x:Name="CheckPassenger" Content="Send to specific passenger" Click="ModifyPassengerList" IsChecked="{Binding Notification.SinglePerson, Mode=TwoWay}"/>
-                <TextBlock x:Name="SeatnumberLabel" Text="Seatnumber" Visibility="Collapsed"/>
-                <TextBox Text="{Binding Notification.PassengerSeat, Mode=TwoWay}" x:Name="Seatnumber" HorizontalAlignment="Left" Width="200" Visibility="Collapsed"/>
-                <Button HorizontalAlignment="Center" Content="Send" Command="{Binding SendNotification, Mode=TwoWay}"/>
+            <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource whiteText}" HorizontalAlignment="Center" Text="Send a notification" VerticalAlignment="Center" FontSize="36"/>
+                <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
+                    <TextBlock Style="{StaticResource whiteText}" HorizontalAlignment="Left" x:Name="NotificationError" FocusVisualPrimaryBrush="Black" Foreground="Red"/>
+                    <TextBlock Style="{StaticResource whiteText}" HorizontalAlignment="Left" Text="Title"/>
+                    <TextBox Text="{Binding Notification.Title, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="Title" Width="200" Margin="0,0,0,20"/>
+                    <TextBlock Style="{StaticResource whiteText}" HorizontalAlignment="Left" Text="Notification"/>
+                    <TextBox Text="{Binding Notification.Content, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="NotificationContent" Width="200" Height="100" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,20"/>
+                    <CheckBox Style="{StaticResource whiteTextCheckbox}" x:Name="CheckPassenger" Content="Send to specific passenger" Click="ModifyPassengerList" IsChecked="{Binding Notification.SinglePerson, Mode=TwoWay}"/>
+                    <TextBlock Style="{StaticResource whiteText}" x:Name="SeatnumberLabel" Text="Seatnumber" Visibility="Collapsed"/>
+                    <TextBox Text="{Binding Notification.PassengerSeat, Mode=TwoWay}" x:Name="Seatnumber" HorizontalAlignment="Left" Width="200" Visibility="Collapsed" Margin="0,0,0,0"/>
+                    <Button HorizontalAlignment="Center" Content="Send" Command="{Binding SendNotification, Mode=TwoWay}" Style="{StaticResource RoundButtonWhiteText}"/>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
         </ScrollViewer>
     </Grid>
 </Page>

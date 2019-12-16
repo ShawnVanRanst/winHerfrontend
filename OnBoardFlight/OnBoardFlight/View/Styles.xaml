@@ -34,5 +34,8 @@ BorderBrush="#000">
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="whiteTextCheckbox" TargetType="CheckBox">
+        <Setter Property="Content" Value="white"></Setter>
+    </Style>
            
 </ResourceDictionary>
