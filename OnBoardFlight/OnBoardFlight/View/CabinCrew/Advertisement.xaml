@@ -16,14 +16,15 @@
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <ScrollViewer>
-            <StackPanel Orientation="Vertical">
+            <StackPanel Margin="0,150,0,0" Orientation="Vertical">
                 <TextBlock  Text="Edit promotions" Style="{StaticResource whiteText}"/>
                 <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Text="{Binding Filter, Mode=TwoWay}"/>
-                    <Button Content="Search" Command="{Binding FilterProductsCommand, Mode=TwoWay}" Style="{StaticResource RoundButtonWhiteText}"/>
+                <TextBlock Style="{StaticResource whiteText}" Text="{Binding SuccesMessage}" HorizontalAlignment="Left" x:Name="Succes" Foreground="Green"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="Filter:"/>
+                    <TextBox Text="{Binding Filter, Mode=TwoWay}" TextChanged="Filter"/>
                 </StackPanel>
-                <ScrollViewer>
+                <ScrollViewer Height="400" BorderThickness="2" BorderBrush="White">
                     <ListView ItemsSource="{Binding Products, Mode=TwoWay}" SelectedItem="{Binding Product, Mode=TwoWay}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -35,7 +36,9 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </ScrollViewer>
-                <CheckBox Content="Promotion" Visibility="{Binding Visibility}" IsChecked="{Binding Product.Discount, Mode=TwoWay}"/>
+                <CheckBox Visibility="{Binding Visibility}" IsChecked="{Binding Product.Discount, Mode=TwoWay}">
+                    <TextBlock Style="{StaticResource whiteText}" Text="Promotion"></TextBlock>
+                </CheckBox>
                 <TextBox Text="{Binding OldPrice, Mode=TwoWay}"/>
                 <Button Content="Edit" HorizontalAlignment="Center" Command="{Binding AddPromotionCommand, Mode=TwoWay}" Style="{StaticResource RoundButtonWhiteText}"/>
             </StackPanel>

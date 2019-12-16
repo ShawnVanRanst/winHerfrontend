@@ -84,22 +84,21 @@ namespace OnBoardFlight.ViewModel.Passenger
             try
             {
                 var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Order/Seat?seat=" + SeatNumber));
-                var orderlist = JsonConvert.DeserializeObject<IList<Order>>(json);
+                IList<Order> orderlist = JsonConvert.DeserializeObject<IList<Order>>(json);
                 ObservableCollection<Order> newOrderList = new ObservableCollection<Order>();
-                if(newOrderList.Count == 0)
+                if(orderlist.Count == 0)
                 {
-                    throw new ArgumentNullException();
+                    ErrorMessage = "There are no orders at the moment! Go to the shop to place a new order.";
                 }
-                foreach (var Order in orderlist)
+                else
                 {
-                    newOrderList.Add(Order);
-                }
-                OrderList = newOrderList;
-                ErrorMessage = null;
-            }
-            catch(ArgumentNullException)
-            {
-                ErrorMessage = "There are no orders at the moment. Go to the shop to place a new order.";
+                    foreach (var Order in orderlist)
+                    {
+                        newOrderList.Add(Order);
+                    }
+                    OrderList = newOrderList;
+                    ErrorMessage = null;
+                }              
             }
             catch(Exception)
             {

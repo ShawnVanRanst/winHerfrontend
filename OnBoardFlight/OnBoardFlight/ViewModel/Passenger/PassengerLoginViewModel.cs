@@ -114,17 +114,12 @@ namespace OnBoardFlight.ViewModel.Passenger
                     VisibilityLogin = Visibility.Visible;
                     VisibilityCheck = Visibility.Collapsed;
                     Name = Passenger.FirstName + " " + Passenger.LastName;
+                    ErrorMessage = null;
                 }
                 else
                 {
-                    throw new ArgumentNullException();
+                    ErrorMessage = "There is no passenger on this seat! Please try another seat.";
                 }
-                ErrorMessage = null;
-            }
-            catch(HttpRequestException)
-            {
-                ErrorMessage = "There is no passenger on this seat! Please try another seat.";
-                CancelLogin();
             }
             catch (Exception e)
             {
