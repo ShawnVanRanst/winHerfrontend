@@ -22,9 +22,9 @@ namespace OnBoardFlight.ViewModel.Passenger
         #region Backend call properties
         private HttpClient client { get; }
 
-        private string ErrorMessage { get; set; } 
         #endregion
 
+        #region Properties
         public string SeatNumber { get; set; }
 
         private Product _product;
@@ -72,6 +72,18 @@ namespace OnBoardFlight.ViewModel.Passenger
         public ObservableCollection<CategoryAndListProductHelper> CategoryListProductList { get; set; }
 
 
+        private string _errorMessage;
+
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = value;
+                RaisePropertyChanged("ErrorMessage");
+            }
+        } 
+        #endregion
 
         public ShopViewModel(GeneralLogin generalLogin)
         {
@@ -186,28 +198,51 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         private async void LoadData()
         {
-            var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Product"));
-            var Productslist = JsonConvert.DeserializeObject<IList<Product>>(json);
-            foreach (var Product in Productslist)
+            try
             {
-                ProductList.Add(Product);
+                var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Product"));
+                var productslist = JsonConvert.DeserializeObject<IList<Product>>(json);
+                if(productslist.Count == 0)
+                {
+                    throw new ArgumentNullException();
+                }
+                foreach (var Product in productslist)
+                {
+                    ProductList.Add(Product);
+                }
+                FillCategoryListProductList();
             }
-            FillCategoryListProductList();
+            catch(ArgumentNullException)
+            {
+                ErrorMessage = "There are no products available.";
+            }
+            catch(Exception)
+            {
+                ErrorMessage = "Something went wrong! Please try again later."
+            }
+           
         }
 
         private async void PostOrder()
         {
-            AddOrderDTO dto = new AddOrderDTO(Cart.Order);
-            HttpContent content = new StringContent(DTOToJson(dto), Encoding.UTF8,
-                                    "application/json");
-            HttpResponseMessage result = await client.PostAsync(new Uri("http://localhost:5000/api/Order"), content);
-            if(result.IsSuccessStatusCode)
+            try
             {
-                ClearCart();
+                AddOrderDTO dto = new AddOrderDTO(Cart.Order);
+                HttpContent content = new StringContent(DTOToJson(dto), Encoding.UTF8,
+                                        "application/json");
+                HttpResponseMessage result = await client.PostAsync(new Uri("http://localhost:5000/api/Order"), content);
+                if (result.IsSuccessStatusCode)
+                {
+                    ClearCart();
+                }
             }
-            else
+            catch(HttpRequestException)
             {
-                string status = result.StatusCode.ToString();
+                ErrorMessage = "Order wasn't created! Please try again later.";
+            }
+            catch(Exception)
+            {
+                ErrorMessage = "Something went wrong! Please try again later.";
             }
         }
 
