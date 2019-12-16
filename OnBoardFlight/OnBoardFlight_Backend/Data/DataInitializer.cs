@@ -60,7 +60,7 @@ namespace OnBoardFlight.Data
                 #endregion
 
                 #region Users
-                CabinCrew crewMember1 = new CabinCrew { Login = "RR", Pass = "pornhub", FirstName = "Riley", LastName = "Reid", Flight = flight };
+                CabinCrew crewMember1 = new CabinCrew { Login = "TA", Pass = "windows", FirstName = "Tom", LastName = "Antjon", Flight = flight };
                 //await CreateUser(crewMember.Login, "P@ssword1");
                 _dbContext.Users.Add(crewMember1);
 
