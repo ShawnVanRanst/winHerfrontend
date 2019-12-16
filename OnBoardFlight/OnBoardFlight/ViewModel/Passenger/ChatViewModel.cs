@@ -163,11 +163,11 @@ namespace OnBoardFlight.ViewModel.Passenger
                 }
                 catch(ArgumentNullException)
                 {
-                    ErrorMessage = "Er zijn geen chats beschikbaar!";
+                    ErrorMessage = "No chats available!";
                 }
                 catch (Exception)
                 {
-                    ErrorMessage = "Er liep iets fout, de chats kunnen niet opgehaald worden. Probeer later opnieuw";
+                    ErrorMessage = "Something went wrong! Please try again later.";
                 }
             }
         }

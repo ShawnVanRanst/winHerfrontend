@@ -73,7 +73,7 @@ namespace OnBoardFlight.ViewModel.Passenger
                 }
                 catch(Exception)
                 {
-                    ErrorMessage = "Er ging iets mis bij het checken van messages. Probeer later opnieuw";
+                    ErrorMessage = "Something went wrong! Please try again later.";
                 }
             }
         }

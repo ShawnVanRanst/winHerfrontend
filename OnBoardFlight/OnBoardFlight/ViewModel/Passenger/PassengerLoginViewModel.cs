@@ -122,12 +122,12 @@ namespace OnBoardFlight.ViewModel.Passenger
             }
             catch(HttpRequestException)
             {
-                ErrorMessage = "Er is geen passagier op deze zetel, probeer een andere zetel.";
+                ErrorMessage = "There is no passenger on this seat! Please try another seat.";
                 CancelLogin();
             }
             catch (Exception e)
             {
-                ErrorMessage = "Er liep iets fout bij het ophalen, probeer later opnieuw";
+                ErrorMessage = "Something went wrong! Please try again later.";
                 CancelLogin();
             };
         }
