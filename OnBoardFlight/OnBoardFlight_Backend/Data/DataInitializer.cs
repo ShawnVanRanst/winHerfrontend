@@ -443,43 +443,43 @@ namespace OnBoardFlight.Data
                 #endregion
 
                 #region Product
-                Product product1 = new Product("Cola 33cl","link", 2.50,ProductCategory.Drinks, false);
+                Product product1 = new Product("Cola 33cl", "ms-appx:///Assets/cola.jpg", 2.50,ProductCategory.Drinks, false);
                 _dbContext.Products.Add(product1);
-                Product product2 = new Product("Cola 50cl", "link", 3.50, ProductCategory.Drinks, false);
+                Product product2 = new Product("Cola 50cl", "ms-appx:///Assets/cola.jpg", 3.50, ProductCategory.Drinks, false);
                 _dbContext.Products.Add(product2);
-                Product product3 = new Product("Ice tea 33cl", "link", 2.50, ProductCategory.Drinks, false);
+                Product product3 = new Product("Ice tea 33cl", "ms-appx:///Assets/cola.jpg", 2.50, ProductCategory.Drinks, false);
                 _dbContext.Products.Add(product3);
-                Product product4 = new Product("Ice tea 50cl", "link", 3.50, ProductCategory.Drinks, false);
+                Product product4 = new Product("Ice tea 50cl", "ms-appx:///Assets/cola.jpg", 3.50, ProductCategory.Drinks, false);
                 _dbContext.Products.Add(product4);
-                Product product5 = new Product("fanta 33cl", "link", 2.50, ProductCategory.Drinks, false);
+                Product product5 = new Product("fanta 33cl", "ms-appx:///Assets/cola.jpg", 2.50, ProductCategory.Drinks, false);
                 _dbContext.Products.Add(product5);
-                Product product6 = new Product("ice tea 50cl", "link", 3.50, ProductCategory.Drinks, false);
+                Product product6 = new Product("ice tea 50cl", "ms-appx:///Assets/cola.jpg", 3.50, ProductCategory.Drinks, false);
                 _dbContext.Products.Add(product6);
-                Product product7 = new Product("Water 50cl", "link", 3.00, ProductCategory.Drinks, false);
+                Product product7 = new Product("Water 50cl", "ms-appx:///Assets/cola.jpg", 3.00, ProductCategory.Drinks, false);
                 _dbContext.Products.Add(product7);
-                Product product8 = new Product("Sparkling water 50cl", "link", 3.00, ProductCategory.Drinks, false);
+                Product product8 = new Product("Sparkling water 50cl", "ms-appx:///Assets/cola.jpg", 3.00, ProductCategory.Drinks, false);
                 _dbContext.Products.Add(product8);
-                Product product9 = new Product("Sprite 33cl", "link", 3.00, ProductCategory.Drinks, false);
+                Product product9 = new Product("Sprite 33cl", "ms-appx:///Assets/cola.jpg", 3.00, ProductCategory.Drinks, false);
                 _dbContext.Products.Add(product9);
 
-                Product product11 = new Product("hamburger", "link", 5.00, ProductCategory.Food, false);
+                Product product11 = new Product("hamburger", "ms-appx:///Assets/cola.jpg", 5.00, ProductCategory.Food, false);
                 _dbContext.Products.Add(product11);
-                Product product42 = new Product("Panini ", "link", 5.00, ProductCategory.Food, false);
+                Product product42 = new Product("Panini ", "ms-appx:///Assets/cola.jpg", 5.00, ProductCategory.Food, false);
                 _dbContext.Products.Add(product42);
-                Product product43 = new Product("French Fries", "link", 4.00, ProductCategory.Food, false);
+                Product product43 = new Product("French Fries", "ms-appx:///Assets/cola.jpg", 4.00, ProductCategory.Food, false);
                 _dbContext.Products.Add(product43);
-                Product product44 = new Product("Pizza margarita", "link", 7.00, ProductCategory.Food, false);
+                Product product44 = new Product("Pizza margarita", "ms-appx:///Assets/cola.jpg", 7.00, ProductCategory.Food, false);
                 _dbContext.Products.Add(product44);
-                Product product455 = new Product("Pizza hawai", "link", 7.00, ProductCategory.Food, false);
+                Product product455 = new Product("Pizza hawai", "ms-appx:///Assets/cola.jpg", 7.00, ProductCategory.Food, false);
                 _dbContext.Products.Add(product455);
 
-                Product product57 = new Product("Horloge", "link", 50.00, ProductCategory.Gifts, false);
+                Product product57 = new Product("Horloge", "ms-appx:///Assets/cola.jpg", 50.00, ProductCategory.Gifts, false);
                 _dbContext.Products.Add(product57);
 
-                Product product58 = new Product("Pillow", "link", 20.00, ProductCategory.Gifts, false);
+                Product product58 = new Product("Pillow", "ms-appx:///Assets/cola.jpg", 20.00, ProductCategory.Gifts, false);
                 _dbContext.Products.Add(product58);
 
-                Product product59 = new Product("The Book Of Wisdom", "link", 32.00, ProductCategory.Gifts, false);
+                Product product59 = new Product("The Book Of Wisdom", "ms-appx:///Assets/cola.jpg", 32.00, ProductCategory.Gifts, false);
                 _dbContext.Products.Add(product59);
 
                 #endregion
