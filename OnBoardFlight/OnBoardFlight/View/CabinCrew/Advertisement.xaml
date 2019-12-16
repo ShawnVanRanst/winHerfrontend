@@ -5,7 +5,7 @@
     xmlns:local="using:OnBoardFlight.View.CabinCrew"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,28 +16,28 @@
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <ScrollViewer>
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="Edit promotions"/>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Text="{Binding Filter, Mode=TwoWay}"/>
-                <Button Content="Search" Command="{Binding FilterProductsCommand, Mode=TwoWay}"/>
+            <StackPanel Orientation="Vertical">
+                <TextBlock  Text="Edit promotions" Style="{StaticResource whiteText}"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Text="{Binding Filter, Mode=TwoWay}"/>
+                    <Button Content="Search" Command="{Binding FilterProductsCommand, Mode=TwoWay}" Style="{StaticResource RoundButtonWhiteText}"/>
+                </StackPanel>
+                <ScrollViewer>
+                    <ListView ItemsSource="{Binding Products, Mode=TwoWay}" SelectedItem="{Binding Product, Mode=TwoWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource whiteText}" Text="{Binding Description}"/>
+                                    <TextBlock Style="{StaticResource whiteText}" Text="{Binding Price}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollViewer>
+                <CheckBox Content="Promotion" Visibility="{Binding Visibility}" IsChecked="{Binding Product.Discount, Mode=TwoWay}"/>
+                <TextBox Text="{Binding OldPrice, Mode=TwoWay}"/>
+                <Button Content="Edit" HorizontalAlignment="Center" Command="{Binding AddPromotionCommand, Mode=TwoWay}" Style="{StaticResource RoundButtonWhiteText}"/>
             </StackPanel>
-            <ScrollViewer>
-                <ListView ItemsSource="{Binding Products, Mode=TwoWay}" SelectedItem="{Binding Product, Mode=TwoWay}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Description}"/>
-                                <TextBlock Text="{Binding Price}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollViewer>
-            <CheckBox Content="Promotion" Visibility="{Binding Visibility}" IsChecked="{Binding Product.Discount, Mode=TwoWay}"/>
-            <TextBox Text="{Binding OldPrice, Mode=TwoWay}"/>
-            <Button Content="Edit" HorizontalAlignment="Center" Command="{Binding AddPromotionCommand, Mode=TwoWay}"/>
-        </StackPanel>
         </ScrollViewer>
     </Grid>
 </Page>
