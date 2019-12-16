@@ -160,7 +160,7 @@ namespace OnBoardFlight.ViewModel.CabinCrew
         {
             try
             {
-                ChangeSeats changeSeats = new ChangeSeats() { Seat1 = Passenger1.Seat, Seat2 = Passenger2.Seat, TwoPassengers = CheckSeatPassengers() };
+                ChangeSeats changeSeats = new ChangeSeats() { Seat1 = Seat1, Seat2 = Seat2, TwoPassengers = CheckSeatPassengers() };
                 var changeSeatsJson = JsonConvert.SerializeObject(changeSeats);
                 var res = await Client.PostAsync(new Uri("http://localhost:5000/api/User/seats"), new HttpStringContent(changeSeatsJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
                 if (res.IsSuccessStatusCode)
@@ -170,7 +170,7 @@ namespace OnBoardFlight.ViewModel.CabinCrew
                 }
                 else
                 {
-                    ErrorMessage = "Something went wrong! Please try again later.";
+                    ErrorMessage = res.StatusCode.ToString();
                 }
             }
             catch(Exception)
@@ -181,7 +181,7 @@ namespace OnBoardFlight.ViewModel.CabinCrew
 
         private bool CheckSeatPassengers()
         {
-            if(string.IsNullOrEmpty(Passenger1.FirstName) || string.IsNullOrEmpty(Passenger2.FirstName))
+            if(Passenger1 == null || Passenger2 == null)
             {
                 return false;
             }
