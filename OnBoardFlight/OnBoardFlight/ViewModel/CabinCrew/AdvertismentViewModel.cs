@@ -23,12 +23,10 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         public AddPromotionCommand AddPromotionCommand { get; set; }
 
-        public FilterProductsCommand FilterProductsCommand { get; set; }
 
         public ObservableCollection<Product> ProductData { get; set; }
 
         private ObservableCollection<Product> _products;
-
         public ObservableCollection<Product> Products
         {
             get { return _products; }
@@ -46,6 +44,10 @@ namespace OnBoardFlight.ViewModel.Passenger
                 if (value != null)
                 {
                     Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    Visibility = Visibility.Collapsed;
                 }
                 RaisePropertyChanged("Product");
             }
@@ -76,6 +78,7 @@ namespace OnBoardFlight.ViewModel.Passenger
             set { _visibility = value; RaisePropertyChanged("Visibility"); }
         }
 
+
         private string _errorMessage;
 
         public string ErrorMessage
@@ -86,7 +89,19 @@ namespace OnBoardFlight.ViewModel.Passenger
                 _errorMessage = value;
                 RaisePropertyChanged("ErrorMessage");
             }
-        } 
+        }
+
+        private string _succesMessage;
+
+        public string SuccesMessage
+        {
+            get { return _succesMessage; }
+            set
+            {
+                _succesMessage = value;
+                RaisePropertyChanged("SuccesMessage");
+            }
+        }
         #endregion
 
 
@@ -96,7 +111,6 @@ namespace OnBoardFlight.ViewModel.Passenger
             Visibility = Visibility.Collapsed;
             Client = new HttpClient();
             AddPromotionCommand = new AddPromotionCommand(this);
-            FilterProductsCommand = new FilterProductsCommand(this);
             Products = new ObservableCollection<Product>();
             LoadData();
         }
@@ -112,26 +126,22 @@ namespace OnBoardFlight.ViewModel.Passenger
         {
             try
             {
-                ProductData = new ObservableCollection<Product>();
                 var json = await Client.GetStringAsync(new Uri("http://localhost:5000/api/Product"));
                 var products = JsonConvert.DeserializeObject<IList<Product>>(json);
                 if(products.Count == 0)
                 {
-                    throw new ArgumentNullException();
+                    ErrorMessage = "No products available!";
                 }
-                foreach (var product in products)
+                else
                 {
-                    ProductData.Add(product);
-                }
-                if (Products.Count() == 0)
-                {
+                    ProductData = new ObservableCollection<Product>();
+                    foreach (var product in products)
+                    {
+                        ProductData.Add(product);
+                    }
                     Products = ProductData;
-                }
-                ErrorMessage = null;
-            }
-            catch(ArgumentNullException)
-            {
-                ErrorMessage = "No products available!";
+                    ErrorMessage = null;
+                }  
             }
             catch(Exception)
             {
@@ -152,16 +162,14 @@ namespace OnBoardFlight.ViewModel.Passenger
                 var res = await Client.PostAsync(new Uri("http://localhost:5000/api/Product/product/update"), new HttpStringContent(ProductJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
                 if (res.IsSuccessStatusCode)
                 {
+                    SuccesMessage = "Price of " + Product.Description + " succesfully updated!";
+                    Product = null;
                     LoadData();
                 }
                 else
                 {
-                    throw new ArgumentException();
+                    ErrorMessage = "Creating promotion was not succesfull! Please try again later.";
                 }
-            }
-            catch(ArgumentException)
-            {
-                ErrorMessage = "Creating promotion was not succesfull. Please try again later.";
             }
             catch(Exception)
             {
@@ -175,7 +183,7 @@ namespace OnBoardFlight.ViewModel.Passenger
             Products = new ObservableCollection<Product>();
             foreach(var product in ProductData)
             {
-                if (product.Description.Contains(Filter))
+                if (product.Description.ToLower().Contains(Filter.ToLower()))
                 {
                     Products.Add(product);
                 }

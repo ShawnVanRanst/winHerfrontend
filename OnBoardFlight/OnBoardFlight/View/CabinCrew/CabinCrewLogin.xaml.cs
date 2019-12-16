@@ -32,24 +32,23 @@ namespace OnBoardFlight.View
             this.DataContext = new LoginViewModel();
         }
 
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            On_BackRequested();
+        }
+
         private bool On_BackRequested()
         {
             if (this.Frame.CanGoBack)
             {
                 this.Frame.GoBack();
-                return true;
             }
-            return false;
         }
 
         private void LoginCabinCrew(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(NavigationCabinCrew), (this.DataContext as LoginViewModel).CabinCrewLogin);
-        }
-
-        private void Back_Click(object sender, TappedRoutedEventArgs e)
-        {
-            On_BackRequested();
         }
     }
 }
