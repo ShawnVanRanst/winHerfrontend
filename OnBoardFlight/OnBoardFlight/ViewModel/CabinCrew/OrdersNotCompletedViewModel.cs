@@ -23,8 +23,20 @@ namespace OnBoardFlight.ViewModel.Passenger
         HttpClient client = new HttpClient();
         #endregion
 
-        private ObservableCollection<Model.Order> _orderlist;
+        #region Properties
         private Order _order;
+
+        public Order Order
+        {
+            get { return _order; }
+            set
+            {
+                _order = value;
+                RaisePropertyChanged("Order");
+            }
+        }
+
+        private ObservableCollection<Model.Order> _orderlist;
 
         public ObservableCollection<Model.Order> OrderList
         {
@@ -36,7 +48,18 @@ namespace OnBoardFlight.ViewModel.Passenger
             }
         }
 
+        private string _errorMessage;
 
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = value;
+                RaisePropertyChanged("ErrorMessage");
+            }
+        } 
+        #endregion
 
 
         public OrdersNotCompletedViewModel()
@@ -49,15 +72,7 @@ namespace OnBoardFlight.ViewModel.Passenger
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public Order Order
-        {
-            get { return _order; }
-            set
-            {
-                _order = value;
-                RaisePropertyChanged("Order");
-            }
-        }
+       
 
         public void GetOrders()
         {
@@ -70,10 +85,25 @@ namespace OnBoardFlight.ViewModel.Passenger
         }
         private async void CompleteOrderBackend()
         {
-            CompleteOrderDTO dto = new CompleteOrderDTO(_order);
-            HttpContent content = new StringContent(DTOToJson(dto), Encoding.UTF8,
-                                    "application/json");
-            HttpResponseMessage result = await client.PostAsync(new Uri("http://localhost:5000/api/Order/Complete"), content);
+            try
+            {
+                CompleteOrderDTO dto = new CompleteOrderDTO(_order);
+                HttpContent content = new StringContent(DTOToJson(dto), Encoding.UTF8,
+                                        "application/json");
+                HttpResponseMessage result = await client.PostAsync(new Uri("http://localhost:5000/api/Order/Complete"), content);
+                if(!result.IsSuccessStatusCode)
+                {
+                    ErrorMessage = "Something went wrong! Order is not completed.";
+                }
+                else
+                {
+                    ErrorMessage = null;
+                }
+            }
+            catch(Exception)
+            {
+                ErrorMessage = "Something went wrong! Please try again later.";
+            }
         }
 
 
@@ -119,12 +149,13 @@ namespace OnBoardFlight.ViewModel.Passenger
                         }
                         OrderList = newOrderList1;
                     }
+                    ErrorMessage = null;
                     Thread.SpinWait(5000);
                 }
             }
             catch(Exception)
             {
-                //Geef gebruiker melding dat het niet gelukt is de orders op te halen
+                ErrorMessage = "Something went wrong fetching the orders. Please try again later.";
             }
             
         }
