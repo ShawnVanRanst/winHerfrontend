@@ -45,6 +45,10 @@ namespace OnBoardFlight.ViewModel.Passenger
                 {
                     Visibility = Visibility.Visible;
                 }
+                else
+                {
+                    Visibility = Visibility.Collapsed;
+                }
                 RaisePropertyChanged("Product");
             }
         }
@@ -74,6 +78,7 @@ namespace OnBoardFlight.ViewModel.Passenger
             set { _visibility = value; RaisePropertyChanged("Visibility"); }
         }
 
+
         private string _errorMessage;
 
         public string ErrorMessage
@@ -84,7 +89,19 @@ namespace OnBoardFlight.ViewModel.Passenger
                 _errorMessage = value;
                 RaisePropertyChanged("ErrorMessage");
             }
-        } 
+        }
+
+        private string _succesMessage;
+
+        public string SuccesMessage
+        {
+            get { return _succesMessage; }
+            set
+            {
+                _succesMessage = value;
+                RaisePropertyChanged("SuccesMessage");
+            }
+        }
         #endregion
 
 
@@ -148,6 +165,8 @@ namespace OnBoardFlight.ViewModel.Passenger
                 var res = await Client.PostAsync(new Uri("http://localhost:5000/api/Product/product/update"), new HttpStringContent(ProductJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
                 if (res.IsSuccessStatusCode)
                 {
+                    SuccesMessage = "Promotion for " + Product.Description + " succesfully added!";
+                    Product = null;
                     LoadData();
                 }
                 else
