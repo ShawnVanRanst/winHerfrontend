@@ -14,11 +14,17 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <StackPanel Orientation="Vertical">
-        <TextBlock Text="{Binding Movie.Title}"/>
-        <TextBlock Text="{Binding Movie.Category}"/>
-        <TextBlock Text="{Binding Movie.Description}"/>
-        <Button Content="PLAY" Command="{Binding PlayMovie}" CommandParameter="{Binding ElementName=mediaPlayer}"/>
-        <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto" Stretch="Uniform"/>
-    </StackPanel>
+    <Grid>
+        <ScrollViewer>
+            <StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{Binding Movie.Title}"/>
+                    <TextBlock Text="{Binding Movie.Category}"/>
+                    <TextBlock Text="{Binding Movie.Description}"/>
+                </StackPanel>
+                <Button Content="PLAY" Command="{Binding PlayMovie}" CommandParameter="{Binding ElementName=mediaPlayer}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto" Stretch="Uniform"/>
+                </StackPanel>
+        </ScrollViewer>
+    </Grid>
 </Page>
