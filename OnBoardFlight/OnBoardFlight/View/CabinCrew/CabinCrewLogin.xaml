@@ -18,20 +18,20 @@
     <Button VerticalAlignment="Top" Style="{StaticResource NavigationBackButtonNormalStyle}" x:Name="Back" Click="Back_Click"/>
     <ScrollViewer>
     <StackPanel x:Name="ContentPanel" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <TextBlock HorizontalAlignment="Center" Text="Login as" VerticalAlignment="Center" FontSize="36"/>
+        <TextBlock HorizontalAlignment="Center" Text="Login as" VerticalAlignment="Center" FontSize="36" Style="{StaticResource whiteText}"/>
         <TextBlock HorizontalAlignment="Center" Text="{Binding Name}" VerticalAlignment="Center" FontSize="72" Margin="0,0,0,40" FontWeight="Bold"/>
         <StackPanel x:Name="FormPanel" Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
             <StackPanel Orientation="Vertical" Visibility="{Binding VisibilityCheck}">
                 <TextBlock HorizontalAlignment="Left" x:Name="LoginError" FocusVisualPrimaryBrush="Black" Foreground="Red"/>
-                <TextBlock HorizontalAlignment="Left" Text="Login"/>
+                <TextBlock HorizontalAlignment="Left" Text="Login" Style="{StaticResource whiteText}"/>
                 <TextBox Text="{Binding CabinCrewLogin.Login, Mode=TwoWay}" HorizontalAlignment="Left" Width="200" Margin="0,0,0,20"/>
-                <TextBlock HorizontalAlignment="Left" Text="Password"/>
+                <TextBlock HorizontalAlignment="Left" Text="Password" Style="{StaticResource whiteText}"/>
                     <PasswordBox Password="{Binding CabinCrewLogin.Password, Mode=TwoWay}" HorizontalAlignment="Left" Width="200" Margin="0,0,0,20"/>
-                    <Button HorizontalAlignment="Center" Content="Check credentials" Command="{Binding LoginCommand}"/>
+                    <Button HorizontalAlignment="Center" Content="Check credentials" Command="{Binding LoginCommand}" Style="{StaticResource RoundButtonWhiteText}"/>
             </StackPanel>    
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding VisibilityLogin}">
-                <Button HorizontalAlignment="Center" Content="Login" Tapped="LoginCabinCrew"/>
-                <Button HorizontalAlignment="Center" Content="Cancel" Command="{Binding CancelLoginCommand}"/>
+                <Button HorizontalAlignment="Center" Content="Login" Tapped="LoginCabinCrew" Style="{StaticResource RoundButtonWhiteText}"/>
+                <Button HorizontalAlignment="Center" Content="Cancel" Command="{Binding CancelLoginCommand}" Style="{StaticResource RoundButtonWhiteText}"/>
             </StackPanel>
         </StackPanel>
     </StackPanel>

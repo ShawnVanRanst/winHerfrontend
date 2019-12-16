@@ -15,14 +15,14 @@
     </Page.Resources>
 
     <StackPanel x:Name="ContentPanel" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <TextBlock HorizontalAlignment="Center" Text="Welcome to" VerticalAlignment="Center" FontSize="36"/>
-        <TextBlock HorizontalAlignment="Center" Text="On-board flight" VerticalAlignment="Center" FontSize="72" Margin="0,0,0,40" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Center" Text="Welcome to" VerticalAlignment="Center" FontSize="36" Style="{StaticResource whiteText}"/>
+        <TextBlock HorizontalAlignment="Center" Text="On-board flight" VerticalAlignment="Center" FontSize="72" Margin="0,0,0,40" FontWeight="Bold" Style="{StaticResource whiteText}"/>
         <StackPanel x:Name="FormPanel" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Style="{StaticResource RoundButton}" Margin="0,0,20,0" x:Name="LoginAsPassenger" Click="LoginAsPassenger_Click">
-                <TextBlock TextAlignment="Center">I am a <LineBreak/>Passenger</TextBlock>
+                <TextBlock Style="{StaticResource whiteText}" TextAlignment="Center">I am a <LineBreak/>Passenger</TextBlock>
             </Button>
             <Button Style="{StaticResource RoundButton}" Margin="20,0,0,0" x:Name="LoginAsCrewMember" Click="LoginAsCrewMember_Click">
-                <TextBlock TextAlignment="Center">I am a <LineBreak/>Crew member</TextBlock>
+                <TextBlock TextAlignment="Center" Style="{StaticResource whiteText}">I am a <LineBreak/>Crew member</TextBlock>
             </Button>
         </StackPanel>
     </StackPanel>

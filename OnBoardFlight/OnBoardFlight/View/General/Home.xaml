@@ -24,18 +24,18 @@
             <RowDefinition Height="5*" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                    <TextBlock Text="From"/>
-                    <TextBlock Text="{Binding Flight.Origin.Airport}"/>
-                    <TextBlock Text="{Binding Flight.Origin.City}"/>
-                    <TextBlock Text="{Binding Flight.Origin.Country}"/>
-                    <TextBlock Text="{Binding Flight.Origin.Time}"/>
+            <TextBlock Style="{StaticResource whiteText}" Text="From"/>
+            <TextBlock Style="{StaticResource whiteText}" Text="{Binding Flight.Origin.Airport}"/>
+            <TextBlock Style="{StaticResource whiteText}" Text="{Binding Flight.Origin.City}"/>
+            <TextBlock Style="{StaticResource whiteText}" Text="{Binding Flight.Origin.Country}"/>
+            <TextBlock Style="{StaticResource whiteText}" Text="{Binding Flight.Origin.Time}"/>
                 </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-            <TextBlock Text="To"/>
-            <TextBlock Text="{Binding Flight.Destination.Airport}"/>
-            <TextBlock Text="{Binding Flight.Destination.City}"/>
-            <TextBlock Text="{Binding Flight.Destination.Country}"/>
-            <TextBlock Text="{Binding Flight.Destination.Time}"/>
+            <TextBlock Style="{StaticResource whiteText}" Text="To"/>
+            <TextBlock Style="{StaticResource whiteText}" Text="{Binding Flight.Destination.Airport}"/>
+            <TextBlock Style="{StaticResource whiteText}" Text="{Binding Flight.Destination.City}"/>
+            <TextBlock Style="{StaticResource whiteText}" Text="{Binding Flight.Destination.Country}"/>
+            <TextBlock Style="{StaticResource whiteText}" Text="{Binding Flight.Destination.Time}"/>
         </StackPanel>
         <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
