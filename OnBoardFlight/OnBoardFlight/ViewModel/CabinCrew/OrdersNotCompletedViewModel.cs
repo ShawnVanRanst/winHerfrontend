@@ -87,18 +87,30 @@ namespace OnBoardFlight.ViewModel.Passenger
         {
             try
             {
-                CompleteOrderDTO dto = new CompleteOrderDTO(_order);
-                HttpContent content = new StringContent(DTOToJson(dto), Encoding.UTF8,
-                                        "application/json");
-                HttpResponseMessage result = await client.PostAsync(new Uri("http://localhost:5000/api/Order/Complete"), content);
-                if(!result.IsSuccessStatusCode)
+                if(Order == null)
                 {
-                    ErrorMessage = "Something went wrong! Order is not completed.";
+                    throw new ArgumentNullException();
                 }
                 else
                 {
                     ErrorMessage = null;
+                    CompleteOrderDTO dto = new CompleteOrderDTO(Order);
+                    HttpContent content = new StringContent(DTOToJson(dto), Encoding.UTF8,
+                                            "application/json");
+                    HttpResponseMessage result = await client.PostAsync(new Uri("http://localhost:5000/api/Order/Complete"), content);
+                    if (!result.IsSuccessStatusCode)
+                    {
+                        ErrorMessage = "Something went wrong! Order is not completed.";
+                    }
+                    else
+                    {
+                        ErrorMessage = null;
+                    }
                 }
+            }
+            catch(ArgumentNullException)
+            {
+                ErrorMessage = "Please select an order to complete!";
             }
             catch(Exception)
             {
@@ -121,8 +133,6 @@ namespace OnBoardFlight.ViewModel.Passenger
                     newOrderList.Add(Order);
                 }
                 OrderList = newOrderList;
-                int x = 0;
-                var chatlist = new List<Order>();
                 while (true)
                 {
                     bool update = false;
@@ -149,7 +159,6 @@ namespace OnBoardFlight.ViewModel.Passenger
                         }
                         OrderList = newOrderList1;
                     }
-                    ErrorMessage = null;
                     Thread.SpinWait(5000);
                 }
             }

@@ -37,19 +37,19 @@ namespace OnBoardFlight.View
             On_BackRequested();
         }
 
-        private bool On_BackRequested()
+        private void On_BackRequested()
         {
             if (this.Frame.CanGoBack)
             {
                 this.Frame.GoBack();
-                return true;
             }
-            return false;
         }
 
         private void LoginCabinCrew(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(NavigationCabinCrew), (this.DataContext as LoginViewModel).CabinCrewLogin);
         }
+
+        
     }
 }
