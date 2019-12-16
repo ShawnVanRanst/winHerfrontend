@@ -156,10 +156,6 @@ namespace OnBoardFlight.ViewModel.Passenger
             {
                 Product.OldPrice = double.Parse(OldPrice);
             }
-            else if(OldPrice != null)
-            {
-                Product.Price = (double)Product.OldPrice;
-            }
             try
             {
                 var ProductJson = JsonConvert.SerializeObject(Product);
