@@ -41,8 +41,9 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
-                            <StackPanel>
-                                <TextBlock Style="{StaticResource whiteText}" Text="Totaal: " Margin="5, 5, 5, 5"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Style="{StaticResource whiteText}" Text="Total: " Margin="5, 5, 5, 5"/>
+                                <TextBlock Style="{StaticResource whiteText}" Text="€" Margin="5, 5, 5, 5"/>
                                 <TextBlock Style="{StaticResource whiteText}" Text="{Binding TotalPrice}" Margin="5, 5, 5, 5"/>
                             </StackPanel>
                         </StackPanel>
