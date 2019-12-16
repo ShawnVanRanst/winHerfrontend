@@ -37,5 +37,8 @@ BorderBrush="#000">
     <Style x:Key="whiteTextCheckbox" TargetType="CheckBox">
         <Setter Property="Content" Value="white"></Setter>
     </Style>
+    <Style x:Key="OrderThickBorder" TargetType="StackPanel">
+        <Setter Property="BorderThickness" Value="4"></Setter>
+    </Style>
            
 </ResourceDictionary>
