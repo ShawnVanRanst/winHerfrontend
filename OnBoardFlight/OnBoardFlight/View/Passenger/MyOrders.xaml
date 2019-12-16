@@ -21,6 +21,7 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <TextBlock Text="Order history:"/>
         </StackPanel>
+        <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
         <ListView ItemsSource="{Binding OrderList}" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>

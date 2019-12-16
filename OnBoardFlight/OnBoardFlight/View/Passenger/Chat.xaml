@@ -22,7 +22,6 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="LoginError" Foreground="Red"></TextBlock>
         <ScrollViewer Grid.Column="0" Grid.RowSpan="2">
             <ListView ItemsSource="{Binding ChatList}" x:Name="ChatListView" Tapped="SelectChat">
                 <ListView.ItemTemplate>
@@ -33,6 +32,7 @@
             </ListView>
         </ScrollViewer>
         <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="0">
+            <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
             <ScrollViewer>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
                     <ListView ItemsSource="{Binding Messages}" x:Name="MessagesListView">

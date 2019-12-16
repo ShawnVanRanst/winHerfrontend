@@ -22,6 +22,7 @@ namespace OnBoardFlight.ViewModel.Passenger
         HttpClient client = new HttpClient();
         #endregion
 
+        #region Properties
         private ObservableCollection<Model.Order> _orderlist;
 
         public ObservableCollection<Model.Order> OrderList
@@ -46,6 +47,18 @@ namespace OnBoardFlight.ViewModel.Passenger
             }
         }
 
+        private string _errorMessage;
+
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = value;
+                RaisePropertyChanged("ErrorMessage");
+            }
+        }
+        #endregion
 
         public OrderViewModel(GeneralLogin generalLogin)
         {
@@ -73,15 +86,23 @@ namespace OnBoardFlight.ViewModel.Passenger
                 var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Order/Seat?seat=" + SeatNumber));
                 var orderlist = JsonConvert.DeserializeObject<IList<Order>>(json);
                 ObservableCollection<Order> newOrderList = new ObservableCollection<Order>();
+                if(newOrderList.Count == 0)
+                {
+                    throw new ArgumentNullException();
+                }
                 foreach (var Order in orderlist)
                 {
                     newOrderList.Add(Order);
                 }
                 OrderList = newOrderList;
             }
+            catch(ArgumentNullException)
+            {
+                ErrorMessage = "There are no orders at the moment. Go to the shop to place a new order.";
+            }
             catch(Exception)
             {
-                //Geef gebruiker melding dat het niet gelukt is de orders op te halen
+                ErrorMessage = "Something went wrong! Pleae try again later.";
             }
             
         }
