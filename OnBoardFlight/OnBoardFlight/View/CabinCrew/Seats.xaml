@@ -27,11 +27,12 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Column="0" Grid.Row="0">
                         <TextBlock Text="Please enter the seatnumber of the passenger to move: " Style="{StaticResource whiteText}"/>
+                        <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
                         <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                             <TextBox x:Name="seatInput1" 
-                                     Text="{Binding Passenger1.Seat, Mode=TwoWay}"
+                                     Text="{Binding Seat1, Mode=TwoWay}"
                                      PlaceholderText="Seatnumber"
-                                     Width="100" HorizontalAlignment="Left"/>
+                                     Width="100" HorizontalAlignment="Left" TextChanged="SetSeat1"/>
                             <Button Content="Search passenger" Command="{Binding SearchPassengerToMoveCommand1, Mode=TwoWay}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" Style="{StaticResource RoundButtonWhiteText}" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical">
@@ -44,11 +45,12 @@
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row="0">
                         <TextBlock Text="Please enter the new seatnumber:" Style="{StaticResource whiteText}"/>
+                        <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage2}" HorizontalAlignment="Left" x:Name="Error2" Foreground="Red"></TextBlock>
                         <StackPanel Orientation="Horizontal" Margin="00,20,0,0">
                             <TextBox x:Name="seatNumber2" 
-                                    Text="{Binding Passenger2.Seat, Mode=TwoWay}"
+                                    Text="{Binding Seat2, Mode=TwoWay}"
                                  PlaceholderText="Seatnumber"
-                                 Width="100" HorizontalAlignment="Left"/>
+                                 Width="100" HorizontalAlignment="Left" TextChanged="SetSeat2"/>
                             <Button Content="Search Passenger" Command="{Binding SearchPassengerToMoveCommand2, Mode=TwoWay}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" Style="{StaticResource RoundButtonWhiteText}" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical">
