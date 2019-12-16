@@ -43,7 +43,9 @@ namespace OnBoardFlight.View
             if (this.Frame.CanGoBack)
             {
                 this.Frame.GoBack();
+                return true;
             }
+            return false;
         }
 
         private void LoginCabinCrew(object sender, RoutedEventArgs e)
