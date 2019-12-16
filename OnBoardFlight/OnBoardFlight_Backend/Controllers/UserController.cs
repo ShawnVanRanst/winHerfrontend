@@ -37,7 +37,7 @@ namespace OnBoardFlight_Backend.Controllers
             {
                 return BadRequest();
             }
-            List<ChatDTO> chats = pas.ChatList.Select(cl => new ChatDTO(cl.Chat, cl.Name)).ToList();
+            List<ChatDTO> chats = pas.ChatList.Select(cl => new ChatDTO(cl.Chat, cl.Name, seat)).ToList();
             return Ok(chats);
         }
 
