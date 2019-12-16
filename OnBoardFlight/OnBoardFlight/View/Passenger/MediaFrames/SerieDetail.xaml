@@ -18,9 +18,9 @@
         <StackPanel>
             <Button VerticalAlignment="Top" Style="{StaticResource NavigationBackButtonNormalStyle}" x:Name="Back" HorizontalAlignment="Left" Tapped="Back_Click"/>
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="{Binding Serie.Title}"/>
-                <TextBlock Text="{Binding Serie.Category}"/>
-                <TextBlock Text="{Binding Serie.Description}" TextWrapping="Wrap"/>
+                    <TextBlock Style="{StaticResource whiteText}" Text="{Binding Serie.Title}"/>
+                    <TextBlock Style="{StaticResource whiteText}" Text="{Binding Serie.Category}"/>
+                    <TextBlock  Style="{StaticResource whiteText}" Text="{Binding Serie.Description}" TextWrapping="Wrap"/>
             </StackPanel>
         <TextBlock Text="Episodes"/>
         <ListView ItemsSource="{Binding Serie.Episodes}"
@@ -39,9 +39,9 @@
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" Width="200">
                         <Image Source="{Binding Image}"/>
-                        <TextBlock Text="{Binding DisplaySE}"/>
-                        <TextBlock Text="{Binding Title}"/>
-                        <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
+                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding DisplaySE}"/>
+                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Title}"/>
+                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Description}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
