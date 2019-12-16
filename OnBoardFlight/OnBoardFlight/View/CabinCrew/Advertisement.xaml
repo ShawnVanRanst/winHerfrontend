@@ -18,6 +18,7 @@
         <ScrollViewer>
             <StackPanel Orientation="Vertical">
                 <TextBlock  Text="Edit promotions" Style="{StaticResource whiteText}"/>
+                <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
                 <StackPanel Orientation="Horizontal">
                     <TextBox Text="{Binding Filter, Mode=TwoWay}"/>
                     <Button Content="Search" Command="{Binding FilterProductsCommand, Mode=TwoWay}" Style="{StaticResource RoundButtonWhiteText}"/>
