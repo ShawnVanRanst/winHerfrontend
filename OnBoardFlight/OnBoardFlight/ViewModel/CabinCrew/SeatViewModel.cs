@@ -146,7 +146,7 @@ namespace OnBoardFlight.ViewModel.CabinCrew
                     }
                     else
                     {
-                        ErrorMessage2 = "There is no passenger on this seat!";
+                        ErrorMessage2 = "There is no passenger on this seat! You can move the passenger to this seat.";
                     }
                 }
             }
