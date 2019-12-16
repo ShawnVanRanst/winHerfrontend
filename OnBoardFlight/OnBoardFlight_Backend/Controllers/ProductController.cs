@@ -38,6 +38,16 @@ namespace OnBoardFlight_Backend.Controllers
         {
             try
             {
+                if (!product.Discount && product.OldPrice != null)
+                {
+                    product.Price = (double)product.OldPrice;
+                }
+                else
+                {
+                    double temp = product.Price;
+                    product.Price = (double)product.OldPrice;
+                    product.OldPrice = temp;
+                }
                 _productRepo.UpdateProduct(product);
                 _productRepo.SaveChanges();
             }

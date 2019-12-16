@@ -50,12 +50,12 @@ namespace OnBoardFlight.ViewModel.Passenger
             }
         }
 
-        private string _discountPrice;
+        private string _oldPrice;
 
-        public string DiscountPrice
+        public string OldPrice
         {
-            get { return _discountPrice; }
-            set { _discountPrice = value; RaisePropertyChanged("DiscountPrice"); }
+            get { return _oldPrice; }
+            set { _oldPrice = value; RaisePropertyChanged("OldPrice"); }
         }
 
 
@@ -111,13 +111,9 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         public async Task EditPromotion()
         {
-            if (!Product.Discount)
+            if (Product.Discount)
             {
-                Product.DiscountPrice = null;
-            }
-            else
-            {
-                Product.DiscountPrice = double.Parse(DiscountPrice);
+                Product.OldPrice = double.Parse(OldPrice);
             }
             var ProductJson = JsonConvert.SerializeObject(Product);
             var res = await Client.PostAsync(new Uri("http://localhost:5000/api/Product/product/update"), new HttpStringContent(ProductJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));

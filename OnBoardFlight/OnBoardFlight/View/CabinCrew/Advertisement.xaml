@@ -15,6 +15,7 @@
     </Page.Resources>
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <ScrollViewer>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Edit promotions"/>
             <StackPanel Orientation="Horizontal">
@@ -34,8 +35,9 @@
                 </ListView>
             </ScrollViewer>
             <CheckBox Content="Promotion" Visibility="{Binding Visibility}" IsChecked="{Binding Product.Discount, Mode=TwoWay}"/>
-            <TextBox Text="{Binding DiscountPrice, Mode=TwoWay}"/>
+            <TextBox Text="{Binding OldPrice, Mode=TwoWay}"/>
             <Button Content="Edit" HorizontalAlignment="Center" Command="{Binding AddPromotionCommand, Mode=TwoWay}"/>
         </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
