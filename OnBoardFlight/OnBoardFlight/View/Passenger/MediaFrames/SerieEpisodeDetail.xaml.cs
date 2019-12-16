@@ -38,5 +38,25 @@ namespace OnBoardFlight.View.Passenger.MediaFrames
         {
             playbtn.Visibility = Visibility.Collapsed;
         }
+
+        private bool On_BackRequested()
+        {
+            if (this.Frame.CanGoBack)
+            {
+                this.Frame.GoBack();
+                return true;
+            }
+            return false;
+        }
+
+        private void Back_Click(object sender, TappedRoutedEventArgs e)
+        {
+            On_BackRequested();
+        }
+
+        private void PlaySerie(object sender, TappedRoutedEventArgs e)
+        {
+            playbtn.Visibility = Visibility.Collapsed;
+        }
     }
 }

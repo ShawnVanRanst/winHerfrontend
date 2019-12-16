@@ -14,46 +14,39 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-        </Grid.RowDefinitions>
-        <Image Source="{Binding Serie.Image}" Grid.Column="0" Grid.Row="0"/>
-        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
-            <TextBlock Text="{Binding Serie.Title}"/>
-            <TextBlock Text="{Binding Serie.Category}"/>
-            <TextBlock Text="{Binding Serie.Description}" TextWrapping="Wrap"/>
-        </StackPanel>
-        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-            <TextBlock Text="Episodes"/>
-            <ListView ItemsSource="{Binding Serie.Episodes}"
+        <ScrollViewer>
+        <StackPanel>
+            <Button VerticalAlignment="Top" Style="{StaticResource NavigationBackButtonNormalStyle}" x:Name="Back" HorizontalAlignment="Left" Tapped="Back_Click"/>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding Serie.Title}"/>
+                <TextBlock Text="{Binding Serie.Category}"/>
+                <TextBlock Text="{Binding Serie.Description}" TextWrapping="Wrap"/>
+            </StackPanel>
+        <TextBlock Text="Episodes"/>
+        <ListView ItemsSource="{Binding Serie.Episodes}"
                       SelectedItem="{Binding Serie}"
                       ScrollViewer.VerticalScrollBarVisibility="Disabled" 
                       ScrollViewer.HorizontalScrollBarVisibility="Auto"
                         ScrollViewer.HorizontalScrollMode="Enabled"                  
                         ScrollViewer.VerticalScrollMode="Disabled" Tapped="SerieEpisodeDetails"
                       x:Name="episodes">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Background="Transparent" Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Vertical" Width="200">
-                            <Image Source="{Binding Image}"/>
-                            <TextBlock Text="{Binding DisplaySE}"/>
-                            <TextBlock Text="{Binding Title}"/>
-                            <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Background="Transparent" Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Width="200">
+                        <Image Source="{Binding Image}"/>
+                        <TextBlock Text="{Binding DisplaySE}"/>
+                        <TextBlock Text="{Binding Title}"/>
+                        <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

@@ -39,5 +39,25 @@ namespace OnBoardFlight.View.Passenger.MediaFrames
         {
             this.DataContext = new MovieDetailsViewModel((int)e.Parameter);
         }
+
+        private bool On_BackRequested()
+        {
+            if (this.Frame.CanGoBack)
+            {
+                this.Frame.GoBack();
+                return true;
+            }
+            return false;
+        }
+
+        private void Back_Click(object sender, TappedRoutedEventArgs e)
+        {
+            On_BackRequested();
+        }
+
+        private void PlayMov(object sender, TappedRoutedEventArgs e)
+        {
+            PlayBtn.Visibility = Visibility.Collapsed;
+        }
     }
 }

@@ -47,5 +47,20 @@ namespace OnBoardFlight.View.Passenger.MediaFrames
         {
             Frame.Navigate(typeof(SerieEpisodeDetail), ((sender as ListView).SelectedItem as SerieEpisode).Id);
         }
+
+        private bool On_BackRequested()
+        {
+            if (this.Frame.CanGoBack)
+            {
+                this.Frame.GoBack();
+                return true;
+            }
+            return false;
+        }
+
+        private void Back_Click(object sender, TappedRoutedEventArgs e)
+        {
+            On_BackRequested();
+        }
     }
 }
