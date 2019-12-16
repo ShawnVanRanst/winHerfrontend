@@ -95,6 +95,7 @@ namespace OnBoardFlight.ViewModel.Passenger
                     newOrderList.Add(Order);
                 }
                 OrderList = newOrderList;
+                ErrorMessage = null;
             }
             catch(ArgumentNullException)
             {

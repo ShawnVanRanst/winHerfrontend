@@ -70,6 +70,7 @@ namespace OnBoardFlight.ViewModel.Passenger
                             var resD = await client.DeleteAsync(new Uri("http://localhost:5000/api/Notification/" + notification.Id));
                         }
                     }
+                    ErrorMessage = null;
                 }
                 catch(Exception)
                 {

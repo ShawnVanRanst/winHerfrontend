@@ -211,8 +211,10 @@ namespace OnBoardFlight.ViewModel.Passenger
                     ProductList.Add(Product);
                 }
                 FillCategoryListProductList();
+                ErrorMessage = null;
+
             }
-            catch(ArgumentNullException)
+            catch (ArgumentNullException)
             {
                 ErrorMessage = "There are no products available.";
             }
@@ -234,9 +236,10 @@ namespace OnBoardFlight.ViewModel.Passenger
                 if (result.IsSuccessStatusCode)
                 {
                     ClearCart();
+                    ErrorMessage = null;
                 }
             }
-            catch(HttpRequestException)
+            catch (HttpRequestException)
             {
                 ErrorMessage = "Order wasn't created! Please try again later.";
             }

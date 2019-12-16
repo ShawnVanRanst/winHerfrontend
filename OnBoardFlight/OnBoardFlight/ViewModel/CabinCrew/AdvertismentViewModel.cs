@@ -127,6 +127,7 @@ namespace OnBoardFlight.ViewModel.Passenger
                 {
                     Products = ProductData;
                 }
+                ErrorMessage = null;
             }
             catch(ArgumentNullException)
             {

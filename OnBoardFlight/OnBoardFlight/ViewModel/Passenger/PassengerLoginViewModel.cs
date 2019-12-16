@@ -119,6 +119,7 @@ namespace OnBoardFlight.ViewModel.Passenger
                 {
                     throw new ArgumentNullException();
                 }
+                ErrorMessage = null;
             }
             catch(HttpRequestException)
             {
