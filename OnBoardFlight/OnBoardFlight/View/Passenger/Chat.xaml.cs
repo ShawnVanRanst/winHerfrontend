@@ -33,6 +33,8 @@ namespace OnBoardFlight.View.Passenger
         {
             base.OnNavigatedTo(e);
             this.DataContext = new ChatViewModel((GeneralLogin)e.Parameter);
+
+            MessageInputField.Width = ((Frame)Window.Current.Content).ActualWidth /100 * 60;
         }
 
         private void SelectChat(object sender, TappedRoutedEventArgs e)

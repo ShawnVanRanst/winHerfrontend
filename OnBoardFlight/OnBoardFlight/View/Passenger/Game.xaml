@@ -13,7 +13,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid>
+    <Grid Style="{StaticResource GridTopMargen}">
         <StackPanel VerticalAlignment="Center">
             <StackPanel Orientation="Vertical" Margin="0,50,0,0">
                 <TextBlock Style="{StaticResource whiteText}" Text="OXO" HorizontalAlignment="Center"/>

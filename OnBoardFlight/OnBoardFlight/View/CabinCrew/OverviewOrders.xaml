@@ -19,7 +19,7 @@
                 <TextBlock Style="{StaticResource whiteText}" HorizontalAlignment="Center" Margin="0,150,0,0" Text="Not Completed Orders:"/>
                 <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
             </StackPanel>
-        <ScrollViewer Height="400">
+        <ScrollViewer>
             <ListView ItemsSource="{Binding OrderList}" Tapped="SelectOrder" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
