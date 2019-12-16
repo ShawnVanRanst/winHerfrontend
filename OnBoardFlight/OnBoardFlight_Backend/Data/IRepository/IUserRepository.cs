@@ -21,6 +21,8 @@ namespace OnBoardFlight_Backend.Data.IRepository
 
         User GetCabinCrewByCredentials(string login, string password);
 
+        User GetCabinCrewByLogin(string login);
+
         IEnumerable<Notification> GetNotificationByPassengerSeat(string seat);
 
         Passenger GetPassengerChatBySeat(string seat);

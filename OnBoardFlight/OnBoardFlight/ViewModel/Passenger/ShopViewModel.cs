@@ -218,7 +218,7 @@ namespace OnBoardFlight.ViewModel.Passenger
             }
             catch(Exception)
             {
-                ErrorMessage = "Something went wrong! Please try again later."
+                ErrorMessage = "Something went wrong! Please try again later.";
             }
            
         }

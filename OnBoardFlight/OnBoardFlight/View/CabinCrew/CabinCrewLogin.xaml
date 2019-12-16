@@ -22,7 +22,7 @@
                 <TextBlock  Style="{StaticResource whiteText}" HorizontalAlignment="Center" Text="{Binding Name}" VerticalAlignment="Center" FontSize="72" Margin="0,0,0,40" FontWeight="Bold"/>
                 <StackPanel x:Name="FormPanel" Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical" Visibility="{Binding VisibilityCheck}">
-                        <TextBlock Style="{StaticResource whiteText}" HorizontalAlignment="Left" x:Name="LoginError" FocusVisualPrimaryBrush="Black" Foreground="Red"/>
+                        <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="LoginError" FocusVisualPrimaryBrush="Black" Foreground="Red"/>
                         <TextBlock HorizontalAlignment="Left" Text="Login" Style="{StaticResource whiteText}"/>
                         <TextBox Text="{Binding CabinCrewLogin.Login, Mode=TwoWay}" HorizontalAlignment="Left" Width="200" Margin="0,0,0,20" />
                         <TextBlock HorizontalAlignment="Left" Text="Password" Style="{StaticResource whiteText}"/>
