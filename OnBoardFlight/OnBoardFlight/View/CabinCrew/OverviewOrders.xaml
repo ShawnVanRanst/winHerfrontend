@@ -13,45 +13,47 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    
+    <Grid>
+        <ScrollViewer>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" >
             <StackPanel Orientation="Vertical" Margin="50 70 0 50" HorizontalAlignment="Left">
                 <TextBlock Style="{StaticResource whiteText}" Margin="0,150,0,0" Text="Not Completed Orders:"/>
                 <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
                 <TextBlock Style="{StaticResource whiteText}" Text="{Binding SuccesMessage}" HorizontalAlignment="Left" x:Name="Succes" Foreground="Green"/>
+                <Button Content="Complete Order" Tapped="Complete" HorizontalAlignment="Center" Style="{StaticResource RoundButtonWhiteText}"/>
             </StackPanel>
-        <ScrollViewer>
-            <ListView ItemsSource="{Binding OrderList}" Tapped="SelectOrder" >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <StackPanel Style="{StaticResource OrderThickBorder}" BorderBrush="White"  Margin="0 10 0 10">
-                                <TextBlock Style="{StaticResource whiteText}" Text="Seat" Width="100" TextAlignment="Center"/>
-                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding SeatNumber}" Width="100" TextAlignment="Center"/>
-                                <StackPanel Orientation="Horizontal" Width="400" Margin="0 10 0 15">
-                                    <TextBlock Style="{StaticResource whiteText}" Text="Number" Width="100" TextAlignment="Center"/>
-                                    <TextBlock Style="{StaticResource whiteText}" Text="Description" Width="200" />
-                                    <TextBlock Style="{StaticResource whiteText}" Text="Price" Width="100" TextAlignment="Center"/>
+                <ScrollViewer>
+                <ListView ItemsSource="{Binding OrderList}" Tapped="SelectOrder" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <StackPanel Style="{StaticResource OrderThickBorder}" BorderBrush="White"  Margin="0 10 0 10">
+                                    <TextBlock Style="{StaticResource whiteText}" Text="Seat" Width="100" TextAlignment="Center"/>
+                                    <TextBlock Style="{StaticResource whiteText}" Text="{Binding SeatNumber}" Width="100" TextAlignment="Center"/>
+                                    <StackPanel Orientation="Horizontal" Width="400" Margin="0 10 0 15">
+                                        <TextBlock Style="{StaticResource whiteText}" Text="Number" Width="100" TextAlignment="Center"/>
+                                        <TextBlock Style="{StaticResource whiteText}" Text="Description" Width="200" />
+                                        <TextBlock Style="{StaticResource whiteText}" Text="Price" Width="100" TextAlignment="Center"/>
+                                    </StackPanel>
+                                    <ListView ItemsSource="{Binding Orderlines}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Width="400" >
+                                                    <TextBlock Style="{StaticResource whiteText}" Text="{Binding Number}" Width="100" TextAlignment="Center"/>
+                                                    <TextBlock Style="{StaticResource whiteText}" Text="{Binding Product.Description}" Width="200" />
+                                                    <TextBlock  Style="{StaticResource whiteText}" Text="{Binding TotalPrice}" TextAlignment="Center" Width="100"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
                                 </StackPanel>
-                                <ListView ItemsSource="{Binding Orderlines}">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" Width="400" >
-                                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Number}" Width="100" TextAlignment="Center"/>
-                                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Product.Description}" Width="200" />
-                                                <TextBlock  Style="{StaticResource whiteText}" Text="{Binding TotalPrice}" TextAlignment="Center" Width="100"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
                             </StackPanel>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                </ScrollViewer>
+            </StackPanel>
         </ScrollViewer>
-        <Button Content="Complete Order" Tapped="Complete" HorizontalAlignment="Center" Style="{StaticResource RoundButtonWhiteText}"/>
-        </StackPanel>
-    
+    </Grid>
 </Page>
 
