@@ -63,9 +63,11 @@
                 <TextBlock Text="{Binding ErrorMessage, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
                 <TextBlock Text="{Binding SuccesMessage, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="Succes" Foreground="Green"/>
             <StackPanel Margin="0,220,0,0" DataContext="{Binding Cart.Order}">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="450">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="450">
                     <TextBlock Style="{StaticResource whiteText}" Text="Order" HorizontalAlignment="Center"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="450">
+                    <Button Style="{StaticResource RoundButtonWhiteText}" Content="Delete item" Tapped="DeleteOrderline" HorizontalAlignment="Right"/>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="450">
                         <TextBlock Margin="20,0" Style="{StaticResource whiteText}" Text="Number" HorizontalAlignment="Left" />
                         <TextBlock Margin="100,0" Style="{StaticResource whiteText}" Text="Description" HorizontalAlignment="Center"/>
                         <TextBlock  Style="{StaticResource whiteText}" Text="Price" HorizontalAlignment="Right"/>
@@ -76,10 +78,9 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" BorderBrush="White" BorderThickness="1" Width="420" HorizontalAlignment="Center">
                                     <TextBlock Margin ="10,0" Style="{StaticResource whiteText}" Text="{Binding Number}"/>
-                                    <TextBlock Margin="110,0,90,0" Style="{StaticResource whiteText}" Text="{Binding Product.Description}"/>
+                                    <TextBlock Margin="110,0,90,0" Style="{StaticResource whiteText}" Text="{Binding Product.Description}" Width="140"/>
                                     <TextBlock Style="{StaticResource whiteText}" Text="€"/>
                                     <TextBlock  Style="{StaticResource whiteText}" Text="{Binding TotalPrice}"/>
-                                    <Button Style="{StaticResource RoundButtonWhiteText}" Content="Delete item" Tapped="DeleteOrderline"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>

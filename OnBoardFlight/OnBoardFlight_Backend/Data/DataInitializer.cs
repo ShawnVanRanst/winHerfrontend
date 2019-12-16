@@ -520,13 +520,6 @@ namespace OnBoardFlight.Data
 
 
         }
-
-
-        //private async Task CreateUser(string username, string password)
-        //{
-        //    var user = new IdentityUser { UserName = username};
-        //    await _userManager.CreateAsync(user, password);
-        //}
     }
 
 }
