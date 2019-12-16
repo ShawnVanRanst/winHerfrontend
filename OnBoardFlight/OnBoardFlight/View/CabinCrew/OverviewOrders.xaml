@@ -15,9 +15,10 @@
     </Page.Resources>
     
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" >
-            <StackPanel Orientation="Horizontal" Margin="50 70 0 50">
-                <TextBlock Style="{StaticResource whiteText}" HorizontalAlignment="Center" Margin="0,150,0,0" Text="Not Completed Orders:"/>
+            <StackPanel Orientation="Vertical" Margin="50 70 0 50" HorizontalAlignment="Left">
+                <TextBlock Style="{StaticResource whiteText}" Margin="0,150,0,0" Text="Not Completed Orders:"/>
                 <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
+                <TextBlock Style="{StaticResource whiteText}" Text="{Binding SuccesMessage}" HorizontalAlignment="Left" x:Name="Succes" Foreground="Green"/>
             </StackPanel>
         <ScrollViewer>
             <ListView ItemsSource="{Binding OrderList}" Tapped="SelectOrder" >

@@ -58,7 +58,19 @@ namespace OnBoardFlight.ViewModel.Passenger
                 _errorMessage = value;
                 RaisePropertyChanged("ErrorMessage");
             }
-        } 
+        }
+
+        private string _succesMessage;
+
+        public string SuccesMessage
+        {
+            get { return _succesMessage; }
+            set
+            {
+                _succesMessage = value;
+                RaisePropertyChanged("SuccesMessage");
+            }
+        }
         #endregion
 
 
@@ -85,11 +97,13 @@ namespace OnBoardFlight.ViewModel.Passenger
         }
         private async void CompleteOrderBackend()
         {
+            ErrorMessage = null;
+            SuccesMessage = null;
             try
             {
                 if(Order == null)
                 {
-                    throw new ArgumentNullException();
+                    ErrorMessage = "Please select an order to complete!";
                 }
                 else
                 {
@@ -98,19 +112,16 @@ namespace OnBoardFlight.ViewModel.Passenger
                     HttpContent content = new StringContent(DTOToJson(dto), Encoding.UTF8,
                                             "application/json");
                     HttpResponseMessage result = await client.PostAsync(new Uri("http://localhost:5000/api/Order/Complete"), content);
-                    if (!result.IsSuccessStatusCode)
+                    if (result.IsSuccessStatusCode)
                     {
-                        ErrorMessage = "Something went wrong! Order is not completed.";
+                        ErrorMessage = null;
+                        SuccesMessage = "Order completed succesfully!";
                     }
                     else
                     {
-                        ErrorMessage = null;
+                        ErrorMessage = "Something went wrong! Order is not completed.";
                     }
                 }
-            }
-            catch(ArgumentNullException)
-            {
-                ErrorMessage = "Please select an order to complete!";
             }
             catch(Exception)
             {
@@ -127,40 +138,47 @@ namespace OnBoardFlight.ViewModel.Passenger
                 var json1 = await client.GetStringAsync(new Uri("http://localhost:5000/api/Order/NotCompleted"));
                 var orderlist = JsonConvert.DeserializeObject<IList<Order>>(json1);
                 ObservableCollection<Order> newOrderList = new ObservableCollection<Order>();
-                orderlist.OrderBy(o => o.Time);
-                foreach (var Order in orderlist)
+                if(orderlist.Count == 0)
                 {
-                    newOrderList.Add(Order);
+                    ErrorMessage = "There are no orders to complete at the moment";
                 }
-                OrderList = newOrderList;
-                while (true)
+                else
                 {
-                    bool update = false;
-                    var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Order/NotCompleted"));
-                    var orderlistFromApi = JsonConvert.DeserializeObject<IList<Order>>(json);
-                    orderlistFromApi.OrderBy(o => o.Time);
-
-                    int lenght = orderlist.Count();
-                    if (orderlistFromApi.Count() != lenght)
+                    orderlist.OrderBy(o => o.Time);
+                    foreach (var Order in orderlist)
                     {
-                        if (orderlistFromApi.Count() != 0)
-                        {
-                            update = true;
-                        }
+                        newOrderList.Add(Order);
                     }
-
-                    if (update)
+                    OrderList = newOrderList;
+                    while (true)
                     {
-                        orderlist = orderlistFromApi;
-                        ObservableCollection<Order> newOrderList1 = new ObservableCollection<Order>();
-                        foreach (var Order in orderlist)
+                        bool update = false;
+                        var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/Order/NotCompleted"));
+                        var orderlistFromApi = JsonConvert.DeserializeObject<IList<Order>>(json);
+                        orderlistFromApi.OrderBy(o => o.Time);
+
+                        int lenght = orderlist.Count();
+                        if (orderlistFromApi.Count() != lenght)
                         {
-                            newOrderList1.Add(Order);
+                            if (orderlistFromApi.Count() != 0)
+                            {
+                                update = true;
+                            }
                         }
-                        OrderList = newOrderList1;
+
+                        if (update)
+                        {
+                            orderlist = orderlistFromApi;
+                            ObservableCollection<Order> newOrderList1 = new ObservableCollection<Order>();
+                            foreach (var Order in orderlist)
+                            {
+                                newOrderList1.Add(Order);
+                            }
+                            OrderList = newOrderList1;
+                        }
+                        Thread.SpinWait(5000);
                     }
-                    Thread.SpinWait(5000);
-                }
+                }              
             }
             catch(Exception)
             {
