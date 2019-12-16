@@ -2,7 +2,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:OnBoardFlight.View">
-    <Style x:Key="WelcomeScreenButton" TargetType="Button">
+    <Style x:Key="RoundButton" TargetType="Button">
         
         <Setter Property="Template">
             <Setter.Value>

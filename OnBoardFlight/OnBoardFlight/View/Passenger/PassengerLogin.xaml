@@ -22,11 +22,11 @@
                 <TextBlock HorizontalAlignment="Left" x:Name="LoginError" Foreground="Red"/>
                 <TextBlock Text="Please fill in your seat number" HorizontalAlignment="Left" Margin="0,0,0,10"/>
                 <TextBox x:Name="LoginBtn" Margin="0,0,0,20" Text="{Binding GeneralLogin.Login, Mode=TwoWay}"/>
-                <Button Style="{StaticResource WelcomeScreenButton}" HorizontalAlignment="Center" Content="CheckSeat" Command="{Binding LoginCommand}" CommandParameter="{Binding}"/>
+                <Button Style="{StaticResource RoundButton}" HorizontalAlignment="Center" Content="CheckSeat" Command="{Binding LoginCommand}" CommandParameter="{Binding}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding VisibilityLogin}">
-                <Button Style="{StaticResource WelcomeScreenButton}" HorizontalAlignment="Center" Content="Login" Tapped="Login"/>
-                <Button Style="{StaticResource WelcomeScreenButton}" HorizontalAlignment="Center" Content="Cancel" Command="{Binding CancelLoginCommand}"/>
+                <Button Style="{StaticResource RoundButton}" HorizontalAlignment="Center" Content="Login" Tapped="Login"/>
+                <Button Style="{StaticResource RoundButton}" HorizontalAlignment="Center" Content="Cancel" Command="{Binding CancelLoginCommand}"/>
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -18,10 +18,10 @@
         <TextBlock HorizontalAlignment="Center" Text="Welcome to" VerticalAlignment="Center" FontSize="36"/>
         <TextBlock HorizontalAlignment="Center" Text="On-board flight" VerticalAlignment="Center" FontSize="72" Margin="0,0,0,40" FontWeight="Bold"/>
         <StackPanel x:Name="FormPanel" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Style="{StaticResource WelcomeScreenButton}" Margin="0,0,20,0" x:Name="LoginAsPassenger" Click="LoginAsPassenger_Click">
+            <Button Style="{StaticResource RoundButton}" Margin="0,0,20,0" x:Name="LoginAsPassenger" Click="LoginAsPassenger_Click">
                 <TextBlock TextAlignment="Center">I am a <LineBreak/>Passenger</TextBlock>
             </Button>
-            <Button Style="{StaticResource WelcomeScreenButton}" Margin="20,0,0,0" x:Name="LoginAsCrewMember" Click="LoginAsCrewMember_Click">
+            <Button Style="{StaticResource RoundButton}" Margin="20,0,0,0" x:Name="LoginAsCrewMember" Click="LoginAsCrewMember_Click">
                 <TextBlock TextAlignment="Center">I am a <LineBreak/>Crew member</TextBlock>
             </Button>
         </StackPanel>
