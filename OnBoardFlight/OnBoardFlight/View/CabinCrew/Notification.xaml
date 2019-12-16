@@ -14,7 +14,7 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid>
+    <Grid Style="{StaticResource GridTopMargen}">
         <ScrollViewer>
             <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Style="{StaticResource whiteText}" HorizontalAlignment="Center" Text="Send a notification" VerticalAlignment="Center" FontSize="36"/>

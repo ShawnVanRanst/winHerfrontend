@@ -13,12 +13,12 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid HorizontalAlignment="Center">
+    <Grid HorizontalAlignment="Center" Style="{StaticResource GridTopMargen}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Margin="0,200,0,0" Orientation="Horizontal" Grid.Row="0">
+        <StackPanel Margin="0,50,0,0" Orientation="Horizontal" Grid.Row="0">
             <TextBlock Style="{StaticResource whiteText}" Text="Order history:"/>
         </StackPanel>
         <TextBlock Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>

@@ -13,7 +13,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid>
+    <Grid Style="{StaticResource GridTopMargen}">
         <Button VerticalAlignment="Top" Style="{StaticResource NavigationBackButtonNormalStyle}" x:Name="Back" Click="Back_Click" HorizontalAlignment="Left"/>
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock HorizontalAlignment="Center" Text="Login as" VerticalAlignment="Center" FontSize="36" Style="{StaticResource whiteText}"/>

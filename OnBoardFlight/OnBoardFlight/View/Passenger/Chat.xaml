@@ -13,7 +13,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid>
+    <Grid Style="{StaticResource GridTopMargen}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="130"/>
             <ColumnDefinition Width="*"/>
@@ -26,7 +26,7 @@
             <ListView ItemsSource="{Binding ChatList}" x:Name="ChatListView" Tapped="SelectChat">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}" x:Name="test"/>
+                        <TextBlock Text="{Binding Name}" x:Name="test" Style="{StaticResource whiteText}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -38,9 +38,9 @@
                     <ListView ItemsSource="{Binding Messages}" x:Name="MessagesListView">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding Sender}"/>
-                                    <TextBlock Text="{Binding Content}"/>
+                                <StackPanel Orientation="Vertical" Margin="0, 0, 0, 15">
+                                    <TextBlock Text="{Binding Sender}" Style="{StaticResource whiteText}" FontSize="12"/>
+                                    <TextBlock Text="{Binding Content}" Style="{StaticResource whiteText}" FontSize="16"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -48,8 +48,8 @@
                 </StackPanel>
             </ScrollViewer>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="1">
-                <TextBox Text="{Binding SendMessage.Content, Mode=TwoWay}"/>
-                <Button Content="Send" Command="{Binding SendMessageCommand}"/>
+                <TextBox x:Name="MessageInputField" Text="{Binding SendMessage.Content, Mode=TwoWay}" TextWrapping="Wrap"/>
+                <Button Content="Send" Command="{Binding SendMessageCommand}" Style="{StaticResource RoundButtonWhiteText}"/>
             </StackPanel>
         </StackPanel>
     </Grid>

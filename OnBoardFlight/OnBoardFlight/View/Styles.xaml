@@ -41,5 +41,8 @@ BorderBrush="#000">
     <Style x:Key="OrderThickBorder" TargetType="StackPanel">
         <Setter Property="BorderThickness" Value="4"></Setter>
     </Style>
+    <Style x:Key="GridTopMargen" TargetType="Grid">
+        <Setter Property="Margin" Value="0, 50, 0, 0"/>
+    </Style>
            
 </ResourceDictionary>
