@@ -275,7 +275,14 @@
     <Content Include="Assets\ALotToLose.mp3" />
     <Content Include="Assets\AtjeVoorDeSfeer.mp4" />
     <Content Include="Assets\BamBam.mp3" />
-    <Content Include="Assets\cola.jpg" />
+    <Content Include="Assets\book.jpg" />
+    <Content Include="Assets\bruisWaterFlesje.png" />
+    <Content Include="Assets\colaBlik.png" />
+    <Content Include="Assets\colaFlesje.png" />
+    <Content Include="Assets\fantaBlik.jpg" />
+    <Content Include="Assets\fantaFlesje.jpg" />
+    <Content Include="Assets\iceTeaBlik.png" />
+    <Content Include="Assets\iceTeaFlesje.png" />
     <Content Include="Assets\movie.jfif" />
     <Content Include="Assets\music.png" />
     <Content Include="Assets\PiewPiew.mp3" />
@@ -289,6 +296,11 @@
     <Content Include="Assets\MF6.png" />
     <Content Include="Assets\MF7.png" />
     <Content Include="Assets\MF8.png" />
+    <Content Include="Assets\pillow.jpg" />
+    <Content Include="Assets\pizzaIcon.jpg" />
+    <Content Include="Assets\sprite.png" />
+    <Content Include="Assets\watch.jpg" />
+    <Content Include="Assets\waterFlesje.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
