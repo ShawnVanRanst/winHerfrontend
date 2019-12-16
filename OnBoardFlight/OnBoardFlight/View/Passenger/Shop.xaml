@@ -58,8 +58,10 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollViewer>
-        <TextBlock Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
         <ScrollViewer Grid.Column="1" Grid.Row="0">
+          <StackPanel>
+                <TextBlock Text="{Binding ErrorMessage, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
+                <TextBlock Text="{Binding SuccesMessage, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="Succes" Foreground="Green"/>
             <StackPanel Margin="0,220,0,0" DataContext="{Binding Cart.Order}">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="450">
                     <TextBlock Style="{StaticResource whiteText}" Text="Order" HorizontalAlignment="Center"/>
@@ -88,9 +90,10 @@
                 <Button Content="Order" Tapped="AddOrder" Style="{StaticResource RoundButtonWhiteText}"/>
                 <TextBlock Text="Total:" Style="{StaticResource whiteText}"/>
                 <TextBlock Text="€" Style="{StaticResource whiteText}"/>
-                    <TextBlock Style="{StaticResource whiteText}" Text="{Binding TotalPrice}"/>
+                <TextBlock Style="{StaticResource whiteText}" Text="{Binding TotalPrice}"/>
             </StackPanel>
         </StackPanel>
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </Page>
