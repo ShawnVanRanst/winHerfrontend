@@ -23,8 +23,6 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         public AddPromotionCommand AddPromotionCommand { get; set; }
 
-        public FilterProductsCommand FilterProductsCommand { get; set; }
-
         public ObservableCollection<Product> ProductData { get; set; }
 
         private ObservableCollection<Product> _products;
@@ -96,7 +94,6 @@ namespace OnBoardFlight.ViewModel.Passenger
             Visibility = Visibility.Collapsed;
             Client = new HttpClient();
             AddPromotionCommand = new AddPromotionCommand(this);
-            FilterProductsCommand = new FilterProductsCommand(this);
             Products = new ObservableCollection<Product>();
             LoadData();
         }
@@ -175,7 +172,7 @@ namespace OnBoardFlight.ViewModel.Passenger
             Products = new ObservableCollection<Product>();
             foreach(var product in ProductData)
             {
-                if (product.Description.Contains(Filter))
+                if (product.Description.ToLower().Contains(Filter.ToLower()))
                 {
                     Products.Add(product);
                 }

@@ -156,7 +156,6 @@
     <Compile Include="ViewModel\Commands\CabinCrew\Login\CancelLoginCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Login\LoginCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Promotion\AddPromotionCommand.cs" />
-    <Compile Include="ViewModel\Commands\CabinCrew\Promotion\FilterProductsCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Seats\SearchPassengerToMoveCommand.cs" />
     <Compile Include="ViewModel\Commands\CabinCrew\Notification\SendNotificationCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Chat\SendMessageCommand.cs" />
