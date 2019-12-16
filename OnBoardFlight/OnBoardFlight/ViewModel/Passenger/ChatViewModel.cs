@@ -18,6 +18,8 @@ namespace OnBoardFlight.ViewModel.Passenger
 {
     public class ChatViewModel : INotifyPropertyChanged
     {
+        #region Properties
+
         private Chat SelectedChat { get; set; }
         private string Seat { get; set; }
 
@@ -30,9 +32,11 @@ namespace OnBoardFlight.ViewModel.Passenger
         public ObservableCollection<Message> Messages
         {
             get { return _messages; }
-            set {
+            set
+            {
                 _messages = value;
-                RaisePropertyChanged("Messages"); }
+                RaisePropertyChanged("Messages");
+            }
         }
 
         private SendMessage _message;
@@ -46,6 +50,20 @@ namespace OnBoardFlight.ViewModel.Passenger
         public HttpClient Client { get; set; }
 
         public Model.Passenger Passenger { get; set; }
+
+
+        private string _errorMessage;
+
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = value;
+                RaisePropertyChanged("ErrorMessage");
+            }
+        } 
+        #endregion
 
         public ChatViewModel(GeneralLogin generalLogin)
         {
@@ -92,49 +110,65 @@ namespace OnBoardFlight.ViewModel.Passenger
             IList<Chat> chatlist = new List<Chat>();
             while (true)
             {
-                bool update = false;
-                var json = await Client.GetStringAsync(new Uri("http://localhost:5000/api/User/passenger/chat/" + Seat));
-                IList<Chat> chatlistFromApi = JsonConvert.DeserializeObject<IList<Chat>>(json);
-                chatlistFromApi.OrderBy(c => c.Name);
-
-                int lenght = chatlist.Count();
-                if(chatlistFromApi.Count() == lenght){
-                    if (chatlistFromApi.Count() != 0)
+                try
+                {
+                    bool update = false;
+                    var json = await Client.GetStringAsync(new Uri("http://localhost:5000/api/User/passenger/chat/" + Seat));
+                    IList<Chat> chatlistFromApi = JsonConvert.DeserializeObject<IList<Chat>>(json);
+                    if(chatlistFromApi.Count == 0)
                     {
-                        if (chatlist.Count() != 0)
+                        throw new ArgumentNullException();
+                    }
+                    chatlistFromApi.OrderBy(c => c.Name);
+
+                    int lenght = chatlist.Count();
+                    if (chatlistFromApi.Count() == lenght)
+                    {
+                        if (chatlistFromApi.Count() != 0)
                         {
-                            for (int i = 0; i < lenght; i++)
+                            if (chatlist.Count() != 0)
                             {
-                                if (CompareLists(chatlist[i].Messages, chatlistFromApi[i].Messages))
+                                for (int i = 0; i < lenght; i++)
                                 {
-                                    update = true;
-                                    break;
+                                    if (CompareLists(chatlist[i].Messages, chatlistFromApi[i].Messages))
+                                    {
+                                        update = true;
+                                        break;
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            update = true;
+                            else
+                            {
+                                update = true;
+                            }
                         }
                     }
-                }
-                else
-                {
-                    update = true;
-                }
-
-                if (update)
-                {
-                    chatlist = chatlistFromApi;
-                    for(int i = 0; i < ChatList.Count(); i++)
+                    else
                     {
-                        List<Message> newMessages = chatlist[i].Messages;
-                        ChatList[i].Messages = newMessages;
-                        if(SelectedChat != null)
-                        ShowMessages(SelectedChat);
+                        update = true;
                     }
+
+                    if (update)
+                    {
+                        chatlist = chatlistFromApi;
+                        for (int i = 0; i < ChatList.Count(); i++)
+                        {
+                            List<Message> newMessages = chatlist[i].Messages;
+                            ChatList[i].Messages = newMessages;
+                            if (SelectedChat != null)
+                                ShowMessages(SelectedChat);
+                        }
+                    }
+                    Thread.SpinWait(5000);
                 }
-                Thread.SpinWait(5000);
+                catch(ArgumentNullException)
+                {
+                    ErrorMessage = "Er zijn geen chats beschikbaar!";
+                }
+                catch (Exception)
+                {
+                    ErrorMessage = "Er liep iets fout, de chats kunnen niet opgehaald worden. Probeer later opnieuw";
+                }
             }
         }
 
