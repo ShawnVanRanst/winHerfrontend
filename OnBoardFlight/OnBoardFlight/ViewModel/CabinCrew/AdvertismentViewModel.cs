@@ -114,21 +114,20 @@ namespace OnBoardFlight.ViewModel.Passenger
                 var products = JsonConvert.DeserializeObject<IList<Product>>(json);
                 if(products.Count == 0)
                 {
-                    throw new ArgumentNullException();
+                    ErrorMessage = "No products available!";
                 }
-                foreach (var product in products)
+                else
                 {
-                    ProductData.Add(product);
-                }
-                if (Products.Count() == 0)
-                {
-                    Products = ProductData;
-                }
-                ErrorMessage = null;
-            }
-            catch(ArgumentNullException)
-            {
-                ErrorMessage = "No products available!";
+                    foreach (var product in products)
+                    {
+                        ProductData.Add(product);
+                    }
+                    if (Products.Count() == 0)
+                    {
+                        Products = ProductData;
+                    }
+                    ErrorMessage = null;
+                }  
             }
             catch(Exception)
             {
@@ -153,12 +152,8 @@ namespace OnBoardFlight.ViewModel.Passenger
                 }
                 else
                 {
-                    throw new ArgumentException();
+                    ErrorMessage = "Creating promotion was not succesfull! Please try again later.";
                 }
-            }
-            catch(ArgumentException)
-            {
-                ErrorMessage = "Creating promotion was not succesfull. Please try again later.";
             }
             catch(Exception)
             {
