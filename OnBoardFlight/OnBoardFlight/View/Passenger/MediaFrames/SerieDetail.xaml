@@ -15,14 +15,14 @@
     </Page.Resources>
     <Grid>
         <ScrollViewer>
-        <StackPanel>
-            <Button VerticalAlignment="Top" Style="{StaticResource NavigationBackButtonNormalStyle}" x:Name="Back" HorizontalAlignment="Left" Tapped="Back_Click"/>
+        <StackPanel Margin="0,200,0,0">
+            <Button Foreground="White" VerticalAlignment="Top" Style="{StaticResource NavigationBackButtonNormalStyle}" x:Name="Back" HorizontalAlignment="Left" Tapped="Back_Click"/>
             <StackPanel Orientation="Vertical">
-                    <TextBlock Style="{StaticResource whiteText}" Text="{Binding Serie.Title}"/>
-                    <TextBlock Style="{StaticResource whiteText}" Text="{Binding Serie.Category}"/>
+                    <TextBlock FontSize="30" Style="{StaticResource whiteText}" Text="{Binding Serie.Title}"/>
+                    <TextBlock FontSize="20" Style="{StaticResource whiteText}" Text="{Binding Serie.Category}"/>
                     <TextBlock  Style="{StaticResource whiteText}" Text="{Binding Serie.Description}" TextWrapping="Wrap"/>
             </StackPanel>
-        <TextBlock Text="Episodes"/>
+                <TextBlock Style="{StaticResource whiteText}" Text="Episodes"/>
         <ListView ItemsSource="{Binding Serie.Episodes}"
                       SelectedItem="{Binding Serie}"
                       ScrollViewer.VerticalScrollBarVisibility="Disabled" 

@@ -16,7 +16,7 @@
     </Page.Resources>
     <Grid>
         <StackPanel Orientation="Vertical">
-            <Button Content="Stop Playing" Tapped="StopPlaying"/>
+            <Button Content="Stop Playing" Tapped="StopPlaying" Style="{StaticResource RoundButtonWhiteText}"/>
         <ScrollViewer>
             <ListView ItemsSource="{Binding CategoryListMusicList}">
                 <ListView.ItemTemplate>
