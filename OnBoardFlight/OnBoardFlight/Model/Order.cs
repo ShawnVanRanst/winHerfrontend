@@ -30,7 +30,6 @@ namespace OnBoardFlight.Model
                 {
                     _totalPrice += ol.TotalPrice;
                 }
-
                 return _totalPrice;
             }
             set
