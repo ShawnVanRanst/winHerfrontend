@@ -19,10 +19,10 @@
             <TextBlock HorizontalAlignment="Center" Text="Login as" VerticalAlignment="Center" FontSize="36" Style="{StaticResource whiteText}"/>
             <TextBlock Style="{StaticResource whiteText}" HorizontalAlignment="Center" Text="{Binding Name}" VerticalAlignment="Center" FontSize="72" Margin="0,0,0,40" FontWeight="Bold"/>
             <StackPanel Orientation="Vertical" Visibility="{Binding VisibilityCheck}">
-                <TextBlock Style="{StaticResource whiteText}" HorizontalAlignment="Left" x:Name="LoginError" Foreground="Red"/>
+                <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="LoginError" Foreground="Red"/>
                 <TextBlock Text="Please fill in your seat number" HorizontalAlignment="Left" Margin="0,0,0,10" Style="{StaticResource whiteText}"/>
                 <TextBox x:Name="LoginBtn" Margin="0,0,0,20" Text="{Binding GeneralLogin.Login, Mode=TwoWay}"/>
-                <Button Style="{StaticResource RoundButtonWhiteText}" HorizontalAlignment="Center" Content="CheckSeat" Command="{Binding LoginCommand}" CommandParameter="{Binding}"/>
+                <Button Style="{StaticResource RoundButtonWhiteText}" HorizontalAlignment="Center" Content="Check seat" Command="{Binding LoginCommand}" CommandParameter="{Binding}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding VisibilityLogin}">
                 <Button Style="{StaticResource RoundButtonWhiteText}" HorizontalAlignment="Center" Content="Login" Tapped="Login"/>

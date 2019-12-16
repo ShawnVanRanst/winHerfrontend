@@ -66,6 +66,19 @@ namespace OnBoardFlight.ViewModel.Passenger
             set { _Name = value; RaisePropertyChanged("Name"); }
         }
 
+
+        private string _errorMessage;
+
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = value;
+                RaisePropertyChanged("ErrorMessage");
+            }
+        }
+
         #endregion
 
 
@@ -102,9 +115,19 @@ namespace OnBoardFlight.ViewModel.Passenger
                     VisibilityCheck = Visibility.Collapsed;
                     Name = Passenger.FirstName + " " + Passenger.LastName;
                 }
+                else
+                {
+                    throw new ArgumentNullException();
+                }
+            }
+            catch(HttpRequestException)
+            {
+                ErrorMessage = "Er is geen passagier op deze zetel, probeer een andere zetel.";
+                CancelLogin();
             }
             catch (Exception e)
             {
+                ErrorMessage = "Er liep iets fout bij het ophalen, probeer later opnieuw";
                 CancelLogin();
             };
         }
