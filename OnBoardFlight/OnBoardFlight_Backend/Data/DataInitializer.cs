@@ -89,7 +89,8 @@ namespace OnBoardFlight.Data
                 passenger2.AddTravelCompanion(passenger3);
                 passenger2.AddTravelCompanion(passenger4);
                 passenger3.AddTravelCompanion(passenger4);
-                passenger1.Chats.First().AddMessage(new Message(passenger2, "Test 123 test"));
+                passenger1.Chats.First().AddMessage(new Message(passenger2, "Wat een leuke app is dit."));
+                passenger2.Chats.First().AddMessage(new Message(passenger1, "Ja he, straks eens 3 op een rij spelen?"));
                 #endregion
 
                 _dbContext.Users.Add(passenger1);

@@ -32,7 +32,7 @@ namespace OnBoardFlight_Backend.Model
         {
             Content = content;
             Sender = sender;
-            SendDate = new DateTime();
+            SendDate = DateTime.UtcNow;
         }
 
 

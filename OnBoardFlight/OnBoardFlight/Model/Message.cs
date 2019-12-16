@@ -42,7 +42,6 @@ namespace OnBoardFlight.Model
             set { _content = value; RaisePropertyChanged("Content"); }
         }
 
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void RaisePropertyChanged([CallerMemberName] string propertyName = "")

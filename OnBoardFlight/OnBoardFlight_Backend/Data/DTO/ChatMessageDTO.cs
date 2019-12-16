@@ -13,12 +13,19 @@ namespace OnBoardFlight_Backend.Data.DTO
         public DateTime SendDate { get; set; }
         public string Sender { get; set; }
 
-        public ChatMessageDTO(Message message)
+        public ChatMessageDTO(Message message, string seat)
         {
             Id = message.MessageId;
             Content = message.Content;
             SendDate = message.SendDate;
-            Sender = message.Sender.FirstName;
+            if(message.Sender.Seat == seat)
+            {
+                Sender = "You";
+            }
+            else
+            {
+                Sender = message.Sender.FirstName;
+            }
         }
     }
 }

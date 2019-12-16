@@ -113,7 +113,6 @@ namespace OnBoardFlight.ViewModel.Passenger
                 }
                 ErrorMessage = null;
 
-                int x = 0;
                 IList<Chat> chatlist = new List<Chat>();
                 while (true)
                 {

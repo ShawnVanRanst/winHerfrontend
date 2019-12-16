@@ -16,13 +16,13 @@
     </Page.Resources>
     <Grid>
         <StackPanel Orientation="Vertical">
-            <Button Content="Stop Playing" Tapped="StopPlaying"/>
+            <Button Content="Stop Playing" Tapped="StopPlaying" Style="{StaticResource RoundButtonWhiteText}"/>
         <ScrollViewer>
             <ListView ItemsSource="{Binding CategoryListMusicList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Text="{Binding Category}"/>
+                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Category}"/>
                             <ListView ItemsSource="{Binding MusicList}"
                             ScrollViewer.VerticalScrollBarVisibility="Disabled" 
                             ScrollViewer.HorizontalScrollBarVisibility="Auto"
@@ -38,8 +38,8 @@
                                     <DataTemplate>
                                         <StackPanel Orientation="Vertical">
                                             <Image Source="{Binding Image}"/>
-                                            <TextBlock Text="{Binding Title}"/>
-                                            <TextBlock Text="{Binding Description}"/>
+                                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Title}"/>
+                                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Description}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>

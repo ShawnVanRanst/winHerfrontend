@@ -15,11 +15,13 @@ namespace OnBoardFlight_Backend.Data.DTO
 
         public ICollection<ChatMessageDTO> Messages { get; set; }
 
-        public ChatDTO(Chat chat, string name)
+        public int MyProperty { get; set; }
+
+        public ChatDTO(Chat chat, string name, string seat)
         {
             Id = chat.ChatId;
             Name = name;
-            Messages = chat.Messages.Select(m => new ChatMessageDTO(m)).ToList();
+            Messages = chat.Messages.Select(m => new ChatMessageDTO(m, seat)).OrderBy(m => m.SendDate).ToList();
         }
     }
 }

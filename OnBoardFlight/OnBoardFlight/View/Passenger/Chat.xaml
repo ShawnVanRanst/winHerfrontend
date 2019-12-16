@@ -38,7 +38,10 @@
                     <ListView ItemsSource="{Binding Messages}" x:Name="MessagesListView">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Content}"/>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Sender}"/>
+                                    <TextBlock Text="{Binding Content}"/>
+                                </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
