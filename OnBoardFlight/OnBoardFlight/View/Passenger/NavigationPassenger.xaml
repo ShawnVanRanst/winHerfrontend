@@ -5,6 +5,7 @@
     xmlns:local="using:OnBoardFlight.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Windows10version1803="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 6)"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -14,8 +15,9 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <NavigationView x:Name="NavView" SelectionChanged="NavigateTo">
+    <NavigationView x:Name="NavView" SelectionChanged="NavigateTo" Windows10version1803:IsBackButtonVisible="Collapsed" IsSettingsVisible="False">
         <NavigationView.MenuItems>
+            <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
             <NavigationViewItem Content="Home" Icon="Home" x:Name="HometBtn" Tag="Home"/>
             <NavigationViewItem Content="Shop" Icon="Shop" x:Name="ShopBtn" Tag="Shop"/>
             <NavigationViewItem Content="Orders" Icon="List" x:Name="OrdersBtn" Tag="Orders"/>

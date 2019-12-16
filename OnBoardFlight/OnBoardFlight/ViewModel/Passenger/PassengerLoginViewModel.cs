@@ -66,6 +66,19 @@ namespace OnBoardFlight.ViewModel.Passenger
             set { _Name = value; RaisePropertyChanged("Name"); }
         }
 
+
+        private string _errorMessage;
+
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = value;
+                RaisePropertyChanged("ErrorMessage");
+            }
+        }
+
         #endregion
 
 
@@ -102,9 +115,20 @@ namespace OnBoardFlight.ViewModel.Passenger
                     VisibilityCheck = Visibility.Collapsed;
                     Name = Passenger.FirstName + " " + Passenger.LastName;
                 }
+                else
+                {
+                    throw new ArgumentNullException();
+                }
+                ErrorMessage = null;
+            }
+            catch(HttpRequestException)
+            {
+                ErrorMessage = "There is no passenger on this seat! Please try another seat.";
+                CancelLogin();
             }
             catch (Exception e)
             {
+                ErrorMessage = "Something went wrong! Please try again later.";
                 CancelLogin();
             };
         }

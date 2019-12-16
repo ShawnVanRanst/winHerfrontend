@@ -54,5 +54,16 @@ namespace OnBoardFlight.View.Passenger.MediaFrames
             base.OnNavigatedFrom(e);
             player.Dispose();
         }
+
+        private void Continue(object sender, TappedRoutedEventArgs e)
+        {
+            
+        }
+
+        private void StopPlaying(object sender, TappedRoutedEventArgs e)
+        {
+            player.Pause();
+            player.Source = null;
+        }
     }
 }

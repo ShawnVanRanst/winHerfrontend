@@ -18,6 +18,7 @@ namespace OnBoardFlight.ViewModel.Passenger
 {
     public class AdvertismentViewModel : INotifyPropertyChanged
     {
+        #region Properties
         private HttpClient Client { get; set; }
 
         public AddPromotionCommand AddPromotionCommand { get; set; }
@@ -42,7 +43,7 @@ namespace OnBoardFlight.ViewModel.Passenger
             set
             {
                 _product = value;
-                if(value != null)
+                if (value != null)
                 {
                     Visibility = Visibility.Visible;
                 }
@@ -75,6 +76,19 @@ namespace OnBoardFlight.ViewModel.Passenger
             set { _visibility = value; RaisePropertyChanged("Visibility"); }
         }
 
+        private string _errorMessage;
+
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = value;
+                RaisePropertyChanged("ErrorMessage");
+            }
+        } 
+        #endregion
+
 
 
         public AdvertismentViewModel()
@@ -96,17 +110,34 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         public async void LoadData()
         {
-            ProductData = new ObservableCollection<Product>();
-            var json = await Client.GetStringAsync(new Uri("http://localhost:5000/api/Product"));
-            var products = JsonConvert.DeserializeObject<IList<Product>>(json);
-            foreach (var product in products)
+            try
             {
-                ProductData.Add(product);
+                ProductData = new ObservableCollection<Product>();
+                var json = await Client.GetStringAsync(new Uri("http://localhost:5000/api/Product"));
+                var products = JsonConvert.DeserializeObject<IList<Product>>(json);
+                if(products.Count == 0)
+                {
+                    throw new ArgumentNullException();
+                }
+                foreach (var product in products)
+                {
+                    ProductData.Add(product);
+                }
+                if (Products.Count() == 0)
+                {
+                    Products = ProductData;
+                }
+                ErrorMessage = null;
             }
-            if(Products.Count() == 0)
+            catch(ArgumentNullException)
             {
-                Products = ProductData;
+                ErrorMessage = "No products available!";
             }
+            catch(Exception)
+            {
+                ErrorMessage = "Something went wrong! Please try again later.";
+            }
+            
         }
 
         public async Task EditPromotion()
@@ -115,13 +146,28 @@ namespace OnBoardFlight.ViewModel.Passenger
             {
                 Product.OldPrice = double.Parse(OldPrice);
             }
-            var ProductJson = JsonConvert.SerializeObject(Product);
-            var res = await Client.PostAsync(new Uri("http://localhost:5000/api/Product/product/update"), new HttpStringContent(ProductJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
-            if (res.IsSuccessStatusCode)
+            try
             {
-                // show error
-                LoadData();
+                var ProductJson = JsonConvert.SerializeObject(Product);
+                var res = await Client.PostAsync(new Uri("http://localhost:5000/api/Product/product/update"), new HttpStringContent(ProductJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
+                if (res.IsSuccessStatusCode)
+                {
+                    LoadData();
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
             }
+            catch(ArgumentException)
+            {
+                ErrorMessage = "Creating promotion was not succesfull. Please try again later.";
+            }
+            catch(Exception)
+            {
+                ErrorMessage = "Something went wrong! Promotion was not created.";
+            }
+           
         }
 
         public void FilterProducts()

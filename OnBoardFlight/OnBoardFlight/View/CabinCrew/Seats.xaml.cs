@@ -31,5 +31,21 @@ namespace OnBoardFlight.View.CabinCrew
             SeatViewModel = new SeatViewModel();
             this.DataContext = SeatViewModel;
         }
+
+        private void SetSeat1(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            SeatViewModel.Seat1 = textBox.Text;
+            SeatViewModel.Passenger1 = null;
+            SeatViewModel.ErrorMessage = null;
+        }
+
+        private void SetSeat2(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            SeatViewModel.Seat2 = textBox.Text;
+            SeatViewModel.Passenger2 = null;
+            SeatViewModel.ErrorMessage2 = null;
+        }
     }
 }

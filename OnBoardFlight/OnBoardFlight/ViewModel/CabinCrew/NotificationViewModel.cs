@@ -15,6 +15,7 @@ namespace OnBoardFlight.ViewModel.CabinCrew
 {
     public class NotificationViewModel : INotifyPropertyChanged
     {
+        #region Properties
         private string _seatnumber;
 
         public string Seatnumber
@@ -28,6 +29,20 @@ namespace OnBoardFlight.ViewModel.CabinCrew
         public Notification Notification { get; set; }
 
         public SendNotificationCommand SendNotification { get; set; }
+
+
+        private string _errorMessage;
+
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = value;
+                RaisePropertyChanged("ErrorMessage");
+            }
+        } 
+        #endregion
 
         public NotificationViewModel()
         {
@@ -45,11 +60,19 @@ namespace OnBoardFlight.ViewModel.CabinCrew
 
         public async Task AddNotificationAsync()
         {
+
+            try
+            {
                 var NotificationJson = JsonConvert.SerializeObject(Notification);
                 var res = await Client.PostAsync(new Uri("http://localhost:5000/api/User/notification/add"), new HttpStringContent(NotificationJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
-            if (res.IsSuccessStatusCode)
+                if (!res.IsSuccessStatusCode)
+                {
+                    ErrorMessage = "Something went wrong! Please try again later.";
+                }
+            }
+            catch(Exception)
             {
-                // show error
+                ErrorMessage = "Something went wrong! Please try again later.";
             }
         }
     }

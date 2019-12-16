@@ -45,10 +45,18 @@ namespace OnBoardFlight_Backend.Controllers
         [HttpPost("cabincrew/login")]
         public IActionResult GetCabinCrewMemberByCredentials(CabinCrewLogin cabinCrewLogin)
         {
-            User cr = _userRepository.GetCabinCrewByCredentials(cabinCrewLogin.Login, cabinCrewLogin.Password);
+            User cr = _userRepository.GetCabinCrewByLogin(cabinCrewLogin.Login);
             if (cr == null)
             {
-                return BadRequest();
+                return StatusCode(412);
+            }
+            else
+            {
+                cr = _userRepository.GetCabinCrewByCredentials(cabinCrewLogin.Login, cabinCrewLogin.Password);
+                if(cr == null)
+                {
+                    return StatusCode(404);
+                }
             }
             return Ok(cr);
         }

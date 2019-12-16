@@ -51,6 +51,17 @@ namespace OnBoardFlight.ViewModel.CabinCrew
             set { _cabinCrewLogin = value; RaisePropertyChanged("CabinCrewLogin"); }
         }
 
+        private string _errorMessage;
+
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = value;
+                RaisePropertyChanged("ErrorMessage");
+            }
+        }
 
         #endregion
 
@@ -74,20 +85,40 @@ namespace OnBoardFlight.ViewModel.CabinCrew
 
         public async Task LoginCabinCrew()
         {
-            var cabinCrewJson = JsonConvert.SerializeObject(CabinCrewLogin);
-            HttpClient client = new HttpClient();
-            var res = await client.PostAsync(new Uri("http://localhost:5000/api/User/cabincrew/login"), new HttpStringContent(cabinCrewJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
-
-            if (res.IsSuccessStatusCode)
+            try
             {
-                Model.CabinCrew cr = JsonConvert.DeserializeObject<Model.CabinCrew>(res.Content.ToString());
-                if(cr != null)
+                var cabinCrewJson = JsonConvert.SerializeObject(CabinCrewLogin);
+                HttpClient client = new HttpClient();
+                var res = await client.PostAsync(new Uri("http://localhost:5000/api/User/cabincrew/login"), new HttpStringContent(cabinCrewJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
+
+                if (res.IsSuccessStatusCode)
                 {
-                    VisibilityLogin = Visibility.Visible;
-                    VisibilityCheck = Visibility.Collapsed;
-                    Name = cr.FirstName + " " + cr.LastName;
+                    Model.CabinCrew cr = JsonConvert.DeserializeObject<Model.CabinCrew>(res.Content.ToString());
+                    if (cr != null)
+                    {
+                        VisibilityLogin = Visibility.Visible;
+                        VisibilityCheck = Visibility.Collapsed;
+                        Name = cr.FirstName + " " + cr.LastName;
+                        ErrorMessage = null;
+                    }
+                }
+                else
+                {
+                    if((int)res.StatusCode == 412)
+                    {
+                        ErrorMessage = "Username is incorrect!";
+                    }
+                    if((int)res.StatusCode == 404)
+                    {
+                        ErrorMessage = "Password is incorrect!";
+                    }
                 }
             }
+            catch(Exception)
+            {
+                ErrorMessage = "Something went wrong! Please try again later.";
+            }
+            
         }
 
         public void CancelLogin()

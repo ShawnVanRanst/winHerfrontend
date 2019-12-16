@@ -13,7 +13,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <ScrollViewer Height="800">
+    <ScrollViewer>
         <ListView ItemsSource="{Binding CategoryListSerieList}">
             <ListView.ItemTemplate>
                 <DataTemplate>

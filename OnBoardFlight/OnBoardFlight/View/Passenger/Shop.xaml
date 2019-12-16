@@ -14,9 +14,15 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <ScrollViewer Height="800" Margin="0 20 0 0">
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-            <StackPanel Orientation="Horizontal">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer>
                 <ListView ItemsSource="{Binding CategoryListProductList}" x:Name="categoryList">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -49,39 +55,41 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </StackPanel>
-            <StackPanel Width="600" Margin="50 0 0 0" DataContext="{Binding Cart.Order}">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                    <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
-                        <TextBlock Text="Order" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Width="400" HorizontalAlignment="Center">
-                        <TextBlock Text="Number" Width="50"/>
-                        <TextBlock Text="Description" Width="200" Margin="20 0 0 0"/>
-                        <TextBlock Text="Price" Width="100"/>
-                    </StackPanel>
-                    <ListView ItemsSource="{Binding Orderlines}" Tapped="SelectOrderline">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal" BorderBrush="White" BorderThickness="1" Width="450" HorizontalAlignment="Center">
-                                    <TextBlock Text="{Binding Number}" Width="50"/>
-                                    <TextBlock Text="{Binding Product.Description}" Width="200" Margin="20 0 20 0"/>
-                                    <TextBlock Text="€"/>
-                                    <TextBlock Text="{Binding TotalPrice}" Width="100"/>
-                                    <Button Content="Delete item" Tapped="DeleteOrderline"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackPanel>
+            </ScrollViewer>
+        <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
+        <ScrollViewer Grid.Column="1" Grid.Row="0">
+        <StackPanel DataContext="{Binding Cart.Order}">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <TextBlock Text="Order" HorizontalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="Order" Tapped="AddOrder"/>
-                    <TextBlock Text="Total:" Margin="0 0 5 0"/>
-                    <TextBlock Text="€"/>
-                    <TextBlock Text="{Binding TotalPrice}"/>
+                    <TextBlock Text="Number"/>
+                    <TextBlock Text="Description"/>
+                    <TextBlock Text="Price"/>
                 </StackPanel>
+                
+                <ListView ItemsSource="{Binding Orderlines}" Tapped="SelectOrderline">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" BorderBrush="White" BorderThickness="1" Width="450" HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding Number}"/>
+                                <TextBlock Text="{Binding Product.Description}"/>
+                                <TextBlock Text="€"/>
+                                <TextBlock Text="{Binding TotalPrice}"/>
+                                <Button Content="Delete item" Tapped="DeleteOrderline"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Order" Tapped="AddOrder"/>
+                <TextBlock Text="Total:"/>
+                <TextBlock Text="€"/>
+                <TextBlock Text="{Binding TotalPrice}"/>
             </StackPanel>
         </StackPanel>
-    </ScrollViewer>
+        </ScrollViewer>
+    </Grid>
 </Page>
 
