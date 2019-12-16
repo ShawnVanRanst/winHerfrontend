@@ -41,7 +41,20 @@ namespace OnBoardFlight.ViewModel.CabinCrew
                 _errorMessage = value;
                 RaisePropertyChanged("ErrorMessage");
             }
-        } 
+        }
+
+        private string _succesMessage;
+
+        public string SuccesMessage
+        {
+            get { return _succesMessage; }
+            set
+            {
+                _succesMessage = value;
+                RaisePropertyChanged("SuccesMessage");
+            }
+        }
+
         #endregion
 
         public NotificationViewModel()
@@ -65,9 +78,13 @@ namespace OnBoardFlight.ViewModel.CabinCrew
             {
                 var NotificationJson = JsonConvert.SerializeObject(Notification);
                 var res = await Client.PostAsync(new Uri("http://localhost:5000/api/User/notification/add"), new HttpStringContent(NotificationJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
-                if (!res.IsSuccessStatusCode)
+                if (res.IsSuccessStatusCode)
                 {
-                    ErrorMessage = "Something went wrong! Please try again later.";
+                    SuccesMessage = "Notification succesfully sent!";
+                }
+                else
+                {
+                    ErrorMessage = "Notification was not created! Please try again later.";
                 }
             }
             catch(Exception)
