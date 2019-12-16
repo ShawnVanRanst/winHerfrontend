@@ -82,7 +82,20 @@ namespace OnBoardFlight.ViewModel.Passenger
                 _errorMessage = value;
                 RaisePropertyChanged("ErrorMessage");
             }
-        } 
+        }
+
+        private string _succesMessage;
+
+        public string SuccesMessage
+        {
+            get { return _succesMessage; }
+            set
+            {
+                _succesMessage = value;
+                RaisePropertyChanged("SuccesMessage");
+            }
+        }
+
         #endregion
 
         public ShopViewModel(GeneralLogin generalLogin)
@@ -146,12 +159,21 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         public void DeleteOrderline()
         {
-            Order order = Cart.Order;
-            ObservableCollection<Orderline> orderlines = order.Orderlines;
-            orderlines.Remove(Orderline);
-            Cart.Order.Orderlines = orderlines;
-            Cart.Order = order;
-            Cart.Order.TotalPrice--;
+            if(Orderline == null)
+            {
+                ErrorMessage = "Please select an item to delete and then click the button.";
+            }
+            else
+            {
+                Order order = Cart.Order;
+                ObservableCollection<Orderline> orderlines = order.Orderlines;
+                orderlines.Remove(Orderline);
+                Cart.Order.Orderlines = orderlines;
+                Cart.Order = order;
+                Cart.Order.TotalPrice--;
+                Orderline = null;
+                ErrorMessage = null;
+            }
         }
 
         private void FillCategoryListProductList()
@@ -204,19 +226,17 @@ namespace OnBoardFlight.ViewModel.Passenger
                 var productslist = JsonConvert.DeserializeObject<IList<Product>>(json);
                 if(productslist.Count == 0)
                 {
-                    throw new ArgumentNullException();
+                    ErrorMessage = "There are no products available.";
                 }
-                foreach (var Product in productslist)
+                else
                 {
-                    ProductList.Add(Product);
+                    foreach (var Product in productslist)
+                    {
+                        ProductList.Add(Product);
+                    }
+                    FillCategoryListProductList();
+                    ErrorMessage = null;
                 }
-                FillCategoryListProductList();
-                ErrorMessage = null;
-
-            }
-            catch (ArgumentNullException)
-            {
-                ErrorMessage = "There are no products available.";
             }
             catch(Exception)
             {
@@ -237,11 +257,12 @@ namespace OnBoardFlight.ViewModel.Passenger
                 {
                     ClearCart();
                     ErrorMessage = null;
+                    SuccesMessage = "Order was created, we will bring you order asap!";
                 }
-            }
-            catch (HttpRequestException)
-            {
-                ErrorMessage = "Order wasn't created! Please try again later.";
+                else
+                {
+                    ErrorMessage = "Something went wrong! Order was not created!";
+                }
             }
             catch(Exception)
             {
