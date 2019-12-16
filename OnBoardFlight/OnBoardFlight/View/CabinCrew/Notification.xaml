@@ -19,6 +19,7 @@
             <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Style="{StaticResource whiteText}" HorizontalAlignment="Center" Text="Send a notification" VerticalAlignment="Center" FontSize="36"/>
                 <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
+                <TextBlock Style="{StaticResource whiteText}" Text="{Binding SuccesMessage}" HorizontalAlignment="Left" x:Name="Succes" Foreground="Green"/>
                 <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
                     <TextBlock Style="{StaticResource whiteText}" HorizontalAlignment="Left" x:Name="NotificationError" FocusVisualPrimaryBrush="Black" Foreground="Red"/>
                     <TextBlock Style="{StaticResource whiteText}" HorizontalAlignment="Left" Text="Title"/>

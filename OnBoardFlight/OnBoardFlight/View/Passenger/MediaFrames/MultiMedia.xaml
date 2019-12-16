@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
         <NavigationView x:Name="MediaNav" Windows10version1809:PaneDisplayMode="Top" Windows10version1803:IsBackButtonVisible="Collapsed" IsSettingsVisible="False" Grid.Row="0" Tapped="SelectMedia">
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Movies" x:Name="MoviesBtn" Tag="Movies"/>
+                <NavigationViewItem Content="Movies" x:Name="MoviesBtn" Tag="Movies" Margin="40,0,0,0"/>
                 <NavigationViewItem Content="Series" x:Name="SeriesBtn" Tag="Series"/>
                 <NavigationViewItem Content="Music" x:Name="MusicBtn" Tag="Music"/>
             </NavigationView.MenuItems>

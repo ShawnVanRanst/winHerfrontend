@@ -13,8 +13,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid Tapped="Play">
-        <Button x:Name="playbtn" Content="Play" Command="{Binding PlaySerieCommand}" CommandParameter="{Binding ElementName=mediaPlayer}"/>
-        <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" Width="auto" Height="auto"/>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Button VerticalAlignment="Top" Style="{StaticResource NavigationBackButtonNormalStyle}" x:Name="Back" HorizontalAlignment="Left" Tapped="Back_Click"/>
+            <Button x:Name="playbtn" Content="Play" Command="{Binding PlaySerieCommand}" CommandParameter="{Binding ElementName=mediaPlayer}" Tapped="PlaySerie" />
+            <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" Width="auto" Height="auto"/>
+        </StackPanel>
     </Grid>
 </Page>

@@ -23,10 +23,20 @@ namespace OnBoardFlight.View.CabinCrew
     /// </summary>
     public sealed partial class Advertisement : Page
     {
+        private AdvertismentViewModel Vm { get; set; }
+
         public Advertisement()
         {
             this.InitializeComponent();
-            this.DataContext = new AdvertismentViewModel();
+            Vm = new AdvertismentViewModel();
+            this.DataContext = Vm;
+        }
+
+        private void Filter(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            Vm.Filter = textBox.Text;
+            Vm.FilterProducts();
         }
     }
 }

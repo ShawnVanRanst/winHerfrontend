@@ -32,6 +32,7 @@ namespace OnBoardFlight.View
             this.DataContext = new LoginViewModel();
         }
 
+
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             On_BackRequested();

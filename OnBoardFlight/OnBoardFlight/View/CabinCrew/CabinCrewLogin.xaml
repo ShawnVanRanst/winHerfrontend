@@ -15,8 +15,9 @@
     </Page.Resources>
 
     <Grid>
-        <Button VerticalAlignment="Top" Style="{StaticResource NavigationBackButtonNormalStyle}" x:Name="Back" Click="Back_Click"/>
         <ScrollViewer>
+            <StackPanel>
+            <Button VerticalAlignment="Top" Style="{StaticResource NavigationBackButtonNormalStyle}" x:Name="Back" HorizontalAlignment="Left" Tapped="Back_Click"/>
             <StackPanel x:Name="ContentPanel" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock HorizontalAlignment="Center" Text="Login as" VerticalAlignment="Center" FontSize="36" Style="{StaticResource whiteText}"/>
                 <TextBlock  Style="{StaticResource whiteText}" HorizontalAlignment="Center" Text="{Binding Name}" VerticalAlignment="Center" FontSize="72" Margin="0,0,0,40" FontWeight="Bold"/>
@@ -34,6 +35,7 @@
                         <Button HorizontalAlignment="Center" Content="Cancel" Command="{Binding CancelLoginCommand}" Style="{StaticResource RoundButtonWhiteText}"/>
                     </StackPanel>
                 </StackPanel>
+            </StackPanel>
             </StackPanel>
         </ScrollViewer>
     </Grid>
