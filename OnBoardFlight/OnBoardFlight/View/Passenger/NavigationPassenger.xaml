@@ -17,6 +17,7 @@
     </Page.Resources>
     <NavigationView x:Name="NavView" SelectionChanged="NavigateTo" Windows10version1803:IsBackButtonVisible="Collapsed" IsSettingsVisible="False">
         <NavigationView.MenuItems>
+            <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="LoginError" Foreground="Red"></TextBlock>
             <NavigationViewItem Content="Home" Icon="Home" x:Name="HometBtn" Tag="Home"/>
             <NavigationViewItem Content="Shop" Icon="Shop" x:Name="ShopBtn" Tag="Shop"/>
             <NavigationViewItem Content="Orders" Icon="List" x:Name="OrdersBtn" Tag="Orders"/>
