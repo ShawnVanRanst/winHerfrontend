@@ -23,10 +23,10 @@ namespace OnBoardFlight.ViewModel.Passenger
 
         public AddPromotionCommand AddPromotionCommand { get; set; }
 
+
         public ObservableCollection<Product> ProductData { get; set; }
 
         private ObservableCollection<Product> _products;
-
         public ObservableCollection<Product> Products
         {
             get { return _products; }
@@ -126,7 +126,6 @@ namespace OnBoardFlight.ViewModel.Passenger
         {
             try
             {
-                ProductData = new ObservableCollection<Product>();
                 var json = await Client.GetStringAsync(new Uri("http://localhost:5000/api/Product"));
                 var products = JsonConvert.DeserializeObject<IList<Product>>(json);
                 if(products.Count == 0)
@@ -135,14 +134,12 @@ namespace OnBoardFlight.ViewModel.Passenger
                 }
                 else
                 {
+                    ProductData = new ObservableCollection<Product>();
                     foreach (var product in products)
                     {
                         ProductData.Add(product);
                     }
-                    if (Products.Count() == 0)
-                    {
-                        Products = ProductData;
-                    }
+                    Products = ProductData;
                     ErrorMessage = null;
                 }  
             }
@@ -159,13 +156,17 @@ namespace OnBoardFlight.ViewModel.Passenger
             {
                 Product.OldPrice = double.Parse(OldPrice);
             }
+            else if(OldPrice != null)
+            {
+                Product.Price = (double)Product.OldPrice;
+            }
             try
             {
                 var ProductJson = JsonConvert.SerializeObject(Product);
                 var res = await Client.PostAsync(new Uri("http://localhost:5000/api/Product/product/update"), new HttpStringContent(ProductJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
                 if (res.IsSuccessStatusCode)
                 {
-                    SuccesMessage = "Promotion for " + Product.Description + " succesfully added!";
+                    SuccesMessage = "Price of " + Product.Description + " succesfully updated!";
                     Product = null;
                     LoadData();
                 }
