@@ -5,38 +5,50 @@
     xmlns:local="using:OnBoardFlight.View.Passenger.MediaFrames"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Tapped="Continue">
 
-    <ScrollViewer Height="800">
-        <ListView ItemsSource="{Binding CategoryListMusicList}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{Binding Category}"/>
-                        <ListView ItemsSource="{Binding MusicList}"
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///view/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Button Content="Stop Playing" Tapped="StopPlaying" Style="{StaticResource RoundButtonWhiteText}"/>
+        <ScrollViewer>
+            <ListView ItemsSource="{Binding CategoryListMusicList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Category}"/>
+                            <ListView ItemsSource="{Binding MusicList}"
                             ScrollViewer.VerticalScrollBarVisibility="Disabled" 
                             ScrollViewer.HorizontalScrollBarVisibility="Auto"
                             ScrollViewer.HorizontalScrollMode="Enabled"                  
                             ScrollViewer.VerticalScrollMode="Disabled"
                                       Tapped="PlaySong">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Background="Transparent" Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Vertical">
-                                        <Image Source="{Binding Image}"/>
-                                        <TextBlock Text="{Binding Title}"/>
-                                        <TextBlock Text="{Binding Description}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </ScrollViewer>
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Background="Transparent" Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical">
+                                            <Image Source="{Binding Image}"/>
+                                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Title}"/>
+                                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Description}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+        </StackPanel>
+    </Grid>
 </Page>

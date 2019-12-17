@@ -6,20 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace OnBoardFlight.ViewModel.Commands.CabinCrew
+namespace OnBoardFlight.ViewModel.Commands.CabinCrew.Login
 {
-    public class SearchPassengerToChangePlaces : ICommand
+    public class CancelLoginCommand : ICommand
     {
-
-        public SeatViewModel SeatViewModel { get; set; }
-
-        public SearchPassengerToChangePlaces(SeatViewModel svm)
-        {
-            SeatViewModel = svm;
-        }
-
-
         public event EventHandler CanExecuteChanged;
+
+        public LoginViewModel LoginViewModel { get; set; }
+
+        public CancelLoginCommand(LoginViewModel loginViewModel)
+        {
+            LoginViewModel = loginViewModel;
+        }
 
         public bool CanExecute(object parameter)
         {
@@ -28,7 +26,7 @@ namespace OnBoardFlight.ViewModel.Commands.CabinCrew
 
         public void Execute(object parameter)
         {
-            SeatViewModel.SearchPassengerToChangePlaces();
+            LoginViewModel.CancelLogin();
         }
     }
 }

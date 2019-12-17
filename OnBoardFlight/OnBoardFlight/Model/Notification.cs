@@ -10,6 +10,8 @@ namespace OnBoardFlight.Model
 {
     public class Notification : INotifyPropertyChanged
     {
+        public int Id { get; set; }
+
         private string _title;
 
         public string Title
@@ -18,20 +20,28 @@ namespace OnBoardFlight.Model
             set { _title = value; RaisePropertyChanged("Title"); }
         }
 
-        private string _context;
+        private string _content;
 
-        public string Context
+        public string Content
         {
-            get { return _context; }
-            set { _context = value; RaisePropertyChanged("Context"); }
+            get { return _content; }
+            set { _content = value; RaisePropertyChanged("Content"); }
         }
 
-        private bool _general;
+        private bool _singlePerson;
 
-        public bool General
+        public bool SinglePerson
         {
-            get { return _general; }
-            set { _general = value; }
+            get { return _singlePerson; }
+            set { _singlePerson = value; RaisePropertyChanged("SinglePerson"); }
+        }
+
+        private string _passengerSeat;
+
+        public string PassengerSeat
+        {
+            get { return _passengerSeat; }
+            set { _passengerSeat = value; RaisePropertyChanged("PassengerSeat"); }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

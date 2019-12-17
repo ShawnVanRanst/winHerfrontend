@@ -1,7 +1,6 @@
 READ ME
 
 On Board Flight
-
 1) Runnen van project
 
 	-Open 2 schermen van visual studio 2017

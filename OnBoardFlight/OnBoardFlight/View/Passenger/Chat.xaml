@@ -6,19 +6,51 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <StackPanel Orientation="Horizontal">
-        <ScrollViewer>
-            <StackPanel Orientation="Vertical">
-                <ListView ItemsSource="{Binding ChatList}" x:Name="ChatListView" Tapped="SelectChat">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}" x:Name="test"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///view/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Style="{StaticResource GridTopMargen}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Column="0" Grid.RowSpan="2">
+            <ListView ItemsSource="{Binding ChatList}" x:Name="ChatListView" Tapped="SelectChat">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" x:Name="test" Style="{StaticResource whiteText}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </ScrollViewer>
-        <Frame x:Name="Conversation"/>
-    </StackPanel>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="0">
+            <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
+            <ScrollViewer>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
+                    <ListView ItemsSource="{Binding Messages}" x:Name="MessagesListView">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical" Margin="0, 0, 0, 15">
+                                    <TextBlock Text="{Binding Sender}" Style="{StaticResource whiteText}" FontSize="12"/>
+                                    <TextBlock Text="{Binding Content}" Style="{StaticResource whiteText}" FontSize="16"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </ScrollViewer>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="1">
+                <TextBox x:Name="MessageInputField" Text="{Binding SendMessage.Content, Mode=TwoWay}" TextWrapping="Wrap"/>
+                <Button Content="Send" Command="{Binding SendMessageCommand}" Style="{StaticResource RoundButtonWhiteText}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
 </Page>

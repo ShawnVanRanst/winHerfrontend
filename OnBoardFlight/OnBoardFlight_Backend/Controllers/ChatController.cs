@@ -15,12 +15,14 @@ namespace OnBoardFlight_Backend.Controllers
     public class ChatController : ControllerBase
     {
         private readonly IChatRepository _chatRepository;
+        private readonly IUserRepository _userRepository;
 
-        public ChatController(IChatRepository chatRepository)
+        public ChatController(IChatRepository chatRepository, IUserRepository userRepository)
         {
             _chatRepository = chatRepository;
+            _userRepository = userRepository;
         }
-
+        /*
         [HttpGet("{id}")]
         public IActionResult GetChat(int id)
         {
@@ -32,16 +34,21 @@ namespace OnBoardFlight_Backend.Controllers
             return Ok(new ChatDTO(chat));
         }
 
-        [HttpPut("{id}")]
-        public IActionResult UpdateChat(int id, Chat chat)
+    */
+        [HttpPost()]
+        public IActionResult UpdateChat(UpdateChatDTO updateChatDTO)
         {
-            if(id != chat.ChatId)
+            try
             {
-                return BadRequest();
+                Passenger passenger = _userRepository.GetPassengerBySeat(updateChatDTO.Seat);
+                Chat chat = _chatRepository.GetChat(updateChatDTO.Id);
+                Message message = new Message(passenger, updateChatDTO.Content);
+                chat.AddMessage(message);
+                _chatRepository.UpdateChat(chat);
+                _chatRepository.SaveChanges();
             }
-            _chatRepository.UpdateChat(chat);
-            _chatRepository.SaveChanges();
-            return NoContent();
+            catch (Exception) { return NotFound(); };
+            return Ok();
         }
     }
 }

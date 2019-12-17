@@ -6,41 +6,47 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <ScrollViewer>
-        <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="{Binding Serie.Image}"/>
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="{Binding Serie.Title}"/>
-                    <TextBlock Text="{Binding Serie.Category}"/>
-                    <TextBlock Text="{Binding Serie.Description}"/>
-                </StackPanel>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///view/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <ScrollViewer>
+        <StackPanel Margin="0,200,0,0">
+            <Button Foreground="White" VerticalAlignment="Top" Style="{StaticResource NavigationBackButtonNormalStyle}" x:Name="Back" HorizontalAlignment="Left" Tapped="Back_Click"/>
+            <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="30" Style="{StaticResource whiteText}" Text="{Binding Serie.Title}"/>
+                    <TextBlock FontSize="20" Style="{StaticResource whiteText}" Text="{Binding Serie.Category}"/>
+                    <TextBlock  Style="{StaticResource whiteText}" Text="{Binding Serie.Description}" TextWrapping="Wrap"/>
             </StackPanel>
-            <Frame x:Name="SelectedEpisode" />
-            <TextBlock Text="Episodes"/>
-            <ListView ItemsSource="{Binding Serie.Episodes}"
+                <TextBlock Style="{StaticResource whiteText}" Text="Episodes"/>
+        <ListView ItemsSource="{Binding Serie.Episodes}"
                       SelectedItem="{Binding Serie}"
                       ScrollViewer.VerticalScrollBarVisibility="Disabled" 
                       ScrollViewer.HorizontalScrollBarVisibility="Auto"
                         ScrollViewer.HorizontalScrollMode="Enabled"                  
                         ScrollViewer.VerticalScrollMode="Disabled" Tapped="SerieEpisodeDetails"
                       x:Name="episodes">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Background="Transparent" Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="{Binding Image}"/>
-                            <TextBlock Text="{Binding DisplaySE}"/>
-                            <TextBlock Text="{Binding Title}"/>
-                            <TextBlock Text="{Binding Description}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Background="Transparent" Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Width="200">
+                        <Image Source="{Binding Image}"/>
+                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding DisplaySE}"/>
+                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Title}"/>
+                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Description}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         </StackPanel>
-    </ScrollViewer>
+        </ScrollViewer>
+    </Grid>
 </Page>

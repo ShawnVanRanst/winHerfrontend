@@ -6,45 +6,64 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///view/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
         <StackPanel Orientation="Horizontal">
             <StackPanel Margin="20 50 20 50">
-                <TextBlock Text="Please enter the seatnumber of the passenger to move:"/>
-                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                    <TextBox x:Name="seatInput1" 
-                                     Text="{Binding SeatNumber1}"
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Column="0" Grid.Row="0">
+                        <TextBlock Padding="0,0,20,0"  Text="Please enter the seatnumber of the passenger to move: " Style="{StaticResource whiteText}"/>
+                        <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
+                        <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                            <TextBox x:Name="seatInput1" 
+                                     Text="{Binding Seat1, Mode=TwoWay}"
                                      PlaceholderText="Seatnumber"
-                                     Width="100" HorizontalAlignment="Left"/>
-                    <Button Content="Search passenger" Command="{Binding SearchPassengerToMoveCommand}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" />
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal" Margin="0 50 0 20">
-                        <TextBlock Text="Passagier 1:" />
-                        <TextBlock Text="{Binding Passenger1.FirstName}" Margin="10 0 5 0"/>
-                        <TextBlock Text="{Binding Passenger1.LastName}"/>
+                                     Width="100" HorizontalAlignment="Left" TextChanged="SetSeat1"/>
+                            <Button Content="Search passenger" Command="{Binding SearchPassengerToMoveCommand1, Mode=TwoWay}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" Style="{StaticResource RoundButtonWhiteText}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" Margin="0 50 0 20">
+                                <TextBlock Text="Passagier 1:" Style="{StaticResource whiteText}" />
+                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Passenger1.FirstName}" Margin="10 0 5 0"/>
+                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Passenger1.LastName}"/>
+                            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Margin="20 50 20 50">
-                <TextBlock Text="Please enter the new seatnumber:"/>
-                <StackPanel Orientation="Horizontal" Margin="50,20,0,20">
-                    <TextBox x:Name="seatNumber2" 
-                                    Text="{Binding SeatNumber2}"
+                    <StackPanel Grid.Column="1" Grid.Row="0">
+                        <TextBlock Text="Please enter the new seatnumber:" Style="{StaticResource whiteText}"/>
+                        <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage2}" HorizontalAlignment="Left" x:Name="Error2" Foreground="Red"></TextBlock>
+                        <StackPanel Orientation="Horizontal" Margin="00,20,0,0">
+                            <TextBox x:Name="seatNumber2" 
+                                    Text="{Binding Seat2, Mode=TwoWay}"
                                  PlaceholderText="Seatnumber"
-                                 Width="100" HorizontalAlignment="Left"/>
-                    <Button Content="Search Passenger" Command="{Binding SearchPassengerToChangePlacesCommand}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" />
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal" Margin="0 50 0 20">
-                        <TextBlock Text="Passagier 2:" />
-                        <TextBlock Text="{Binding Passenger2.FirstName}" Margin="10 0 5 0"/>
-                        <TextBlock Text="{Binding Passenger2.LastName}"/>
+                                 Width="100" HorizontalAlignment="Left" TextChanged="SetSeat2"/>
+                            <Button Content="Search Passenger" Command="{Binding SearchPassengerToMoveCommand2, Mode=TwoWay}" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" Style="{StaticResource RoundButtonWhiteText}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" Margin="0 50 0 20">
+                                <TextBlock Text="Passagier 2:" Style="{StaticResource whiteText}" />
+                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Passenger2.FirstName}" Margin="10 0 5 0"/>
+                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding Passenger2.LastName}"/>
+                            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
+                    <Button Content="Assign new seat(s)" Command="{Binding SwitchPlacesCommand, Mode=TwoWay}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" Style="{StaticResource RoundButtonWhiteText}"/>
+                </Grid>
             </StackPanel>
-        </StackPanel>
-        <StackPanel HorizontalAlignment="Center">
-            <Button Content="Assign new seat(s)" Command="{Binding SwitchPlaces}"/>
         </StackPanel>
     </StackPanel>
 </Page>

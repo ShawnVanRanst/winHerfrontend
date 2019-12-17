@@ -20,6 +20,10 @@ namespace OnBoardFlight_Backend.Model
 
         public ProductCategory Category{ get; set; }
 
+        public bool Discount { get; set; }
+
+        public double? OldPrice { get; set; }
+
         #endregion
 
         #region Constructors
@@ -29,12 +33,13 @@ namespace OnBoardFlight_Backend.Model
 
         }
 
-        public Product(string description, string imageLink, double price, ProductCategory category)
+        public Product(string description, string imageLink, double price, ProductCategory category, bool discount)
         {
             Description = description;
             ImageLink = imageLink;
             Price = price;
             Category = category;
+            Discount = discount;
         }
 
 

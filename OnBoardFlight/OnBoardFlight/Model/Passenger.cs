@@ -10,23 +10,6 @@ namespace OnBoardFlight.Model
 {
     public class Passenger : User, INotifyPropertyChanged
     {
-        private string _firstName;
-
-        public string FirstName
-        {
-            get { return _firstName; }
-            set { _firstName = value; RaisePropertyChanged("FirstName"); }
-        }
-
-        private string _lastName;
-
-        public string LastName
-        {
-            get { return _lastName; }
-            set { _lastName = value; RaisePropertyChanged("LastName"); }
-        }
-
-
         private List<Passenger> _travelCompany;
 
         public List<Passenger> TravelCompany
@@ -34,6 +17,15 @@ namespace OnBoardFlight.Model
             get { return _travelCompany; }
             set { _travelCompany = value; RaisePropertyChanged("TravelCompany"); }
         }
+
+        private string _seat;
+
+        public string Seat
+        {
+            get { return _seat; }
+            set { _seat = value; RaisePropertyChanged("Seat"); }
+        }
+
 
         private List<Chat> _chatList;
 
@@ -50,6 +42,7 @@ namespace OnBoardFlight.Model
             get { return notifications; }
             set { notifications = value; }
         }
+
 
 
         public void AddTravelCompanion(Passenger companion)

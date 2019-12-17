@@ -6,42 +6,51 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Left" >
-        <StackPanel Orientation="Horizontal" Margin="50 70 0 50">
-            <TextBlock Text="Orders van "/>
-            <TextBlock Text="{Binding Passenger.FirstName}" Margin="3 0 3 0"/>
-            <TextBlock Text="{Binding Passenger.LastName}"/>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///view/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid HorizontalAlignment="Center" Style="{StaticResource GridTopMargen}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="0,50,0,0" Orientation="Horizontal" Grid.Row="0">
+            <TextBlock Style="{StaticResource whiteText}" Text="Order history:"/>
         </StackPanel>
-        <ListView ItemsSource="{Binding OrderList}">
+        <TextBlock Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
+        <ListView ItemsSource="{Binding OrderList}" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <StackPanel BorderBrush="White" BorderThickness="1" Margin="0 10 0 10">
+                        <StackPanel BorderBrush="White" BorderThickness="4" Margin="0 10 0 10">
                             <StackPanel Orientation="Horizontal" Width="400" Margin="0 10 0 15">
-                                <TextBlock Text="Number" Width="100" TextAlignment="Center"/>
-                                <TextBlock Text="Description" Width="200" />
-                                <TextBlock Text="Price" Width="100" TextAlignment="Center"/>
+                                <TextBlock Style="{StaticResource whiteText}" Text="Number" Width="100" TextAlignment="Center"/>
+                                <TextBlock Style="{StaticResource whiteText}" Text="Description" Width="200" Padding="0,10,0,0" />
                             </StackPanel>
                             <ListView ItemsSource="{Binding Orderlines}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" Width="400" >
-                                            <TextBlock Text="{Binding Number}" Width="100" TextAlignment="Center"/>
-                                            <TextBlock Text="{Binding Product.Description}" Width="200" />
-                                            <TextBlock Text="{Binding TotalPrice}" TextAlignment="Center" Width="100"/>
+                                            <TextBlock Style="{StaticResource whiteText}" Text="{Binding Number}" Width="100" TextAlignment="Center"/>
+                                            <TextBlock Style="{StaticResource whiteText}" Text="{Binding Product.Description}" Width="200" />
                                         </StackPanel>
                                     </DataTemplate>
-
                                 </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
+                            </ListView>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Style="{StaticResource whiteText}" Text="Total: " Margin="5, 5, 5, 5"/>
+                                <TextBlock Style="{StaticResource whiteText}" Text="€" Margin="5, 5, 5, 5"/>
+                                <TextBlock Style="{StaticResource whiteText}" Text="{Binding TotalPrice}" Margin="5, 5, 5, 5"/>
+                            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
-            
         </ListView>
 
-    </StackPanel>    
+    </Grid>
 </Page>

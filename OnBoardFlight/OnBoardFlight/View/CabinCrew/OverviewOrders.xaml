@@ -6,10 +6,54 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///view/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
-        <Button Content="Drinks" HorizontalAlignment="Left" VerticalAlignment="Center"  Height="150" Width="250" RenderTransformOrigin="0.966,0.503" Margin="150,0,0,0"/>
-        <Button Content="Food" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="150" Width="250"/>
-        <Button Content="Gifts" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="1112,0,0,0" Height="150" Width="250" RenderTransformOrigin="0.108,0.643"/>
+        <ScrollViewer>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" >
+            <StackPanel Orientation="Vertical" Margin="50 70 0 50" HorizontalAlignment="Left">
+                <TextBlock Style="{StaticResource whiteText}" Margin="0,150,0,0" Text="Not Completed Orders:"/>
+                <TextBlock Style="{StaticResource whiteText}" Text="{Binding ErrorMessage}" HorizontalAlignment="Left" x:Name="Error" Foreground="Red"></TextBlock>
+                <TextBlock Style="{StaticResource whiteText}" Text="{Binding SuccesMessage}" HorizontalAlignment="Left" x:Name="Succes" Foreground="Green"/>
+                <Button Content="Complete Order" Tapped="Complete" HorizontalAlignment="Center" Style="{StaticResource RoundButtonWhiteText}"/>
+            </StackPanel>
+                <ScrollViewer>
+                <ListView ItemsSource="{Binding OrderList}" Tapped="SelectOrder" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <StackPanel Style="{StaticResource OrderThickBorder}" BorderBrush="White"  Margin="0 10 0 10">
+                                    <TextBlock Style="{StaticResource whiteText}" Text="Seat" Width="100" TextAlignment="Center"/>
+                                    <TextBlock Style="{StaticResource whiteText}" Text="{Binding SeatNumber}" Width="100" TextAlignment="Center"/>
+                                    <StackPanel Orientation="Horizontal" Width="400" Margin="0 10 0 15">
+                                        <TextBlock Style="{StaticResource whiteText}" Text="Number" Width="100" TextAlignment="Center"/>
+                                        <TextBlock Style="{StaticResource whiteText}" Text="Description" Width="200" />
+                                        <TextBlock Style="{StaticResource whiteText}" Text="Price" Width="100" TextAlignment="Center"/>
+                                    </StackPanel>
+                                    <ListView ItemsSource="{Binding Orderlines}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Width="400" >
+                                                    <TextBlock Style="{StaticResource whiteText}" Text="{Binding Number}" Width="100" TextAlignment="Center"/>
+                                                    <TextBlock Style="{StaticResource whiteText}" Text="{Binding Product.Description}" Width="200" />
+                                                    <TextBlock  Style="{StaticResource whiteText}" Text="{Binding TotalPrice}" TextAlignment="Center" Width="100"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                </ScrollViewer>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
+

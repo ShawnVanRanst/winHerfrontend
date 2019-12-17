@@ -1,4 +1,5 @@
-﻿using OnBoardFlight.Model;
+﻿using Newtonsoft.Json;
+using OnBoardFlight.Model;
 using OnBoardFlight.ViewModel.Commands.CabinCrew;
 using System;
 using System.Collections.Generic;
@@ -7,11 +8,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Web.Http;
+using HttpClient = Windows.Web.Http.HttpClient;
 
 namespace OnBoardFlight.ViewModel.CabinCrew
 {
     public class NotificationViewModel : INotifyPropertyChanged
     {
+        #region Properties
         private string _seatnumber;
 
         public string Seatnumber
@@ -20,13 +24,43 @@ namespace OnBoardFlight.ViewModel.CabinCrew
             set { _seatnumber = value; RaisePropertyChanged("Seatnumber"); }
         }
 
+        public HttpClient Client { get; set; }
+
         public Notification Notification { get; set; }
 
         public SendNotificationCommand SendNotification { get; set; }
 
+
+        private string _errorMessage;
+
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = value;
+                RaisePropertyChanged("ErrorMessage");
+            }
+        }
+
+        private string _succesMessage;
+
+        public string SuccesMessage
+        {
+            get { return _succesMessage; }
+            set
+            {
+                _succesMessage = value;
+                RaisePropertyChanged("SuccesMessage");
+            }
+        }
+
+        #endregion
+
         public NotificationViewModel()
         {
-            Notification = new Notification();
+            Notification = new Notification() { Content = "", SinglePerson = false, PassengerSeat = "", Title = ""};
+            Client = new HttpClient();
             SendNotification = new SendNotificationCommand(this);
         }
 
@@ -37,20 +71,25 @@ namespace OnBoardFlight.ViewModel.CabinCrew
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public async void GetPassenger(string seatnumber)
-        {
-
-        }
-
         public async Task AddNotificationAsync()
         {
-            if (string.IsNullOrEmpty(Seatnumber))
+
+            try
             {
-                // Add notification to every passenger
+                var NotificationJson = JsonConvert.SerializeObject(Notification);
+                var res = await Client.PostAsync(new Uri("http://localhost:5000/api/User/notification/add"), new HttpStringContent(NotificationJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
+                if (res.IsSuccessStatusCode)
+                {
+                    SuccesMessage = "Notification succesfully sent!";
+                }
+                else
+                {
+                    ErrorMessage = "Notification was not created! Please try again later.";
+                }
             }
-            else
+            catch(Exception)
             {
-                // Add notification to chosen user
+                ErrorMessage = "Something went wrong! Please try again later.";
             }
         }
     }

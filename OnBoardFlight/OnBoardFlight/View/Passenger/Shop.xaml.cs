@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OnBoardFlight.Model.Helper;
+using OnBoardFlight.ViewModel.Passenger;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +24,44 @@ namespace OnBoardFlight.View.Passenger
     /// </summary>
     public sealed partial class Shop : Page
     {
+
         public Shop()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if(this.DataContext.GetType() != typeof(ShopViewModel))
+            {
+                this.DataContext = new ShopViewModel((GeneralLogin)e.Parameter);
+            }
+        }
+
+        private void SelectProduct(object sender, TappedRoutedEventArgs e)
+        {
+            ListView lv = (ListView) sender;
+            Model.Product product = (Model.Product)lv.SelectedItem;
+            (this.DataContext as ShopViewModel).Product = product;
+            (this.DataContext as ShopViewModel).AddProductToCart();
+        }
+
+        private void AddOrder(object sender, TappedRoutedEventArgs e)
+        {
+            (this.DataContext as ShopViewModel).AddOrder();
+        }
+
+        private void SelectOrderline(object sender, TappedRoutedEventArgs e)
+        {
+            ListView lv = (ListView)sender;
+            Model.Orderline ol = (Model.Orderline)lv.SelectedItem;
+            (this.DataContext as ShopViewModel).Orderline = ol;
+        }
+
+        private void DeleteOrderline(object sender, TappedRoutedEventArgs e)
+        {
+            (this.DataContext as ShopViewModel).DeleteOrderline();
         }
     }
 }

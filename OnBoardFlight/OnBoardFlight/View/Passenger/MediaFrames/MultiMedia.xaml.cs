@@ -27,14 +27,13 @@ namespace OnBoardFlight.View.Passenger
         {
             this.InitializeComponent();
             mediaContent.Navigate(typeof(MovieList));
+            MediaNav.SelectedItem = MoviesBtn;
         }
 
 
-        private void LoadMedia(object sender, TappedRoutedEventArgs e)
+        private void NavigateOptions(string tag)
         {
-            Button btn = (Button)sender;
-            string mediaToLoad = btn.Content.ToString();
-            switch (mediaToLoad)
+            switch (tag)
             {
                 case "Movies":
                     mediaContent.Navigate(typeof(MovieList));
@@ -46,6 +45,13 @@ namespace OnBoardFlight.View.Passenger
                     mediaContent.Navigate(typeof(MusicList));
                     break;
             }
+        }
+
+        private void SelectMedia(object sender, TappedRoutedEventArgs e)
+        {
+            NavigationViewItem selectedItem = (NavigationViewItem)MediaNav.SelectedItem;
+            string tag = selectedItem.Tag.ToString();
+            NavigateOptions(tag);
         }
     }
 }

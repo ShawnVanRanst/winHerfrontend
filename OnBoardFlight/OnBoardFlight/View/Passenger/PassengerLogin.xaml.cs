@@ -1,4 +1,5 @@
 ﻿using OnBoardFlight.ViewModel;
+using OnBoardFlight.ViewModel.Passenger;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +27,7 @@ namespace OnBoardFlight.View
         public PassengerLogin()
         {
             this.InitializeComponent();
+            this.DataContext = new PassengerLoginViewModel();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -43,18 +45,13 @@ namespace OnBoardFlight.View
             return false;
         }
 
-        private void Login(object sender, RoutedEventArgs e)
+        private void Login(object sender, TappedRoutedEventArgs e)
         {
-            //Backend call + get user from backend
-            Model.Passenger Passenger = DummyDataSource.getPassenger();
-            if(LoginBtn.Text == Passenger.Login)
+            try
             {
-                Frame.Navigate(typeof(NavigationPassenger), Passenger);
+                Frame.Navigate(typeof(NavigationPassenger), (this.DataContext as PassengerLoginViewModel).GeneralLogin);
             }
-            else
-            {
-                LoginError.Text = "Seat number is not correct!";
-            }
+            catch (Exception) { };
         }
     }
 }

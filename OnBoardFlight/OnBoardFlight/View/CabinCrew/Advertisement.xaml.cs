@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnBoardFlight.ViewModel.Passenger;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,20 @@ namespace OnBoardFlight.View.CabinCrew
     /// </summary>
     public sealed partial class Advertisement : Page
     {
+        private AdvertismentViewModel Vm { get; set; }
+
         public Advertisement()
         {
             this.InitializeComponent();
+            Vm = new AdvertismentViewModel();
+            this.DataContext = Vm;
+        }
+
+        private void Filter(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            Vm.Filter = textBox.Text;
+            Vm.FilterProducts();
         }
     }
 }

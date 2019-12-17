@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OnBoardFlight.Model.Helper;
+using OnBoardFlight.ViewModel.Passenger;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +24,33 @@ namespace OnBoardFlight.View.CabinCrew
     /// </summary>
     public sealed partial class OverviewOrders : Page
     {
+        private OrderViewModel OrderViewModel { get; set; }
+
         public OverviewOrders()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if (this.DataContext.GetType() != typeof(OrdersNotCompletedViewModel))
+            {
+                this.DataContext = new OrdersNotCompletedViewModel();
+            }
+            (this.DataContext as OrdersNotCompletedViewModel).GetOrders();
+        }
+
+        private void Complete(object sender, TappedRoutedEventArgs e)
+        {
+            (this.DataContext as OrdersNotCompletedViewModel).Complete();
+        }
+
+        private void SelectOrder(object sender, TappedRoutedEventArgs e)
+        {
+            ListView lv = (ListView)sender;
+            Model.Order o = (Model.Order)lv.SelectedItem;
+            (this.DataContext as OrdersNotCompletedViewModel).Order = o;
         }
     }
 }

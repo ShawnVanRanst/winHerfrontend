@@ -22,7 +22,7 @@ namespace OnBoardFlight_Backend.Data.Repository
 
         public Chat GetChat(int id)
         {
-            return _chats.Include(c => c.Participants).Include(c => c.Messages).FirstOrDefault(c => c.ChatId == id);
+            return _chats.Include(c => c.Participants).Include(c => c.Messages).ThenInclude(m => m.Sender).FirstOrDefault(c => c.ChatId == id);
         }
 
         public void UpdateChat(Chat chat)

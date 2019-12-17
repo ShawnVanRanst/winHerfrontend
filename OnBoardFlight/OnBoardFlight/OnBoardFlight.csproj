@@ -119,11 +119,19 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DTO\AddOrderDTO.cs" />
+    <Compile Include="DTO\AddOrderlineDTO.cs" />
+    <Compile Include="DTO\CompleteOrderDTO.cs" />
     <Compile Include="Model\Chat.cs" />
     <Compile Include="Model\Game.cs" />
+    <Compile Include="Model\Helper\CabinCrewLogin.cs" />
     <Compile Include="Model\Helper\CategoryAndListMusicHelper.cs" />
+    <Compile Include="Model\Helper\CategoryAndListProductHelper.cs" />
     <Compile Include="Model\Helper\CategoryAndListVideoHelper.cs" />
+    <Compile Include="Model\Helper\ChangeSeats.cs" />
     <Compile Include="Model\Helper\ChatConversationHelper.cs" />
+    <Compile Include="Model\Helper\GeneralLogin.cs" />
+    <Compile Include="Model\Helper\SendMessage.cs" />
     <Compile Include="Model\Media\Media.cs" />
     <Compile Include="Model\Media\Movie.cs" />
     <Compile Include="Model\Media\Video.cs" />
@@ -137,30 +145,40 @@
     <Compile Include="Model\Orderline.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductCategory.cs" />
+    <Compile Include="Model\ShoppingCart.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Media\VideoCategory.cs" />
+    <Compile Include="ViewModel\CabinCrew\LoginViewModel.cs" />
     <Compile Include="ViewModel\CabinCrew\NavigationCabinCrewViewModel.cs" />
     <Compile Include="ViewModel\CabinCrew\NotificationViewModel.cs" />
+    <Compile Include="ViewModel\CabinCrew\OrdersNotCompletedViewModel.cs" />
     <Compile Include="ViewModel\CabinCrew\SeatViewModel.cs" />
-    <Compile Include="ViewModel\Commands\CabinCrew\SearchPassengerToChangePlaces.cs" />
-    <Compile Include="ViewModel\Commands\CabinCrew\SearchPassengerToMoveCommand.cs" />
-    <Compile Include="ViewModel\Commands\CabinCrew\SendNotificationCommand.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\Login\CancelLoginCommand.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\Login\LoginCommand.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\Promotion\AddPromotionCommand.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\Seats\SearchPassengerToMoveCommand.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\Notification\SendNotificationCommand.cs" />
+    <Compile Include="ViewModel\Commands\Passenger\Chat\SendMessageCommand.cs" />
+    <Compile Include="ViewModel\Commands\Passenger\Login\CancelLoginCommand.cs" />
+    <Compile Include="ViewModel\Commands\Passenger\Login\LoginCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Media\PlayMovieCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Media\PlaySerieCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\NewGameCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\PlayMoveCommand.cs" />
     <Compile Include="ViewModel\Commands\Passenger\Game\ResetGameCommand.cs" />
-    <Compile Include="ViewModel\Commands\Passenger\Chat\SelectChatCommand.cs" />
-    <Compile Include="ViewModel\Commands\SwitchPlacesCommand.cs" />
-    <Compile Include="ViewModel\Passenger\ChatConversationViewModel.cs" />
+    <Compile Include="ViewModel\Commands\Passenger\Shop\AddToCartCommand.cs" />
+    <Compile Include="ViewModel\Commands\CabinCrew\Seats\SwitchPlacesCommand.cs" />
+    <Compile Include="ViewModel\CabinCrew\AdvertismentViewModel.cs" />
     <Compile Include="ViewModel\Passenger\ChatViewModel.cs" />
     <Compile Include="ViewModel\Passenger\EpisodeDetailsViewModel.cs" />
     <Compile Include="ViewModel\Passenger\GameViewModel.cs" />
     <Compile Include="ViewModel\Passenger\MovieDetailsViewModel.cs" />
+    <Compile Include="ViewModel\Passenger\ShopViewModel.cs" />
     <Compile Include="ViewModel\Passenger\MovieListViewModel.cs" />
     <Compile Include="ViewModel\Passenger\MusicListViewModel.cs" />
     <Compile Include="ViewModel\Passenger\NavigationPassengerViewModel.cs" />
     <Compile Include="ViewModel\Passenger\OrderViewModel.cs" />
+    <Compile Include="ViewModel\Passenger\PassengerLoginViewModel.cs" />
     <Compile Include="ViewModel\Passenger\SerieDetailViewModel.cs" />
     <Compile Include="ViewModel\Passenger\SerieEpisodeDetailViewModel.cs" />
     <Compile Include="ViewModel\Passenger\SerieListViewModel.cs" />
@@ -185,7 +203,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\DummyDataSource.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
-    <Compile Include="ViewModel\WeatherProxyViewModel.cs" />
     <Compile Include="View\CabinCrew\Advertisement.xaml.cs">
       <DependentUpon>Advertisement.xaml</DependentUpon>
     </Compile>
@@ -209,9 +226,6 @@
     </Compile>
     <Compile Include="View\CabinCrew\NavigationCabinCrew.xaml.cs">
       <DependentUpon>NavigationCabinCrew.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Passenger\ChatConversation.xaml.cs">
-      <DependentUpon>ChatConversation.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Passenger\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
@@ -246,9 +260,6 @@
     <Compile Include="View\Passenger\PassengerLogin.xaml.cs">
       <DependentUpon>PassengerLogin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\General\Weather.xaml.cs">
-      <DependentUpon>Weather.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Passenger\Shop.xaml.cs">
       <DependentUpon>Shop.xaml</DependentUpon>
     </Compile>
@@ -263,10 +274,32 @@
     <Content Include="Assets\ALotToLose.mp3" />
     <Content Include="Assets\AtjeVoorDeSfeer.mp4" />
     <Content Include="Assets\BamBam.mp3" />
+    <Content Include="Assets\book.jpg" />
+    <Content Include="Assets\bruisWaterFlesje.png" />
+    <Content Include="Assets\colaBlik.png" />
+    <Content Include="Assets\colaFlesje.png" />
+    <Content Include="Assets\fantaBlik.jpg" />
+    <Content Include="Assets\fantaFlesje.jpg" />
+    <Content Include="Assets\iceTeaBlik.png" />
+    <Content Include="Assets\iceTeaFlesje.png" />
     <Content Include="Assets\movie.jfif" />
     <Content Include="Assets\music.png" />
     <Content Include="Assets\PiewPiew.mp3" />
     <Content Include="Assets\Background.jpg" />
+    <Content Include="Assets\MF.jpg" />
+    <Content Include="Assets\MF1.png" />
+    <Content Include="Assets\MF2.png" />
+    <Content Include="Assets\MF3.png" />
+    <Content Include="Assets\MF4.png" />
+    <Content Include="Assets\MF5.png" />
+    <Content Include="Assets\MF6.png" />
+    <Content Include="Assets\MF7.png" />
+    <Content Include="Assets\MF8.png" />
+    <Content Include="Assets\pillow.jpg" />
+    <Content Include="Assets\pizzaIcon.jpg" />
+    <Content Include="Assets\sprite.png" />
+    <Content Include="Assets\watch.jpg" />
+    <Content Include="Assets\waterFlesje.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -321,10 +354,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Passenger\ChatConversation.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Passenger\Game.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -369,11 +398,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\General\Weather.xaml">
+    <Page Include="View\Passenger\Shop.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Passenger\Shop.xaml">
+    <Page Include="View\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -395,6 +424,7 @@
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\newtonsoft.json\11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

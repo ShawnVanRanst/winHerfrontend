@@ -12,6 +12,8 @@ namespace OnBoardFlight_Backend.Model
 
         public int MessageId { get; set; }
 
+        public string Content { get; set; }
+
         public DateTime SendDate { get; set; }
 
         public Passenger Sender { get; set; }
@@ -26,10 +28,11 @@ namespace OnBoardFlight_Backend.Model
 
         }
 
-        public Message(DateTime sendDate, Passenger sender)
+        public Message(Passenger sender, string content)
         {
-            SendDate = sendDate;
+            Content = content;
             Sender = sender;
+            SendDate = DateTime.UtcNow;
         }
 
 

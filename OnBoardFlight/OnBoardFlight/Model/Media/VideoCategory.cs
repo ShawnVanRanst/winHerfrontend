@@ -10,6 +10,7 @@ namespace OnBoardFlight.Model
     {
         comedy,
         action,
-        horror
+        horror,
+        science
     }
 }

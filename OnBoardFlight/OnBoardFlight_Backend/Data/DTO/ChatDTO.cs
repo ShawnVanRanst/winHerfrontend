@@ -9,29 +9,19 @@ namespace OnBoardFlight_Backend.Data.DTO
 {
     public class ChatDTO
     {
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public ICollection<int> PassengerIds { get; set; }
+        public ICollection<ChatMessageDTO> Messages { get; set; }
 
-        public ICollection<Message> Messages { get; set; }
+        public int MyProperty { get; set; }
 
-
-        public ChatDTO(Chat chat)
+        public ChatDTO(Chat chat, string name, string seat)
         {
-            Name = chat.Name;
-            PassengerIds = GetPassengerIds(chat.Participants);
-            Messages = chat.Messages;
-        }
-
-        private ICollection<int> GetPassengerIds(ICollection<PassengerChat> passengerChats)
-        {
-            ICollection<int> idList = new List<int>();
-            foreach(PassengerChat p in passengerChats)
-            {
-                idList.Add(p.PassengerId);
-            }
-            return idList;
+            Id = chat.ChatId;
+            Name = name;
+            Messages = chat.Messages.Select(m => new ChatMessageDTO(m, seat)).OrderBy(m => m.SendDate).ToList();
         }
     }
 }

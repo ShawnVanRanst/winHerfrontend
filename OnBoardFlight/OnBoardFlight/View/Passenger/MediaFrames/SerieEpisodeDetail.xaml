@@ -6,9 +6,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <StackPanel Orientation="Vertical">
-        <Button Command="{Binding PlaySerieCommand}" CommandParameter="{Binding ElementName=mediaPlayer}"/>
-        <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" Width="auto" Height="400"/>
-    </StackPanel>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///view/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Button VerticalAlignment="Top" Style="{StaticResource NavigationBackButtonNormalStyle}" x:Name="Back" HorizontalAlignment="Left" Tapped="Back_Click"/>
+            <Button x:Name="playbtn" Content="Play" Command="{Binding PlaySerieCommand}" CommandParameter="{Binding ElementName=mediaPlayer}" Tapped="PlaySerie" Style="{StaticResource RoundButtonWhiteText}" />
+            <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" Width="auto" Height="auto"/>
+        </StackPanel>
+    </Grid>
 </Page>

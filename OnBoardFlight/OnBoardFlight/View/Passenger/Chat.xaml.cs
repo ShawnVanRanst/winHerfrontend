@@ -24,8 +24,6 @@ namespace OnBoardFlight.View.Passenger
     /// </summary>
     public sealed partial class Chat : Page
     {
-        private ChatViewModel _chatViewModel { get; set; }
-
         public Chat()
         {
             this.InitializeComponent();
@@ -34,20 +32,16 @@ namespace OnBoardFlight.View.Passenger
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            _chatViewModel = new ChatViewModel((Model.Passenger) e.Parameter);
-            this.DataContext = _chatViewModel;
+            this.DataContext = new ChatViewModel((GeneralLogin)e.Parameter);
+
+            MessageInputField.Width = ((Frame)Window.Current.Content).ActualWidth /100 * 60;
         }
 
         private void SelectChat(object sender, TappedRoutedEventArgs e)
         {
             ListView lv = (ListView)sender;
             Model.Chat chat = (Model.Chat)lv.SelectedItem;
-            ChatConversationHelper chatConversationHelper = new ChatConversationHelper()
-            {
-                Chat = chat,
-                Passenger = _chatViewModel.Passenger
-            };
-            Conversation.Navigate(typeof(ChatConversation), chatConversationHelper);
+            (this.DataContext as ChatViewModel).ShowMessages(chat);
         }
     }
 }
